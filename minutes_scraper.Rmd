@@ -1,0 +1,216 @@
+---
+title: "RBA Minutes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This document demonstrates a basic web scraping exercise of saving all the minutes from RBA board meetings.
+
+
+## Setup
+
+Loading the packages and global variables
+
+```{r packages, message=FALSE}
+require(RCurl); require(XML)
+
+BASE_URL <- "http://www.rba.gov.au"
+MINUTES_URL <- "monetary-policy/rba-board-minutes"
+DATA_PATH <- "./Data"
+```
+
+___
+## Get all the links to minutes
+
+1. Get the page for the year
+2. Search the HTML for all links
+3. Filter only the links to minutes using pattern matching
+
+_The below example gets all links for 2016._
+
+```{r}
+year <- 2016
+
+# Get and parse URL
+link <- paste(BASE_URL, MINUTES_URL, year, "", sep = "/")
+html_doc <- htmlParse(getURL(link))
+
+# Get relevant links from document
+all_links <- getHTMLLinks(html_doc)
+link_pattern <- paste(MINUTES_URL, year, "(.*)(html)$", sep = "/")
+minutes_links <- regmatches(all_links, regexpr(link_pattern, all_links))
+
+print(link_pattern)
+head(minutes_links)
+```
+
+We can wrap this up in a function `get_minutes_links <- function(year){...}`
+
+___
+## Download minutes
+
+Download and save to data directory.
+
+_The below example downloads the first from our link set._
+
+```{r}
+link <- minutes_links[1]
+
+# Get URL
+link <- paste(BASE_URL, link, sep = "/")
+html_doc <- getURL(link)
+
+# Define filename
+filename <- gsub(paste(BASE_URL, MINUTES_URL, "", sep = "/"), "", link)
+filename <- gsub("/", "-", filename)
+
+print(filename)
+```
+
+```{r eval=FALSE}
+# Save to data directory
+writeLines(html_doc, paste(DATA_PATH, filename, sep = "/"))
+  
+```
+
+We can wrap this up in a function `download_minutes <- function(link){...}`
+
+___
+## Parse the saved file
+
+Read a saved file and parse into data frame. Components parsed:  
+1. Location & date  
+2. Headings  
+3. Content  
+
+_The below example parses the first saved file for 2016._
+
+```{r}
+filename <- dir(DATA_PATH, pattern = paste0(year, "(.*)(html)"))[1]
+
+# Get and parse the URL
+html_doc <- readLines(paste(DATA_PATH, filename, sep = "/"))
+html_doc <- htmlParse(html_doc)
+
+# Parse the relevant data
+loc_date <- xpathSApply(html_doc, "//div[@id='content']//strong", xmlValue)
+headings <- xpathSApply(html_doc, "//div[@id='content']//h2", xmlValue)
+content <- xpathSApply(html_doc, "//div[@id='content']//p", xmlValue)
+
+print(loc_date)
+print(headings)
+print(content[1:5])
+
+# Combine into a single row data frame
+df <- data.frame(
+  Location = loc_date,
+  Headings = paste(headings, collapse = "\r\n"),
+  Text     = paste(content, collapse = "\r\n")
+)
+```
+
+We can wrap this up in a function `parse_minutes_file <- function(filename){...}`
+
+___
+## Putting it together
+Function            Description
+------------------- ---------------
+get_minutes_links   Get URLs of all minutes
+download_minutes    Download minutes given URL
+parse_minutes_file  Parse file into data frame given filename
+
+_Procedure to scrape all data from 2006 to 2016._
+
+```{r, eval=FALSE}
+# Scrape
+minutes_links <- unlist(sapply(2006:2016, get_minutes_links))
+sapply(minutes_links, download_minutes)
+
+# Parse
+minutes_files <- dir(DATA_PATH)
+minutes_texts <- lapply(minutes_files, parse_minutes_file)
+
+# Combine
+df <- do.call("rbind", minutes_texts)
+```
+
+___
+## Full script
+```{r, eval=FALSE}
+# Libraries ---------------------------------------------------------------
+require(RCurl); require(XML)
+
+
+# Globals -----------------------------------------------------------------
+BASE_URL    <- "http://www.rba.gov.au"
+MINUTES_URL <- "monetary-policy/rba-board-minutes"
+DATA_PATH   <- "./Data"
+
+
+# Functions ---------------------------------------------------------------
+get_minutes_links <- function(year){
+  # Get and parse URL
+  link <- paste(BASE_URL, MINUTES_URL, year, "", sep = "/")
+  html_doc <- htmlParse(getURL(link))
+  
+  # Get relevant links from document
+  all_links <- getHTMLLinks(html_doc)
+  link_pattern <- paste(MINUTES_URL, year, "(.*)(html)$", sep = "/")
+  minutes_links <- regmatches(all_links, regexpr(link_pattern, all_links))
+  
+  return(minutes_links)
+}
+
+download_minutes <- function(link){
+  # Get URL
+  link <- paste(BASE_URL, link, sep = "/")
+  html_doc <- getURL(link)
+  
+  # Define filename
+  filename <- gsub(paste(BASE_URL, MINUTES_URL, "", sep = "/"), "", link)
+  filename <- gsub("/", "-", filename)
+  
+  # Save to data directory
+  writeLines(html_doc, paste(DATA_PATH, filename, sep = "/"))
+  
+  return(TRUE)
+}
+
+parse_minutes_file <- function(filename){
+  # Get and parse the URL
+  html_doc <- readLines(paste(DATA_PATH, filename, sep = "/"))
+  html_doc <- htmlParse(html_doc)
+  
+  # Parse the relevant data
+  loc_date <- xpathSApply(html_doc, "//div[@id='content']//strong", xmlValue)
+  headings <- xpathSApply(html_doc, "//div[@id='content']//h2", xmlValue)
+  content <- xpathSApply(html_doc, "//div[@id='content']//p", xmlValue)
+  
+  # Combine into a single row data frame
+  df <- data.frame(
+    Location = loc_date,
+    Headings = paste(headings, collapse = "\r\n"),
+    Text     = paste(content, collapse = "\r\n")
+  )
+  
+  return(df)
+}
+
+
+# Main --------------------------------------------------------------------
+# Scrape
+minutes_links <- unlist(sapply(2006:2016, get_minutes_links))
+sapply(minutes_links, download_minutes)
+
+# Parse
+minutes_files <- dir(DATA_PATH)
+minutes_texts <- lapply(minutes_files, parse_minutes_file)
+
+# Combine
+df <- do.call("rbind", minutes_texts)
+```
