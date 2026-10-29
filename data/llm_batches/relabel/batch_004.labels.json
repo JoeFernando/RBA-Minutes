@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2019-11-05",
+    "input_sha256": "e6e2614004dccddacafbf015456c1a33bbadbb6c019e353872ba2213d51c30c1",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board agreed that a case could be made to ease monetary policy at this meeting, but that the most appropriate approach would be to maintain the current stance of monetary policy and to make another full assessment once more evidence of the effects of the earlier monetary easing had become available.",
+      "Spare capacity was likely to remain in the labour market for some years.",
+      "The Board would continue to monitor developments, including in the labour market, and was prepared to ease monetary policy further if needed to support sustainable growth in the economy, full employment and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate at 0.75 per cent but explicitly said a case could be made to ease, and signalled readiness to ease further and an extended period of low rates. Concern centres on spare capacity, subdued wages and below-target inflation. The hold reflects waiting to assess lags of earlier cuts rather than any reduced easing lean, so the stance is mildly dovish with an easing bias."
+  },
+  {
+    "meeting_date": "2020-03-18",
+    "input_sha256": "8dbb71c43e061b34afe27fe12163cd708c43d2d8982c0aba840f299c3972a1ce",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members noted that this would be a substantial easing of monetary policy, which, to date, had been boosting the cash flow of businesses and the household sector as a whole and also helping trade-exposed industries through the exchange rate channel.",
+      "Given this, it was considered likely that the cash rate would remain at a very low level for an extended period.",
+      "Nonetheless, members strongly supported the proposed policy response as a comprehensive package to complement the fiscal response announced by governments in Australia in the preceding week or so."
+    ],
+    "reasoning": "In response to COVID-19 the Board cut the cash rate to its effective lower bound of 0.25 per cent and added a 3-year yield target, a term funding facility and other measures. It committed to keep rates very low for an extended period, until there is progress towards full employment and inflation is sustainably in the target range. The language is unambiguous and the whole package is aimed at supporting activity and credit, so this is strongly dovish."
+  },
+  {
+    "meeting_date": "2021-06-01",
+    "input_sha256": "7273fb87025ca3175127e3ed7afce594839e4ae54f0709e62ea0236fad4262c0",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Consequently, monetary policy would be likely to need to remain highly accommodative for some time yet.",
+      "The Board remained committed to doing what it reasonably could to support the Australian economy, and would maintain highly supportive monetary conditions until its goals for employment and inflation were achieved.",
+      "The Board viewed these conditions as unlikely until 2024 at the earliest."
+    ],
+    "reasoning": "Settings were reaffirmed with no change, while the Board stressed that full employment was a priority and that policy must remain highly accommodative, with no rate rise likely until 2024 at the earliest. Despite a stronger-than-expected recovery, the focus is on low wages and inflation and on judging that ending bond purchases would be premature. The lean is clearly dovish, but no further easing is signalled; future policy is a prolonged hold, so the bias is neutral."
+  },
+  {
+    "meeting_date": "2021-12-07",
+    "input_sha256": "97acb3929ff21be6210a4ca80fc12196b844d3ddcd402a3bcc046ee2ee43c583",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Turning to the decision for the cash rate, the Board remained committed to maintaining highly supportive monetary conditions to achieve its objectives of a return to full employment and inflation consistent with the target.",
+      "This is likely to take some time and the Board is prepared to be patient.",
+      "Members observed that inflation had increased, but remained low in underlying terms."
+    ],
+    "reasoning": "The cash rate was held at 10 basis points and the Board restated that it would not raise rates until inflation is sustainably in the target range, which it expected to take time, and said it would be patient. The bond-purchase options discussed point towards tapering, which offsets the dovish tone a little. Overall the lean is still mildly dovish, with no signal of a near-term change in the cash rate."
+  },
+  {
+    "meeting_date": "2022-05-03",
+    "input_sha256": "f0372c8e8966f697017c49d179368d1dbc8779e6712ae5e010e865234f3f1048",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members agreed that the condition the Board had set to increase the cash rate had been met.",
+      "They also agreed that further increases in interest rates would likely be required to ensure that inflation in Australia returns to the target over time.",
+      "Members observed that it would be more difficult to return inflation to the target if the inflation psychology in Australia were to shift in an enduring way."
+    ],
+    "reasoning": "The Board began tightening with a 25 basis point rise, judged that inflation pressures were broadening and persistent, signalled further increases, and decided to stop reinvesting maturing bonds. It chose 25 basis points over 40 and framed the move as a return to normal procedures, with significant uncertainties noted. That makes the stance clearly hawkish but measured, so mildly hawkish with a tightening bias."
+  },
+  {
+    "meeting_date": "2022-09-06",
+    "input_sha256": "080c69d958b0e77b2daea4fad141d5a2191dc035a93bfe542b8fd986729cfe34",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Given the importance of returning inflation to target, the potential damage to the economy from persistent high inflation and the still relatively low level of the cash rate, the Board decided to increase the cash rate by a further 50 basis points.",
+      "The Board expects to increase interest rates further over the months ahead, but it is not on a pre-set path given the uncertainties surrounding the outlook for inflation and growth.",
+      "The Board is committed to doing what is necessary to ensure that inflation in Australia returns to target over time."
+    ],
+    "reasoning": "With inflation at multi-decade highs and a very tight labour market, the Board raised rates by a further 50 basis points and said it expects more increases. It stressed that price stability is a prerequisite for full employment. The language is firmly hawkish, though slightly tempered by noting that the case for a slower pace strengthens as the cash rate rises and by risks to growth."
+  },
+  {
+    "meeting_date": "2022-10-04",
+    "input_sha256": "527864507013b924ee24118216e380ded8c4b9416a9c46f7d0dbdd62adcdc865",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members acknowledged that the arguments were finely balanced.",
+      "This was likely to require further increases in interest rates over the period ahead.",
+      "The Board remains resolute in its determination to return inflation to target and will do what is necessary to achieve that outcome."
+    ],
+    "reasoning": "The Board raised the cash rate again but slowed to 25 basis points after four 50 basis point moves, citing the substantial tightening already in place, policy lags and risks to household spending. It still saw inflation as too high and signalled further increases. The step-down and the 'finely balanced' judgement make this mildly rather than strongly hawkish, with moderate confidence."
+  },
+  {
+    "meeting_date": "2023-02-07",
+    "input_sha256": "4f8e0aa565f5e7ff3c5695a1d047f1cd70079747dcdfefe407569dac2651c98c",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The recent inflation data had suggested more breadth and persistence in inflation than had been expected and that strong demand was leading to price increases in some parts of the economy.",
+      "Consistent with this, members agreed that further increases in interest rates are likely to be needed over the months ahead to ensure that inflation returns to target and that the current period of high inflation is only temporary.",
+      "The Board remains resolute in its determination to return inflation to target and will do what is necessary to achieve that outcome."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points, noting that inflation data had come in above expectations, and explicitly said further increases are likely to be needed over the months ahead. It considered but rejected 50 basis points, citing an expected inflation peak and softening consumption. The tightening bias is firm while the pace is measured, so mildly hawkish with fairly high confidence."
+  },
+  {
+    "meeting_date": "2023-08-01",
+    "input_sha256": "2ac39899d4233fcf1304ba0154976840c5214381d056e15db2d2f24a2f6a7368",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members agreed that the argument to leave the cash rate unchanged at this meeting was the stronger one.",
+      "At the same time, members agreed that it was possible that some further tightening of monetary policy might be required to ensure that inflation returns to target in a reasonable timeframe.",
+      "They noted that these were broadly balanced, but that the costs associated with these risks might be asymmetric – in particular, it would be costly if a sustained period of high inflation led to higher inflation expectations."
+    ],
+    "reasoning": "The Board held the cash rate at 4.1 per cent after weighing a further rise, citing encouraging inflation data and signs that tightening was working. It kept an explicit, hedged tightening bias, pointing to sticky services inflation and asymmetric costs if inflation persists. Inflation remains the central concern, so this is a hawkish-leaning hold, though the language is heavily conditional."
+  },
+  {
+    "meeting_date": "2026-05-05",
+    "input_sha256": "19a715e6f3e62abda026787078d791f908328b0503af898a41e4de945deaff77",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Having considered these various arguments, most members judged that the case to raise the cash rate target by 25 basis points at this meeting was the stronger one.",
+      "They emphasised that underlying inflation was projected to be above target for an extended period across a range of scenarios for how the conflict in the Middle East might develop.",
+      "They therefore agreed that the decision would give the Board space to see how the conflict in the Middle East develops and Australian households and businesses respond."
+    ],
+    "reasoning": "By an 8–1 majority the Board raised the cash rate by 25 basis points to 4.35 per cent, driven by a fuel-price shock, persistent above-target underlying inflation and the risk of inflation expectations becoming de-anchored. One member dissented in favour of a hold, and members acknowledged a worsening trade-off with employment. The Board said the rise gives it space to watch developments, signalling no further move is pre-committed, so the stance is mildly hawkish with a neutral forward bias."
+  }
+]

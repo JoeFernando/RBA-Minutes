@@ -133,11 +133,35 @@ def cmd_smp_llm_import(args) -> None:
         sys.exit(1)
 
 
+def cmd_smp_boxes(args) -> None:
+    from . import smp
+
+    log.info("%d boxes listed on the RBA site", len(smp.fetch_box_index()))
+
+
+def cmd_smp_check(args) -> None:
+    from . import smp
+
+    problems, notes = smp.check(smp.connect(args.db))
+    for note in notes:
+        print(f"note: {note}")
+    for problem in problems:
+        print(f"PROBLEM: {problem}")
+    print(f"{len(problems)} problems, {len(notes)} notes")
+
+
 def cmd_smp_forecasts(args) -> None:
     from . import smp
 
     for path in smp.download_forecasts():
         log.info("Saved %s", path)
+
+
+def cmd_forecasts_load(args) -> None:
+    from . import forecasts
+
+    for table, count in forecasts.load_forecasts(db.connect(args.db)).items():
+        log.info("Loaded %d rows into %s", count, table)
 
 
 def cmd_check(args) -> None:
@@ -242,6 +266,9 @@ def main(argv=None) -> None:
     p = add("smp-llm-import", cmd_smp_llm_import, "load SMP session labels")
     p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_smp")
     add("smp-forecasts", cmd_smp_forecasts, "download the RBA forecast archive")
+    add("smp-boxes", cmd_smp_boxes, "download the RBA's yearly lists of SMP boxes")
+    add("smp-check", cmd_smp_check, "check SMP coverage, overviews and boxes")
+    add("forecasts-load", cmd_forecasts_load, "load RBA forecast files into tables")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

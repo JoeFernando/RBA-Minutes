@@ -48,7 +48,8 @@ CHAPTER_CATEGORIES = [
     ("international", r"international|world|global"),
     ("domestic", r"domestic|australia|economic|activity|labour|payments"),
 ]
-END_OF_TEXT = re.compile(r"^(footnotes?|endnotes?|references)$", re.IGNORECASE)
+END_OF_TEXT = re.compile(r"^(footnotes?|endnotes?|references)\b", re.IGNORECASE)
+BOX_MARKER = re.compile(r"^@@BOX-(\d+)@@$")
 CHART_NOTE = re.compile(r"^(sources?|notes?)\s*:", re.IGNORECASE)
 
 
@@ -141,20 +142,44 @@ def _clean_title(title: str) -> str:
 
 
 def _paragraphs(content) -> list[tuple[str, str, str]]:
-    """(tag name, kind, text) for each block, stopping at a footnotes heading."""
-    out = []
+    """(tag name, kind, text) for each block, skipping footnote sections."""
+    out, skipping = [], False
     for name, el in _blocks(content):
         text = normalise_text(el.get_text(" "))
         if not text:
             continue
         if name in ("h2", "h3", "h4") and END_OF_TEXT.match(text):
-            break
+            skipping = True  # e.g. "Footnotes" or "Footnotes Box 1": skip until the next chapter heading
+            continue
+        if skipping and name == "h2":
+            skipping = False
+        if skipping:
+            continue
         if CHART_NOTE.match(text) and len(text) < 300:
             continue  # "Sources: ABS; RBA." under graphs and tables
         kind = {"h1": "title", "h2": "subheading", "h3": "subheading", "h4": "subheading",
                 "li": "list_item"}.get(name, "text")
         out.append((name, kind, text))
     return out
+
+
+def _extract_inline_boxes(content, url: str) -> list[dict]:
+    """Take 1997-2005 boxes (div.box-info, embedded mid-chapter) out as chapters of their own.
+
+    Each box is replaced by a marker heading so it can be put back in reading
+    order, and so the chapter text that follows it stays with the chapter.
+    """
+    boxes = []
+    for div in content.find_all("div", class_="box-info"):
+        if div.decomposed or div.find_parent("div", class_="box-info") is not None:
+            continue
+        blocks = _paragraphs(div)
+        title = next((t for n, k, t in blocks if n in ("h2", "h3")), "Box")
+        paragraphs = [(k, t) for n, k, t in blocks if not (n in ("h2", "h3") and t == title)]
+        boxes.append({"title": title, "url": url, "paragraphs": paragraphs, "content_html": str(div)})
+        marker = BeautifulSoup(f"<h2>@@BOX-{len(boxes) - 1}@@</h2>", "lxml").h2
+        div.replace_with(marker)
+    return boxes
 
 
 def _published_date(soup) -> str | None:
@@ -173,6 +198,7 @@ def parse_issue(folder: Path) -> dict:
         content = _find_content(soup)
         content_html = str(content)
         _remove_noise(content)
+        boxes = _extract_inline_boxes(content, page["url"]) if manifest["era"] == "bulletin" else []
         blocks = _paragraphs(content)
         if manifest["era"] == "bulletin":
             # One page holds the whole issue: each <h2> starts a chapter. In
@@ -183,6 +209,9 @@ def parse_issue(folder: Path) -> dict:
             for name, kind, text in blocks:
                 if name == "h1":
                     title = title or text
+                elif name == "h2" and BOX_MARKER.match(text):
+                    # A box sat here, inside the chapter; the chapter's text carries on after it.
+                    chapters.append(boxes[int(BOX_MARKER.match(text).group(1))])
                 elif name == "h2" and text.lower() == "on this page":
                     current = None  # skip the contents list
                 elif name == "h2":
@@ -588,3 +617,88 @@ def download_forecasts(out_dir: Path = config.DATA_DIR / "forecasts") -> list[Pa
         paths.append(out_dir / name)
     (out_dir / "downloaded_at.txt").write_text(dt.datetime.now(dt.timezone.utc).isoformat() + "\n")
     return paths
+
+
+# --- Coverage checks ---------------------------------------------------------------
+
+BOX_LINK = re.compile(
+    r"/publications/(?:bulletin|smp)/(\d{4})/([a-z]{3})/(?:\d+\.html#box-?([a-z]|\d+)|box-([a-z]|\d+)(?:-[\w-]*)?\.html)$"
+)
+
+
+def fetch_box_index(raw_dir: Path = RAW_DIR, first_year: int = 1997, last_year: int | None = None) -> list[dict]:
+    """The RBA's own list of every SMP box, from each year's boxes.html page."""
+    session = make_session()
+    last_year = last_year or dt.date.today().year
+    boxes = []
+    for year in range(first_year, last_year + 1):
+        url = f"{SMP_INDEX}{year}/boxes.html"
+        response = session.get(url, timeout=config.REQUEST_TIMEOUT_SECONDS)
+        if response.status_code == 404:
+            continue
+        response.raise_for_status()
+        content = _find_content(BeautifulSoup(response.text, "lxml"))
+        for anchor in content.find_all("a", href=True):
+            link = urljoin(url, anchor["href"])
+            match = BOX_LINK.search(urlparse(link).path + ("#" + urlparse(link).fragment if urlparse(link).fragment else ""))
+            if match and match.group(2) in MONTHS:
+                boxes.append({
+                    "issue_date": f"{int(match.group(1)):04d}-{MONTHS[match.group(2)]:02d}",
+                    "letter": (match.group(3) or match.group(4)).upper(),
+                    "title": normalise_text(anchor.get_text(" ")),
+                    "url": link,
+                })
+        time.sleep(config.REQUEST_DELAY_SECONDS)
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    (raw_dir / "box_index.json").write_text(json.dumps(boxes, indent=2, ensure_ascii=False))
+    return boxes
+
+
+def check(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[list[str], list[str]]:
+    """(problems, notes) for the SMP tables: issue coverage, overviews, and every listed box captured."""
+    problems, notes = [], []
+    issues_file = raw_dir / "issues.json"
+    listed = {i["issue_date"] for i in json.loads(issues_file.read_text())} if issues_file.exists() else set()
+    stored = {r[0] for r in conn.execute("SELECT issue_date FROM smp_issues")}
+    for missing in sorted(listed - stored):
+        problems.append(f"{missing}: listed on the RBA site but not in the database")
+    for issue_date, n_words, overviews in conn.execute(
+        "SELECT i.issue_date, i.n_words, SUM(c.category = 'overview') FROM smp_issues i "
+        "JOIN smp_chapters c USING (issue_id) GROUP BY i.issue_id ORDER BY i.issue_date"
+    ):
+        if not overviews:
+            problems.append(f"{issue_date}: no overview/introduction chapter")
+        if n_words < 5000:
+            problems.append(f"{issue_date}: only {n_words} words outside boxes")
+    box_file = raw_dir / "box_index.json"
+    if not box_file.exists():
+        notes.append("box index not downloaded; run smp-boxes to check box coverage")
+        return problems, notes
+    def title_words(title: str) -> str:
+        title = re.sub(r"^box\s*([a-z]|\d+)?\s*[:.–-]?\s*", "", title, flags=re.IGNORECASE)
+        return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
+
+    captured: dict[str, list[tuple[str, str]]] = {}
+    for issue_date, title in conn.execute(
+        "SELECT i.issue_date, c.title FROM smp_chapters c JOIN smp_issues i USING (issue_id) WHERE c.category = 'box'"
+    ):
+        match = re.match(r"^box\s+([a-z]|\d+)\b", title, re.IGNORECASE)
+        captured.setdefault(issue_date, []).append((match.group(1).upper() if match else "", title_words(title)))
+    boxes = json.loads(box_file.read_text())
+    matched = set()
+    for box in boxes:
+        if box["issue_date"] not in stored:
+            continue
+        candidates = captured.get(box["issue_date"], [])
+        hit = next((c for c in candidates if c[0] == box["letter"]), None) or \
+            next((c for c in candidates if c[1] == title_words(box["title"])), None)
+        if hit is None:
+            problems.append(f"{box['issue_date']}: Box {box['letter']} ({box['title']}) is not captured")
+        else:
+            matched.add((box["issue_date"], hit))
+    for issue_date, items in captured.items():
+        for item in items:
+            if (issue_date, item) not in matched:
+                notes.append(f"{issue_date}: captured box '{item[1]}' is not on the RBA's box list")
+    notes.append(f"{len(boxes)} boxes listed by the RBA; {sum(len(v) for v in captured.values())} captured")
+    return problems, notes

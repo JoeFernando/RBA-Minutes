@@ -238,3 +238,68 @@ def test_smp_clean_title():
 
     assert smp._clean_title("Statement on Monetary Policy – May 2015 Overview") == "Overview"
     assert smp._clean_title("3. Outlook") == "Outlook"
+
+
+def test_normalise_keeps_vulgar_fractions():
+    assert normalise_text("around 2½ per cent and 3¾") == "around 2½ per cent and 3¾"
+
+
+@pytest.mark.parametrize("text, expected", [
+    ("2¾", (2.75, None, None)), ("−1,504", (-1504.0, None, None)), ("2½–3", (2.75, 2.5, 3.0)),
+    ("–", (None, None, None)), ("n.a.", (None, None, None)), ("(−0.4)", (-0.4, None, None)),
+    ("¾", (0.75, None, None)), ("1.9%", (1.9, None, None)), ("Dec 2026", (None, None, None)),
+])
+def test_smp_table_parse_value(text, expected):
+    from rba_minutes.smp_tables import parse_value
+
+    assert parse_value(text) == expected
+
+
+def test_smp_parse_table_groups_and_footnotes():
+    from bs4 import BeautifulSoup
+    from rba_minutes.smp_tables import parse_table
+
+    html = """<table><caption>Table 3.1: Detailed Forecast Table<sup>(a)</sup>
+      <div class="sub">Per cent</div></caption>
+      <thead><tr><td></td><th>Jun 2026</th><th>Dec 2026</th></tr></thead>
+      <tbody><tr class="tr-head"><th colspan="3">Activity</th></tr>
+      <tr><th scope="row">GDP<sup>(b)</sup></th><td>1.9</td><td>2¼</td></tr>
+      <tr><th scope="row">Spending</th><td></td><td></td></tr>
+      <tr><th class="sub" scope="row">Households</th><td>−0.7</td><td>na</td></tr></tbody>
+      <tfoot><tr><td colspan="3"><p>(a) Finalised 5 August.</p><p class="source">Sources: ABS; RBA</p></td></tr></tfoot>
+      </table>"""
+    t = parse_table(BeautifulSoup(html, "lxml").find("table"))
+    assert (t["table_number"], t["title"], t["subtitle"]) == ("3.1", "Detailed Forecast Table", "Per cent")
+    assert (t["notes"], t["sources"]) == ("(a) Finalised 5 August.", "ABS; RBA")
+    assert t["column_labels"] == ["Jun 2026", "Dec 2026"]
+    gdp = [c for c in t["cells"] if c["row_label"] == "GDP"]
+    assert [(c["row_group"], c["value_num"], c["footnotes"]) for c in gdp] == [("Activity", 1.9, "(b)"), ("Activity", 2.25, "(b)")]
+    households = [c for c in t["cells"] if c["row_label"] == "Households"]
+    assert [(c["row_group"], c["row_level"], c["value_num"]) for c in households] == [("Activity > Spending", 1, -0.7), ("Activity > Spending", 1, None)]
+
+
+def test_smp_bulletin_inline_box_does_not_swallow_chapter(tmp_path):
+    import json
+
+    from rba_minutes import smp
+
+    html = """<html><body><div id="content"><h1>Bulletin – May 1997</h1>
+      <p>Opening introduction text about the economy.</p>
+      <h2>The Australian Economy</h2><p>Chapter text before the box.</p>
+      <div class="box-info"><h2>Box 1: Productivity Growth</h2><p>Box text only.</p></div>
+      <p>Chapter text after the box.</p>
+      <h2>Footnotes Box 1</h2><p>(1) A footnote.</p>
+      <h2>Inflation Trends and Prospects</h2><p>Inflation text, around 2½ per cent.</p>
+      </div></body></html>"""
+    (tmp_path / "01_1.html").write_text(html, encoding="utf-8")
+    (tmp_path / "manifest.json").write_text(json.dumps({
+        "issue_date": "1997-05", "era": "bulletin", "url": "https://www.rba.gov.au/publications/bulletin/1997/may/1.html",
+        "pages": [{"url": "https://www.rba.gov.au/publications/bulletin/1997/may/1.html", "file": "01_1.html"}]}))
+    issue = smp.parse_issue(tmp_path)
+    chapters = [(c["title"], c["category"], c["text"]) for c in issue["chapters"]]
+    assert chapters == [
+        ("Introduction", "overview", "Opening introduction text about the economy."),
+        ("The Australian Economy", "domestic", "Chapter text before the box.\n\nChapter text after the box."),
+        ("Box 1: Productivity Growth", "box", "Box text only."),
+        ("Inflation Trends and Prospects", "inflation", "Inflation text, around 2½ per cent."),
+    ]

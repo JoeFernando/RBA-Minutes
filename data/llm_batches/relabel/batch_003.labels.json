@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2017-05-02",
+    "input_sha256": "9342e61e15a0d07aac77d69126e37fc7b0d517ab787cf030c2aaf6d0700907aa",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Taking into account all the available information and the updated forecasts, the Board's assessment was that maintaining the current accommodative stance of monetary policy would be consistent with achieving sustainable growth and the inflation target over time.",
+      "Growth in housing credit had continued to outpace growth in household incomes, which suggested that the risks associated with household balance sheets had been rising.",
+      "The Board continued to judge that developments in the labour and housing markets warranted careful monitoring."
+    ],
+    "reasoning": "The Board held the cash rate and simply judged the current accommodative setting appropriate, without signalling a direction for the next move. Subdued wage growth and gradual inflation pick-up are balanced against rising household balance-sheet risks from housing credit growth. Careful monitoring of both the labour and housing markets points to a balanced, wait-and-see stance."
+  },
+  {
+    "meeting_date": "2017-07-04",
+    "input_sha256": "4984a1f65a04c13f1009843dfbc61584bdddd69bf7b89ffd43173a512613c295",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "All estimates of the neutral real interest rate for Australia suggested that monetary policy had been clearly expansionary for the preceding five years or so.",
+      "Nevertheless, they assessed that current economic conditions in Australia, and the outlook for growth and inflation, meant that developments in the labour and housing markets continued to warrant careful monitoring.",
+      "Taking into account all the available information, the Board judged that holding the accommodative stance of monetary policy unchanged at this meeting would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board noted that policy was clearly expansionary relative to its neutral-rate estimates and that overseas central banks were turning more positive, but it drew no tightening conclusion for Australia. Domestic risks to consumption from subdued income growth and high household debt offset the better labour market data. The decision was a hold with careful monitoring and no explicit directional signal."
+  },
+  {
+    "meeting_date": "2018-08-07",
+    "input_sha256": "7148093c13903d1f0f00222c6c6373b066e805eb941bba7028c288e5666e1f21",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In these circumstances, members continued to agree that the next move in the cash rate would more likely be an increase than a decrease.",
+      "However, since progress on unemployment and inflation was likely to be gradual, they also agreed there was no strong case for a near-term adjustment in monetary policy.",
+      "Rather, members assessed that it would be appropriate to hold the cash rate steady and for the Bank to be a source of stability and confidence while this progress unfolds."
+    ],
+    "reasoning": "The Board explicitly stated that the next move was more likely to be an increase than a decrease, giving a tightening bias. That lean is mild, as members saw no strong case for a near-term change and expected only gradual progress on unemployment and inflation. The forecasts were upbeat (growth a little above 3 per cent, unemployment falling), which supports a mildly hawkish reading of a patient hold."
+  },
+  {
+    "meeting_date": "2018-11-06",
+    "input_sha256": "1d271c8d804c25eb5678cbf69f1b626b2542dbd86f5eda1a14a07ef83cf4e3e5",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members noted that economic conditions in the Australian economy had continued to improve and had been a little stronger than expected.",
+      "In these circumstances, members continued to agree that the next move in the cash rate was more likely to be an increase than a decrease, but that there was no strong case for a near-term adjustment in monetary policy.",
+      "As a result, the forecast for the unemployment rate had been revised lower and the forecast for wages growth had been revised slightly higher."
+    ],
+    "reasoning": "Growth and labour market outcomes had beaten expectations, and the Board repeated that the next move was more likely up than down, a mild tightening bias. Low underlying inflation of around 1¾ per cent, uncertainty about consumption and easing housing markets meant there was no strong case for a near-term change. The result is a mildly hawkish hold with gradual progress expected."
+  },
+  {
+    "meeting_date": "2019-02-05",
+    "input_sha256": "a5d884f0078491cef5e62641e2f48609c14abb868a686f6f4e5e22692ccf2f78",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "However, members noted that there were significant uncertainties around the forecasts, with scenarios where an increase in the cash rate would be appropriate at some point and other scenarios where a decrease in the cash rate would be appropriate.",
+      "Moreover, the probabilities around these scenarios were now more evenly balanced than they had been over the preceding year, when an eventual increase in the cash rate had appeared more likely.",
+      "While the labour market had continued to strengthen over the preceding year, less progress had been made on inflation."
+    ],
+    "reasoning": "The Board dropped its earlier tightening bias and described the probabilities of a rate rise or cut as more evenly balanced. A strong labour market offset weaker output growth, falling housing prices and uncertainty about consumption. With no strong case for a near-term change, this is a neutral hold with a neutral bias, although the move away from tightening already leans slightly dovish."
+  },
+  {
+    "meeting_date": "2019-03-05",
+    "input_sha256": "4b6ca8f6dd8360b3ffb31463bd5fa57b3d0c1e0a9202cbb329c19b4f7b007970",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Domestically, there continued to be tension between the ongoing improvement in labour market data and the apparent slowing in the momentum of output growth in the second half of 2018.",
+      "The probabilities around these scenarios were more evenly balanced than they had been over the preceding year.",
+      "Rather, they assessed that it would be appropriate to hold the cash rate steady while new information became available that could help resolve the current tensions in the domestic economic data."
+    ],
+    "reasoning": "The Board described a tension between strong labour market data and slowing output growth, and judged that the scenarios for higher or lower rates were evenly balanced. It held the rate while waiting for new information to resolve that tension, without signalling a direction. Downside risks from housing and consumption were noted but did not tip the stance."
+  },
+  {
+    "meeting_date": "2019-05-07",
+    "input_sha256": "a1ea74d0985afa8c8a9f8d25d07d1d5789cd72fca0455e8da556557ea25a3a0e",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "This implied that, without an easing in monetary policy over the next six months, growth and inflation outcomes would be expected to be less favourable than the central scenario.",
+      "Given the international evidence and the recent Australian inflation data, members agreed that a further decline in the unemployment rate would be consistent with achieving Australia's medium-term inflation target.",
+      "Given this, members considered the scenario where there was no further improvement in the labour market in the period ahead, recognising that in those circumstances a decrease in the cash rate would likely be appropriate."
+    ],
+    "reasoning": "Although the Board held the rate, it said outcomes would be less favourable without easing and that a cut would likely be appropriate if the labour market stopped improving. Weaker-than-expected inflation and the view that unemployment could fall further without breaching the target point to an easing bias centred on the labour market. Because the cut is conditional, the stance is mildly rather than strongly dovish."
+  },
+  {
+    "meeting_date": "2019-06-04",
+    "input_sha256": "b5265a3382c1a1e0b9edbbe5827e5d943fa73b3e82e73de4c272f52e126886b9",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Taking into account all the available information, the Board decided that it was appropriate to lower the cash rate by 25 basis points at this meeting.",
+      "Given the amount of spare capacity in the labour market and the economy more broadly, members agreed that it was more likely than not that a further easing in monetary policy would be appropriate in the period ahead.",
+      "Members agreed that, in assessing whether further monetary easing was appropriate, developments in the labour market would be particularly important."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points and said further easing was more likely than not, a clear easing bias. The rationale centres on spare capacity in the labour market, inflation that had been below target for three years and the need to bring unemployment down. A cut combined with explicit guidance toward more easing makes this strongly dovish."
+  },
+  {
+    "meeting_date": "2019-08-06",
+    "input_sha256": "27a0444041422065b4d1756fba5b603e55be2406bf04ed61e427ac9ea7568f7a",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Based on the information available and the central scenario that was presented, members judged it reasonable to expect that an extended period of low interest rates would be required in Australia to make sustained progress towards full employment and achieve more assured progress towards the inflation target.",
+      "Having eased monetary policy at the previous two meetings, the Board judged it appropriate to assess developments in the global and domestic economies before considering further change to the setting of monetary policy.",
+      "Members would consider a further easing of monetary policy if the accumulation of additional evidence suggested this was needed to support sustainable growth in the economy and the achievement of the inflation target over time."
+    ],
+    "reasoning": "After two cuts the Board paused, but it expected an extended period of low rates and said it would consider further easing if the evidence warranted. Its concerns were more spare capacity in the labour market than previously thought, subdued wages and downside risks to global growth. The easing bias is clear but conditional, so this is a mildly dovish hold."
+  },
+  {
+    "meeting_date": "2019-09-03",
+    "input_sha256": "8f0c2e69ef70b08522f3cd61e844b952cb6ee2e48ad95a671a21e8a92639c91a",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Taken together, recent outcomes suggested that spare capacity remained in the labour market and that the Australian economy could sustain lower rates of unemployment and underemployment.",
+      "Private final demand, which includes consumption, business investment and dwelling investment, was expected to have been weak.",
+      "Members would assess developments in both the international and domestic economies, including labour market conditions, and would ease monetary policy further if needed to support sustainable growth in the economy and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board held the rate but kept a clear easing bias, saying it would ease further if needed and expecting an extended period of low rates. Its concerns were spare capacity in the labour market, low wages growth, weak private demand and downside global risks. Signs of a housing turnaround and supportive factors kept the hold from being an outright move to cut, so this is mildly dovish."
+  }
+]

@@ -72,9 +72,13 @@ class Minutes:
         return "\n\n".join(f"{s.heading}\n\n{s.text}" for s in self.discussion_sections() if s.paragraphs)
 
 
+VULGAR_FRACTIONS = "¼½¾⅓⅔⅛⅜⅝⅞"
+
+
 def normalise_text(text: str) -> str:
     """Unicode-normalise, drop invisible characters and tidy whitespace and spacing."""
-    text = unicodedata.normalize("NFKC", text)
+    # NFKC would turn "2½" into "21⁄2", so vulgar fractions are kept as they are.
+    text = "".join(ch if ch in VULGAR_FRACTIONS else unicodedata.normalize("NFKC", ch) for ch in text)
     text = re.sub("[­​‌‍⁠﻿]", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     # get_text(" ") puts a space between inline tags: "per cent ," -> "per cent,"
