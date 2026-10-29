@@ -92,6 +92,29 @@ plot(sentiment$meeting_date, sentiment$hawk_dove_index, type = "l",
 dbDisconnect(con)
 ```
 
+## What is in the committed database
+
+Built on 29 October 2026.
+
+| Item | Value |
+|---|---|
+| Meetings | 213, from 3 October 2006 (the first published minutes) to 28–29 September 2026 (the latest published) |
+| Text | 1,825 sections, 8,574 paragraphs, about 680,000 words of discussion |
+| Decisions | Read for all 213 meetings: 157 holds, 29 raises, 27 cuts; `check` confirms every rate chains from the previous meeting |
+| Dictionary sentiment | All 213 meetings, plus each policy block and section |
+| LLM labels | All 213 meetings, labelled by Claude (`claude-opus-5-5`) inside a Claude Code session from the policy sections (`model = 'claude-opus-5-5 (Claude Code session)'`); every supporting quote was verified word for word against the minutes |
+
+How the measures relate (correlation across meetings):
+
+| Measure | With the next meeting's change in the cash rate | With the LLM stance score |
+|---|---|---|
+| LLM stance score | 0.52 | 1.00 |
+| Hawkish/dovish index (whole minutes) | 0.51 | 0.61 |
+| Hawkish/dovish index (policy sections) | 0.43 | 0.60 |
+| Loughran-McDonald tone | 0.25 | 0.01 |
+
+The LLM labels were made in 22 batches of about 10 meetings by six parallel workers following identical written instructions, rather than by one API call per meeting. Small differences in convention between workers are possible, e.g. whether a "modest" cut scores −1 or −2, or whether too-*low* inflation is recorded as an `inflation` or `growth_employment` concern. The labeller also knows RBA history, so despite the instruction to judge each meeting on its own text, later events may colour some calls. Re-running with `python -m rba_minutes llm` (API key needed) gives one consistent labeller for comparison; both sets can sit side by side in `llm_sentiment`.
+
 ## Method notes and caveats
 
 | Topic | Note |

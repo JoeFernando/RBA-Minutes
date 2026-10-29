@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2021-04-06",
+    "input_sha256": "cc77af2abd04b71194d90b996b019b1a1d37f1b788f7483a1787857b96da2ae3",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board will not increase the cash rate until actual inflation is sustainably within the 2 to 3 per cent target range.",
+      "The Board does not expect these conditions to be met until 2024 at the earliest.",
+      "Beyond this program, the Bank was prepared to undertake further bond purchases if doing so would assist with progress towards the goals of full employment and inflation."
+    ],
+    "reasoning": "Despite a stronger-than-expected recovery, the Board stressed considerable spare capacity, an unemployment rate that was still too high and subdued wage and price pressures. It committed to highly supportive conditions, no cash rate increase until 2024 at the earliest, and stood ready to undertake further bond purchases. The language is firm and unhedged."
+  },
+  {
+    "meeting_date": "2021-05-04",
+    "input_sha256": "ce12030ee35df8b6c80ba60b9818b8c04dc76bac34cd0805952ca5cdcebb6240",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members agreed that a return to full employment is a high priority for monetary policy and would assist with achieving the inflation target.",
+      "Consequently, monetary policy would be likely to need to remain highly accommodative for some time yet.",
+      "The Board viewed these conditions as unlikely until 2024 at the earliest."
+    ],
+    "reasoning": "The Board noted strong growth but emphasised that wage and price pressures remained subdued and that full employment was a high priority. It kept all settings, remained willing to undertake further bond purchases, and reiterated that the conditions for a rate rise were unlikely before 2024. The commitment to highly accommodative policy is unambiguous."
+  },
+  {
+    "meeting_date": "2021-06-01",
+    "input_sha256": "9f20f243e333981930c5450df44e790a5521f83d967e61d61b6ec30ddc3b7889",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Consequently, monetary policy would be likely to need to remain highly accommodative for some time yet.",
+      "Observing that the bond purchase program had been one of the factors underpinning the accommodative conditions necessary for the economic recovery, members thought it would be premature to consider ceasing the program.",
+      "The Board viewed these conditions as unlikely until 2024 at the earliest."
+    ],
+    "reasoning": "The Board highlighted subdued inflation and wages despite a faster fall in unemployment, and said policy would need to remain highly accommodative for some time. It considered options for the July decisions on bond purchases, including scaling back, but judged ceasing purchases premature. The forward guidance of no rate rise before 2024 kept the stance clearly dovish, with no signal of further easing."
+  },
+  {
+    "meeting_date": "2021-07-06",
+    "input_sha256": "3c3e60eb962f304212cfee0f14f9e4dd2e4cb995ae9af33cc284a638fbb5aff2",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "other",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In light of these improvements and the agreed decision-making framework, members decided to adjust the weekly purchases from $5 billion to $4 billion and agreed to review the rate of purchases at the November 2021 meeting.",
+      "In view of these considerations, the Board decided to retain the April 2024 bond as the target bond, rather than extend the horizon to the bond with a maturity date of November 2024.",
+      "The Board remained committed to maintaining highly supportive monetary conditions for a return to full employment in Australia and inflation consistent with the 2 to 3 per cent target."
+    ],
+    "reasoning": "The main decisions concerned the balance sheet: the Board tapered bond purchases and declined to extend the yield target to the November 2024 bond, citing better-than-expected outcomes. These are modest steps away from maximum accommodation, but the Board still described outcomes as well short of its goals and kept the guidance of no rate rise before 2024. The stance remains dovish, though less so than earlier meetings."
+  },
+  {
+    "meeting_date": "2021-08-03",
+    "input_sha256": "3399838a659d87ebaecf7ddab9e4018992a3345684bd687d817c81680ea511b4",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In considering the policy decision, members observed that the recent outbreaks of the Delta variant of COVID-19 had interrupted the recovery and that the near-term outlook was highly uncertain and dependent on health outcomes.",
+      "The Board would be prepared to act in response to further bad news on the health front should that lead to a more significant setback for the economic recovery.",
+      "In any event, the Board will not increase the cash rate until actual inflation is sustainably within the 2 to 3 per cent target range."
+    ],
+    "reasoning": "The Delta outbreaks had interrupted the recovery and the Board's concern centred on activity and households facing difficult conditions. It reaffirmed the scheduled taper, judging fiscal policy the better tool, but signalled readiness to add support if the health situation worsened. With wages and underlying inflation subdued and no rate rise expected before 2024, the stance is strongly dovish with an easing bias."
+  },
+  {
+    "meeting_date": "2021-09-07",
+    "input_sha256": "72ff141826b189f704085ce4bfd178745a7045ed6da48e19c4d93946476e1d44",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "other",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "As a result, progress towards the Bank's goals was likely to take longer and was less assured.",
+      "The Board therefore decided on the second option – namely, to purchase bonds at $4 billion a week until at least mid February 2022.",
+      "The central scenario for the economy is that this condition will not be met before 2024."
+    ],
+    "reasoning": "The main decision was to extend bond purchases at $4 billion a week to at least mid February 2022 because the Delta outbreak delayed the recovery and made progress towards the goals less assured. The Board maintained highly supportive settings and its guidance of no rate rise before 2024. It still went ahead with the taper, so the bias for future policy is neutral, but the overall tone is strongly dovish."
+  },
+  {
+    "meeting_date": "2021-10-05",
+    "input_sha256": "3d586457f917a8cb1a8cdad5cadb1163580118a91f155dd53de228f56e87cf3c",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Wage and price pressures in Australia remain subdued.",
+      "Members also agreed that, while less accommodative monetary policy would, all else equal, see lower housing prices and credit growth, it would result in fewer jobs and lower wages growth, which would in turn create further distance from the goals of monetary policy – namely, full employment and inflation sustainably within the target range.",
+      "It will not increase the cash rate until actual inflation is sustainably within the 2 to 3 per cent target range."
+    ],
+    "reasoning": "The Board noted a material Delta-related fall in GDP and subdued wage and price pressures, judging supply-chain price effects on overall inflation to be limited. It explicitly rejected tighter policy to address rising housing prices because it would cost jobs and wages growth. The commitment to highly supportive conditions until 2024 is stated without hedging."
+  },
+  {
+    "meeting_date": "2021-11-02",
+    "input_sha256": "8dd95e767d12dfb0acb5c1714254b1464dc9cc9491910323a8e16e4485ebe633",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "other",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members acknowledged that the risks to the inflation forecast had changed, with the distribution of possible outcomes shifting upwards.",
+      "However, as the risks to the inflation forecast had shifted higher, it had become possible that an earlier increase in the cash rate would be appropriate.",
+      "The Board will not raise the cash rate until these criteria are met, and is prepared to be patient."
+    ],
+    "reasoning": "The main decision was to discontinue the yield target after upside shifts in inflation risks made an earlier cash rate increase possible, a clear step away from emergency settings. However, underlying inflation and wages growth were still described as low, the central scenario still had the cash rate unchanged until 2024, and the Board said it was prepared to be patient. The net tone is mildly dovish, with attention split between the improving inflation outlook and the need for a tighter labour market."
+  },
+  {
+    "meeting_date": "2021-12-07",
+    "input_sha256": "7287aa7bf4859d7ff48509f7ce449d026fdc6c064951cf56d91797b8e45a9cb0",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members observed that inflation had increased, but remained low in underlying terms.",
+      "Members noted that the stimulus associated with the stock of bonds already purchased would provide significant support to the economy for some time.",
+      "This is likely to take some time and the Board is prepared to be patient."
+    ],
+    "reasoning": "The Board saw a rapid recovery but noted that underlying inflation and wages growth were still only around pre-pandemic rates, and that Omicron added uncertainty. It held settings, set out options for winding down bond purchases in February, and reiterated that it would not raise the cash rate until wages growth was materially higher. The patient, supportive guidance is mildly dovish."
+  },
+  {
+    "meeting_date": "2022-02-01",
+    "input_sha256": "9e688bbeed34c2a23845c723d2b1a8899b2c329cbd0fb51bd8790faa156e9c39",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "other",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members observed that the achievement of the goals was within sight for the first time in several years.",
+      "While inflation had picked up, members agreed it was too early to conclude that it was sustainably within the target band.",
+      "The Board is prepared to be patient as it monitors how the various factors affecting inflation in Australia evolve."
+    ],
+    "reasoning": "The main decision was to end the bond purchase program because progress towards the goals had been better than expected and inflation had picked up faster than forecast. Even so, the Board said it was too early to conclude inflation was sustainably in the target band, pointed to modest wages growth, and said it was prepared to be patient on the cash rate. The tone is mildly dovish but moving towards neutral."
+  }
+]

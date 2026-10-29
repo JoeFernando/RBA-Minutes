@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2011-05-03",
+    "input_sha256": "d9fdc964a5005f6aa2f54946823e2d411f79d3c573ec07187a88a3740aa8c725",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Nonetheless, the staff forecast was for underlying inflation to be in the top part of the target band over the next couple of years and, based on the interest rate path implicit in recent financial market pricing, above 3 per cent towards the end of the forecast period.",
+      "Members viewed the current mildly restrictive stance of monetary policy as remaining appropriate, with recent rises in the exchange rate likely to have further tightened conditions, particularly in some sectors of the economy.",
+      "In this respect, members judged that if economic conditions continued to evolve as expected, higher interest rates were likely to be required at some point if inflation was to remain consistent with the medium-term target."
+    ],
+    "reasoning": "Underlying inflation was forecast to rise above 3 per cent late in the forecast period, and the Board said higher interest rates were likely to be required at some point. The cash rate was held because the exchange rate was already tightening conditions. The tightening bias is conditional, so the lean is mildly hawkish."
+  },
+  {
+    "meeting_date": "2011-06-07",
+    "input_sha256": "51e19233c4d805dc0f3be7bef8a251423e8c1cc7a40a4084c7018f2f9f3a5579",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "This outlook suggested that further tightening in monetary policy would be necessary at some point.",
+      "Members considered, however, that the flow of data over the past month had not added any urgency to the need for an adjustment to policy.",
+      "Accordingly, members judged that it would be prudent to leave the stance of policy unchanged, pending further data on international developments and on the strength of domestic demand and inflationary pressures."
+    ],
+    "reasoning": "The Board kept its view that further tightening would be needed at some point as inflation picked up gradually. It also stressed that recent data had added no urgency, noting subdued non-resource activity, soft credit and more prominent European risks. The hawkish lean is mild and heavily qualified."
+  },
+  {
+    "meeting_date": "2011-07-05",
+    "input_sha256": "4ed9e3c594d87b2c8477090a2b4b405c35a7bd1838cc11e23f52a86fd01e4215",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The extent to which these forces would strain the economy's productive capacity over time would be a key determinant of inflation.",
+      "Members noted, however, that the flow of recent information suggested both that there was more time to assess the likely strength of inflationary pressures in Australia and that it would be prudent to use that time.",
+      "Accordingly, members considered that the current mildly restrictive setting of monetary policy remained appropriate."
+    ],
+    "reasoning": "Medium-term inflation pressure from the resources boom remained the key question, but slower global growth, softer domestic demand and delayed coal output led the Board to say it had more time to assess it. Unlike the previous two meetings, there was no explicit statement that rates would need to rise. The tone is balanced and hedged, waiting for the June quarter CPI."
+  },
+  {
+    "meeting_date": "2011-08-02",
+    "input_sha256": "244d046638dc7a677a745c6c3abc4c6a18b298031b6885d2477283adbb4f24fa",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "While recent year-ended figures remained consistent with the 2–3 per cent target, members believed there were grounds for concern about the medium-term outlook for inflation, given the relatively limited spare capacity in the economy, the widespread increase in cost pressures, including in imported goods, and the relatively low rate of productivity improvement.",
+      "Members considered whether the recent information warranted further policy tightening.",
+      "The case against tightening at this meeting was that the downside risks to demand had probably increased, as a result of the acute uncertainty in global financial markets over the recent period."
+    ],
+    "reasoning": "Higher-than-expected inflation data and staff forecasts of underlying inflation rising above the target led the Board to explicitly consider tightening. It held because acute global financial market turmoil had raised downside risks to demand and financial conditions were already restrictive. Concern about inflation dominates, but the hold and the stress on risks make this only mildly hawkish."
+  },
+  {
+    "meeting_date": "2011-09-06",
+    "input_sha256": "923fa9cfc2b65143752294da0c928bfb8c7f2efb9559e0a243e9d59f55aca2d2",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The international outlook had become significantly more clouded since the previous Board meeting.",
+      "A key question for members was the extent to which recent global and domestic developments would reduce capacity pressures in the economy and, in due course, help to contain inflation.",
+      "For the present, however, members considered that the current setting of monetary policy left the Board well placed to respond to evolving global and domestic economic conditions."
+    ],
+    "reasoning": "The Board's earlier concern about medium-term inflation was now offset by a clouded global outlook, weaker domestic growth and slower employment. It asked whether these developments would ease capacity pressures, but had little hard data. The setting was described as leaving the Board well placed to respond either way, so the tone is neutral and hedged."
+  },
+  {
+    "meeting_date": "2011-10-04",
+    "input_sha256": "fbf60144a837e47ad2a37f0aadcc61af4f5d8994db734523a03a58d8203d0553",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "While there remained good reasons to expect solid growth over the medium term, indications were that the pace of near-term growth was unlikely to be as strong as earlier expected, reflecting both local and global factors, including the financial turmoil and associated effects on business confidence.",
+      "Members believed that an improved inflation outlook, if confirmed by further data, would increase the scope for monetary policy to provide some support to demand, should that prove necessary.",
+      "Taking all these factors into account, members considered that the existing stance of policy remained appropriate."
+    ],
+    "reasoning": "The Board held the rate but its language moved towards easing: weaker near-term growth, a softer labour market and a more benign inflation outlook. It said an improved inflation outlook would increase scope to support demand. The easing signal depends on further data, so the dovish lean is mild."
+  },
+  {
+    "meeting_date": "2011-11-01",
+    "input_sha256": "179492789f39b6783eae59d618512cdf34fac30ce12f1e9ae58b9f747691bec2",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The case for an easing in policy was that there had clearly been material changes to the recent course of, and outlook for, underlying inflation over recent months, while the downside risks for the global economy had increased.",
+      "A more neutral setting would, on this view, be compatible with achieving sustainable growth and inflation consistent with the target over the period ahead.",
+      "On balance, members concluded that it was appropriate for there to be a modest easing in the stance of monetary policy."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points, moving from a slightly restrictive to a more neutral setting because the inflation outlook had improved and global downside risks had increased. It weighed a credible case for holding and described the easing as modest. No further easing was signalled, so this is mildly dovish with a neutral forward bias."
+  },
+  {
+    "meeting_date": "2011-12-06",
+    "input_sha256": "f5327d32056869392812d8e321d0f4a64f23e64da5d7443c908565607c9ddffa",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "This did not suggest any strong need to cut interest rates.",
+      "Against this, developments in Europe continued to pose downside risks to the global economy and, consequently, also to Australia.",
+      "In these circumstances, and given the expectation that inflation would be consistent with the target over the next couple of years (abstracting from the effect of the carbon pricing scheme), members felt that there was scope for a modest reduction in the cash rate at this meeting."
+    ],
+    "reasoning": "The Board cut the cash rate by a further 25 basis points, mainly because European sovereign and banking problems posed growing downside risks to global and Australian growth. It acknowledged that domestic growth near trend and a strong investment boom did not suggest a strong need to cut. The modest, risk-management framing and the lack of guidance point to a mild dovish lean."
+  },
+  {
+    "meeting_date": "2012-02-07",
+    "input_sha256": "ba610efe35d6c9d2185fc16ab55634b566acad1c16213e76447f8b2bc24613f4",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "While the financial situation in Europe remained fragile, the likelihood of an extremely bad outcome seemed to have diminished somewhat over the previous couple of months, partly reflecting actions by the European policymakers.",
+      "With growth expected to be close to trend and inflation consistent with the target, the Board considered that this setting was appropriate for the overall macroeconomic outlook.",
+      "They judged that if demand conditions were to weaken materially, the inflation outlook would provide scope for a further easing in monetary policy."
+    ],
+    "reasoning": "With growth close to trend, inflation at the midpoint of the target and European tail risks diminished, the Board judged the current setting appropriate. Its only forward signal was conditional scope to ease if demand weakened materially. The overall tone is balanced, with a mild easing bias."
+  },
+  {
+    "meeting_date": "2012-03-06",
+    "input_sha256": "4ac11c0df96b3205aabb90e384a50e7d9e3e3f327ca0a8018e38944814d1c97b",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "So long as inflation remained well contained, there would be ample scope for the Bank to ease policy in such a scenario.",
+      "Overall, members noted that while this downside risk could still materialise, this seemed somewhat less likely than a few months ago.",
+      "On balance, the Board considered that it was appropriate for interest rates to be around their average levels, which was judged to be the case at present."
+    ],
+    "reasoning": "The Board judged average interest rates appropriate, as structural adjustment kept growth near trend and inflation near target. Easing was mentioned only for a scenario in which European risks materialised, and that was seen as less likely than before. The stance is balanced with no clear lean."
+  }
+]

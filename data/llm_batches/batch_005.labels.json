@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2010-06-01",
+    "input_sha256": "4c7793a825d6cb0d1d367633d3c7e227d6361552121d20e4b2094e83c186059f",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members judged that these previous actions afforded policy the flexibility to await information on how the recent market uncertainty might affect the global economy, as well as news about the outlook for inflation.",
+      "While the international environment facing the Australian economy had become more uncertain, members noted that the medium-term outlook remained positive.",
+      "For the near term, therefore, members judged that it was appropriate to leave the cash rate unchanged."
+    ],
+    "reasoning": "The Board held the cash rate, citing the flexibility afforded by earlier increases that had returned borrowing rates to around average levels. Heightened European uncertainty was weighed against a positive domestic medium-term outlook and inflation data that were not as disinflationary as expected. No direction for future policy was signalled; the Board was waiting for further information on the global economy and inflation."
+  },
+  {
+    "meeting_date": "2010-07-06",
+    "input_sha256": "183109d998bf4d977e5269c46bddd5696a568591a9379864bb628ccd022a5884",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "As at the June meeting, members judged that the decisions at earlier meetings to increase the cash rate, which had resulted in interest rates paid by borrowers returning to around average levels, afforded flexibility to maintain steady settings in the face of increased international uncertainty.",
+      "The important question for the Board at its next meeting would be whether the new information materially changed the medium-term outlook for inflation.",
+      "Pending this information, the Board judged it appropriate to hold the cash rate unchanged."
+    ],
+    "reasoning": "The Board kept the cash rate steady given increased international uncertainty, especially in Europe, and solid domestic growth. Underlying inflation was expected to moderate but stay in the top half of the target range. The decision was framed as waiting for new information rather than signalling a direction."
+  },
+  {
+    "meeting_date": "2010-08-03",
+    "input_sha256": "55a038ac70519b4f02f3c93b4480c1383863e28da9a12274fb8c94d1244f0ada",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The major news in the domestic economy had been that underlying inflation had continued to fall, in line with the Bank's expectations, and was now below 3 per cent.",
+      "Developments over the latest month had not materially changed the Board's assessment.",
+      "The Board therefore judged the existing level of the cash rate as still appropriate, and decided to leave it unchanged for the time being, pending further information."
+    ],
+    "reasoning": "Inflation had fallen as expected and the growth outlook was unchanged, so the Board saw the existing cash rate as appropriate. A forecast pick-up in inflation later was balanced by lingering global market uncertainty. The tone is one of comfortable waiting with no clear lean."
+  },
+  {
+    "meeting_date": "2010-09-07",
+    "input_sha256": "e91e90f7470bdba24fdd06aea75bb688e319269c3bc158ab055f85ed3c0e7026",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members observed that previous investment booms and increases in the terms of trade had posed significant challenges for economic policy, and that high levels of resource utilisation were likely to put pressure on inflation.",
+      "While policy had to be alert to these risks, members considered that if the central scenario came to pass it was likely that higher interest rates would be required, at some point, to ensure that inflation remained consistent with the medium-term target.",
+      "With the economy currently growing at around its trend rate, underlying inflation having moderated and lending rates at around average levels, the Board's assessment was that the current setting of monetary policy remained appropriate for the time being."
+    ],
+    "reasoning": "Although the cash rate was held, the Board explicitly flagged that higher interest rates would likely be required at some point if the central scenario eventuated. The concern was that the resources investment boom and high resource utilisation would add to inflation pressure. Downside global risks and the conditional phrasing keep this a mild rather than strong hawkish lean."
+  },
+  {
+    "meeting_date": "2010-10-05",
+    "input_sha256": "1c0b1aaef0b81e7c1196dbec962421b8604cd06b6441abb1c6a69520b1582285",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "As in the previous month, members concluded that interest rates would need to rise at some point if the economy evolved in line with the central scenario of a gradual tightening in resource utilisation, as this would most likely result in a gradual strengthening of inflation pressures.",
+      "A case could be made to increase the cash rate at the current meeting, based on the medium-term inflation outlook and the fact that developments had continued to be broadly consistent with the central forecast scenario.",
+      "While the Board recognised that it could not wait indefinitely to see whether risks materialised, members judged that they had the flexibility to do so on this occasion."
+    ],
+    "reasoning": "The Board actively considered a rate rise and described the arguments as finely balanced, reaffirming that rates would need to rise at some point. It held only because of soft credit, a rising exchange rate and global downside risks, and noted it could not wait indefinitely. The tightening bias is clear, though the hold and the balanced framing make it mildly hawkish."
+  },
+  {
+    "meeting_date": "2010-11-02",
+    "input_sha256": "4028887a4e3ad97ce6dadce7569c4fac0af72af38822df04759ad97151762198",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Based on developments over the past month and the latest assessment of the outlook, members judged that the point at which some upward move in interest rates would be necessary had moved closer.",
+      "With only a relatively modest amount of spare capacity in the economy, a gradual upward trend in inflation remained likely over the medium term.",
+      "However, with the flow of information over the past month generally suggesting that the medium-term economic outlook remained one of strengthening economic activity and gradually rising inflation, the Board judged that the balance of risks had shifted to the point where a modest tightening of monetary policy was prudent."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points, citing limited spare capacity and an expected gradual rise in inflation alongside strengthening activity. The move was explicitly forward-looking and aimed at medium-term inflation. Members called the arguments finely balanced and the tightening modest, so this is scored mildly rather than strongly hawkish."
+  },
+  {
+    "meeting_date": "2010-12-07",
+    "input_sha256": "03fff75ec0f362532742d0b65ae331d19700ac5c39e26fac9d53ba35d94a8798",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members noted that the deterioration in the situation in Europe over the past month had increased the downside risks to the global economy.",
+      "Following the Board's decision in November to lift the cash rate and the subsequent increases in lending rates, and taking into account the level of the exchange rate, monetary policy was judged to be mildly restrictive.",
+      "Given the very high level of the terms of trade and the positive outlook for business investment, this policy setting was regarded as appropriate."
+    ],
+    "reasoning": "After the November increase, the Board judged policy to be mildly restrictive and appropriate. Increased European downside risks and household restraint were set against strong employment and an on-track investment pick-up. No further move was signalled in either direction."
+  },
+  {
+    "meeting_date": "2011-02-01",
+    "input_sha256": "90940f099f82765267c2a946e3672d64aa4d0ec9ebe5c074d008f38c50cbfcea",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "While the recent floods would have significant short-term effects on output and prices, members considered that the focus of monetary policy should remain on the medium-term outlook for economic activity and inflation.",
+      "Given the medium-term outlook for the economy, and the limited amount of spare capacity that existed, members judged that this slightly restrictive policy stance remained appropriate.",
+      "The continuation of subdued growth in consumer spending and the lower-than-expected inflation outcomes provided additional time for the Board to assess at future meetings the evolving balance of risks to both output and inflation."
+    ],
+    "reasoning": "The Board kept its slightly restrictive stance, citing limited spare capacity and a stronger terms of trade outlook. Subdued consumer spending and lower-than-expected inflation gave it time to assess the balance of risks. The language is balanced and gives no directional signal."
+  },
+  {
+    "meeting_date": "2011-03-01",
+    "input_sha256": "8a602399e57890878c8990face104c2280ccb8501561fa745734ecb3243e4e6a",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members confirmed that the Board's approach would be to look through temporary effects caused by extreme weather events and to continue to set monetary policy based on the medium-term outlook for growth and inflation.",
+      "Overall, the economy appeared to be growing at close to its trend rate and the outlook for inflation over the year ahead was consistent with the target.",
+      "Members judged that this mildly restrictive stance of policy continued to be appropriate."
+    ],
+    "reasoning": "With growth close to trend and the inflation outlook consistent with the target, the Board saw its mildly restrictive stance as still appropriate. It committed to looking through weather-related distortions. The minutes are short and clear, with no lean towards a change."
+  },
+  {
+    "meeting_date": "2011-04-05",
+    "input_sha256": "8a39444e760c9ae4ea0abfa6fb993184376bfc379298efd64f4317d4c3b17510",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In reaching its decision, the Board would look through these fluctuations.",
+      "Given the outlook for the economy, and in particular the high level of the terms of trade and the prospective further large increase in investment, members considered that this stance remained appropriate so as to ensure that the medium-term inflation outlook remained consistent with the target.",
+      "Members therefore did not see a case to change the cash rate."
+    ],
+    "reasoning": "The Board held rates, judging the slightly above-average level of lending rates appropriate to keep medium-term inflation consistent with the target given the high terms of trade and the investment pipeline. Inflation control is the stated rationale, but no tightening is signalled. The Board said plainly that it saw no case to change the rate."
+  }
+]

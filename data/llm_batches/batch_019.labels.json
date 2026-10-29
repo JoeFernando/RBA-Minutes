@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2023-02-07",
+    "input_sha256": "05dad8e6dd17b47acafeff2a83603f7f2a6d2a077e285ac04202bd44532ad8ba",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The recent inflation data had suggested more breadth and persistence in inflation than had been expected and that strong demand was leading to price increases in some parts of the economy.",
+      "Consistent with this, members agreed that further increases in interest rates are likely to be needed over the months ahead to ensure that inflation returns to target and that the current period of high inflation is only temporary.",
+      "The Board remains resolute in its determination to return inflation to target and will do what is necessary to achieve that outcome."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points after inflation and labour cost data exceeded expectations, and seriously considered 50 basis points. It dropped the earlier openness to pausing and said further increases were likely to be needed over the months ahead. The guidance is more firmly hawkish than at the preceding meetings."
+  },
+  {
+    "meeting_date": "2023-03-07",
+    "input_sha256": "d640d5bc69c4c6a68ea6f6b99998a00b6349a98188b6cc7005f3e570b4d192dd",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In light of inflation being too high and forecast to remain above target for two years, members agreed that a further tightening of monetary policy was warranted at the current meeting.",
+      "These considerations meant that it would be appropriate at some point to hold the cash rate steady, to assess more fully the effect of the interest rate increases to date.",
+      "Members agreed to reconsider the case for a pause at the following meeting, recognising that pausing would allow additional time to reassess the outlook for the economy."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points because inflation was too high and the labour market very tight, and said further tightening would likely be required. It also took some signal from softer data, noted policy was restrictive, and agreed to reconsider a pause at the next meeting. The decision is hawkish but the guidance is noticeably softer."
+  },
+  {
+    "meeting_date": "2023-04-04",
+    "input_sha256": "098fbca699b02c0253d7c61cbbd96adf3142ba589cdda204d3a0c197612d02da",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members recognised the strength of both sets of arguments, but, on balance, agreed that there was a stronger case to pause at this meeting and reassess the need for further tightening at future meetings.",
+      "In considering communication of the Board’s decision, members observed that it was important to be clear that monetary policy may need to be tightened at subsequent meetings and that the purpose of pausing at this meeting was to allow time to gather more information.",
+      "Members noted that the forecasts produced by the staff in February had inflation returning to the target range only by mid-2025 and that it would be inconsistent with the Board’s mandate for it to tolerate a slower return to target."
+    ],
+    "reasoning": "The Board paused after a long run of increases, citing lags, already restrictive policy and slowing consumption. However, it framed the pause as a chance to gather information, stressed that inflation remained too high, and emphasised that further tightening may be needed. A hold with a clear tightening bias reads as mildly hawkish, though the language is hedged."
+  },
+  {
+    "meeting_date": "2023-05-02",
+    "input_sha256": "e926d84a5e0c3f5541593e33acb031d316d1f49c2950854a393e7db9110ba9d7",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In weighing up the two options, members recognised that the arguments were finely balanced but judged it was appropriate to increase interest rates at this meeting.",
+      "That information also pointed to upside risks to the outlook for inflation.",
+      "Members also agreed that further increases in interest rates may still be required, but that this would depend on how the economy and inflation evolve."
+    ],
+    "reasoning": "The Board resumed tightening with a 25 basis point increase, citing a tight labour market, strong services inflation and upside risks including weak productivity and possible shifts in inflation expectations. It described the arguments as finely balanced and conditioned further increases on the data. The stance is mildly hawkish."
+  },
+  {
+    "meeting_date": "2023-06-06",
+    "input_sha256": "a70a92ff996d14542e76e282de391d7353c30eb470f1809d53024a7920f34441",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The recent data suggested that inflation risks had shifted somewhat to the upside.",
+      "Given this shift and the already drawn-out return of inflation to target, the Board judged that a further increase in interest rates was warranted.",
+      "Sustained high inflation would also lead to even higher interest rates in the future and a worse outlook for the labour market."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points because inflation risks had shifted to the upside, with an upside surprise in monthly inflation, sticky services inflation and signs of indexation in wages and prices. It called the arguments finely balanced and acknowledged weak consumption and household stress. The overall message is mildly hawkish with inflation the dominant concern."
+  },
+  {
+    "meeting_date": "2023-07-04",
+    "input_sha256": "eef00e98b27daa581e596523c9a7d599f21a81fca2274a90f285de3f502e2427",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Board recognised the strength of both sets of arguments but judged that the case to hold the cash rate unchanged at this meeting was the stronger one.",
+      "Members noted that monetary policy had been tightened considerably and rapidly over the prior year and the stance of monetary policy was clearly restrictive at the prevailing cash rate.",
+      "Members agreed that some further tightening of monetary policy may be required to bring inflation back to target within a reasonable timeframe, but that this depended on how the economy and inflation evolve."
+    ],
+    "reasoning": "The Board held the cash rate, weighing persistent services inflation and a tight labour market against clearly restrictive policy, lags and the risk of a sharper slowdown in consumption. It kept a conditional tightening bias but gave substantial weight to downside risks to activity. The deliberation is evenly balanced, so the stance is neutral with a mild tightening bias."
+  },
+  {
+    "meeting_date": "2023-08-01",
+    "input_sha256": "bbb8b2d47d3ea5167bc0bba9abd6993f8ec24261011378a58b6ce4fec2e0a781",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members noted that the information received on inflation over the prior month had been reassuring.",
+      "Considering this and the forecasts, members observed that there was a credible path back to the inflation target with the cash rate staying at its present level.",
+      "At the same time, members agreed that it was possible that some further tightening of monetary policy might be required to ensure that inflation returns to target in a reasonable timeframe."
+    ],
+    "reasoning": "The Board held the cash rate, describing recent inflation data as reassuring and seeing a credible path back to target at the current rate. It noted the labour market might be at a turning point but flagged persistent services inflation and asymmetric costs from higher inflation expectations. The tightening bias is weak and conditional, so the stance is neutral."
+  },
+  {
+    "meeting_date": "2023-09-05",
+    "input_sha256": "053f62c77d11c76966fcdd384ca9339ffb034d70a9f854541c241022fd91e7df",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In weighing up the two options, members agreed that the case to keep the cash rate target unchanged at this meeting was the stronger one.",
+      "The recent flow of data was consistent with inflation returning to target within a reasonable timeframe while the cash rate remained at its present level.",
+      "In reaching this decision, members noted that some further tightening in policy may be required should inflation prove more persistent than expected."
+    ],
+    "reasoning": "The Board held the cash rate, judging that recent data were consistent with inflation returning to target at the current setting and that the full effects of past tightening were still to come. It noted subdued growth, easing labour market conditions and downside risks from China, against upside risks from services and petrol prices. Further tightening was only conditional, giving a neutral stance with a mild tightening bias."
+  },
+  {
+    "meeting_date": "2023-10-03",
+    "input_sha256": "11c3a15f9aa99035946ff81a0353d445c22a0e24ccf3c53b0e78bdb495a8c9cc",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members acknowledged that upside risks were a significant concern given how long inflation is likely to remain above target.",
+      "The Board has a low tolerance for a slower return of inflation to target than currently expected.",
+      "In reaching their decision, members noted that some further tightening of policy may be required should inflation prove more persistent than expected."
+    ],
+    "reasoning": "The Board held the cash rate because there was not enough new information to change the stance, but its discussion leaned towards upside inflation risks: sticky services inflation, higher petrol prices, rising housing prices and an easier exchange rate. It stated a low tolerance for a slower return of inflation to target. A hold with these warnings is mildly hawkish."
+  },
+  {
+    "meeting_date": "2023-11-07",
+    "input_sha256": "33bdae4cfb75283e97f087faba132cd20ec3fb0cfc014e8e22abd7c86723356e",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In turning to the policy decision, members noted that underlying inflation had been more persistent over the prior few months than had previously been expected.",
+      "In this environment, members assessed that tightening monetary policy at this meeting would help to mitigate the risk of an unwelcome rise in inflation expectations.",
+      "After weighing up these two options, members agreed that the case to raise the cash rate target at this meeting was the stronger one."
+    ],
+    "reasoning": "The Board resumed tightening with a 25 basis point increase after underlying inflation proved more persistent and demand more resilient than expected. It cited signs of a slight upward drift in inflation expectations, a business mindset of passing on costs, and its low tolerance for inflation returning to target after 2025. The reasoning is firmly hawkish, although further moves were left data dependent."
+  }
+]

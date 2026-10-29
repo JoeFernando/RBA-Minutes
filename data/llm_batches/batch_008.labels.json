@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2013-03-05",
+    "input_sha256": "575b303805c2ea0c95eebb84c7c92ee676a521ad659149eff1791483ce4bb05e",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given the economic outlook, the Board considered it appropriate that the stance of monetary policy should be accommodative.",
+      "With inflation likely to remain around the middle of the inflation target, members judged that there would be scope to cut the cash rate further to support demand, should that be necessary.",
+      "At this meeting, the Board's assessment was that, while further reductions may be required, on the information currently to hand it was appropriate to hold rates steady, and to assess further developments over the period ahead."
+    ],
+    "reasoning": "With growth expected to be a little below trend and business investment subdued, the Board wanted an accommodative stance and said further reductions may be required. It held because low rates were still working through interest-sensitive sectors. This is a mildly dovish hold with an explicit easing bias."
+  },
+  {
+    "meeting_date": "2013-04-02",
+    "input_sha256": "f34e27a0155f72a2fdc1bd1e42c7ceb38a9d84d333c0168c13167fa7e67d9e63",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "With growth forecast to be a little below trend in 2013, and inflation close to target, members judged that it was appropriate for the stance of policy to be accommodative.",
+      "The outlook for inflation, as currently assessed, would provide scope for further easing should that be necessary to support demand.",
+      "At this meeting, the Board's judgement remained that, on the information currently to hand, the most prudent course was to hold rates steady and to continue to assess developments over the period ahead."
+    ],
+    "reasoning": "The Board kept policy accommodative with growth forecast a little below trend, and repeated that the inflation outlook left scope for further easing. Interest-sensitive sectors were responding, but the high exchange rate, waning mining investment and fiscal consolidation were weighing on growth. This is a mildly dovish hold."
+  },
+  {
+    "meeting_date": "2013-05-07",
+    "input_sha256": "1da26eafe9635627aaabf70d6cc361bb78b471d249950420a8b38e2fb3f3dbee",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Nonetheless, growth was expected to be somewhat below trend for a while, and the inflation outlook had, if anything, been revised down slightly.",
+      "Taking all the factors into consideration, the Board decided that some of the scope to ease policy should be used at this meeting.",
+      "It judged that a further reduction in the cash rate was appropriate to encourage sustainable growth in the economy, consistent with achieving the inflation target."
+    ],
+    "reasoning": "The Board cut by 25 basis points because growth was expected to stay below trend and the inflation outlook had been revised down slightly. Saying it used 'some of the scope' to ease implies that further scope remained. Its awareness of a strengthening housing market tempers the move, so the lean is mildly dovish."
+  },
+  {
+    "meeting_date": "2013-06-04",
+    "input_sha256": "85bd18f53b6da6c5cd6480fef1917ba0d73bd8c6e94d50aee9c11163ae56372a",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "For the domestic economy, the best estimate was that growth had been a bit below trend over the past four quarters.",
+      "At this meeting, members viewed the current stance of monetary policy as appropriate for the time being.",
+      "The Board also judged that the inflation outlook as currently assessed might provide some scope for further easing, should that be required to support demand."
+    ],
+    "reasoning": "After the May cut, the Board saw the current stance as appropriate for the time being, with growth a bit below trend and the non-mining business sector subdued. It kept a softer, hedged easing bias ('might provide some scope'). This is a mildly dovish, heavily qualified hold."
+  },
+  {
+    "meeting_date": "2013-07-02",
+    "input_sha256": "8d7f836ae83773ca8c0909e7c54517d4970daf356b7ed6a216317f0e1f45c290",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Recent data suggested that domestic economic activity continued to grow at a below trend pace.",
+      "Given the exchange rate adjustment that was occurring, and with the substantial degree of monetary stimulus already in place, members assessed the current stance of policy to be appropriate for the time being.",
+      "The Board also judged that the inflation outlook, although slightly higher because of the exchange rate depreciation, could still provide some scope for further easing, should that be required to support demand."
+    ],
+    "reasoning": "Growth remained below trend and the Board kept an easing bias, though it noted that exchange rate depreciation was lifting the inflation outlook slightly and that stimulus was substantial. The hold was described as appropriate for the time being. The lean is mildly dovish with hedged language."
+  },
+  {
+    "meeting_date": "2013-08-06",
+    "input_sha256": "b71f920d18377d8e3efd1b7840ab589688f39e562ba3ed16a91126f8b2920705",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Employment growth was continuing, but at a pace below the rate of growth of the labour force, and unemployment had tended to rise.",
+      "On balance, with growth expected to remain below trend for longer and inflation to remain within the target even with the effects of a lower exchange rate, members concluded that a lower level of the cash rate would better contribute to achieving sustainable growth in demand consistent with the inflation target.",
+      "Regarding the communication of this decision, members agreed that the Bank should neither close off the possibility of reducing rates further, nor signal an imminent intention to reduce rates further."
+    ],
+    "reasoning": "The Board cut by 25 basis points as the outlook for activity weakened, unemployment rose and growth was expected to stay below trend for longer, while inflation remained within the target. It deliberately avoided signalling further cuts while not ruling them out, so the forward bias is neutral. The decision is mildly dovish."
+  },
+  {
+    "meeting_date": "2013-09-03",
+    "input_sha256": "311b4041e924f9784fef2adf386432fc7b3b3f0f7a5282959d429e55aca1e6db",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The unemployment rate had continued to drift higher over the past year and indicators of labour demand remained soft.",
+      "Given the substantial degree of policy stimulus in place, the Board judged that it was appropriate to retain the current setting of interest rates.",
+      "Members agreed that the Bank should again neither close off the possibility of reducing rates further nor signal an imminent intention to reduce them."
+    ],
+    "reasoning": "The Board held rates after the August cut, emphasising rising unemployment, soft labour demand and subdued non-mining investment. Its main concern is weak activity, but it explicitly avoided signalling further cuts, relying on substantial stimulus already in place. This is a mildly dovish tone with a neutral forward bias."
+  },
+  {
+    "meeting_date": "2013-10-01",
+    "input_sha256": "89427a8e5c548fe675d9e722fefb79df380b9be1f52a919dc26cd5af9ed9b61f",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Recent data for the domestic economy had confirmed that, as expected, overall growth had been below trend.",
+      "The Board's judgement was that, given the substantial degree of policy stimulus that had been imparted, it would be prudent to leave the cash rate at the existing low level while continuing to gauge the effects.",
+      "Members agreed that the Bank should again neither close off the possibility of reducing rates further nor signal an imminent intention to reduce them."
+    ],
+    "reasoning": "Growth remained below trend with subdued labour market conditions and non-mining investment, though confidence had improved and the exchange rate had appreciated. The Board held to gauge the effects of substantial stimulus and kept its two-sided communication on further cuts. The lean is only mildly dovish, given the more positive confidence signals."
+  },
+  {
+    "meeting_date": "2013-11-05",
+    "input_sha256": "6fba64daed847c514ef9453d6ec141afde0bd7dc5998631af7295ee0f3014fd0",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At the same time, inflation remained within the target and the Australian dollar, while below its level earlier in the year, remained uncomfortably high.",
+      "Members noted that a lower level of the exchange rate would likely be needed to achieve balanced growth in the economy.",
+      "The Board's judgement was that, given the substantial degree of policy stimulus that had been imparted, it was prudent to hold the cash rate steady while continuing to gauge the effects, but not to close off the possibility of reducing it further should that be appropriate to support sustainable growth in economic activity, consistent with the inflation target."
+    ],
+    "reasoning": "With growth expected to be below trend over the coming year, the Board held rates while explicitly keeping open the possibility of further cuts. It described the exchange rate as uncomfortably high and said a lower level was likely needed for balanced growth. This is a mildly dovish hold with an easing-only option."
+  },
+  {
+    "meeting_date": "2013-12-03",
+    "input_sha256": "b777f147a763ef7f473fa9877c8407fcc42e84a0c2f859288c9d4b4b01214f18",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Overall, growth of the economy was expected to continue at a below-trend pace over the next year, picking up thereafter.",
+      "While the exchange rate had depreciated over the month, members agreed that it remained uncomfortably high and a lower level would likely be needed to achieve balanced growth in the economy.",
+      "The Board's judgement remained that, given the substantial degree of policy stimulus that had been imparted, it was prudent to hold the cash rate steady while continuing to gauge the effects of earlier reductions, but not to close off the possibility of reducing it further should that be appropriate to support sustainable growth in economic activity, consistent with the inflation target."
+    ],
+    "reasoning": "Growth was expected to remain below trend over the next year, and the Board again called the exchange rate uncomfortably high. It held to gauge the effects of substantial earlier easing while keeping open the possibility of further reductions. The tone is mildly dovish with an easing bias."
+  }
+]

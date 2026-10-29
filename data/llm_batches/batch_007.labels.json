@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2012-04-03",
+    "input_sha256": "4a0606777c9abee75e80f9d92521cf807f75092fc3e74dd791f1d01d6c20e698",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Since then members had lowered their assessment of the pace of growth somewhat.",
+      "If slower growth in demand could be expected to result in a more moderate inflation outcome, then a case could be made for a further easing of monetary policy.",
+      "Members judged it prudent to evaluate those data before considering a further policy adjustment."
+    ],
+    "reasoning": "The Board lowered its assessment of growth, noting below-trend output in 2011 and a softer labour market. It explicitly opened the door to further easing, depending on the coming inflation data. The hold and the conditional wording make this mildly dovish with a clear easing bias."
+  },
+  {
+    "meeting_date": "2012-05-01",
+    "input_sha256": "bf29df3a07bdf25a3e2dd0f93c3e7b1e8bd7fbe5eb9e2f1afe620d1e6ba77bdc",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Recent evidence suggested that the Australian economy was growing somewhat below trend.",
+      "Given recently accumulated information on demand and the rate of inflation, together with the revised forecasts that had been presented, members considered it appropriate for monetary policy to be eased.",
+      "Accordingly, the Board decided that a reduction of 50 basis points in the cash rate was, in this instance, necessary in order to deliver the appropriate level of borrowing rates."
+    ],
+    "reasoning": "The Board cut the cash rate by a larger-than-usual 50 basis points because growth was below trend and inflation was slowing towards the lower half of the target. It described the size of the cut as necessary to push borrowing rates below their December levels. The decisive action and firm language indicate a strongly dovish stance, with no further guidance given."
+  },
+  {
+    "meeting_date": "2012-06-05",
+    "input_sha256": "d1a09d31790c318254044e1543abf550c452b18a69bd7fd5d8bb89ef5a1c1405",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The arguments were finely balanced.",
+      "However, there was clear evidence suggesting a softening in global conditions, and uncertainty about the future in Europe had increased significantly.",
+      "Given this, and with inflation expected to remain in the lower part of the targeting range over the next year or so, members considered that there was scope for monetary policy to be a little more supportive of domestic activity."
+    ],
+    "reasoning": "The Board cut by 25 basis points mainly because of a softer global outlook and much greater European uncertainty, with inflation expected in the lower part of the target range. It said the arguments were finely balanced because domestic data had not weakened significantly. The move is dovish but framed as modest and precautionary."
+  },
+  {
+    "meeting_date": "2012-07-03",
+    "input_sha256": "c697418d22b74b6ae358b00fef6df779790a352cfb7cc16399536eac49fe883b",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members noted that indications were that inflationary pressures overall remained contained, notwithstanding the evidence of somewhat stronger economic growth over the past few quarters.",
+      "Members continued to view it as appropriate for interest rates to be a little below average given evidence of slower global growth and the low rate of inflation in Australia.",
+      "But with a material easing in monetary policy having occurred over the preceding six months or so, and with recent signs that the domestic economy had a little more momentum than had earlier been indicated, members saw no need for any further adjustment to the cash rate at this meeting."
+    ],
+    "reasoning": "After substantial easing, and with signs of more domestic momentum than earlier thought, the Board saw no need for a further change. It still considered slightly below-average rates appropriate given slower global growth and low inflation. The language is clear and balanced, with no forward signal."
+  },
+  {
+    "meeting_date": "2012-08-07",
+    "input_sha256": "dceed0ac2ec01a774802a8e0f3dbed198751f293983f9c05c6c763d161e10819",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Nevertheless, the risk of significant economic and financial disruption in the euro area continued to cloud the outlook.",
+      "Domestically, the economy was forecast to grow around trend pace over the medium term.",
+      "With inflation expected to be consistent with the target and growth close to trend, but with a more subdued international outlook than was the case a few months ago, the Board judged that the stance of monetary policy remained appropriate."
+    ],
+    "reasoning": "With domestic growth forecast at around trend and inflation consistent with the target, the Board judged the current stance appropriate despite euro area risks. Earlier cuts were described as still working through the economy. No directional signal was given, so the stance is neutral."
+  },
+  {
+    "meeting_date": "2012-09-04",
+    "input_sha256": "eec2c018d103e5ed2e499a9cae02465a86456fb8ee90af1481b1648a79e368c1",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members discussed the possibility that the high level of the exchange rate was weighing more heavily on the economy than might be expected.",
+      "Developments since the previous Board meeting suggested that the global economy remained subject to significant downside risks.",
+      "The current assessment of the inflation outlook continued to provide scope to adjust policy in response to any significant deterioration in the outlook for growth."
+    ],
+    "reasoning": "The Board held rates but stressed significant global downside risks, a sharp fall in bulk commodity prices and the possibility that the high exchange rate was weighing on the economy more than expected. It noted that the inflation outlook left scope to ease if growth deteriorated. Domestic growth was still near trend, so the dovish lean is mild and hedged."
+  },
+  {
+    "meeting_date": "2012-10-02",
+    "input_sha256": "f9ed5a81ffc6f310bda4dbf0c0466e15ea4ea44af64c7758750e3bdf0037c251",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Nonetheless, the information that had become available suggested there was an increased likelihood of growth over the coming year being somewhat weaker than earlier forecast.",
+      "Members concluded that the current assessment of the inflation outlook provided scope to adjust policy in response to the softer growth outlook.",
+      "Therefore, at this meeting the Board judged that it was appropriate for the stance of monetary policy to be a little more accommodative, thereby providing some additional support to demand over the period ahead."
+    ],
+    "reasoning": "The Board cut by 25 basis points in response to a softer growth outlook, an earlier and lower mining investment peak, and a softer labour market, with inflation consistent with the target. The language is committed but describes the move as making policy only a little more accommodative. No further guidance was given."
+  },
+  {
+    "meeting_date": "2012-11-06",
+    "input_sha256": "9d7545d033405b4c2297df6032ffb82e7a9d0aada9e1ea1622006c229821d294",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The staff forecast for GDP growth over 2013 was revised down, largely because of a change to the mining investment profile.",
+      "Members considered that further easing may be appropriate in the period ahead.",
+      "However, at this meeting, with prices data for the September quarter slightly higher than expected and recent information on the world economy slightly more positive, the Board judged that the stance of monetary policy was appropriate for the time being."
+    ],
+    "reasoning": "The Board held only because inflation was slightly higher than expected and global news slightly better, while saying explicitly that further easing may be appropriate in the period ahead. Growth forecasts for 2013 were revised down. This is a mildly dovish hold with a clear easing bias."
+  },
+  {
+    "meeting_date": "2012-12-04",
+    "input_sha256": "bf724b9d94ba784a79a0c1586a1493ab2b4ee4f4dad67a7dc51ca1b21b53dac3",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At this meeting, the information on labour costs and softening labour market conditions suggested that the inflation outlook still afforded the Board some scope to provide additional support to demand.",
+      "Further confirmation that the peak in resource sector investment was near, and that the short-term outlook for non-resource investment remained subdued, indicated that there was a case for the Board to provide that support.",
+      "On balance, members saw merit in reducing the cash rate at this meeting."
+    ],
+    "reasoning": "The Board cut by 25 basis points, citing a softening labour market, moderating wages, the approaching peak in resource investment and subdued non-resource investment. It weighed acting now against waiting and decided on balance to cut. The move is dovish, but the 'on balance' framing keeps it mild."
+  },
+  {
+    "meeting_date": "2013-02-05",
+    "input_sha256": "f6785e3638bdfb25d70ab6d8ebd11226d772e15a08730c2a5caadfbf4e46bee5",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Growth in economic activity was expected to be a little below trend over 2013, before picking up to around trend through 2014.",
+      "The inflation outlook, as assessed at this meeting, would afford scope to ease policy further, should that be necessary to support demand.",
+      "Noting that monetary policy was already accommodative as a result of the substantial easing of policy over the past 15 months, and that this stimulus was continuing to work its way through the economy, the Board judged that it was prudent to leave the cash rate unchanged at this meeting."
+    ],
+    "reasoning": "With growth expected to be a little below trend and the labour market softening, the Board kept an explicit easing bias, saying the inflation outlook afforded scope to ease further. It held because substantial earlier easing was still working through the economy. This is a mildly dovish hold."
+  }
+]
