@@ -725,6 +725,13 @@ def run(next_decision: dt.date | None = None) -> dict:
         # (futures and OIS price the same expected cash rate; the models were fitted on OIS, 2001-2022).
         overnight = pd.Series([asx["cash_rate_target"]], index=[asx["settlement_date"]])
         implied = futures_implied(asx["futures"], overnight, next_decision)
+        source = f"ASX settlement {asx['settlement_date']}"
+        if FUTURES_FILE.exists():  # a later close from the IBKR file, if it has one
+            latest = futures_check(next_decision)
+            latest = latest[latest["decision_date"] == next_decision]
+            if len(latest) and latest["price_date"].iloc[0] > asx["settlement_date"]:
+                implied = latest.iloc[0].to_dict()
+                source = f"IBKR close {implied['price_date']}"
         row = features_as_of(panel, next_decision)
         row["mkt_ois_change"] = implied["futures_change"]
         market_rows = []
@@ -736,7 +743,9 @@ def run(next_decision: dt.date | None = None) -> dict:
         results["asx_rate_tracker"] = {
             "settlement_date": str(asx["settlement_date"]), "next_meeting": str(asx["next_meeting"]),
             "probability_of_move": asx["probability"], "expected_rate": asx["expected_rate"],
-            "reproduced_change": implied["futures_change"], "history": asx["history"].to_dict("records"),
+            "reproduced_change": futures_implied(asx["futures"], overnight, next_decision)["futures_change"],
+            "model_input_change": implied["futures_change"], "model_input_source": source,
+            "history": asx["history"].to_dict("records"),
             "model_probabilities": market_rows,
         }
         pd.DataFrame(market_rows).to_csv(OUT_DIR / "next_decision_market.csv", index=False)

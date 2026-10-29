@@ -239,7 +239,7 @@ RMSE 2.0).
 
 ## The next decision: 3 November 2026
 
-Inputs as of 29 October 2026 (the ASX settlement date; pricing can move before the meeting):
+Inputs as of 30 October 2026 (the latest futures close; pricing can move before the meeting):
 
 | Input | Value |
 |---|---|
@@ -253,6 +253,7 @@ Inputs as of 29 October 2026 (the ASX settlement date; pricing can move before t
 | September minutes (Claude stance) | +2, strongly hawkish |
 | August SMP (Claude stance) | +1, mildly hawkish |
 | October FSR | Elevated risk, rising; no clear implication for rates |
+| **ASX 30 Day Interbank Cash Rate Futures (IBKR close, 30 October)** | **82% chance of a 25 bp rise** (November contract 4.785%) |
 | **ASX RBA Rate Tracker (29 October settlement)** | **80% chance of a 25 bp rise to 4.85%** (November futures imply 4.78%: 3 days at 4.60%, then 4.80%); up from 22% on 20 October and about 60% on 21–27 October, 82% on 28 October (CPI day) |
 | 1-month bank bill rate minus the overnight cash rate (28 October) | +0.14 percentage points (it was +0.10 to +0.18 before each 2026 raise and -0.03 before the holds) |
 
@@ -275,13 +276,42 @@ the market priced (1-month OIS the day before each decision, 2001-2022, 238 meet
 When the market priced a raise at 60–100%, as now, the RBA raised 13 times out of 16 (81%). It never
 moved when the market priced less than 20% either way.
 
-| Model with market pricing (fitted on 2001-2022 OIS; today's input from the ASX futures) | Cut | Hold | Raise |
+| Model with market pricing (fitted on 2001-2022 OIS; input: the futures' priced move at the 30 October close, +0.206) | Cut | Hold | Raise |
 |---|---:|---:|---:|
-| **market + minutes text** (best log loss in the 2011-22 backtest, 0.224) | 0% | 14% | **86%** |
+| **market + minutes text** (best log loss in the 2011-22 backtest, 0.224) | 0% | 13% | **87%** |
 | macro + market + minutes text | 0% | 13% | 87% |
-| macro + market | 0% | 20% | 80% |
-| market alone (0.216 in the 2005-22 backtest) | 0% | 27% | 73% |
-| ASX Rate Tracker as published | | 20% | 80% |
+| macro + market | 0% | 18% | 82% |
+| market alone (0.216 in the 2005-22 backtest) | 0% | 24% | 76% |
+| Futures as priced, 30 October (IBKR close) | | 18% | 82% |
+| ASX Rate Tracker as published, 29 October | | 20% | 80% |
+
+### The futures before each recent decision (IBKR data, August 2025 to September 2026)
+
+Daily ASX 30 Day Interbank Cash Rate Futures prices from Interactive Brokers (`data/macro/ib_futures_ibkr.csv`:
+31 contract months, September 2025 to March 2028, trade dates April 2024 to October 2026; traded closes
+used, bid/ask midpoints only on days without a trade). On 29 October the IBKR closes equal the ASX's
+published settlement prices for all 18 listed months, to the basis point. The priced move is worked out
+from the last close before each decision, as the ASX Rate Tracker does (`analysis/futures_check.csv`):
+
+| Decision | Futures priced (day before) | Bank bill stand-in | Outcome |
+|---|---:|---:|---|
+| 12 Aug 2025 | cut 102% | -0.25 | **cut** |
+| 30 Sep 2025 | 4% cut | -0.09 | hold |
+| 4 Nov 2025 | 7% cut | -0.06 | hold |
+| 9 Dec 2025 | 3% cut | -0.05 | hold |
+| 3 Feb 2026 | raise 72% | +0.10 | **raise** |
+| 17 Mar 2026 | raise 58% | +0.11 | **raise** |
+| 5 May 2026 | raise 76% | +0.11 | **raise** |
+| 16 Jun 2026 | 0% | -0.03 | hold |
+| 11 Aug 2026 | 3% raise | -0.03 | hold |
+| 29 Sep 2026 | raise 92% | +0.18 | **raise** |
+| **3 Nov 2026** | **raise 82%** (30 Oct) | +0.14 (28 Oct) | ? |
+
+The futures priced the right direction at all 10 decisions: every move at 58% or more, every hold at
+7% or less (correlation with the outcome 0.984). Over these dates the bank bill stand-in moved almost
+in step with the futures (correlation 0.988) but by about half as much, which supports the 2023-26
+bank bill results above while explaining why they are weaker. Ten decisions are too few for a new
+backtest, so this is a check, not a test.
 
 ### Models without market pricing (for comparison)
 
@@ -300,16 +330,16 @@ moved when the market priced less than 20% either way.
 | macro + bank bills | 2% | 87% | 11% | 0.493 (2011-26) |
 | bank bills alone | 2% | 88% | 10% | 0.587 (2011-26) |
 
-**Reading:** the market now prices a raise at 80%, and the models that include market pricing (by far
-the most accurate in every backtest) put it at 73–87%; adding the hawkish September minutes takes it
-to 86%. **A 25 basis point rise to 4.85% is the likely outcome.** The models without market pricing
+**Reading:** the market now prices a raise at 80–82%, and the models that include market pricing (by far
+the most accurate in every backtest) put it at 76–87%; adding the hawkish September minutes takes it
+to 87%. Over the last 10 decisions the futures were right every time. **A 25 basis point rise to 4.85% is the likely outcome.** The models without market pricing
 are much less sure (10–64%) because they cannot see what moved the market after the September
 quarter CPI and the late-October news; the backtests show they should carry little weight next to the
 market.
 
-How confident: on history, a raise priced at this level happened about four times in five. The RBA
-held three times in sixteen at similar pricing (April 2007, February 2010, October 2010), so a hold
-remains a real possibility. Pricing on 30 October and 2 November could still move, and the models do
+How confident: on 2001-2022 history, a raise priced at this level happened about four times in five.
+The RBA held three times in sixteen at similar pricing (April 2007, February 2010, October 2010), so a
+hold remains a real possibility. Pricing on 2 November could still move, and the models do
 not see the November SMP (released with the decision) or late speeches.
 
 ## Caveat: revised data, not real-time data

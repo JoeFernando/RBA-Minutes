@@ -1481,6 +1481,8 @@
     "probability_of_move": 0.8,
     "expected_rate": 4.85,
     "reproduced_change": 0.20000000000000018,
+    "model_input_change": 0.20555555555555127,
+    "model_input_source": "IBKR close 2026-10-30",
     "history": [
       {
         "settlement_date": "2026-10-09",
@@ -1562,31 +1564,176 @@
       {
         "model": "market_ois (ASX futures)",
         "trained_on": 238,
-        "p_cut": 6.072846020097262e-05,
-        "p_hold": 0.26740032233220473,
-        "p_raise": 0.7325389492075943
+        "p_cut": 4.86681027866661e-05,
+        "p_hold": 0.24299126959716763,
+        "p_raise": 0.7569600623000458
       },
       {
         "model": "macro+market_ois (ASX futures)",
         "trained_on": 238,
-        "p_cut": 1.2188527537098148e-05,
-        "p_hold": 0.20065788877496182,
-        "p_raise": 0.7993299226975009
+        "p_cut": 9.754893704775017e-06,
+        "p_hold": 0.18332346336849917,
+        "p_raise": 0.816666781737796
       },
       {
         "model": "market_ois+minutes_text (ASX futures)",
         "trained_on": 179,
-        "p_cut": 2.6685845763123943e-05,
-        "p_hold": 0.13776624968216014,
-        "p_raise": 0.8622070644720768
+        "p_cut": 2.2143123173536293e-05,
+        "p_hold": 0.12743848776114072,
+        "p_raise": 0.8725393691156856
       },
       {
         "model": "macro+market_ois+minutes_text (ASX futures)",
         "trained_on": 179,
-        "p_cut": 1.3383428076479607e-05,
-        "p_hold": 0.13433129866704085,
-        "p_raise": 0.8656553179048827
+        "p_cut": 1.1120171863412604e-05,
+        "p_hold": 0.12559025470187546,
+        "p_raise": 0.874398625126261
       }
     ]
-  }
+  },
+  "futures_check": [
+    {
+      "decision_date": "2025-08-12",
+      "actual_change": -0.25,
+      "price_date": "2025-08-11",
+      "current_rate": 3.84,
+      "post_meeting_rate": 3.5849999999999937,
+      "futures_change": -0.2550000000000061,
+      "futures_prob_25bp": -1.0200000000000244,
+      "futures_method": "next month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.25249999999999995
+    },
+    {
+      "decision_date": "2025-09-30",
+      "actual_change": 0.0,
+      "price_date": "2025-09-29",
+      "current_rate": 3.6,
+      "post_meeting_rate": 3.5900000000000034,
+      "futures_change": -0.009999999999996678,
+      "futures_prob_25bp": -0.03999999999998671,
+      "futures_method": "next month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.08749999999999991
+    },
+    {
+      "decision_date": "2025-11-04",
+      "actual_change": 0.0,
+      "price_date": "2025-11-03",
+      "current_rate": 3.6,
+      "post_meeting_rate": 3.5826923076923003,
+      "futures_change": -0.017307692307699796,
+      "futures_prob_25bp": -0.06923076923079918,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.057399999999999896
+    },
+    {
+      "decision_date": "2025-12-09",
+      "actual_change": 0.0,
+      "price_date": "2025-12-08",
+      "current_rate": 3.6,
+      "post_meeting_rate": 3.5929545454545435,
+      "futures_change": -0.007045454545456575,
+      "futures_prob_25bp": -0.0281818181818263,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.05250000000000021
+    },
+    {
+      "decision_date": "2026-02-03",
+      "actual_change": 0.25,
+      "price_date": "2026-02-02",
+      "current_rate": 3.6,
+      "post_meeting_rate": 3.7792000000000057,
+      "futures_change": 0.17920000000000558,
+      "futures_prob_25bp": 0.7168000000000223,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": 0.09499999999999975
+    },
+    {
+      "decision_date": "2026-03-17",
+      "actual_change": 0.25,
+      "price_date": "2026-03-16",
+      "current_rate": 3.85,
+      "post_meeting_rate": 3.9939285714285853,
+      "futures_change": 0.14392857142858517,
+      "futures_prob_25bp": 0.5757142857143407,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": 0.10999999999999988
+    },
+    {
+      "decision_date": "2026-05-05",
+      "actual_change": 0.25,
+      "price_date": "2026-05-04",
+      "current_rate": 4.1,
+      "post_meeting_rate": 4.2907692307692376,
+      "futures_change": 0.1907692307692379,
+      "futures_prob_25bp": 0.7630769230769516,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": 0.10690000000000044
+    },
+    {
+      "decision_date": "2026-06-16",
+      "actual_change": 0.0,
+      "price_date": "2026-06-15",
+      "current_rate": 4.35,
+      "post_meeting_rate": 4.349999999999988,
+      "futures_change": -1.1546319456101628e-14,
+      "futures_prob_25bp": -4.618527782440651e-14,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.02999999999999936
+    },
+    {
+      "decision_date": "2026-08-11",
+      "actual_change": 0.0,
+      "price_date": "2026-08-10",
+      "current_rate": 4.35,
+      "post_meeting_rate": 4.357750000000006,
+      "futures_change": 0.007750000000005919,
+      "futures_prob_25bp": 0.031000000000023675,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": -0.030100000000000016
+    },
+    {
+      "decision_date": "2026-09-29",
+      "actual_change": 0.25,
+      "price_date": "2026-09-28",
+      "current_rate": 4.35,
+      "post_meeting_rate": 4.579999999999998,
+      "futures_change": 0.22999999999999865,
+      "futures_prob_25bp": 0.9199999999999946,
+      "futures_method": "next month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": 0.17630000000000035
+    },
+    {
+      "decision_date": "2026-11-03",
+      "actual_change": NaN,
+      "price_date": "2026-10-30",
+      "current_rate": 4.6,
+      "post_meeting_rate": 4.805555555555551,
+      "futures_change": 0.20555555555555127,
+      "futures_prob_25bp": 0.8222222222222051,
+      "futures_method": "meeting month",
+      "price_source": "TRADES",
+      "mkt_ois_change": NaN,
+      "mkt_bab_change": 0.1372
+    }
+  ]
 }
