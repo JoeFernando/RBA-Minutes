@@ -5,6 +5,7 @@ pysentiment2==0.1.1   # bundles the Loughran-McDonald word lists
 anthropic>=2.3        # only needed for `python -m rba_minutes llm`
 pydantic>=2.0
 pandas>=2.0          # forecast files and analysis
+scikit-learn>=1.3    # prediction backtests (predict.py)
 xlrd>=2.0            # reads the RBA's .xls forecast files
 openpyxl>=3.1        # reads .xlsx files
 pytest>=8.0

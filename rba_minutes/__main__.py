@@ -14,6 +14,8 @@
   fsr-scrape / fsr-build / fsr-score / fsr-tables / fsr-graphs / fsr-check /
   fsr-llm-export / fsr-llm-import
            the same steps for the Financial Stability Review (2004 onwards)
+  predict  backtest whether the minutes, SMP, FSR and RBA forecasts help predict decisions
+           (writes analysis/); --next YYYY-MM-DD also gives probabilities for that decision
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -254,6 +256,21 @@ def cmd_fsr_llm_import(args) -> None:
         log.warning(problem)
 
 
+def cmd_predict(args) -> None:
+    import datetime as dt
+
+    from . import predict
+
+    next_decision = dt.date.fromisoformat(args.next) if args.next else None
+    results = predict.run(next_decision)
+    for name, sample in results.items():
+        if "scores" in sample:
+            best = min(sample["scores"], key=lambda r: r["log_loss"])
+            log.info("%s (%s to %s): best log loss %s (%.3f)", name, sample["first_test"], sample["last_test"],
+                     best["model"], best["log_loss"])
+    log.info("Wrote %s", predict.OUT_DIR)
+
+
 def cmd_smp_forecasts(args) -> None:
     from . import smp
 
@@ -393,6 +410,8 @@ def main(argv=None) -> None:
     p.add_argument("--batch-size", type=int, default=8)
     p = add("fsr-llm-import", cmd_fsr_llm_import, "load FSR session labels")
     p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_fsr")
+    p = add("predict", cmd_predict, "backtest decision predictions and write analysis/")
+    p.add_argument("--next", help="date of the next decision (YYYY-MM-DD) to give probabilities for")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

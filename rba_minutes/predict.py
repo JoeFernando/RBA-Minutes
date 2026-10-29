@@ -186,6 +186,10 @@ MODELS = {
                        "smp_llm_stance_score", "smp_hawk_dove_index", "minutes_llm_stance_score",
                        "minutes_hawk_dove_index", "fsr_llm_risk_level_ordinal", "fsr_policy"],
     "text_only": ["smp_llm_stance_score", "minutes_llm_stance_score", "minutes_hawk_dove_index"],
+    # Dictionary measures only: no LLM, so no chance of hindsight from a labeller that knows what came next.
+    "macro+smp_dictionary": ["tm_gap", "unemployment_change_6m", "last_move", "smp_hawk_dove_index", "smp_lm_tone"],
+    "macro+minutes_dictionary": ["tm_gap", "unemployment_change_6m", "last_move", "minutes_hawk_dove_index",
+                                 "minutes_policy_hawk_dove_index"],
 }
 
 
@@ -337,14 +341,16 @@ def run(next_decision: dt.date | None = None) -> dict:
     results = {}
     samples = {
         # inflation targeting, SMP text and RBA forecasts available (first SMP Feb 1997)
-        "smp_era": ("1997-03-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
-                                                          "macro+rba_forecast+smp_text")}),
+        "smp_era": ("1997-03-01", {k: MODELS[k] for k in ("macro", "macro+smp_text", "macro+smp_dictionary")}),
+        # the RBA's year-ahead trimmed mean forecast is published in the SMP from May 2000
+        "smp_forecast_era": ("2000-06-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
+                                                                   "macro+rba_forecast+smp_text")}),
         # FSR from March 2004
         "fsr_era": ("2004-04-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast+smp_text", "macro+fsr")}),
         # minutes from October 2006: every source available
         "minutes_era": ("2006-11-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
-                                                              "macro+minutes_text", "macro+fsr", "macro+all_text",
-                                                              "text_only")}),
+                                                              "macro+minutes_text", "macro+minutes_dictionary",
+                                                              "macro+fsr", "macro+all_text", "text_only")}),
     }
     for name, (start, models) in samples.items():
         min_train = 48 if name != "minutes_era" else 40
@@ -356,6 +362,17 @@ def run(next_decision: dt.date | None = None) -> dict:
         results[name] = {"start": start, "first_test": str(preds["decision_date"].min()),
                          "last_test": str(preds["decision_date"].max()),
                          "scores": table.to_dict("records"), "paired": tests}
+    # Sensitivity of the minutes-era comparison to the amount of regularisation.
+    sensitivity = []
+    for C in (0.1, 0.3, 3.0, 10.0):
+        models = {k: MODELS[k] for k in ("macro", "macro+minutes_text", "macro+minutes_dictionary", "macro+all_text")}
+        table, preds = backtest(panel, "2006-11-01", models, min_train=40, C=C)
+        for m in models:
+            if m != "macro":
+                sensitivity.append({"C": C, **paired_log_loss(preds, "macro", m),
+                                    **{f"accuracy_{k}": v for k, v in table.set_index("model").loc[m, ["accuracy"]].items()}})
+    pd.DataFrame(sensitivity).to_csv(OUT_DIR / "sensitivity_minutes_era.csv", index=False)
+    results["sensitivity_minutes_era"] = sensitivity
     if next_decision:
         forecast, row = forecast_next(panel, next_decision)
         forecast.to_csv(OUT_DIR / "next_decision.csv", index=False)
