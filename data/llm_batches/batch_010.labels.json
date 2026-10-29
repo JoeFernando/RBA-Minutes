@@ -1,0 +1,161 @@
+[
+  {
+    "meeting_date": "2014-12-02",
+    "input_sha256": "2463450bb7b33c96ffb7e7e07713a6e31476b4809592cce7dc9c759ecaf29944",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members agreed that further exchange rate depreciation was likely to be needed to achieve balanced growth in the economy.",
+      "They noted that market expectations implied some chance of an easing of policy during 2015 and discussed the factors that might be producing such an expectation.",
+      "Members considered that the most prudent course was likely to be a period of stability in interest rates."
+    ],
+    "reasoning": "The Board held the cash rate and kept its guidance of a period of stability in interest rates, so the formal stance is neutral. Subdued labour markets weighing on consumption, the call for further exchange rate depreciation, and discussion of market pricing for easing add a slight dovish undertone. The Board did not adopt an easing bias, so this is scored neutral with moderate confidence."
+  },
+  {
+    "meeting_date": "2015-02-03",
+    "input_sha256": "7e22cb2ef03ac64a02cd06122213caf3db0a0e8719c126c0066d84048e7515bb",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "On the basis of their assessment of current conditions and taking into account the revised forecasts, the Board judged that a further reduction in the cash rate would be appropriate to provide additional support to demand, while inflation outcomes were expected to remain consistent with the 2 to 3 per cent target.",
+      "The unemployment rate was therefore expected to peak a little higher (and later) than in the previous forecast.",
+      "Members agreed that a lower exchange rate was likely to be needed to achieve balanced growth in the economy."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points to 2.25 per cent, giving fewer signs of near-term strengthening and a higher expected peak in unemployment as reasons. Lower inflation forecasts left room to ease, and the Board said a lower exchange rate was needed. This is a clearly dovish decision driven by growth and employment. Housing was flagged only for monitoring."
+  },
+  {
+    "meeting_date": "2015-03-03",
+    "input_sha256": "20fd6a85544c0cef5b249a0a633b5618739f400426937bf73cfdaf101d08a383",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Nonetheless, on the basis of the current forecasts for growth and inflation, members were of the view that a case to ease monetary policy further might emerge.",
+      "Taking account of all these factors, members judged it appropriate to hold the cash rate steady for the time being, while recognising that further easing over the period ahead may be appropriate to foster sustainable growth in demand while maintaining inflation consistent with the target."
+    ],
+    "reasoning": "The Board held the cash rate after the February cut but said explicitly that further easing may be appropriate. It held to let the earlier cut work and to see more data, citing below-trend growth and continuing spare capacity. This is a mild dovish stance with a clear easing bias."
+  },
+  {
+    "meeting_date": "2015-04-07",
+    "input_sha256": "c38c0d279f7c20672f76a1d5334766fef1e98ea440e3c5fead01b407d3c60cbb",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Taking all these factors into account, the Board judged that it was appropriate to hold interest rates steady for the time being, while accepting that further easing of policy may be appropriate over the period ahead to foster sustainable growth in demand and inflation consistent with the target.",
+      "The Board would continue to assess the case for such action at forthcoming meetings.",
+      "However, a significant pick-up in non-mining business investment was yet to occur and several indicators suggested it would remain subdued for longer than had earlier been anticipated."
+    ],
+    "reasoning": "The Board held steady for the time being, said further easing may be appropriate and would assess the case at coming meetings. Subdued non-mining investment, lower commodity prices and continuing spare capacity drove the dovish lean. Housing-market imbalances and uncertainty about how monetary policy was transmitting were the main reasons for waiting."
+  },
+  {
+    "meeting_date": "2015-05-05",
+    "input_sha256": "d818572b3d3c3dc904f29678bffdf5fad551a0a6c85a3aaa0641a43bfb822ab5",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "On balance, taking all these factors into account, the Board decided that the best course was to ease monetary policy further at this meeting.",
+      "Overall, compared with the previous set of forecasts, growth was now expected to take longer to strengthen and the unemployment rate was likely to remain elevated for longer.",
+      "Members agreed that, as at the time of the reduction in the cash rate in February, the statement communicating the decision would not contain any guidance on the future path of monetary policy."
+    ],
+    "reasoning": "The Board cut the cash rate to 2.0 per cent because growth was expected to take longer to strengthen and unemployment to stay elevated. Inflation was forecast slightly lower. The decision is clearly dovish and driven by growth and employment. The Board chose to give no guidance on the future path, so the forward bias is neutral."
+  },
+  {
+    "meeting_date": "2015-06-02",
+    "input_sha256": "42d2decf75aecb1df9d15b0f09f653caddba70a0b9a2c5a835b80582d56ab796",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Having eased policy at the previous meeting, members judged that it was appropriate to leave the cash rate unchanged and to assess information on economic and financial conditions as it became available.",
+      "Overall, in assessing domestic conditions and the international environment, the Board's assessment was that the stance of monetary policy should be accommodative.",
+      "A further depreciation therefore seemed both likely and necessary, particularly given the significant declines in commodity prices over the past year."
+    ],
+    "reasoning": "Having eased in May, the Board held the cash rate and said it would assess incoming data, without signalling a direction. It kept policy accommodative and said further exchange rate depreciation was necessary because growth was below trend and inflation well contained. The forward stance is neutral but data-dependent."
+  },
+  {
+    "meeting_date": "2015-07-07",
+    "input_sha256": "fd44814b10ccaeccdb3dd21fa67253529e8bce6c4389564f0491f059768c62c6",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In light of current and prospective economic circumstances and financial conditions, the Board judged that leaving the cash rate unchanged was appropriate.",
+      "On this basis, members assessed that inflationary pressures were well contained and likely to remain so in the period ahead.",
+      "Members noted that the exchange rate had thus far offered less assistance than would normally be expected in achieving balanced growth in the economy and that further depreciation seemed both likely and necessary."
+    ],
+    "reasoning": "The Board left the cash rate unchanged with no directional guidance. Growth was below average and spare capacity remained, but employment growth and a stable unemployment rate offset some of that weakness. With inflation well contained and further depreciation seen as necessary, the stance is neutral with a growth focus."
+  },
+  {
+    "meeting_date": "2015-08-04",
+    "input_sha256": "df07ed4e97b9af90709f3e76b0ca131a9bfd4dc2901ee7313362002279cb1470",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members noted that an accommodative monetary policy setting remained appropriate given the forecasts, while observing that the Australian economy had been adjusting to the shift in activity in the resources sector from the investment to the production phase.",
+      "As a result, employment had risen as a share of the working age population and the unemployment rate had been relatively stable, in contrast to earlier expectations of a further increase.",
+      "In light of these considerations, the Board judged that it was appropriate to leave the cash rate unchanged."
+    ],
+    "reasoning": "The Board held the cash rate and described domestic activity as more positive, with the unemployment rate forecast revised lower. Inflation was expected to stay consistent with the target, and APRA's measures were expected to reduce housing risks. Policy stayed accommodative with no signal of further moves."
+  },
+  {
+    "meeting_date": "2015-09-01",
+    "input_sha256": "588a1ace46f92cc512be8c9887c9f72ce5a945d93855a094b824c402f03a1868",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Overall, international economic developments had increased the downside risks to the outlook, but it was too early to assess the extent to which this would materially alter the forecast for GDP growth in Australia's trading partners to be around average over the next couple of years.",
+      "Inflation was forecast to remain consistent with the target over the next one to two years.",
+      "Given these considerations, the Board judged that it was appropriate to leave the cash rate unchanged."
+    ],
+    "reasoning": "The Board held the cash rate while noting that developments in China and global markets had increased downside risks. It judged it too early to change the outlook, and inflation was forecast to stay consistent with the target. The tone is neutral, with an eye on downside growth risks."
+  },
+  {
+    "meeting_date": "2015-10-06",
+    "input_sha256": "f4e4a0e5bde542560a5fb8c04b9e42a310455be6d0f9f23a1e0daedfd3bd1541",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members also noted that conditions in the labour market had strengthened further over recent months and were somewhat better than had been expected earlier in the year.",
+      "Nevertheless, spare capacity remained in the economy, domestic cost pressures were very low and inflation was expected to remain consistent with the target over the next one to two years.",
+      "Given these considerations, the Board judged that it was appropriate to leave the cash rate unchanged at this meeting."
+    ],
+    "reasoning": "The Board held the cash rate and noted that the labour market was better than expected, set against concerns about China and east Asia and continuing spare capacity. Housing risks were described as being managed by APRA's measures. No directional signal was given, so the stance is neutral."
+  }
+]

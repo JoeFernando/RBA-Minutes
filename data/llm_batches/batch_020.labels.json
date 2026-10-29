@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2023-12-05",
+    "input_sha256": "07d40009f539f2f70077e69b2db08e76c115f5937818500e16d198b1778aceb1",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Inflation had continued to decline but remained high.",
+      "Members agreed that whether further tightening of monetary policy is required to ensure that inflation returns to target in a reasonable timeframe will depend on how the incoming data alter the economic outlook and the evolving assessment of risks.",
+      "The Board remains resolute in its determination to return inflation to target and will do what is necessary to achieve that outcome."
+    ],
+    "reasoning": "The Board weighed a further 25 basis point increase against a hold and chose to hold, citing value in waiting for data. The only alternative considered was tightening, and the Board explicitly left open further tightening. Concern that inflation would stay above target for a prolonged period dominates, tempered by acknowledgement of weak consumption and balanced risks."
+  },
+  {
+    "meeting_date": "2024-02-06",
+    "input_sha256": "71705cf5a651c01ac5b68aec009f9dba408cf3ab977da722766eb9c2db10df37",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Inflation in Australia had declined but was still well above target.",
+      "Members also observed that the costs of inflation not returning to target within the envisaged timeframe were potentially very high.",
+      "Given this, members agreed that it was appropriate not to rule out a further increase in the cash rate target."
+    ],
+    "reasoning": "The Board again chose between a hike and a hold, judging the hold stronger because inflation had moderated faster than expected and risks were broadly balanced. However, it deliberately chose not to rule out a further increase and stressed that services inflation and excess demand remained. The lean is mildly hawkish with a tightening bias, hedged by acknowledged uncertainty."
+  },
+  {
+    "meeting_date": "2024-03-19",
+    "input_sha256": "abf3c485579b3cb0564b8ca31c04527d63c301480eb40834859f1998459d469c",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "On balance, members considered that the relative probability of these two sets of risks had become a little more even, as the incoming data had not indicated a materialisation of upside risks to inflation and as growth in output had slowed as expected.",
+      "Members agreed that it was therefore not possible to either rule in or out future changes in the cash rate target.",
+      "Members agreed that returning inflation to target remained the Board’s highest priority and that it would take some time before they could have sufficient confidence that this would occur within a reasonable timeframe."
+    ],
+    "reasoning": "The Board held with no explicit hike option debated, describing the economy as tracking broadly as expected and the risks as having become more even. It moved from not ruling out an increase to saying it could neither rule in nor rule out future changes, a neutral bias. Inflation remains the highest priority but the Board also emphasised preserving labour market gains, so the overall tone is balanced."
+  },
+  {
+    "meeting_date": "2024-05-07",
+    "input_sha256": "8876552ba2a1f146fc7fd134f02c5ab1746a25ac0407fb7a0b2860218542feee",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Inflation in Australia had declined more slowly than anticipated.",
+      "However, they expressed limited tolerance for inflation returning to target later than 2026.",
+      "They agreed that the flow of information since the previous meeting had increased the risks of inflation staying above target for longer."
+    ],
+    "reasoning": "Most data had been stronger than expected and the Board explicitly considered raising the cash rate, ultimately holding because the staff forecasts still showed a credible path to target. Members stated limited tolerance for a later return of inflation to target and that upside inflation risks had risen. The communicated two-way guidance is hedged, but the only alternative debated was a rise."
+  },
+  {
+    "meeting_date": "2024-06-18",
+    "input_sha256": "45b1421c908d77562761aa99fa146479e1fbbfcf227f94f96aa43eae23730e8d",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Turning to considerations for the policy decision, members noted that there had been several pieces of information since the May meeting that indicated a need to remain alert to upside risks to inflation.",
+      "Raising the cash rate at this meeting could be appropriate if members formed the view that policy settings were not sufficiently restrictive to return inflation to target within a reasonable timeframe.",
+      "Returning inflation to target remains the Board’s highest priority and it will do what is necessary to achieve that outcome."
+    ],
+    "reasoning": "The Board debated a rise versus a hold and held, judging the data insufficient to change the view that inflation would return to target by 2026. It stressed vigilance to upside inflation risks and noted the narrow path was becoming narrower. Downside labour market risks and household stress were acknowledged, keeping the hawkish lean mild."
+  },
+  {
+    "meeting_date": "2024-08-06",
+    "input_sha256": "067f1c065f5853e3f32b095f1a5248a09ba2aff7a0c4c3542e2e85d3b42d2bd9",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In light of these developments, members assessed that the risk of inflation not returning to target within a reasonable timeframe had increased.",
+      "Based on what they knew at the time of the meeting, members agreed that monetary policy would need to be tighter than this implied path in order to bring inflation sustainably back to target within a reasonable timeframe.",
+      "They also agreed that, based on the information available at the time of the meeting, it was unlikely that the cash rate target would be reduced in the short term, and that it was not possible to either rule in or rule out future changes in the cash rate target."
+    ],
+    "reasoning": "The Board judged the risk of inflation not returning to target had increased and that policy needed to be tighter than the market-implied path, noting observations that could justify an immediate increase. It held mainly because of market volatility and uncertainty, preferring to hold for longer rather than hike. The explicit statement that a near-term cut was unlikely makes this the firmest hawkish language of this run of holds."
+  },
+  {
+    "meeting_date": "2024-09-24",
+    "input_sha256": "95ea32c3049ad5feebfce643342275cc85c01b7ce1a67128d12c4af2685a824b",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Underlying inflation was still too high and, in quarterly terms, had fallen very little over the preceding year.",
+      "Therefore, future financial conditions might need to be either tighter or looser than at present to achieve the Board’s objectives.",
+      "In finalising the Board’s statement, members agreed that it was important to convey that the Board remained vigilant to upside risks to inflation."
+    ],
+    "reasoning": "The Board held with little change in its assessment, stating underlying inflation was still too high and that policy must stay sufficiently restrictive. It discussed scenarios requiring both tighter and looser policy, so the forward bias is two-sided. The emphasis on vigilance to upside inflation risks and on not following other central banks' cuts gives a mild hawkish lean."
+  },
+  {
+    "meeting_date": "2024-11-05",
+    "input_sha256": "84ce56ca6716838f17f61daee9cc3a782a577a0bcfbcab96cf855f6cb58eb8aa",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members agreed that it was important to keep monetary policy sufficiently restrictive until the Board is confident that inflation is moving sustainably towards the target.",
+      "More generally, members noted that, given the already lengthy period in which inflation had been above target, the Board has minimal tolerance to accommodate a more prolonged period of high inflation, even if this occurred because of factors that constrained the economy’s supply capacity.",
+      "Based on the information available at the time of the meeting, members agreed that it was not possible to rule anything in or out in relation to future changes in the cash rate target."
+    ],
+    "reasoning": "The Board held with no immediate need to change rates and balanced risks around the forecast. It explicitly discussed scenarios in which a cut could be warranted, alongside scenarios requiring a longer hold or tighter policy, so the bias is neutral. The insistence on remaining sufficiently restrictive and minimal tolerance for prolonged high inflation keeps a mild hawkish tone, but the language is heavily hedged."
+  },
+  {
+    "meeting_date": "2024-12-10",
+    "input_sha256": "52e1274fdf9dc94cd00e59e1a7dbf3d93cf651db1c8904c98d98bff093cfaf8b",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Relative to this central path, members judged that the risk that inflation returns to target more slowly than forecast had diminished since the previous meeting and that the downside risks to activity had strengthened.",
+      "If that were to occur, members concluded that it would, in due course, be appropriate to begin relaxing the degree of monetary policy tightness.",
+      "They agreed that they had gained confidence about this since the previous meeting but risks remained."
+    ],
+    "reasoning": "The Board held but judged upside inflation risks had diminished and downside risks to activity had strengthened, with wages growth slowing faster than expected. It signalled that, if data evolved as expected or weaker, it would in due course begin relaxing policy, an easing bias. This is tempered by reiterated minimal tolerance for prolonged high inflation and caution about loose financial conditions, so the dovish lean is mild and hedged."
+  },
+  {
+    "meeting_date": "2025-02-18",
+    "input_sha256": "3f6dfbb0e8b8a4336b2bc7b6fe58eb94f0f419164f969327f5a75255b53568a5",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Having weighed up these alternative arguments, members decided that the case to lower the cash rate target at this meeting was, on balance, the stronger one.",
+      "Given these judgements, members were particularly mindful of the risk of keeping monetary policy tight for too long, with adverse impacts on economic activity, the labour market and inflation.",
+      "As a result, members expressed caution about the prospect of further policy easing, which could also be seen in the forecast for inflation based on the market path."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points because underlying inflation had fallen faster than expected and members placed more weight on downside risks to the economy. It explicitly declined to commit to further reductions and expressed caution about further easing, citing a tight labour market. The decision is dovish but the forward signal is neutral."
+  }
+]

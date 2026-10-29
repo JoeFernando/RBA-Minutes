@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2014-02-04",
+    "input_sha256": "d598c82fa9733cdffe06747a4f553d8f964a5125be4563c8e3748915f23d6ce9",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In light of this, the Board's judgement was once again that it would be prudent to keep interest rates unchanged.",
+      "Although inflation in the December quarter had been higher than expected, there were several possible explanations.",
+      "Members recognised that conditions in the labour market tended to lag economic growth, and that the labour market had remained weak following the period of below-trend growth in activity."
+    ],
+    "reasoning": "The Board held the cash rate at 2.5 per cent and signalled that a period of stability in interest rates was the most prudent course. A higher-than-expected December quarter inflation reading and further exchange rate depreciation were weighed against a weak labour market and below-trend growth. Neither consideration dominated, so the meeting reads as balanced with no directional lean."
+  },
+  {
+    "meeting_date": "2014-03-04",
+    "input_sha256": "188804f5f0840189c1e22c2bcda16f826de5569d7e4d915b7467216917c4c6d3",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In light of this assessment, the Board's judgement was that it would be appropriate to maintain the current stance of policy.",
+      "There were further signs that low interest rates were providing support to activity, with improved economic conditions evident across a range of household and business indicators.",
+      "While the labour market remained weak, forward-looking indicators of labour demand appeared to have stabilised."
+    ],
+    "reasoning": "The Board kept the cash rate unchanged and repeated that a period of stability in interest rates was likely to be prudent. The discussion centred on activity and the labour market, noting that the existing stimulus was working and that inflation should stay consistent with the target. There is no lean towards either easing or tightening."
+  },
+  {
+    "meeting_date": "2014-04-01",
+    "input_sha256": "b1777c6823c79348642bdd2d3ca8ffbf42909b091d4d30da622c6687e2503f9c",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Developments over the past month had not changed that assessment.",
+      "The Board would continue to monitor developments in the economy, with members noting that, on present indications, the most prudent course was likely to be a period of stability in interest rates.",
+      "While there had been some tentative evidence of a slight improvement in a number of labour market indicators, conditions would need to improve further before the unemployment rate could be expected to decline."
+    ],
+    "reasoning": "The Board judged policy to be appropriately configured and again pointed to a period of stability in interest rates. The main focus was below-trend growth, the labour market and the high exchange rate, with wage growth expected to contain inflation. The guidance is steady and neutral."
+  },
+  {
+    "meeting_date": "2014-05-06",
+    "input_sha256": "61dcaf6e24d59ffe942d74126b01ace9772495319eead05364057782b424899d",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given this outlook for the economy and the significant degree of monetary stimulus already in place to support economic activity, the Board considered that the current accommodative stance of policy was likely to be appropriate for some time yet.",
+      "Inflation was consistent with the target and was forecast to remain so over the next couple of years.",
+      "The expansionary setting of monetary policy continued to have the expected effects on economic activity."
+    ],
+    "reasoning": "The Board held the cash rate and judged that the current accommodative setting would likely remain appropriate for some time yet. Growth was expected to be below trend, with spare labour market capacity keeping costs contained, and inflation was forecast to stay within the target. The communication signals an extended hold with no directional bias."
+  },
+  {
+    "meeting_date": "2014-06-03",
+    "input_sha256": "d75f0567eaf0106a8b51c0ca7b3fc9d8991aae60313e03b1627ecbafe97e4d82",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given this outlook for the economy and the significant degree of monetary stimulus already in place to support economic activity, the Board judged that the current accommodative stance of policy was likely to be appropriate for some time yet.",
+      "Notwithstanding a pick-up in growth around the turn of 2014, GDP growth was expected to be below trend over the next year or so, rising gradually thereafter.",
+      "Inflation was forecast to remain within the target."
+    ],
+    "reasoning": "The Board kept rates on hold and repeated that the accommodative stance was likely to be appropriate for some time yet. The discussion focused on the expected below-trend growth from falling mining investment and fiscal consolidation, while inflation was forecast to stay within the target. There is no lean in the forward guidance."
+  },
+  {
+    "meeting_date": "2014-07-01",
+    "input_sha256": "1d980c28733e9a259a66c0ab680c2f04cf4e34b669895035828f7103704ab83d",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Accordingly, with the significant degree of monetary stimulus already in place to support economic activity, the Board judged that, on present indications, the most prudent course was likely to be a period of stability in interest rates.",
+      "Inflation was expected to remain within the target.",
+      "Conditions in the labour market had improved a little since earlier in the year, although forward-looking indicators had been mixed of late and consistent with only moderate growth in employment."
+    ],
+    "reasoning": "The Board held the cash rate and expected a period of stability in interest rates. The discussion centred on below-trend growth and the high exchange rate, which was giving less help to rebalancing, while inflation was expected to stay within the target. The tone is neutral."
+  },
+  {
+    "meeting_date": "2014-08-05",
+    "input_sha256": "ae006d2a59dcd867f32fb5c69710fd15c5b70a66c28d6bbe49599dd0099b32ee",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Board judged that monetary policy was appropriately configured and that, on present indications, the most prudent course was likely to be a period of stability in interest rates.",
+      "Staff forecasts suggested that inflation, despite recent higher readings, was likely to be consistent with the 2–3 per cent target over the next two years.",
+      "Members noted that there was inevitably a significant degree of uncertainty about the outlook, given the number of forces working in different directions."
+    ],
+    "reasoning": "The Board judged policy to be appropriately configured and pointed to a period of stability in interest rates. Recent higher inflation readings were balanced against softer near-term output growth and subdued labour demand, and the Board noted forces working in different directions. The overall assessment is neutral and balanced."
+  },
+  {
+    "meeting_date": "2014-09-02",
+    "input_sha256": "64e2e3f55736af45c74332870650c82108a67e6eea904137c00f14d9fac92cc3",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Accommodative monetary policy was supporting demand in some sectors of the economy, but policy also needed to be cognisant of the risks to future growth that could accompany a large further build-up in asset prices, particularly if that was associated with an increase in leverage.",
+      "Housing prices were continuing to increase in the larger cities and members considered that the risks associated with this trend warranted ongoing close observation.",
+      "Members considered that the most prudent course was likely to be a period of stability in interest rates."
+    ],
+    "reasoning": "The Board held the cash rate and again expected a period of stability in interest rates. Subdued labour market conditions and an overvalued exchange rate were weighed against new concern about rising housing prices, investor credit and risk-taking. The financial stability point argues against further easing without signalling any tightening, so the stance is neutral with balanced concerns."
+  },
+  {
+    "meeting_date": "2014-10-07",
+    "input_sha256": "7e94b1e215cde2965ea3114e2bafb851c926ca2aec01c284968593147a72c914",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Given the information available, the Board's judgement was that the current stance of monetary policy continued to be appropriate for fostering sustainable growth in demand and inflation outcomes consistent with the target over the period ahead.",
+      "In this context, members discussed the importance of lenders maintaining strong lending standards and the ongoing dialogue between the Bank and APRA on the matter.",
+      "Members considered that the most prudent course was likely to be a period of stability in interest rates."
+    ],
+    "reasoning": "The Board kept policy unchanged and repeated its guidance of a period of stability in interest rates. Subdued labour market conditions and the still-high exchange rate were balanced against faster investor housing lending and the need for strong lending standards. There is no directional lean."
+  },
+  {
+    "meeting_date": "2014-11-04",
+    "input_sha256": "e99f5fc170a65f7655da4feb98d4f231a1269296a352f513571b8f64ce1378e2",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In their assessment and given the information available, the Board judged that the current accommodative stance of monetary policy continued to be appropriate to foster sustainable growth in demand and inflation outcomes consistent with the target over the period ahead.",
+      "Labour market conditions had remained subdued and it was likely to be some time before unemployment declined consistently.",
+      "Members considered that the most prudent course was likely to be a period of stability in interest rates."
+    ],
+    "reasoning": "The Board held the cash rate and kept its guidance of a period of stability in interest rates. The main focus was below-trend growth, subdued labour market conditions and an exchange rate above fundamental value, with spare capacity limiting inflation. Investor housing credit was noted but did not drive the policy assessment."
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2025-04-01",
+    "input_sha256": "9c81ed739a8371cec84dd316dc1943f739ecbe2dee3c4323aac359f363c84b83",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "They agreed that the risks to the outlook were two-sided, with some that could result in economic activity and inflation in Australia being weaker than expected and others that could result in economic activity and inflation strengthening more noticeably.",
+      "In addition, members judged that it was not appropriate at this stage for monetary policy to react to the potential risks that could move outcomes in either direction.",
+      "While the available information suggested that the strategy was on track, members agreed that it was not yet possible to determine the timing of the next move in interest rates."
+    ],
+    "reasoning": "The Board held, judging that data were in line with forecasts and that risks were two-sided, with domestic upside inflation risks against rising global downside risks from trade policy. It cautioned against easing prematurely but referred to the timing of the next move and flagged the May meeting as an opportune time to revisit policy, implying a mild easing bias. Overall the tone is balanced and heavily hedged."
+  },
+  {
+    "meeting_date": "2025-05-20",
+    "input_sha256": "77baba4b278b30733ea48086a016469d470eb973f3588fca8347d6dae5e42662",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Having weighed up these alternative arguments, members judged that the case to reduce the cash rate target was the stronger one.",
+      "In addition, members judged that a lower cash rate would also be an appropriate response to the downside risks that had emerged from international developments since the previous meeting.",
+      "In light of this, members noted that a reduction in the cash rate could be warranted on the basis of either domestic or global factors, and that the combination of these might therefore warrant a 50 basis point reduction at this meeting."
+    ],
+    "reasoning": "The Board lowered the cash rate by 25 basis points, citing inflation back in the target range and downside risks from global trade developments. It seriously considered a 50 basis point cut, and the case for easing rested heavily on downside growth risks. It preferred to move cautiously and predictably, keeping the dovish lean mild."
+  },
+  {
+    "meeting_date": "2025-07-08",
+    "input_sha256": "b426a4cf7b6d28599dae635e14134f8b50a4e07564f37ee4d030a6b7caca24b2",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "All members agreed that, based on the information currently available, the outlook was for underlying inflation to decline further in year-ended terms, warranting some additional reduction in interest rates over time.",
+      "Therefore, these members argued that it would be prudent to wait for confirmation that inflation would sustainably return to target as forecast before easing policy further.",
+      "A minority of members judged that there was a case to lower the cash rate target at this meeting."
+    ],
+    "reasoning": "The Board held by a 6–3 majority, with the debate only about the timing of further easing, not its direction. All members agreed some additional reduction in rates would be warranted over time, and a minority favoured cutting immediately. The hold reflects caution and gradualism rather than hawkishness."
+  },
+  {
+    "meeting_date": "2025-08-12",
+    "input_sha256": "bdd1b8f87fd5d2bc601cb75a9e71dbf3f577bfa7fd1d053f6b11ae4c3ce168af",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members unanimously agreed that these considerations formed a strong case for lowering the cash rate target by 25 basis points at this meeting.",
+      "Members agreed that – based on what they knew at the time of the meeting – preserving full employment while bringing inflation sustainably back to the midpoint of the target range appeared likely to require some further reduction in the cash rate over the coming year.",
+      "They also agreed that it was important for the pace of decline in the cash rate to be determined by the incoming data on a meeting-by-meeting basis."
+    ],
+    "reasoning": "The Board unanimously cut by 25 basis points, with inflation heading sustainably to the midpoint. It signalled that some further reduction was likely over the coming year, a clear easing bias. The debate about pace was two-sided, with a gradual approach favoured by a still slightly tight labour market, so the dovish lean is mild."
+  },
+  {
+    "meeting_date": "2025-09-30",
+    "input_sha256": "3f786b4d34c68b463730e8a2a653629c7b4d97819aa7db6eaf7ca8fc8d855f54",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Regarding the risks to the outlook, members agreed that there were still risks on both sides of the forecast and debated their relative importance.",
+      "They agreed that the flow of information since the previous meeting, the forecasts from August and their judgement about the extent of policy restrictiveness collectively implied that there was no need for an immediate reduction in the cash rate target.",
+      "Looking ahead, members noted that it was appropriate for the Board’s decisions to remain cautious and data dependent."
+    ],
+    "reasoning": "The Board held unanimously after private demand recovered faster than expected and monthly CPI data hinted at higher inflation. Policy was still judged a little restrictive and risks were described as two-sided, with no signal for direction beyond caution and data dependence. The emerging upside inflation concerns offset the earlier easing bias, leaving a neutral stance."
+  },
+  {
+    "meeting_date": "2025-11-04",
+    "input_sha256": "4436916f403987acd2e3dd9de3112aa0a3644db933630cf6826400c2fde6914a",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members noted that the information received since the previous meeting had increased the probability of each of these scenarios materialising, though there was not yet enough information to be certain.",
+      "Given that, members determined that they could afford to be patient while assessing what the incoming data reveal about their judgements on the extent of spare capacity, the outlook for the labour market and the degree of restrictiveness of monetary policy.",
+      "Members agreed that it was not yet possible to be confident about which of these scenarios was more likely."
+    ],
+    "reasoning": "The Board held after a larger-than-expected rise in inflation, noting that conditions for a more gradual easing had become more probable and that policy might no longer be restrictive. The scenarios discussed were holding versus further easing, with no tightening option, and the Board could not judge which was more likely. Inflation is the main new concern, but the overall stance is balanced and hedged."
+  },
+  {
+    "meeting_date": "2025-12-09",
+    "input_sha256": "a36649e19725728918af5324695a17c24514785aacaaead082ca07688421cbb5",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Some members judged that, on balance, financial conditions were perhaps no longer restrictive.",
+      "Members discussed the circumstances in which, should these trends persist, an increase in the cash rate might need to be considered at some point in the coming year.",
+      "Overall, therefore, while recent data suggested the risks to inflation had tilted to the upside, members felt it would take a little longer to assess the persistence of inflationary pressures."
+    ],
+    "reasoning": "The Board held but expressed concern about the recent trend in inflation and its potential persistence, judging that the economy had some excess demand. It raised the possibility of a rate increase in the coming year and said inflation risks had tilted to the upside, a shift to a tightening bias. It held because it was too early to judge persistence, keeping the hawkish lean mild."
+  },
+  {
+    "meeting_date": "2026-02-03",
+    "input_sha256": "8d0bc053efe251cbf6101252f0f3d44c22c5b78992c7a5eb925af3a962bff1db",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Having considered these arguments, members agreed that there was a stronger case to increase the cash rate target by 25 basis points at this meeting.",
+      "Members agreed that the data received since the previous meeting had strengthened their concern that, without a policy response, inflation could remain persistently above target for too long.",
+      "Collectively, these observations led members to conclude that excess demand was unlikely to be corrected if the cash rate remained at 3.60 per cent."
+    ],
+    "reasoning": "The Board unanimously raised the cash rate by 25 basis points, judging that part of the pick-up in inflation would persist, capacity pressures were greater, and financial conditions were not restrictive enough. Downside employment risks were judged to have abated. It noted uncertainty about the future path but framed risks in ways that warranted tighter policy."
+  },
+  {
+    "meeting_date": "2026-03-17",
+    "input_sha256": "44fabc284012230b39947b8b5a3b4d3e2b2f22fa0d36f91681117f74882494b5",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members agreed that further tightening in monetary policy would likely be required in the near term to bring inflation back to target within a reasonable timeframe.",
+      "Having considered these arguments, a majority of members judged that the case to raise the cash rate target at the current meeting was the stronger one.",
+      "These members reiterated that inflation was too high and that a further tightening in monetary policy would probably be required."
+    ],
+    "reasoning": "The Board raised the cash rate by a 5–4 majority, but all members agreed further tightening would likely be needed in the near term, with the minority only preferring to wait for clarity on the Middle East conflict. Excess demand, insufficiently restrictive financial conditions and the oil price shock drove the decision. The split vote concerns timing rather than direction, so the stance is strongly hawkish."
+  },
+  {
+    "meeting_date": "2026-05-05",
+    "input_sha256": "8ccc61210af420eab49255cfa3953cfe27f0aa1944d9e8d9b260c3feb726cc91",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Having considered these various arguments, most members judged that the case to raise the cash rate target by 25 basis points at this meeting was the stronger one.",
+      "They emphasised that underlying inflation was projected to be above target for an extended period across a range of scenarios for how the conflict in the Middle East might develop.",
+      "They therefore agreed that the decision would give the Board space to see how the conflict in the Middle East develops and Australian households and businesses respond."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points by an 8–1 majority, citing an extended period of above-target inflation and the risk of inflation expectations de-anchoring. After the decision it judged policy would probably be somewhat restrictive and that this gave space to observe the conflict's effects, signalling a pause rather than further tightening. The decision is strongly hawkish while the forward bias is neutral."
+  }
+]

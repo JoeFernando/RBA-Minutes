@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2017-09-05",
+    "input_sha256": "a0cd42bb0a0bfad7184987e88ccdaa6350c9ddd06524b05d5af90abc14aa2727",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Taking into account all of the available information, and the need to balance the risks associated with high household debt in a low-inflation environment, the Board judged that holding the stance of monetary policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time.",
+      "Growth in wages and inflation had remained low but stable.",
+      "A further appreciation of the Australian dollar would be expected to result in a slower pick-up in growth and inflation."
+    ],
+    "reasoning": "The Board held the cash rate and explicitly framed the decision as balancing household debt risks against low inflation. Domestic data were described as positive and consistent with a gradual pick-up, while wage growth and inflation remained low. No directional signal for future policy was given."
+  },
+  {
+    "meeting_date": "2017-10-03",
+    "input_sha256": "4d7e1db1fa5f28a52f4aaba37a9aad7a72b9300ad731b28e99bebd24ded05a62",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members observed that moves towards higher interest rates in other economies were a welcome development, but did not have mechanical implications for the setting of policy in Australia, where the timing of any changes in interest rates would be dependent, as always, on developments in domestic economic conditions.",
+      "Remaining spare capacity meant that wage and price increases had been subdued.",
+      "Members discussed the importance of continuing to assess the various risks in household balance sheets."
+    ],
+    "reasoning": "The Board held rates with a balanced assessment: a brighter growth outlook offset by subdued wages, inflation and household debt risks. Members explicitly declined to draw implications from rate rises abroad. There is no lean towards tightening or easing."
+  },
+  {
+    "meeting_date": "2017-11-07",
+    "input_sha256": "e56637e382f6712c46495076a405b58cfde406c1c4dbc36dbb779b12d90c5351",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "These developments were consistent with the flexible inflation-targeting framework, which has allowed the Board to balance the need to support aggregate demand and reduce spare capacity in the labour market with the need to manage risks associated with high and rising household debt.",
+      "Inflation was expected to increase, but only gradually.",
+      "Members noted, however, that there was considerable uncertainty around when and how quickly wage pressures might emerge and about how much these would add to inflationary pressure."
+    ],
+    "reasoning": "The Board held the cash rate, describing an outlook largely unchanged and a gradual rise in wages and inflation. It emphasised balancing support for demand against household debt risks. No forward bias was expressed."
+  },
+  {
+    "meeting_date": "2017-12-05",
+    "input_sha256": "f8b6fb4663d31486d9f517424280a0aa01e2a2eb7fbcbce0a209d636d0306610",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Recent data had increased confidence that there would be further progress on these fronts over the following year.",
+      "However, growth in consumption was expected to have slowed in the September quarter and the outlook for household consumption continued to be a significant risk, given that household incomes were growing slowly and debt levels were high.",
+      "How far and when stronger conditions in the economy and labour market might feed through into higher wage growth and inflation remained important considerations shaping the outlook."
+    ],
+    "reasoning": "The tone was somewhat more confident about progress on unemployment and inflation, but this was balanced against consumption and household debt risks. The Board held rates and gave no signal about the direction of the next move. Overall the stance is neutral."
+  },
+  {
+    "meeting_date": "2018-02-06",
+    "input_sha256": "8dcb86f1ac83e3e9cbde35cede33ccb30fbebdc08826ec72e7e411044ab04d52",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Over 2017, progress had been made in reducing the unemployment rate and bringing inflation closer to target.",
+      "Even with the strength in the labour market, wage growth was yet to pick up.",
+      "Taking into account the available information, the Board judged that holding the stance of monetary policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board noted positive data and progress towards its goals, but stressed that inflation would rise only gradually and wage growth had yet to pick up. The cash rate was held without any stated bias. The stance is neutral."
+  },
+  {
+    "meeting_date": "2018-03-06",
+    "input_sha256": "d973a6b001d9d62807cc239712d20dcd62eed8c319e5ef09b233e96b31af1f03",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "However, the improvement in overall conditions had not yet translated into a definitive pick-up in wages growth, which remained low.",
+      "Further progress on these goals was expected over the period ahead, but this process was likely to be gradual.",
+      "Members agreed that household balance sheets still warranted careful monitoring."
+    ],
+    "reasoning": "Global inflationary pressures were noted as building, but domestic wages growth remained low and progress was expected to be gradual. The Board held rates and signalled no direction. The overall tone is balanced."
+  },
+  {
+    "meeting_date": "2018-04-03",
+    "input_sha256": "703ee8a8b95b9eefe48250a9f2ddf772aa0fa0380f6d2e7b4f884a19b9d66926",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In current circumstances, members agreed that it was more likely that the next move in the cash rate would be up, rather than down.",
+      "As progress in lowering unemployment and having inflation return to the midpoint of the target was expected to be only gradual, members also agreed that there was not a strong case for a near-term adjustment in monetary policy.",
+      "Over time, this was expected to lead to even tighter labour market conditions and further upward pressure on labour costs."
+    ],
+    "reasoning": "For the first time in this set, members stated that the next move was more likely to be up than down, an explicit tightening bias. This is tempered by the view that there was no strong case for a near-term change, so the hawkish lean is mild. The cash rate was held."
+  },
+  {
+    "meeting_date": "2018-05-01",
+    "input_sha256": "276424ecbc01a4a1691f131c03f1d3f5b07919dae5bf9460e78b37a244b4ae72",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In the current circumstances, members agreed that it was more likely that the next move in the cash rate would be up, rather than down.",
+      "Rather, members assessed that while this progress was unfolding, it would be appropriate to hold the cash rate steady and for the Reserve Bank to be a source of stability and confidence.",
+      "Members noted that there were risks to the forecasts in both directions."
+    ],
+    "reasoning": "The Board repeated that the next move was more likely to be up, signalling a tightening bias, while holding rates and seeing no strong case for near-term adjustment. Risks were described as two-sided. The stance is mildly hawkish."
+  },
+  {
+    "meeting_date": "2018-06-05",
+    "input_sha256": "2d411e1011f3305b0b816175b7574c7624a7595e86d3c5f12e544dddae62fc44",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Although wages growth had remained low, members noted that there had been more evidence that employers were having difficulty hiring workers with the requisite skills and that wage pressures were building in some parts of the economy.",
+      "Inflation remained low and was likely to remain so for some time, reflecting slow growth in labour costs and strong competition in the retail sector.",
+      "Further progress in the period ahead in reducing unemployment and returning inflation to the target was therefore expected, although this progress was likely to be gradual."
+    ],
+    "reasoning": "The minutes note emerging wage pressures in parts of the economy but also that inflation would remain low for some time. Unlike adjacent meetings, this text contains no explicit statement about the likely direction of the next move. The Board held rates in a balanced tone."
+  },
+  {
+    "meeting_date": "2018-07-03",
+    "input_sha256": "97f80c51fc6118d8caa5868f75281d14c09e0933fa99fb306130c6cc01dc6a5e",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In these circumstances, members continued to agree that the next move in the cash rate would more likely be an increase than a decrease.",
+      "However, since progress towards a lower unemployment rate and an inflation rate closer to the midpoint of the target range was likely to be gradual, they also agreed there was no strong case for a near-term adjustment in monetary policy.",
+      "Forward-looking indicators of labour demand continued to point to solid growth in employment; most notably, the vacancy rate had risen to a historically high level."
+    ],
+    "reasoning": "Members restated that the next move was more likely to be an increase, an explicit tightening bias, supported by a positive labour market outlook. The lean is mild because they saw no strong case for a near-term change. The cash rate was held."
+  }
+]
