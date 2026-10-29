@@ -228,9 +228,13 @@ def load_futures(path: Path = FUTURES_FILE) -> pd.DataFrame:
     if "implied_rate" in raw.columns:
         rate = rate.fillna(pd.to_numeric(raw["implied_rate"], errors="coerce"))
     out["rate"] = rate
+    # Where a day has both a traded price and a bid/ask midpoint, the traded price wins.
+    out["source"] = raw["what_to_show"].astype(str).str.upper() if "what_to_show" in raw.columns else "TRADES"
+    out["_rank"] = out["source"].map({"TRADES": 0}).fillna(1)
     out = out.dropna(subset=["contract_month", "rate"])
     out = out[(out["rate"] > -1) & (out["rate"] < 20)]  # drop obviously bad prices
-    return out.drop_duplicates(["trade_date", "contract_month"], keep="last").sort_values(["trade_date", "contract_month"])
+    out = out.sort_values(["trade_date", "contract_month", "_rank"]).drop_duplicates(["trade_date", "contract_month"])
+    return out.drop(columns="_rank").reset_index(drop=True)
 
 
 def futures_implied(futures: pd.DataFrame, overnight: pd.Series, decision: dt.date) -> dict:
@@ -257,8 +261,11 @@ def futures_implied(futures: pd.DataFrame, overnight: pd.Series, decision: dt.da
     else:
         return {}
     change = post - current
+    used = [m for m in (month, following) if m in curve.index][:1 if method == "meeting month" else 2][-1:]
+    source = before[(before["trade_date"] == day) & before["contract_month"].isin(used)]["source"]
     return {"price_date": day, "current_rate": current, "post_meeting_rate": post, "futures_change": change,
-            "futures_prob_25bp": change / 0.25, "futures_method": method}
+            "futures_prob_25bp": change / 0.25, "futures_method": method,
+            "price_source": source.iloc[0] if len(source) else ""}
 
 
 def futures_check(next_decision: dt.date | None = None) -> pd.DataFrame:

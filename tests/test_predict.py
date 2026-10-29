@@ -122,3 +122,14 @@ def test_futures_implied_follows_the_rate_tracker_method(tmp_path, monkeypatch):
     # A meeting in the last week of the month reads the next month's contract.
     late = predict.futures_implied(futures, overnight, dt.date(2026, 11, 28))
     assert late["futures_method"] == "next month" and late["post_meeting_rate"] == pytest.approx(4.85)
+
+
+def test_traded_price_preferred_over_midpoint(tmp_path):
+    csv = ("trade_date,contract_month,close,what_to_show\n"
+           "2026-11-02,2026-11,95.20,MIDPOINT\n2026-11-02,2026-11,95.175,TRADES\n"
+           "2026-11-02,2026-12,95.15,MIDPOINT\n")
+    path = tmp_path / "ib.csv"
+    path.write_text(csv)
+    f = predict.load_futures(path).set_index("contract_month")
+    assert f.loc["2026-11", "rate"] == pytest.approx(4.825) and f.loc["2026-11", "source"] == "TRADES"
+    assert f.loc["2026-12", "source"] == "MIDPOINT"  # used when there was no trade
