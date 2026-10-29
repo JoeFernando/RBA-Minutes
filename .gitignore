@@ -1,4 +1,17 @@
 *.html
+!tests/fixtures/*.html
 .Rproj.user
 .Rhistory
 *.Rproj
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# Raw downloads and regenerable exports (the SQLite database is committed)
+data/raw/
+data/exports/
