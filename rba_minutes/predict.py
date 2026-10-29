@@ -60,6 +60,9 @@ MACRO_SOURCES = {
     # ABS Data API: Wage Price Index, total hourly rates of pay excluding bonuses, private and public,
     # all industries, seasonally adjusted, % change from a year earlier
     "abs_wpi.csv": f"{ABS_API}/ABS,WPI/3.THRPEB.7.TOT.20.AUS.Q",
+    # RBA table F1, daily: cash rate, overnight interbank rate, 1-month bank bills and OIS
+    "f01dhist.xls": f"{config.BASE_URL}/statistics/tables/xls-hist/f01dhist.xls",   # to 2010
+    "f01d.xlsx": f"{config.BASE_URL}/statistics/tables/xls/f01d.xlsx",              # 2011 onwards
 }
 
 
@@ -138,6 +141,42 @@ def load_abs() -> tuple[pd.Series, pd.Series]:
     gdp = _abs_series(MACRO_DIR / "abs_gdp.csv")
     gdp_growth = (gdp / gdp.shift(4) - 1).dropna() * 100
     return gdp_growth, _abs_series(MACRO_DIR / "abs_wpi.csv")
+
+
+def load_market() -> pd.DataFrame:
+    """Daily money-market rates (RBA table F1): overnight interbank rate, 1-month bank bills, 1-month OIS.
+
+    OIS rates were published from July 2001 to December 2022; bank bill rates throughout.
+    """
+    frames = []
+    for name in ("f01dhist.xls", "f01d.xlsx"):
+        raw = pd.read_excel(MACRO_DIR / name, header=None)
+        ids = raw.iloc[10].tolist()
+        data = raw.iloc[11:].copy()
+        data.columns = ids
+        data = data.rename(columns={ids[0]: "date"})
+        data["date"] = pd.to_datetime(data["date"]).dt.date
+        frames.append(data.set_index("date")[["FIRMMCRID", "FIRMMBAB30D", "FIRMMOIS1D"]].apply(pd.to_numeric, errors="coerce"))
+    market = pd.concat(frames)
+    market = market[~market.index.duplicated(keep="last")].sort_index()
+    return market.rename(columns={"FIRMMCRID": "overnight", "FIRMMBAB30D": "bab_1m", "FIRMMOIS1D": "ois_1m"})
+
+
+def market_implied(market: pd.DataFrame, when: dt.date) -> dict:
+    """The market's priced move for a decision, like the ASX Rate Tracker, from the last close before it.
+
+    1-month OIS (or bank bill) rate minus the overnight cash rate that day: about +0.25 when a 25 basis
+    point rise is fully priced.
+    """
+    before = market[market.index < when]
+    ois = before.dropna(subset=["ois_1m", "overnight"])
+    bab = before.dropna(subset=["bab_1m", "overnight"])
+    out = {"mkt_ois_change": np.nan, "mkt_bab_change": np.nan}
+    if len(ois) and (when - ois.index[-1]).days <= 7:
+        out["mkt_ois_change"] = ois["ois_1m"].iloc[-1] - ois["overnight"].iloc[-1]
+    if len(bab) and (when - bab.index[-1]).days <= 7:
+        out["mkt_bab_change"] = bab["bab_1m"].iloc[-1] - bab["overnight"].iloc[-1]
+    return out
 
 
 def _latest_before(series: pd.Series, when: dt.date, lag: dt.timedelta):
@@ -229,6 +268,7 @@ def build_panel() -> pd.DataFrame:
     decisions = load_decisions()
     tm, ur = load_macro()
     gdp, wpi = load_abs()
+    market = load_market()
     forecasts = load_rba_forecasts()
     nowcasts = load_tm_nowcasts()
     smp_dates = load_documents()["smp"].set_index("issue_date")["available"]
@@ -255,6 +295,7 @@ def build_panel() -> pd.DataFrame:
             "unemployment_change_6m": ur_value - ur_6m.iloc[-1] if len(ur_6m) else np.nan,
             "gdp_growth": _latest_before(gdp, when, GDP_PUBLICATION_LAG)[1],
             "wpi_growth": _latest_before(wpi, when, WPI_PUBLICATION_LAG)[1],
+            **market_implied(market, when),
         }
         # the RBA's forecast from the latest SMP published before the decision
         known_smp = [k for k, v in smp_dates.items() if v < when]
@@ -290,6 +331,16 @@ MODELS = {
     "macro+gdp": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth"],
     "macro+wages": ["tm_gap", "unemployment_change_6m", "last_move", "wpi_growth"],
     "macro+gdp+wages": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth", "wpi_growth"],
+    # Market pricing (the ASX Rate Tracker's information): OIS 2001-2022, bank bills 2001 onwards
+    "market_ois": ["mkt_ois_change"],
+    "macro+market_ois": ["tm_gap", "unemployment_change_6m", "last_move", "mkt_ois_change"],
+    "market_ois+minutes_text": ["mkt_ois_change", "minutes_llm_stance_score", "minutes_hawk_dove_index"],
+    "macro+market_ois+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "mkt_ois_change",
+                                      "minutes_llm_stance_score", "minutes_hawk_dove_index"],
+    "market_bab": ["mkt_bab_change"],
+    "macro+market_bab": ["tm_gap", "unemployment_change_6m", "last_move", "mkt_bab_change"],
+    "macro+market_bab+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "mkt_bab_change",
+                                      "minutes_llm_stance_score", "minutes_hawk_dove_index"],
     "macro+gdp+wages+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth", "wpi_growth",
                                      "minutes_llm_stance_score", "minutes_hawk_dove_index"],
     "macro+surprise": ["tm_gap", "unemployment_change_6m", "last_move", "tm_surprise"],
@@ -423,7 +474,8 @@ def features_as_of(panel: pd.DataFrame, when: dt.date) -> pd.Series:
            "tm_surprise": tm_value - nowcasts[tm_date] if tm_date in nowcasts else np.nan,
            "unemployment": ur_value, "unemployment_change_6m": ur_value - ur_6m.iloc[-1],
            "gdp_growth": _latest_before(gdp, when, GDP_PUBLICATION_LAG)[1],
-           "wpi_growth": _latest_before(wpi, when, WPI_PUBLICATION_LAG)[1]}
+           "wpi_growth": _latest_before(wpi, when, WPI_PUBLICATION_LAG)[1],
+           **market_implied(load_market(), when)}
     smp = _latest_doc(docs["smp"], when)
     row["rba_tm_forecast_gap"] = forecasts.get(smp["issue_date"], np.nan) - TARGET_MIDPOINT
     for name, cols in (("smp", ["llm_stance_score", "hawk_dove_index", "lm_tone"]),
@@ -441,6 +493,8 @@ def forecast_next(panel: pd.DataFrame, when: dt.date, models: dict = MODELS, C: 
     row = features_as_of(panel, when)
     out = []
     for name, feats in models.items():
+        if any(pd.isna(row.get(f)) for f in feats):
+            continue  # an input not available for this decision (e.g. OIS, published only to 2022)
         train = panel.dropna(subset=feats)
         p = _fit_predict(train, pd.DataFrame([row]), feats, C)[0]
         out.append({"model": name, "trained_on": len(train), "p_cut": p[0], "p_hold": p[1], "p_raise": p[2]})
@@ -457,6 +511,14 @@ def run(next_decision: dt.date | None = None) -> dict:
         # inflation targeting, SMP text and RBA forecasts available (first SMP Feb 1997)
         # ABS GDP and Wage Price Index growth (WPI year-ended growth from September 1998)
         "abs_era": ("1998-11-01", {k: MODELS[k] for k in ("macro", "macro+gdp", "macro+wages", "macro+gdp+wages")}),
+        # Market pricing: OIS from July 2001 to December 2022 (the RBA stopped publishing it then)
+        "market_ois_era": ("2001-08-01", {k: MODELS[k] for k in ("macro", "market_ois", "macro+market_ois")}),
+        "market_ois_minutes_era": ("2006-11-01", {k: MODELS[k] for k in (
+            "macro", "macro+minutes_text", "market_ois", "macro+market_ois", "market_ois+minutes_text",
+            "macro+market_ois+minutes_text")}),
+        # Bank bills: noisier (they carry a credit premium) but available to date
+        "market_bab_minutes_era": ("2006-11-01", {k: MODELS[k] for k in (
+            "macro", "macro+minutes_text", "market_bab", "macro+market_bab", "macro+market_bab+minutes_text")}),
         "smp_era": ("1997-03-01", {k: MODELS[k] for k in ("macro", "macro+smp_text", "macro+smp_dictionary")}),
         # the RBA's year-ahead trimmed mean forecast is published in the SMP from May 2000
         "smp_forecast_era": ("2000-06-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
@@ -478,6 +540,8 @@ def run(next_decision: dt.date | None = None) -> dict:
         table.to_csv(OUT_DIR / f"scores_{name}.csv", index=False)
         tests = [paired_log_loss(preds, "macro", m) for m in models if m != "macro"]
         tests += [paired_log_loss(preds, "class_frequencies", "macro")]
+        if "market_ois" in models:  # what adds to market pricing
+            tests += [paired_log_loss(preds, "market_ois", m) for m in models if m.endswith("market_ois") or "market_ois+" in m]
         results[name] = {"start": start, "first_test": str(preds["decision_date"].min()),
                          "last_test": str(preds["decision_date"].max()),
                          "scores": table.to_dict("records"), "paired": tests}

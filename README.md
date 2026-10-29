@@ -86,7 +86,7 @@ python -m rba_minutes fsr-tables
 python -m rba_minutes fsr-graphs
 ```
 
-Prediction backtests (and probabilities for the next decision; `--refresh-data` first downloads the RBA cash rate history, RBA tables G1 and H5 (ABS CPI and Labour Force), and ABS real GDP and Wage Price Index from the ABS Data API into `data/macro/`):
+Prediction backtests (and probabilities for the next decision; `--refresh-data` first downloads the RBA cash rate history, RBA tables G1 and H5 (ABS CPI and Labour Force), daily F1 money-market rates (OIS, bank bills), and ABS real GDP and Wage Price Index from the ABS Data API into `data/macro/`):
 
 ```bash
 python -m rba_minutes predict --refresh-data --next 2026-11-03
@@ -366,6 +366,8 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 | SMP tone (Claude or dictionary) | 2001–2026, 273 meetings | No (gain ≈ 0) | No |
 | RBA's year-ahead inflation forecast | 2004–2026, 233 meetings | Slightly, not significant | No |
 | Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 233 meetings | No | No |
+| **Market pricing** (1-month OIS minus the cash rate: the ASX Rate Tracker's information) | 2005–2022, 189 meetings | **Yes, by far the strongest** (log loss 0.629 → 0.216; 29 of 46 moves called, 2 false alarms) | **Yes** (accuracy 78.8% → 89.9%) |
+| Minutes, on top of market pricing | 2011–2022, 131 meetings | Yes, small but significant (+0.020 per meeting) | Slightly (14 against 13 of 26 moves, no false alarms) |
 | ABS real GDP growth | 2003–2026, 251 meetings | No (slightly worse) | No |
 | ABS Wage Price Index growth | 2003–2026, 251 meetings | No (gain ≈ 0) | No |
 | FSR risk assessment | 2008–2026, 193 meetings | No | No |
@@ -373,7 +375,9 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 
 Macro data are today's revised figures rather than the first estimates available at each meeting, which flatters the macro models slightly (see the caveat in `analysis/README.md`).
 
-For the 3 November 2026 decision the models disagree: on data alone a hold is likely (83–87%); the minutes-based models put a raise at 32–64%; the best-scoring models call it about even (51–54% raise).
+Once market pricing is known, inflation, unemployment and the last move add nothing. The RBA stopped publishing OIS in December 2022; the 1-month bank bill rate stands in to 2026 but is a noisier signal.
+
+For the 3 November 2026 decision the models disagree: on data alone a hold is likely (83–87%); the minutes-based models put a raise at 32–64%; the best models with market pricing (bank bills) give a raise 41%.
 
 ## Method notes and caveats
 

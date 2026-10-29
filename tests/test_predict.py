@@ -82,3 +82,14 @@ def test_abs_series_and_growth(tmp_path, monkeypatch):
     assert wages.to_dict() == {dt.date(2025, 12, 31): 3.4}  # empty observations dropped
     assert predict._latest_before(growth, dt.date(2025, 6, 8), predict.GDP_PUBLICATION_LAG)[0] == dt.date(2025, 3, 31)
     assert predict._latest_before(growth, dt.date(2025, 6, 7), predict.GDP_PUBLICATION_LAG)[0] is None  # released 7 June: not before that day
+
+
+def test_market_implied_uses_the_last_close_before_the_decision():
+    market = pd.DataFrame({"overnight": [4.35, 4.35, 4.35], "bab_1m": [4.40, 4.45, 4.60],
+                           "ois_1m": [4.36, 4.48, np.nan]},
+                          index=[dt.date(2026, 9, 25), dt.date(2026, 9, 28), dt.date(2026, 9, 29)])
+    out = predict.market_implied(market, dt.date(2026, 9, 29))  # the decision day's own close is not used
+    assert out["mkt_ois_change"] == pytest.approx(0.13)
+    assert out["mkt_bab_change"] == pytest.approx(0.10)
+    stale = predict.market_implied(market, dt.date(2026, 10, 20))  # more than a week after the last data
+    assert np.isnan(stale["mkt_ois_change"]) and np.isnan(stale["mkt_bab_change"])

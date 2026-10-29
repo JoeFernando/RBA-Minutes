@@ -10,6 +10,7 @@ fitted only on earlier meetings and then predicts that meeting.
 |---|---|
 | Outcome | Every Board decision since January 1990 (402 decisions, from the RBA's cash rate page, which lists unchanged decisions too): cut, hold or raise |
 | Macro model | Trimmed mean inflation minus 2.5 (ABS CPI, from RBA table G1; used from 28 days after the quarter), six-month change in the unemployment rate (ABS Labour Force, from RBA table H5; from 18 days after the month), direction of the last move |
+| Market pricing | What the ASX RBA Rate Tracker measures, rebuilt from RBA table F1 (daily): the 1-month overnight indexed swap (OIS) rate minus the overnight cash rate at the last close before the decision (+0.25 = a 25 bp rise fully priced). OIS is published from July 2001 to December 2022 only; the 1-month bank bill rate (available to date, but carrying a credit premium) is tested as a stand-in. The ASX's own Rate Tracker history is not freely available |
 | Activity and wages | Real GDP growth over the year (ABS national accounts via the ABS Data API, chain volume, seasonally adjusted; from 68 days after the quarter) and Wage Price Index growth over the year (ABS Data API, total hourly rates excluding bonuses, seasonally adjusted; from 50 days after the quarter, data from September 1998) |
 | RBA forecast | The year-ahead trimmed mean forecast published in the latest SMP (from May 2000; internal forecasts not published at the time are excluded) |
 | Inflation surprise | The latest trimmed mean outcome minus the RBA's forecast for that quarter in the SMP of the same quarter (its nowcast; interpolated between the previous outcome and the next forecast where the archive has only half-yearly targets) |
@@ -161,6 +162,63 @@ false alarms (14 against 6); adding the inflation surprise to it gives the best 
 caught, 10 false alarms, 80.8%). Turning points stay hard. For example, the 29 September 2026 raise followed two
 holds, and every model gave it 13-17%.
 
+## Market pricing (the ASX Rate Tracker's information)
+
+### OIS, 2005-2022 (189 meetings, 46 moves)
+
+| Model | Log loss | Brier | Accuracy | Moves called | False alarms |
+|---|---:|---:|---:|---:|---:|
+| market (OIS) | **0.216** | **0.126** | **89.9%** | 29 of 46 | 2 |
+| macro + market | 0.250 | 0.145 | 89.4% | 31 of 46 | 5 |
+| macro | 0.629 | 0.353 | 78.8% | 13 of 46 | 7 |
+| past class frequencies | 0.735 | 0.402 | 75.7% | 0 of 46 | 0 |
+
+### OIS with the minutes, 2011-2022 (131 meetings, 26 moves)
+
+| Model | Log loss | Brier | Accuracy | Moves called | False alarms |
+|---|---:|---:|---:|---:|---:|
+| market + minutes text | **0.224** | **0.124** | 90.8% | 14 of 26 | 0 |
+| macro + market + minutes text | 0.239 | 0.131 | 90.1% | 15 of 26 | 2 |
+| market (OIS) | 0.244 | 0.130 | 90.1% | 13 of 26 | 0 |
+| macro + market | 0.249 | 0.128 | 90.8% | 14 of 26 | 0 |
+| macro + minutes text | 0.430 | 0.268 | 80.2% | 9 of 26 | 9 |
+| macro | 0.539 | 0.280 | 85.5% | 7 of 26 | 0 |
+
+| Compared with the market alone | Log-loss gain per meeting | 90% interval | Meetings better |
+|---|---:|---:|---:|
+| + minutes text | **+0.020** | **+0.005 to +0.032** | 75% |
+| + macro | -0.005 | -0.073 to +0.024 | 79% |
+| + macro + minutes text | +0.006 | -0.040 to +0.025 | 76% |
+| + macro (2005-2022 sample) | -0.034 | -0.093 to +0.004 | 63% |
+
+**Market pricing beats everything else by a wide margin.** The OIS-implied move correlates 0.92 with
+the decision; alone it cuts the macro model's log loss by two-thirds and calls 29 of 46 moves with
+only 2 false alarms. Inflation, unemployment and the last move add nothing once market pricing is
+known: the market already prices them. **The minutes still add a small, statistically significant
+edge on top of the market** (+0.020 per meeting): the market does not fully absorb what the minutes
+say.
+
+### Bank bills, 2011-2026 (164 meetings, 38 moves)
+
+| Model | Log loss | Brier | Accuracy | Moves called | False alarms |
+|---|---:|---:|---:|---:|---:|
+| macro + bank bills + minutes text | **0.448** | **0.266** | 82.3% | 22 of 38 | 13 |
+| macro + bank bills | 0.493 | 0.268 | **85.4%** | 20 of 38 | 6 |
+| macro + minutes text | 0.499 | 0.311 | 77.4% | 15 of 38 | 14 |
+| bank bills | 0.587 | 0.348 | 79.3% | 12 of 38 | 8 |
+| macro | 0.620 | 0.335 | 80.5% | 12 of 38 | 6 |
+
+| Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
+|---|---:|---:|---:|
+| bank bills | +0.127 | +0.059 to +0.206 | 68% |
+| bank bills + minutes text | +0.172 | +0.092 to +0.255 | 70% |
+| minutes text | +0.121 | +0.049 to +0.187 | 71% |
+
+The 1-month bank bill rate is a much weaker signal than OIS (correlation with the decision 0.64
+against 0.92), because its credit premium moves around. Still, it and the minutes each add
+information, and together they score best on this sample, which runs to 2026. Exact ASX futures
+data for 2023-2026 would show how close the market alone gets.
+
 ## The RBA's forecasts against outcomes (1990-2025)
 
 From the RBA's forecast-by-horizon files (`forecasts_by_horizon`); error = outcome minus forecast,
@@ -195,6 +253,7 @@ Inputs as of 2 November 2026:
 | September minutes (Claude stance) | +2, strongly hawkish |
 | August SMP (Claude stance) | +1, mildly hawkish |
 | October FSR | Elevated risk, rising; no clear implication for rates |
+| 1-month bank bill rate minus the overnight cash rate (28 October) | +0.14 percentage points (it was +0.10 to +0.18 before each 2026 raise and -0.03 before the holds) |
 
 | Model | Cut | Hold | Raise | Backtest log loss (2010-26) |
 |---|---:|---:|---:|---:|
@@ -207,6 +266,9 @@ Inputs as of 2 November 2026:
 | macro + GDP + wages | 2% | 82% | 16% | 0.608 |
 | macro | 6% | 84% | 10% | 0.616 |
 | macro + RBA forecast + SMP text | 3% | 87% | 10% | 0.616 (2004-26) |
+| macro + bank bills + minutes text (best on the 2011-26 market sample) | 0% | 59% | 41% | 0.448 (2011-26) |
+| macro + bank bills | 2% | 87% | 11% | 0.493 (2011-26) |
+| bank bills alone | 2% | 88% | 10% | 0.587 (2011-26) |
 
 **Reading:** the models disagree. On data alone (high but stable trimmed mean, rising unemployment) a
 hold is likely. The September minutes were strongly hawkish, and the minutes-based models put a
@@ -218,9 +280,15 @@ nowcast, and above the 3.3% it forecast for December 2026. That looks like news 
 historically the surprise has added nothing beyond the level of inflation (see above). Including it
 moves the probabilities only slightly (raise 10% → 12% on data alone, 51% → 54% with the minutes).
 
+Market pricing is the strongest predictor in the backtests, but the clean measure (OIS) stops in
+2022. On the bank bill stand-in, the best-scoring model gives a raise 41%. The bank bill spread of
++0.14 points sits within the +0.10 to +0.18 range seen before each 2026 raise, but bank bills have
+over-signalled moves before. The ASX Rate Tracker itself (not reachable from this environment) is the
+best single number for this call.
+
 This cannot be called "confidently": in the backtests no specification predicted turning points
-reliably. The models do not see market pricing, the RBA's November SMP (released with the decision),
-or speeches since the minutes. Those are the next things to add.
+reliably, and the models do not see the RBA's November SMP (released with the decision) or speeches
+since the minutes.
 
 ## Caveat: revised data, not real-time data
 
