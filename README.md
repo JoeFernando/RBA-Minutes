@@ -140,7 +140,7 @@ Boxes and similar studies are stored as chapters of their own and kept out of ea
 | SMP | Boxes; "In Depth" chapters (2024+) | 327 boxes, 5 In Depth (~286,000 words) |
 | FSR | Boxes; Focus Topics (2022+); articles (2004–2007); special chapters (e.g. "Assessing the Effects of Housing Lending Policy Measures", Oct 2018; "Mortgage Macroprudential Policies", Oct 2021) | 114 boxes, 14 Focus Topics, 9 articles, 2 special chapters (~203,000 words) |
 
-The FSR is where the RBA's analysis of household mortgage stress lives, including how many borrowers would struggle if unemployment rose. Examples among 36 studies on households, mortgages and arrears:
+The FSR is where the RBA's analysis of household mortgage stress lives, including how many borrowers would struggle if unemployment rose. Examples among the 32 studies whose titles mention households, mortgages, borrowers or arrears:
 
 | Issue | Study |
 |---|---|
