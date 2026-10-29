@@ -50,3 +50,34 @@ def test_parse_graph_data(tmp_path):
         ("1.2", "Cash rate", "2026-01-31", 3.85), ("1.2", "Cash rate", "2026-02-28", 3.85),
         ("1.2", "Model", "2026-01-31", 3.1)]
     assert values[0]["x_label"] == "Date" and values[0]["source"] == "RBA"
+
+
+def test_respace_rebuilds_spaces_from_glyph_positions():
+    # 'HousingandBusinessCredit' as the RBA's SVGs store it: one x per glyph, no spaces
+    xs = [141.5, 161.716, 178.796, 195.876, 211.444, 219.2, 236.28, 261.144, 276.712, 293.792, 318.65599,
+          338.87199, 355.95198, 371.51997, 379.27598, 396.35597, 411.92396, 427.49195, 450.81596, 471.03196,
+          481.92396, 497.49195, 514.57199, 522.32797]
+    widths = {("H", True): 0.722, ("o", True): 0.611, ("u", True): 0.611, ("s", True): 0.556, ("i", True): 0.278,
+              ("n", True): 0.611, ("g", True): 0.611, ("a", True): 0.556, ("d", True): 0.611, ("B", True): 0.722,
+              ("e", True): 0.556, ("C", True): 0.722, ("r", True): 0.389, ("t", True): 0.333}
+    assert graphs._respace("HousingandBusinessCredit", xs, 28.0, True, widths) == "Housing and Business Credit"
+    assert graphs._respace("2019", [0, -40, -80, -120], 10.0, False, {}) == "2019"  # no widths: unchanged
+
+
+def test_figure_alt_text_is_description_or_title():
+    page = "https://www.rba.gov.au/publications/smp/2024/feb/economic-conditions.html"
+    described = (b'<div id="content"><figure><figcaption><span>Graph A.1</span></figcaption>'
+                 b'<img src="images/graph-a.01.svg" alt="Graph A.1: A two-panel line graph showing wages."></figure></div>')
+    g = graphs.find_graphs(described, page)[0]
+    assert (g["number"], g["title"], g["description"]) == ("A.1", "", "A two-panel line graph showing wages.")
+    titled = (b'<div id="content"><figure><figcaption>Graph 1.2</figcaption>'
+              b'<img src="images/graph-1.02.svg" alt="China - Interest Rates"></figure></div>')
+    g = graphs.find_graphs(titled, page)[0]
+    assert (g["number"], g["title"], g["description"]) == ("1.2", "China - Interest Rates", "")
+
+
+def test_poor_titles():
+    assert graphs._poor_title("")
+    assert graphs._poor_title(":")
+    assert graphs._poor_title("CPIItems Rising Morethan2.5 Per Cent*")
+    assert not graphs._poor_title("Housing Loans in 90+ Day Arrears*")

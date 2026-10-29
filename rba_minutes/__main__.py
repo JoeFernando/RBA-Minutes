@@ -180,10 +180,12 @@ def _graphs(pub: str, conn) -> None:
 
     raw_dir = config.DATA_DIR / f"raw_{pub}"
     records = graphs.collect(raw_dir, pub, config.DATA_DIR / f"{pub}_graphs")
+    respaced = graphs.respace_svg_text([config.DATA_DIR / "raw_smp", config.DATA_DIR / "raw_fsr"])
+    log.info("Rebuilt the spaces in %d SVG graph titles", respaced)
     filled = graphs.fill_missing_titles(raw_dir)
     if filled:
         log.info("Filled %d graph titles from the 'List of graphs' pages", filled)
-        records = graphs.collect(raw_dir, pub, config.DATA_DIR / f"{pub}_graphs")  # re-read the updated caches
+    records = graphs.collect(raw_dir, pub, config.DATA_DIR / f"{pub}_graphs")  # re-read the updated caches
     log.info("Stored %d %s graphs", graphs.store(conn, records, pub), pub.upper())
     n_values, n_restricted = graphs.store_graph_data(conn, config.DATA_DIR / f"{pub}_graph_data", pub)
     log.info("Stored %d values from the %s graph-data workbooks (%d graphs marked 'Data restricted')",

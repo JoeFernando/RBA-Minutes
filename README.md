@@ -186,9 +186,27 @@ Structure handled: multi-row and spanning headers, headers missing their stub ce
 | SMP 1997–2005 | GIF images in the Bulletin page, "Graph N: Title" | Number, title, chapter, image |
 | SMP 2006–2023, FSR 2004–2023 | One page per graph linked from the chapter | Number, title, chapter, the graph page, image |
 | 2024 onwards | SVG in a `<figure>` with a long text description | Number, title, description, **all SVG text** (title, axis labels, notes, sources; searchable), image |
-| 2024 onwards (workbooks) | "Underlying data for selected graphs" | Every published value in long format (`smp_graph_data`, `fsr_graph_data`): graph, panel, series, x (date or category), value; graphs whose data the RBA cannot publish are listed as "Data restricted" |
+| 2025 onwards (workbooks) | "Underlying data for selected graphs" | Every published value (`v_smp_graph_data`, `v_fsr_graph_data`): graph, panel, series, x (date or category), value; graphs whose data the RBA cannot publish are marked "Data restricted" |
 
-GRAPH_COUNTS
+| Item | SMP | FSR |
+|---|---:|---:|
+| Graphs | 10,773 in 119 issues | 3,015 in 46 issues |
+| Images downloaded | 10,773 (7,554 GIF, 3,219 SVG; 500 MB) | 3,015 (2,275 GIF, 740 SVG; 138 MB) |
+| With a title | 10,768 | 3,014 |
+| SVG text extracted | 3,219 | 740 |
+| Long text descriptions (2023 onwards) | 1,442 | 412 |
+| Graph-data values (2025–2026 workbooks) | 148,086 in 895 series, 188 graphs | 14,570 in 167 series, 45 graphs |
+| Graphs marked "Data restricted" in the workbooks | 239 | 40 |
+
+Titles come from the image's alt text, the graph's own page, or the issue's "List of graphs" page. For 2023+ graphs whose title exists only inside the SVG, the title is the largest bold text in the image. The RBA's SVGs position each glyph and leave out the spaces ("HousingandBusinessCredit"), so spaces are rebuilt from the glyph positions, using character widths learned from all 3,959 SVGs (they match Arial's published metrics). 1997–2005 box graphs are numbered as printed ("Box 1 Graph 2") and placed in their box.
+
+```sql
+SELECT issue_date, chapter_title, graph_number, title, image_file
+FROM smp_graphs WHERE title LIKE '%neutral rate%' ORDER BY issue_date;
+
+SELECT x, value FROM v_smp_graph_data
+WHERE issue_date = '2026-08' AND graph_number = '1.2' AND series = 'Nominal cash rate';
+```
 
 ## Databases
 
@@ -216,7 +234,7 @@ GRAPH_COUNTS
 | `v_smp_sentiment` | issue | All headline scores side by side |
 | `smp_tables`, `smp_table_cells`, `v_smp_table_cells` | table / cell | See Tables |
 | `smp_graphs` | graph | `issue_date`, `chapter_title`, `graph_number`, `title`, `description`, `svg_text`, `image_url`, `image_file`, `graph_page` |
-| `smp_graph_data` | published graph value (2024+) | `graph_number`, `graph_title`, `panel`, `series`, `x_label`, `x`, `value` |
+| `smp_graph_series`, `smp_graph_values`, `v_smp_graph_data` | graph series / published value (2025+ workbooks) | `graph_number`, `graph_title`, `source`, `panel`, `series`, `x_label`, `x`, `value` (the view joins them in long format) |
 | `forecasts_by_horizon` | variable × forecast quarter × horizon | `cpi_ye`, `underlying_ye`, `gdp_qtr`, `unemployment`; forecast, actual, error (= actual − forecast), since 1990 |
 | `smp_forecast_archive` | SMP × variable × target period | 26 variables of the detailed forecast table since November 2018 (cash rate, TWI and oil assumptions from 2024) |
 
@@ -231,7 +249,7 @@ GRAPH_COUNTS
 | `fsr_dictionary_sentiment` | issue, overview or chapter | as for the minutes |
 | `fsr_llm_assessment` | issue × labeller × prompt version × input text | `risk_level` (low/moderate/elevated/high), `risk_trend`, `system_resilience`, `household_stress`, `housing_market`, `credit_conditions`, `main_risk_source`, `policy_implication` (what the concerns imply for rates), `confidence`, `key_quotes`, `quotes_verified` |
 | `v_fsr_sentiment` | issue | All headline scores; `llm_risk_level_ordinal` (1–4) |
-| `fsr_tables`, `fsr_table_cells`, `v_fsr_table_cells`, `fsr_graphs`, `fsr_graph_data` | table / cell / graph / value | As for the SMP |
+| `fsr_tables`, `fsr_table_cells`, `v_fsr_table_cells`, `fsr_graphs`, `fsr_graph_series`, `fsr_graph_values`, `v_fsr_graph_data` | table / cell / graph / value | As for the SMP |
 
 ### Using them together
 
@@ -305,6 +323,7 @@ Built on 29 October 2026.
 | Every box on the RBA's own lists captured | SMP 326 of 326; FSR 137 of 137 (boxes, Focus Topics, articles) |
 | Cash rate decisions chain consistently | 213 of 213 |
 | Claude quotes found verbatim in the source text | 213 of 213 minutes, 119 of 119 SMPs, 46 of 46 FSRs |
+| Every graph found in the pages has its image | SMP 10,773 of 10,773; FSR 3,015 of 3,015 |
 
 Table audits (each by agents working only from the published HTML with their own code; every fault found was fixed, checked against the whole collection for side effects, and pinned by a regression test on the real table in `tests/fixtures/rba_tables/`):
 
