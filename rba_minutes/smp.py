@@ -17,6 +17,7 @@ import logging
 import re
 import sqlite3
 import time
+import zlib
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urljoin, urlparse
@@ -291,7 +292,7 @@ CREATE TABLE IF NOT EXISTS smp_chapters (
     url             TEXT NOT NULL,
     text            TEXT NOT NULL,
     n_words         INTEGER NOT NULL,
-    content_html    TEXT NOT NULL,
+    content_html_zlib BLOB NOT NULL,        -- the page's content block, zlib-compressed (see chapter_html())
     UNIQUE (issue_id, position)
 );
 
@@ -378,10 +379,20 @@ ORDER BY i.issue_date;
 """
 
 
-def connect(path: Path = config.DB_PATH) -> sqlite3.Connection:
-    conn = db.connect(path)
+def connect(path: Path = config.SMP_DB_PATH) -> sqlite3.Connection:
+    """Open the SMP database (separate from the minutes database to keep each file small)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(path)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(SCHEMA)
     return conn
+
+
+def chapter_html(conn: sqlite3.Connection, chapter_id: int) -> str:
+    """The published HTML of one chapter, decompressed."""
+    blob = conn.execute("SELECT content_html_zlib FROM smp_chapters WHERE chapter_id = ?", (chapter_id,)).fetchone()[0]
+    return zlib.decompress(blob).decode("utf-8")
 
 
 def upsert_issue(conn: sqlite3.Connection, issue: dict) -> int:
@@ -412,10 +423,10 @@ def upsert_issue(conn: sqlite3.Connection, issue: dict) -> int:
     position = 0
     for n, chapter in enumerate(issue["chapters"]):
         chapter_id = conn.execute(
-            "INSERT INTO smp_chapters (issue_id, position, title, category, url, text, n_words, content_html) "
+            "INSERT INTO smp_chapters (issue_id, position, title, category, url, text, n_words, content_html_zlib) "
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING chapter_id",
             (issue_id, n, chapter["title"], chapter["category"], chapter["url"], chapter["text"],
-             db.word_count(chapter["text"]), chapter["content_html"]),
+             db.word_count(chapter["text"]), zlib.compress(chapter["content_html"].encode("utf-8"), 9)),
         ).fetchone()[0]
         for kind, text in chapter["paragraphs"]:
             conn.execute(

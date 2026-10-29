@@ -76,7 +76,7 @@ FOOTNOTE_MARK = re.compile(r"\((?:[a-z]{1,2}|\d{1,2})\)|\*+$")
 
 def to_number(text: str) -> float | None:
     """'2¾' -> 2.75, '−1,504' -> -1504.0; None if the text is not a single number."""
-    text = text.replace(" ", "")
+    text = text.replace(" ", "").replace("−-", "−").lstrip("~")
     match = NUMBER.match(text)
     if not match:
         return None
@@ -136,15 +136,41 @@ def parse_value(text: str) -> tuple[float | None, float | None, float | None]:
     return None, None, None
 
 
+BLOCK_TAGS = ("p", "div", "li")
+TRAILING_MARKS = re.compile(r"(?:\s*(?:\((?:[a-z]{1,2}|\d{1,2})\)|\*+))+$")
+PERIOD = re.compile(
+    r"^(?:(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(?:qtr\s*)?)?"
+    r"(?:\d{4}(?:/\d{2,4})?|\d{2}(?:/\d{2})?)$|^(?:year|years|quarter|month)", re.IGNORECASE)
+DATE_TEXT = re.compile(r"^(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*\d{2,4}$", re.IGNORECASE)
+TOTAL_LABEL = re.compile(r"^(?:total|world|all\b)|\btotal$", re.IGNORECASE)
+INDENT = re.compile(r"^[–—-]\s*")
+
+
+def _text_of(el: Tag) -> str:
+    """Text of an element without spaces injected at inline tags ('¥6', not '¥ 6')."""
+    for br in el.find_all("br"):
+        previous = br.previous_sibling
+        joins_word = isinstance(previous, str) and previous.rstrip().endswith("-")
+        br.replace_with("" if joins_word else " ")
+    for block in el.find_all(BLOCK_TAGS):
+        block.append(" ")
+    text = normalise_text(el.get_text(""))
+    return re.sub(r"(\w)- (\w)", lambda m: m.group(1) + "-" + m.group(2), text) if "- " in text else text
+
+
 def _cell_text(cell: Tag) -> tuple[str, str]:
     """(text without footnote markers, comma-separated footnote markers)."""
     marks = []
     for sup in cell.find_all("sup"):
         marks.append(normalise_text(sup.get_text(" ")))
         sup.decompose()
-    for br in cell.find_all("br"):
-        br.replace_with(" ")
-    text = normalise_text(cell.get_text(" "))
+    text = _text_of(cell)
+    trailing = TRAILING_MARKS.search(text)
+    if trailing and trailing.start() > 0 and not re.fullmatch(r"\s*\(\d{1,2}\)", trailing.group(0)):
+        marks += re.findall(r"\([a-z]{1,2}\)|\*+", trailing.group(0))   # plain-text marks: 'Unemployment rate(b)'
+        text = text[:trailing.start()].rstrip()
+    text = text.rstrip(",").rstrip()                                       # 'ABS(a),(b)' leaves 'ABS,'
+    text = re.sub(r"\(\s*\)$", "", text).rstrip()
     return text, ",".join(m for m in marks if m)
 
 
@@ -161,10 +187,12 @@ def _grid(rows: list[Tag]) -> list[list[dict]]:
             while c < len(grid[r]) and grid[r][c] is not None:
                 c += 1
             text, marks = _cell_text(cell)
-            info = {"text": text, "marks": marks, "is_th": cell.name == "th",
-                    "classes": cell.get("class", []), "row_classes": row.get("class", [])}
+            classes = cell.get("class", [])
+            info = {"text": text, "marks": marks, "is_th": cell.name == "th", "classes": classes,
+                    "row_classes": row.get("class", []), "strong": cell.find(["strong", "b"]) is not None,
+                    "colspan": int(cell.get("colspan", 1) or 1)}
             rowspan = int(cell.get("rowspan", 1) or 1)
-            colspan = int(cell.get("colspan", 1) or 1)
+            colspan = info["colspan"]
             for dr in range(rowspan):
                 while len(grid) <= r + dr:
                     grid.append([])
@@ -172,61 +200,90 @@ def _grid(rows: list[Tag]) -> list[list[dict]]:
                 while len(target) < c + colspan:
                     target.append(None)
                 for dc in range(colspan):
-                    target[c + dc] = dict(info, spanned=(dr, dc) != (0, 0))
+                    target[c + dc] = dict(info, spanned=(dr, dc) != (0, 0), row_spanned=dr > 0, col_spanned=dc > 0)
             c += colspan
     width = max((len(r) for r in grid), default=0)
-    empty = {"text": "", "marks": "", "is_th": False, "classes": [], "row_classes": [], "spanned": False}
-    return [[cell or dict(empty) for cell in row] + [dict(empty)] * (width - len(row)) for row in grid]
+    empty = {"text": "", "marks": "", "is_th": False, "classes": [], "row_classes": [], "strong": False,
+             "colspan": 1, "spanned": False, "row_spanned": False, "col_spanned": False}
+    return [[cell or dict(empty) for cell in row] + [dict(empty) for _ in range(width - len(row))] for row in grid]
 
 
 def _caption(table: Tag) -> tuple[str, str, str, str]:
     """(table number, title, subtitle/units, caption footnote marks)."""
     caption = table.find("caption")
+    marks = ""
+    subtitle = ""
     if caption is None:
         holder = table.find_parent("div", class_="box-table")
         heading = holder.find(["h3", "h4", "p"]) if holder else None
-        text = normalise_text(heading.get_text(" ")) if heading else ""
-        subtitle = ""
+        text = _text_of(heading) if heading else ""
     else:
-        sub = caption.find(class_="sub")
-        subtitle = ""
+        sub = caption.find(class_=["sub", "sup"])  # 'sup' is a typo for 'sub' in some issues
+        sub_marks = ""
         if sub is not None:
-            subtitle, _ = _cell_text(sub)
+            subtitle, sub_marks = _cell_text(sub)
             sub.decompose()
-        text, _ = _cell_text(caption)
-    match = (re.match(r"^Table\s+([A-Z]?\d+(?:\.\d+)?[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
+        text, marks = _cell_text(caption)
+        marks = ",".join(m for m in (marks, sub_marks) if m)
+    match = (re.match(r"^Table\s+([A-Z]\.\d+|[A-Z]?\d+(?:\.\d+)?[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
              or re.match(r"^([A-Z]?\d+(?:\.\d+)?)\s*:\s*(.*)$", text))      # "2.4: Foreign Exchange Reserves"
     number, title = (match.group(1), match.group(2)) if match else ("", re.sub(r"^Table\s*:\s*", "", text))
-    return number, title.strip(), subtitle.strip(), ""
+    return number, title.strip(), subtitle.strip(), marks
 
 
-def _footer(table: Tag) -> tuple[str, str]:
+def _split_note(text: str, notes: list, sources: list) -> None:
+    if re.match(r"^sources?\s*:", text, re.IGNORECASE):
+        sources.append(re.sub(r"^sources?\s*:\s*", "", text, flags=re.IGNORECASE))
+    elif text:
+        notes.append(text)
+
+
+def _footer(table: Tag) -> tuple[list, list]:
     """(notes, sources) from the table footer, which may also sit just after the table."""
-    notes, sources = [], []
-    places = [table.find("tfoot")]
+    notes: list[str] = []
+    sources: list[str] = []
+    places = list(table.find_all("tfoot"))
     holder = table.find_parent("div", class_="box-table")
     if holder is not None:
-        places += holder.find_all(class_=re.compile("note|source"), recursive=True)
+        places += [el for el in holder.find_all(class_=re.compile("note|source")) if el.find_parent("table") is None]
     seen = set()
     for place in places:
-        if place is None:
-            continue
-        for p in place.find_all(["p", "li"]) or [place]:
-            text = normalise_text(p.get_text(" "))
-            if not text or text in seen:
-                continue
-            seen.add(text)
-            if re.match(r"^sources?\s*:", text, re.IGNORECASE) or "source" in (p.get("class") or []):
+        source_els = place.find_all(class_="source")
+        for el in source_els:
+            text = _text_of(el)
+            if text and text not in seen:
+                seen.add(text)
                 sources.append(re.sub(r"^sources?\s*:\s*", "", text, flags=re.IGNORECASE))
-            else:
-                notes.append(text)
-    return " ".join(notes), "; ".join(sources)
+            el.decompose()
+        for el in place.find_all(["p", "li"]):
+            text = _text_of(el)
+            if text and text not in seen:
+                seen.add(text)
+                _split_note(text, notes, sources)
+            el.decompose()
+        rest = _text_of(place)   # notes written as bare text in the footer cell
+        if rest and rest not in seen:
+            seen.add(rest)
+            _split_note(rest, notes, sources)
+    return notes, sources
+
+
+def _is_number_like(text: str) -> bool:
+    return parse_value(text)[0] is not None or parse_direction(text) is not None
+
+
+def _level(cell: dict) -> int:
+    for cls in cell["classes"]:
+        match = re.fullmatch(r"sub(\d?)", cls)
+        if match:
+            return int(match.group(1) or 1)
+    return 1 if INDENT.match(cell["text"]) else 0
 
 
 def parse_table(table: Tag) -> dict:
     """Turn one <table> into {caption fields, notes, sources, cells: [...]}."""
     html = str(table)
-    number, title, subtitle, _ = _caption(table)
+    number, title, subtitle, title_marks = _caption(table)
     notes, sources = _footer(table)
     for tfoot in table.find_all("tfoot"):
         tfoot.decompose()
@@ -235,79 +292,263 @@ def parse_table(table: Tag) -> dict:
     body_rows = [tr for tbody in table.find_all("tbody") for tr in tbody.find_all("tr", recursive=False)]
     if not body_rows:
         body_rows = [tr for tr in table.find_all("tr") if tr not in head_rows]
-    if not head_rows and body_rows and all(c.name == "th" for c in body_rows[0].find_all(["th", "td"])):
-        head_rows, body_rows = body_rows[:1], body_rows[1:]
+    if not head_rows:
+        # No <thead>: leading rows made of several header cells are the column headers.
+        while body_rows:
+            cells = body_rows[0].find_all(["th", "td"], recursive=False)
+            filled = [c for c in cells if c.get_text(strip=True)]
+            if len(filled) >= 2 and all(c.name == "th" for c in filled):
+                head_rows.append(body_rows.pop(0))
+            else:
+                break
 
     head = _grid(head_rows)
     body = _grid(body_rows)
     width = max([len(r) for r in head + body] or [0])
+    head = [r + [dict(r[-1] if r else {}, text="", spanned=False)] * (width - len(r)) for r in head]
+    body = [r + [dict(r[-1], text="", spanned=False)] * (width - len(r)) for r in body]
 
-    # Column labels: join the distinct header texts stacked above each column.
-    col_labels = []
-    for c in range(width):
-        parts = []
-        for row in head:
-            text = row[c]["text"] if c < len(row) else ""
-            if text and text not in parts:
-                parts.append(text)
-        col_labels.append(" | ".join(parts))
+    # Column header levels and their footnote marks.
+    col_parts: list[list[str]] = [[] for _ in range(width)]
+    col_marks: list[list[str]] = [[] for _ in range(width)]
+    col_own = [False] * width  # a header cell starts in this column (not just spans into it)
+    for row in head:
+        for c in range(width):
+            cell = row[c]
+            if cell.get("text") and not cell.get("col_spanned"):
+                col_own[c] = True
+            if cell.get("text") and cell["text"] not in col_parts[c]:
+                col_parts[c].append(cell["text"])
+            if cell.get("marks") and not cell.get("spanned") and cell["marks"] not in col_marks[c]:
+                col_marks[c].append(cell["marks"])
 
-    # The label column is the leading run of <th scope="row"> cells (usually one).
-    label_cols = 1 if body and body[0] and (body[0][0]["is_th"] or not col_labels[:1] or not col_labels[0]) else 0
-
-    # Groups nest: a "tr-head" row (e.g. "Activity") starts a top-level group;
-    # a label with no values (e.g. "Less revisions since Budget") starts a
-    # sub-group that covers the indented rows beneath it.
-    cells, top_group, sub_group, row_idx = [], "", "", 0
-    labels = list(col_labels)
+    # Body rows that are really notes ("Source: RBA" or "(a) ..." spanning the table).
+    kept = []
     for row in body:
+        texts = {c["text"] for c in row if c["text"]}
+        spans = row[0]["colspan"] >= max(2, width - 1) if row else False
+        if spans and len(texts) == 1 and re.match(r"^(sources?\s*:|\([a-z]\)|notes?\s*:|\*)", next(iter(texts)), re.I):
+            _split_note(next(iter(texts)), notes, sources)
+            continue
+        if not texts:
+            continue  # spacer row
+        kept.append(row)
+    body = kept
+
+    # The label column: leading <th scope="row"> cells (usually one).
+    label_cols = 1 if body and (body[0][0]["is_th"] or not col_parts[0]) else 0
+
+    def is_heading(row) -> bool:
         label = row[0]["text"] if label_cols else ""
-        label_marks = row[0]["marks"] if label_cols else ""
         values = row[label_cols:]
-        # A body row made only of header cells is a header inside the table:
-        # one spanning every column names a panel ("Year-ended"), otherwise it
-        # relabels the columns for the rows below it.
-        filled = [v for v in values if v["text"]]
-        if not label and filled and all(v["is_th"] for v in filled):
-            if len({v["text"] for v in values}) == 1 and all(v["spanned"] for v in values[1:]):
-                top_group, sub_group = values[0]["text"], ""
+        has_values = any(v["text"] and not (v["spanned"] and v["text"] == label) for v in values)
+        return bool(label) and not has_values
+
+    def header_like(row) -> bool:
+        """A row inside the body that is really column headers or a panel name."""
+        if label_cols and row[0]["text"]:
+            return False
+        filled = [v for v in row[label_cols:] if v["text"] and not v["spanned"]]
+        if not filled:
+            return False
+        if all(v["is_th"] for v in filled):
+            return True
+        return len(filled) == 1 and filled[0]["colspan"] >= width - label_cols - 1 or \
+            len(filled) >= 2 and all(PERIOD.match(v["text"]) for v in filled)
+
+    # Columns that never hold a value (spacer columns, or columns created by a
+    # colspan wider than the table) are dropped unless they carry a real header.
+    data_rows = [r for r in body if not is_heading(r) and not header_like(r)]
+    keep = list(range(width))
+    for c in range(label_cols, width):
+        if all(not r[c]["text"] or (r[c]["spanned"] and c > 0 and r[c]["text"] == r[c - 1]["text"]) for r in data_rows):
+            label = " | ".join(col_parts[c])
+            neighbours = {" | ".join(col_parts[c - 1]) if c > 0 else None, " | ".join(col_parts[c + 1]) if c + 1 < width else None}
+            if not label or label in neighbours or not col_own[c]:
+                keep.remove(c)  # (a header spanning into an empty column, e.g. colspan=7 over 6 columns)
+
+    # Extra leading label columns: text-only columns with no header (e.g. 'US' / '– Dow Jones').
+    while label_cols < len(keep) - 1:
+        c = keep[label_cols]
+        texts = [r[c]["text"] for r in data_rows if r[c]["text"]]
+        if texts and not col_parts[c] and not any(_is_number_like(t) for t in texts):
+            label_cols += 1
+        else:
+            break
+    label_idx, value_idx = keep[:label_cols], keep[label_cols:]
+
+    # A header shared by every column ('Year-ended') is a panel name, like the
+    # 'Year-average' heading row further down the body.
+    def labels_for(parts_by_col):
+        return {c: " | ".join(parts_by_col[c]) for c in range(width)}
+    common = None
+    value_parts = [col_parts[c] for c in value_idx if col_parts[c]]
+    if value_parts and all(len(p) >= 2 for p in value_parts) and len({p[0] for p in value_parts}) == 1:
+        common = value_parts[0][0]
+        col_parts = [p[1:] if p and p[0] == common and len(p) >= 2 else p for p in col_parts]
+    labels = labels_for(col_parts)
+
+    # Side-by-side panels: a text column after numeric ones starts a new panel with its own labels.
+    panels, current = [], {"label": label_idx[-1] if label_idx else None, "cols": [], "name": ""}
+    for c in value_idx:
+        texts = [r[c]["text"] for r in data_rows if r[c]["text"]]
+        textual = texts and not any(_is_number_like(t) for t in texts) and \
+            sum(bool(DATE_TEXT.match(t) or PERIOD.match(t)) for t in texts) < len(texts) / 2
+        repeats_label_header = bool(label_idx) and bool(col_parts[c]) and col_parts[c] == col_parts[label_idx[-1]]
+        row_headers = bool(texts) and all(r[c]["is_th"] for r in data_rows if r[c]["text"])  # <th> mid-row: labels
+        textual = textual or ((repeats_label_header or row_headers) and texts and not any(_is_number_like(t) for t in texts))
+        if textual and current["cols"] and any(
+                any(_is_number_like(r[x]["text"]) for r in data_rows) for x in current["cols"]):
+            panels.append(current)
+            current = {"label": c, "cols": [], "name": " | ".join(col_parts[c])}
+        else:
+            current["cols"].append(c)
+    panels.append(current)
+    multi_panel = len(panels) > 1
+    if multi_panel:
+        # Panel label columns hold row labels, not values; a panel name that only repeats
+        # its columns' header adds nothing.
+        value_idx = [c for c in value_idx if c not in {p["label"] for p in panels[1:]}]
+        for p in panels[1:]:
+            if all(labels[c] == p["name"] for c in p["cols"]):
+                p["name"] = ""
+            p["group"] = ""
+        left_cols = set(panels[0]["cols"])
+
+        def is_heading(row) -> bool:  # headings of the left panel; the other panels have their own
+            label = row[0]["text"] if label_cols else ""
+            return bool(label) and not any(row[c]["text"] for c in left_cols)
+
+    # Group headings form a stack. Consecutive headings nest. A heading whose
+    # first data row is indented covers only the indented rows below it;
+    # otherwise it lasts until the next heading of the same or higher rank
+    # (rank 0 = 'tr-head' headings, 1 = bold ones, 2 = plain ones).
+    def rank(row) -> int:
+        cell = row[0]
+        if "tr-head" in cell["classes"] or "tr-head" in cell["row_classes"]:
+            return 0
+        return 1 if cell["strong"] or "bold" in cell["row_classes"] else 2
+
+    def first_data_after(i):
+        """The next row if it is a data row; None if a heading comes first (then the heading is a section)."""
+        nxt = body[i + 1] if i + 1 < len(body) else None
+        return nxt if nxt is not None and not is_heading(nxt) and not header_like(nxt) else None
+
+    header_labels = [labels.get(c, "") for c in value_idx]  # 'labels' can change at in-body header rows
+    cells, stack, row_idx = [], ([{"label": common, "rank": -1, "scope": "section", "marks": ""}] if common else []), 0
+    previous_heading, previous_label, carried = False, "", ""
+    previous_total = False
+    for i, row in enumerate(body):
+        if header_like(row):
+            filled = [v for v in row[label_cols:] if v["text"] and not v["spanned"]]
+            if len(filled) == 1 and filled[0]["colspan"] >= width - label_cols - 1:
+                stack = [{"label": filled[0]["text"], "rank": -1, "scope": "section", "marks": filled[0]["marks"]}]
             else:
-                labels = list(labels[:label_cols]) + [v["text"] for v in values]
+                new_parts = [list(p) for p in col_parts]
+                for c in value_idx:
+                    if row[c]["text"]:
+                        new_parts[c] = [row[c]["text"]]
+                labels = labels_for(new_parts)
+            previous_heading = True
             continue
-        row_classes = row[0]["row_classes"] if row else []
-        is_sub = "sub" in (row[0]["classes"] if row else [])
-        all_empty = all(not v["text"] for v in values)
-        spans_all = values and all(v["spanned"] for v in values) and label
-        if label and ("tr-head" in row_classes or spans_all):
-            top_group, sub_group = label, ""
+        label_parts = [row[c]["text"] for c in label_idx if row[c]["text"]]
+        if len(label_idx) > 1:
+            # A label written once for a block of rows ('Secured by residential property' over
+            # 'range' and 'average') is carried down to the rows below it.
+            if row[label_idx[0]]["text"]:
+                carried = row[label_idx[0]]["text"]
+            elif carried and label_parts:
+                label_parts = [carried] + label_parts
+        left_heading = is_heading(row)
+        label, group, level, is_total, group_marks, row_marks = "", "", 0, False, [], []
+        if left_heading:
+            carried = ""
+            heading = INDENT.sub("", label_parts[-1]) if label_parts else ""
+            nxt = first_data_after(i)
+            scope = "children" if nxt is not None and label_cols and _level(nxt[label_idx[-1]]) > _level(row[label_idx[-1]]) else "section"
+            entry = {"label": heading, "rank": rank(row), "scope": scope, "marks": row[label_idx[-1]]["marks"]}
+            if not previous_heading:
+                while stack and stack[-1]["scope"] == "children":
+                    stack.pop()
+                while stack and stack[-1]["rank"] >= entry["rank"]:
+                    stack.pop()
+            stack.append(entry)
+        else:
+            label_cell = row[label_idx[-1]] if label_idx else None
+            level = _level(label_cell) if label_cell else 0
+            if not previous_heading:
+                while stack and stack[-1]["scope"] == "children" and level == 0:
+                    stack.pop()
+            label = " – ".join(INDENT.sub("", t) for t in label_parts)
+            if label_cell is not None and label_cell["strong"] and level == 0 and not TOTAL_LABEL.search(label):
+                stack = [e for e in stack if e["rank"] < 0]  # a bold category row stands outside the groups above it
+            if label.lower() == "(previous)" and previous_label:
+                label = f"{previous_label} (previous)"
+            is_total = bool(TOTAL_LABEL.search(label))
+            if is_total and previous_total and len(stack) > (1 if common else 0):
+                stack.pop()  # a second 'Total' in a row closes the inner group (e.g. onshore + offshore)
+            group = " > ".join(e["label"] for e in stack if e["label"])
+            group_marks = [e["marks"] for e in stack if e["marks"]]
+            row_marks = [row[c]["marks"] for c in label_idx if row[c]["marks"]]
+        emitted = False
+        pending_sign = None
+        for panel_no, panel in enumerate(panels):
+            if panel_no == 0:
+                if left_heading:
+                    continue
+                p_label, p_group, p_level, p_total, p_marks = label, group, level, is_total, group_marks + row_marks
+            else:
+                # A side-by-side panel keeps its own groups: a bold label with no values in the
+                # panel starts one, a bold label with values stands outside it.
+                lab = row[panel["label"]] if panel["label"] is not None else None
+                p_label = INDENT.sub("", lab["text"]) if lab else ""
+                has_values = any(row[c]["text"] for c in panel["cols"])
+                if lab and p_label and lab["strong"]:
+                    panel["group"] = "" if has_values else p_label
+                    if not has_values:
+                        continue
+                sections = [e for e in stack if e["rank"] < 0]
+                p_group = " > ".join([e["label"] for e in sections if e["label"]] + [x for x in (panel["name"], panel["group"]) if x])
+                p_level = _level(lab) if lab else 0
+                p_total = bool(TOTAL_LABEL.search(p_label))
+                p_marks = [e["marks"] for e in sections if e["marks"]] + ([lab["marks"]] if lab and lab["marks"] else [])
+            for c in panel["cols"]:
+                cell = row[c]
+                if cell["spanned"] and c > 0 and cell["text"] == row[c - 1]["text"] and cell["text"]:
+                    continue
+                if not cell["text"] and not p_label:
+                    continue  # this panel has no entry on this row
+                value, low, high = parse_value(cell["text"])
+                direction = parse_direction(cell["text"])
+                if pending_sign is not None and value is not None and direction is None:
+                    value, direction = pending_sign * abs(value), pending_sign   # '↓' then '25 bps' in the next cell
+                pending_sign = direction if direction in (1, -1) and value is None else None
+                cells.append({
+                    "row_idx": row_idx, "col_idx": value_idx.index(c),
+                    "row_label": p_label,
+                    "row_group": p_group,
+                    "row_level": p_level,
+                    "col_label": labels.get(c, ""),
+                    "value_text": cell["text"], "value_num": value, "value_low": low, "value_high": high,
+                    "value_direction": direction,
+                    "footnotes": ",".join(m for m in p_marks + col_marks[c] + [cell["marks"]] if m),
+                    "is_total": int(p_total),
+                })
+                emitted = True
+        if left_heading:
+            previous_heading, previous_total = True, False
+            row_idx += emitted
             continue
-        if label and all_empty:
-            sub_group = label
-            continue
-        if sub_group and not is_sub:
-            sub_group = ""
-        group = " > ".join(g for g in (top_group, sub_group) if g)
-        is_total = "bold" in row_classes or label.lower().startswith(("total", "world"))
-        for c, cell in enumerate(values, start=label_cols):
-            if cell["spanned"] and cell["text"] == (row[c - 1]["text"] if c else None):
-                continue
-            value, low, high = parse_value(cell["text"])
-            cells.append({
-                "row_idx": row_idx, "col_idx": c - label_cols,
-                "row_label": label, "row_group": group, "row_level": 1 if is_sub else 0,
-                "col_label": labels[c] if c < len(labels) else "",
-                "value_text": cell["text"], "value_num": value, "value_low": low, "value_high": high,
-                "value_direction": parse_direction(cell["text"]),
-                "footnotes": ",".join(m for m in (label_marks, cell["marks"]) if m),
-                "is_total": int(is_total),
-            })
+        previous_heading, previous_total = False, is_total
+        if label and not label.endswith("(previous)"):
+            previous_label = label
         row_idx += 1
 
     return {
-        "table_number": number, "title": title, "subtitle": subtitle,
-        "notes": notes, "sources": sources, "html": html,
-        "n_rows": row_idx, "n_cols": max(0, width - label_cols),
-        "column_labels": col_labels[label_cols:], "cells": cells,
+        "table_number": number, "title": title, "subtitle": subtitle, "title_footnotes": title_marks,
+        "notes": " ".join(notes), "sources": "; ".join(sources), "html": html,
+        "n_rows": row_idx, "n_cols": len(value_idx),
+        "column_labels": header_labels, "cells": cells,
     }
 
 
@@ -350,6 +591,7 @@ CREATE TABLE IF NOT EXISTS smp_tables (
     title           TEXT NOT NULL,
     title_key       TEXT NOT NULL,          -- lower-case title without footnote marks, to follow a table over time
     subtitle        TEXT,                   -- usually the units
+    title_footnotes TEXT,                   -- footnote marks on the caption
     notes           TEXT,
     sources         TEXT,
     n_rows          INTEGER NOT NULL,
@@ -368,14 +610,14 @@ CREATE TABLE IF NOT EXISTS smp_table_cells (
     col_idx         INTEGER NOT NULL,
     row_label       TEXT,
     row_group       TEXT,                   -- e.g. 'Activity' in the detailed forecast table
-    row_level       INTEGER NOT NULL,       -- 1 for indented sub-rows
+    row_level       INTEGER NOT NULL,       -- indent depth: 0, 1 ('–' or class sub), 2 (sub2), 3 (sub3)
     col_label       TEXT,                   -- header levels joined with ' | '
     value_text      TEXT NOT NULL,          -- exactly as published (footnote marks removed)
     value_num       REAL,                   -- parsed number; midpoint for ranges
     value_low       REAL,                   -- for ranges such as '2½–3'
     value_high      REAL,
     value_direction INTEGER,                -- +1 / -1 for up / down arrows, 0 for 'No change'
-    footnotes       TEXT,                   -- footnote marks on the row label or cell, e.g. '(a)'
+    footnotes       TEXT,                   -- footnote marks that apply: group heading, row label, column header, cell
     is_total        INTEGER NOT NULL,
     PRIMARY KEY (table_id, row_idx, col_idx)
 );
@@ -398,10 +640,11 @@ def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
     for folder in sorted(p for p in raw_dir.iterdir() if (p / "manifest.json").exists()):
         for position, t in enumerate(issue_tables(folder)):
             table_id = conn.execute(
-                "INSERT INTO smp_tables (issue_date, position, table_number, title, title_key, subtitle, notes, "
-                "sources, n_rows, n_cols, column_labels, page_title, source_url, html) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING table_id",
+                "INSERT INTO smp_tables (issue_date, position, table_number, title, title_key, subtitle, title_footnotes, "
+                "notes, sources, n_rows, n_cols, column_labels, page_title, source_url, html) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING table_id",
                 (t["issue_date"], position, t["table_number"], t["title"], title_key(t["title"]), t["subtitle"],
+                 t["title_footnotes"],
                  t["notes"], t["sources"], t["n_rows"], t["n_cols"], json.dumps(t["column_labels"], ensure_ascii=False),
                  t["page_title"], t["source_url"], t["html"]),
             ).fetchone()[0]

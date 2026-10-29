@@ -134,7 +134,9 @@ def test_forecast_archive_matches_extracted_smp_tables():
 
     from rba_minutes import smp_tables
 
-    path = Path(__file__).resolve().parent.parent / "data" / "rba_minutes.sqlite"
+    path = Path(__file__).resolve().parent.parent / "data" / "rba_smp.sqlite"
+    if not path.exists():
+        pytest.skip("SMP database not built")
     conn = sqlite3.connect(path)
     if not conn.execute("SELECT name FROM sqlite_master WHERE name = 'smp_table_cells'").fetchone():
         pytest.skip("SMP tables not built")

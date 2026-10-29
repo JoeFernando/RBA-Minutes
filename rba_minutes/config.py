@@ -11,7 +11,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 EXPORT_DIR = DATA_DIR / "exports"
-DB_PATH = DATA_DIR / "rba_minutes.sqlite"
+DB_PATH = DATA_DIR / "rba_minutes.sqlite"          # minutes
+SMP_DB_PATH = DATA_DIR / "rba_smp.sqlite"          # Statements on Monetary Policy, their tables, and RBA forecasts
 
 USER_AGENT = (
     "rba-minutes-research/1.0 "

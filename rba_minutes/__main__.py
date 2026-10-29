@@ -103,7 +103,7 @@ def cmd_smp_scrape(args) -> None:
 def cmd_smp_build(args) -> None:
     from . import smp
 
-    loaded, failures = smp.build(smp.connect(args.db))
+    loaded, failures = smp.build(smp.connect(args.smp_db))
     log.info("Loaded %d SMP issues", loaded)
     for failure in failures:
         log.error("Skipped %s", failure)
@@ -112,13 +112,13 @@ def cmd_smp_build(args) -> None:
 def cmd_smp_score(args) -> None:
     from . import smp
 
-    log.info("Dictionary sentiment computed for %d SMP issues", smp.score_dictionary(smp.connect(args.db)))
+    log.info("Dictionary sentiment computed for %d SMP issues", smp.score_dictionary(smp.connect(args.smp_db)))
 
 
 def cmd_smp_llm_export(args) -> None:
     from . import smp
 
-    paths = smp.export_batches(smp.connect(args.db), args.out, args.batch_size)
+    paths = smp.export_batches(smp.connect(args.smp_db), args.out, args.batch_size)
     log.info("Wrote %d SMP batch files to %s", len(paths), args.out)
 
 
@@ -126,7 +126,7 @@ def cmd_smp_llm_import(args) -> None:
     from . import smp
 
     files = sorted(Path(args.dir).glob("smp_batch_*.labels.json"))
-    stored, problems = smp.import_labels(smp.connect(args.db), files)
+    stored, problems = smp.import_labels(smp.connect(args.smp_db), files)
     log.info("Stored %d SMP labels from %d files", stored, len(files))
     for problem in problems:
         log.error(problem)
@@ -143,7 +143,7 @@ def cmd_smp_boxes(args) -> None:
 def cmd_smp_check(args) -> None:
     from . import smp
 
-    problems, notes = smp.check(smp.connect(args.db))
+    problems, notes = smp.check(smp.connect(args.smp_db))
     for note in notes:
         print(f"note: {note}")
     for problem in problems:
@@ -156,10 +156,10 @@ def cmd_smp_tables(args) -> None:
 
     log.info("Downloaded %d 'List of tables' pages", smp_tables.fetch_table_pages())
     log.info("%d graph-data workbooks saved", len(smp_tables.fetch_graph_data()))
-    n_tables, n_cells = smp_tables.build(smp.connect(args.db))
+    n_tables, n_cells = smp_tables.build(smp.connect(args.smp_db))
     log.info("Extracted %d tables (%d cells)", n_tables, n_cells)
-    log.info("Wrote %d table CSVs to %s", smp_tables.export(smp.connect(args.db)), smp_tables.EXPORT_DIR)
-    check = smp_tables.cross_check_forecast_archive(smp.connect(args.db))
+    log.info("Wrote %d table CSVs to %s", smp_tables.export(smp.connect(args.smp_db)), smp_tables.EXPORT_DIR)
+    check = smp_tables.cross_check_forecast_archive(smp.connect(args.smp_db))
     if "skipped" in check:
         log.info("Forecast archive cross-check skipped: %s", check["skipped"])
     else:
@@ -179,7 +179,9 @@ def cmd_smp_forecasts(args) -> None:
 def cmd_forecasts_load(args) -> None:
     from . import forecasts
 
-    for table, count in forecasts.load_forecasts(db.connect(args.db)).items():
+    from . import smp
+
+    for table, count in forecasts.load_forecasts(smp.connect(args.smp_db)).items():
         log.info("Loaded %d rows into %s", count, table)
 
 
@@ -242,7 +244,9 @@ def cmd_status(args) -> None:
 def main(argv=None) -> None:
     parser = argparse.ArgumentParser(prog="python -m rba_minutes", description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--db", type=Path, default=config.DB_PATH, help="SQLite file (default: %(default)s)")
+    parser.add_argument("--db", type=Path, default=config.DB_PATH, help="minutes database (default: %(default)s)")
+    parser.add_argument("--smp-db", type=Path, default=config.SMP_DB_PATH,
+                        help="SMP, tables and forecasts database (default: %(default)s)")
     parser.add_argument("-v", "--verbose", action="store_true")
     sub = parser.add_subparsers(dest="command", required=True)
 
