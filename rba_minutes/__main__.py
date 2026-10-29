@@ -4,6 +4,8 @@
   build    parse the cached pages into the SQLite database
   score    compute dictionary sentiment for every meeting
   llm      classify each meeting with Claude (needs ANTHROPIC_API_KEY)
+  llm-export  write batch files for labelling inside a Claude Code session
+  llm-import  load the JSON labels written for those batch files
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -61,6 +63,30 @@ def cmd_llm(args) -> None:
     conn = db.connect(args.db)
     n = sentiment_llm.score_database(conn, args.model, args.effort, args.scope, args.limit)
     log.info("Classified %d meetings with %s", n, args.model)
+
+
+SESSION_MODEL = "claude-opus-5-5 (Claude Code session)"
+
+
+def cmd_llm_export(args) -> None:
+    from . import sentiment_llm
+
+    conn = db.connect(args.db)
+    paths = sentiment_llm.export_batches(conn, args.out, args.scope, args.batch_size, args.model)
+    log.info("Wrote %d batch files to %s", len(paths), args.out)
+
+
+def cmd_llm_import(args) -> None:
+    from . import sentiment_llm
+
+    conn = db.connect(args.db)
+    files = sorted(Path(args.dir).glob("*.labels.json"))
+    stored, problems = sentiment_llm.import_labels(conn, files, args.model, args.scope)
+    log.info("Stored %d labels from %d files", stored, len(files))
+    for problem in problems:
+        log.error(problem)
+    if problems:
+        sys.exit(1)
 
 
 EXPORTS = {
@@ -134,6 +160,15 @@ def main(argv=None) -> None:
     p.add_argument("--scope", default="policy", choices=["policy", "full"],
                    help="send only the policy considerations and decision (default) or all discussion")
     p.add_argument("--limit", type=int, default=None, help="classify at most this many meetings")
+    p = add("llm-export", cmd_llm_export, "write batch files for session labelling")
+    p.add_argument("--out", type=Path, default=config.DATA_DIR / "llm_batches")
+    p.add_argument("--scope", default="policy", choices=["policy", "full"])
+    p.add_argument("--batch-size", type=int, default=10)
+    p.add_argument("--model", default=SESSION_MODEL, help="leave out meetings this labeller has already done")
+    p = add("llm-import", cmd_llm_import, "load session labels")
+    p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches")
+    p.add_argument("--scope", default="policy", choices=["policy", "full"])
+    p.add_argument("--model", default=SESSION_MODEL)
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

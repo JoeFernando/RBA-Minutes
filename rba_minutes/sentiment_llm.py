@@ -1,9 +1,13 @@
 """Hawkish/dovish classification of each meeting with Claude.
 
-Needs an Anthropic API key (ANTHROPIC_API_KEY). Results are stored in the
-llm_sentiment table and a meeting is skipped when a result already exists for
-the same model, prompt version and input text, so re-runs only pay for new
-meetings.
+Two ways to produce the labels, both stored in the llm_sentiment table:
+
+- score_database() calls the Anthropic API (needs ANTHROPIC_API_KEY). A
+  meeting is skipped when a result already exists for the same model, prompt
+  version and input text, so re-runs only pay for new meetings.
+- export_batches() / import_labels() hand the same inputs and instructions to
+  Claude working in a Claude Code session, then load its JSON answers back,
+  validated against the same schema.
 """
 
 import hashlib
@@ -82,6 +86,37 @@ def quotes_verified(quotes: list[str], source: str) -> bool:
     return all(_squash(q).strip("\"' .") in haystack for q in quotes)
 
 
+def insert_result(conn: sqlite3.Connection, meeting_date: str, model: str, served_model: str | None,
+                  scope: str, input_sha: str, result: MeetingStance, text: str, stop_reason: str | None = None,
+                  input_tokens: int | None = None, output_tokens: int | None = None,
+                  prompt_version: str = PROMPT_VERSION) -> None:
+    row = {
+        "meeting_date": meeting_date,
+        "model": model,
+        "served_model": served_model,
+        "prompt_version": prompt_version,
+        "input_scope": scope,
+        "input_sha256": input_sha,
+        "stance": result.stance,
+        "stance_score": max(-2, min(2, result.stance_score)),
+        "confidence": max(1, min(5, result.confidence)),
+        "policy_bias": result.policy_bias,
+        "decision": result.decision,
+        "dominant_concern": result.dominant_concern,
+        "key_quotes": json.dumps(result.key_quotes, ensure_ascii=False),
+        "quotes_verified": int(quotes_verified(result.key_quotes, text)),
+        "reasoning": result.reasoning,
+        "stop_reason": stop_reason,
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
+        "created_at": db.now(),
+    }
+    conn.execute(
+        f"INSERT OR REPLACE INTO llm_sentiment ({', '.join(row)}) VALUES ({', '.join(':' + c for c in row)})",
+        row,
+    )
+
+
 def classify(client: anthropic.Anthropic, meeting_date: str, text: str,
              model: str, effort: str):
     return client.messages.parse(
@@ -133,34 +168,98 @@ def score_database(conn: sqlite3.Connection, model: str = DEFAULT_MODEL, effort:
             # Not stored, so the next run tries this meeting again.
             log.warning("%s: no classification (stop_reason=%s)", meeting["meeting_date"], response.stop_reason)
             continue
-        row = {
-            "meeting_date": meeting["meeting_date"],
-            "model": model,
-            "served_model": response.model,
-            "prompt_version": PROMPT_VERSION,
-            "input_scope": scope,
-            "input_sha256": input_sha,
-            "stop_reason": response.stop_reason,
-            "input_tokens": response.usage.input_tokens,
-            "output_tokens": response.usage.output_tokens,
-            "created_at": db.now(),
-        }
-        row.update({
-            "stance": result.stance,
-            "stance_score": max(-2, min(2, result.stance_score)),
-            "confidence": max(1, min(5, result.confidence)),
-            "policy_bias": result.policy_bias,
-            "decision": result.decision,
-            "dominant_concern": result.dominant_concern,
-            "key_quotes": json.dumps(result.key_quotes, ensure_ascii=False),
-            "quotes_verified": int(quotes_verified(result.key_quotes, text)),
-            "reasoning": result.reasoning,
-        })
-        conn.execute(
-            f"INSERT INTO llm_sentiment ({', '.join(row)}) VALUES ({', '.join(':' + c for c in row)})",
-            row,
-        )
+        insert_result(conn, meeting["meeting_date"], model, response.model, scope, input_sha, result, text,
+                      response.stop_reason, response.usage.input_tokens, response.usage.output_tokens)
         conn.commit()
         done += 1
-        log.info("%s: %s (%s)", meeting["meeting_date"], row.get("stance"), row.get("stance_score"))
+        log.info("%s: %s (%s)", meeting["meeting_date"], result.stance, result.stance_score)
     return done
+
+
+# --- Labelling inside a Claude Code session ------------------------------------
+
+SESSION_INSTRUCTIONS = """For each meeting in this file, read its text and assess it using the \
+definitions below. Write a JSON array to the output file named in the header, with one object per \
+meeting, in the same order, each with exactly these keys: meeting_date, input_sha256 (both copied \
+from the meeting header), stance, stance_score, confidence, policy_bias, decision, dominant_concern, \
+key_quotes, reasoning. Assess each meeting on its own text only.
+
+"""
+
+
+def export_batches(conn: sqlite3.Connection, out_dir, scope: str = "policy", batch_size: int = 10,
+                   model: str | None = None) -> list:
+    """Write meetings that still need a label to Markdown batch files. Returns the paths.
+
+    If model is given, meetings already labelled by that model for the current
+    text are left out.
+    """
+    from pathlib import Path
+
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    pending = []
+    for meeting in conn.execute("SELECT meeting_id, meeting_date FROM meetings ORDER BY meeting_date"):
+        text = meeting_input(conn, meeting["meeting_id"], scope)
+        input_sha = hashlib.sha256(text.encode()).hexdigest()
+        if model and conn.execute(
+            "SELECT 1 FROM llm_sentiment WHERE meeting_date = ? AND model = ? AND prompt_version = ? "
+            "AND input_scope = ? AND input_sha256 = ?",
+            (meeting["meeting_date"], model, PROMPT_VERSION, scope, input_sha),
+        ).fetchone():
+            continue
+        pending.append((meeting["meeting_date"], input_sha, text))
+
+    paths = []
+    for n, start in enumerate(range(0, len(pending), batch_size), 1):
+        batch = pending[start:start + batch_size]
+        path = out_dir / f"batch_{n:03d}.md"
+        label_path = out_dir / f"batch_{n:03d}.labels.json"
+        parts = [
+            f"# Batch {n:03d}: {len(batch)} meetings ({batch[0][0]} to {batch[-1][0]})\n",
+            f"Output file: {label_path.name} (same folder)\n",
+            f"Input scope: {scope}; prompt version: {PROMPT_VERSION}\n",
+            "## Instructions\n",
+            SESSION_INSTRUCTIONS + SYSTEM_PROMPT + "\n",
+        ]
+        for meeting_date, input_sha, text in batch:
+            parts.append(f"\n=== MEETING {meeting_date} | input_sha256 {input_sha} ===\n\n{text}\n")
+        path.write_text("\n".join(parts), encoding="utf-8")
+        paths.append(path)
+    return paths
+
+
+def import_labels(conn: sqlite3.Connection, label_files, model: str, scope: str = "policy") -> tuple[int, list]:
+    """Validate and store labels written by a Claude Code session. Returns (stored, problems)."""
+    from pathlib import Path
+
+    current = {}
+    for meeting in conn.execute("SELECT meeting_id, meeting_date FROM meetings"):
+        text = meeting_input(conn, meeting["meeting_id"], scope)
+        current[meeting["meeting_date"]] = (hashlib.sha256(text.encode()).hexdigest(), text)
+
+    stored, problems = 0, []
+    for label_file in label_files:
+        try:
+            items = json.loads(Path(label_file).read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            problems.append(f"{label_file}: invalid JSON ({e})")
+            continue
+        for item in items:
+            meeting_date = item.get("meeting_date")
+            if meeting_date not in current:
+                problems.append(f"{label_file}: unknown meeting {meeting_date}")
+                continue
+            input_sha, text = current[meeting_date]
+            if item.get("input_sha256") != input_sha:
+                problems.append(f"{label_file}: {meeting_date} was labelled on different text; re-export it")
+                continue
+            try:
+                result = MeetingStance.model_validate(item)
+            except ValueError as e:
+                problems.append(f"{label_file}: {meeting_date} failed validation ({e})")
+                continue
+            insert_result(conn, meeting_date, model, model, scope, input_sha, result, text)
+            stored += 1
+    conn.commit()
+    return stored, problems

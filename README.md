@@ -28,7 +28,7 @@ export ANTHROPIC_API_KEY=...
 python -m rba_minutes llm --limit 5
 ```
 
-Check the first five results, then run it again without `--limit`. Meetings that already have a result are skipped, so re-running only pays for new or changed meetings.
+Check the first five results, then run it again without `--limit`. Without an API key, use `llm-export`, have Claude Code label each batch file, then `llm-import`. Meetings that already have a result are skipped, so re-running only pays for new or changed meetings.
 
 | Command | What it does |
 |---|---|
@@ -36,6 +36,8 @@ Check the first five results, then run it again without `--limit`. Meetings that
 | `build` | Parses the cached pages into `data/rba_minutes.sqlite` |
 | `score` | Recomputes the dictionary sentiment for every meeting, policy block and section |
 | `llm` | Classifies each meeting with Claude (`--model`, `--effort`, `--scope policy\|full`, `--limit`) |
+| `llm-export` | Writes the same model inputs and instructions to Markdown batch files in `data/llm_batches/`, for labelling by Claude inside a Claude Code session instead of through the API |
+| `llm-import` | Validates the `*.labels.json` answers for those batches against the same schema and stores them (model recorded as `claude-opus-5-5 (Claude Code session)`) |
 | `export` | Writes CSV copies of the main tables to `data/exports/` |
 | `status` | Prints counts and the date range in the database |
 

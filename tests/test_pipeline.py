@@ -155,3 +155,30 @@ def test_database_round_trip(tmp_path, minutes):
     text = meeting_input(conn, meeting_id, "policy")
     assert text.startswith("## Considerations for Monetary Policy") and "The Decision" in text
     assert "Global growth" not in text
+
+
+def test_session_label_round_trip(tmp_path, minutes):
+    import json
+
+    from rba_minutes import sentiment_llm
+
+    conn = db.connect(tmp_path / "test.sqlite")
+    db.upsert_minutes(conn, minutes, b"raw")
+    batch_dir = tmp_path / "batches"
+    paths = sentiment_llm.export_batches(conn, batch_dir, model="session")
+    assert [p.name for p in paths] == ["batch_001.md"]
+    body = paths[0].read_text()
+    assert "Output file: batch_001.labels.json" in body and "=== MEETING 2006-10-03" in body
+    sha = body.split("| input_sha256 ")[1].split(" ")[0]
+
+    label = {"meeting_date": "2006-10-03", "input_sha256": sha, "stance": "hawkish", "stance_score": 2,
+             "confidence": 5, "policy_bias": "tightening", "decision": "raise", "dominant_concern": "inflation",
+             "key_quotes": ["The Board decided to increase the cash rate by 25 basis points to 6.25 per cent"],
+             "reasoning": "Test."}
+    bad = dict(label, meeting_date="1999-01-01")
+    (batch_dir / "batch_001.labels.json").write_text(json.dumps([label, bad]))
+    stored, problems = sentiment_llm.import_labels(conn, [batch_dir / "batch_001.labels.json"], "session")
+    assert stored == 1 and len(problems) == 1
+    row = conn.execute("SELECT stance, quotes_verified, model FROM llm_sentiment").fetchone()
+    assert tuple(row) == ("hawkish", 1, "session")
+    assert sentiment_llm.export_batches(conn, batch_dir / "again", model="session") == []
