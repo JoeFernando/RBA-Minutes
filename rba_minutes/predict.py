@@ -179,6 +179,111 @@ def market_implied(market: pd.DataFrame, when: dt.date) -> dict:
     return out
 
 
+# --- ASX 30 Day Interbank Cash Rate Futures (the ASX RBA Rate Tracker's inputs) ----------------
+
+FUTURES_FILE = MACRO_DIR / "ib_futures_ibkr.csv"
+MONTH_CODES = dict(zip("FGHJKMNQUVXZ", range(1, 13)))
+LAST_WEEK = 7  # a meeting this close to month end: read the new rate from the next month's contract
+
+
+def _contract_month(row) -> str | None:
+    """'YYYY-MM' from a contract_month column ('2026-11', '202611', 'Nov 2026') or an ASX/IBKR
+    local symbol ('IBX6', 'IB X6', 'IBX26')."""
+    for key in ("contract_month", "expiry", "last_trade_date", "lastTradeDateOrContractMonth"):
+        value = str(row.get(key, "") or "").strip()
+        if not value or value == "nan":
+            continue
+        match = re.match(r"^(\d{4})-?(\d{2})", value)
+        if match:
+            return f"{match.group(1)}-{match.group(2)}"
+        try:
+            return pd.Timestamp(value).strftime("%Y-%m")
+        except (ValueError, TypeError):
+            pass
+    symbol = str(row.get("local_symbol", "") or "").replace(" ", "").upper()
+    match = re.match(r"^IB([FGHJKMNQUVXZ])(\d{1,2})$", symbol)
+    if match:
+        year = int(match.group(2))
+        year = 2020 + year if year < 10 else 2000 + year
+        return f"{year}-{MONTH_CODES[match.group(1)]:02d}"
+    return None
+
+
+def load_futures(path: Path = FUTURES_FILE) -> pd.DataFrame:
+    """Daily implied average cash rate for each contract month: (trade_date, contract_month, rate).
+
+    The price is 100 minus the month's average overnight cash rate; a settlement price is used where
+    given, else the close (or an implied_rate column).
+    """
+    raw = pd.read_csv(path)
+    raw.columns = [c.strip().lower() for c in raw.columns]
+    date_col = next(c for c in ("trade_date", "date", "datetime", "time") if c in raw.columns)
+    out = pd.DataFrame({"trade_date": pd.to_datetime(raw[date_col]).dt.date,
+                        "contract_month": [_contract_month(r) for r in raw.to_dict("records")]})
+    price = pd.Series(np.nan, index=raw.index)
+    for col in ("settlement", "settle", "close", "last"):
+        if col in raw.columns:
+            price = price.fillna(pd.to_numeric(raw[col], errors="coerce"))
+    rate = 100 - price
+    if "implied_rate" in raw.columns:
+        rate = rate.fillna(pd.to_numeric(raw["implied_rate"], errors="coerce"))
+    out["rate"] = rate
+    out = out.dropna(subset=["contract_month", "rate"])
+    out = out[(out["rate"] > -1) & (out["rate"] < 20)]  # drop obviously bad prices
+    return out.drop_duplicates(["trade_date", "contract_month"], keep="last").sort_values(["trade_date", "contract_month"])
+
+
+def futures_implied(futures: pd.DataFrame, overnight: pd.Series, decision: dt.date) -> dict:
+    """The move priced for a decision at the last close before it, the way the ASX Rate Tracker works it out."""
+    before = futures[futures["trade_date"] < decision]
+    if before.empty:
+        return {}
+    day = before["trade_date"].max()
+    curve = before[before["trade_date"] == day].set_index("contract_month")["rate"]
+    known = overnight[[d <= day for d in overnight.index]].dropna()
+    if known.empty:
+        return {}
+    current = float(known.iloc[-1])
+    month = f"{decision.year}-{decision.month:02d}"
+    following = (pd.Timestamp(decision) + pd.offsets.MonthBegin(1)).strftime("%Y-%m")
+    days = pd.Timestamp(decision).days_in_month
+    old_days = decision.day  # the new rate takes effect the day after the decision
+    if days - old_days >= LAST_WEEK and month in curve:
+        post = (days * curve[month] - old_days * current) / (days - old_days)
+        method = "meeting month"
+    elif following in curve:
+        post = float(curve[following])
+        method = "next month"
+    else:
+        return {}
+    change = post - current
+    return {"price_date": day, "current_rate": current, "post_meeting_rate": post, "futures_change": change,
+            "futures_prob_25bp": change / 0.25, "futures_method": method}
+
+
+def futures_check(next_decision: dt.date | None = None) -> pd.DataFrame:
+    """Each decision the futures file covers: the move priced the day before, the bank bill stand-in and the outcome."""
+    futures = load_futures()
+    market = load_market()
+    overnight = market["overnight"].dropna()
+    decisions = load_decisions()
+    rows = []
+    first = futures["trade_date"].min()
+    for d in decisions.itertuples():
+        if d.decision_date <= first:
+            continue
+        implied = futures_implied(futures, overnight, d.decision_date)
+        if implied:
+            rows.append({"decision_date": d.decision_date, "actual_change": d.change, **implied,
+                         **market_implied(market, d.decision_date)})
+    if next_decision:
+        implied = futures_implied(futures, overnight, next_decision)
+        if implied:
+            rows.append({"decision_date": next_decision, "actual_change": np.nan, **implied,
+                         **market_implied(market, next_decision)})
+    return pd.DataFrame(rows)
+
+
 def _latest_before(series: pd.Series, when: dt.date, lag: dt.timedelta):
     known = series[[d + lag < when for d in series.index]]
     return (known.index[-1], known.iloc[-1]) if len(known) else (None, np.nan)
@@ -562,5 +667,9 @@ def run(next_decision: dt.date | None = None) -> dict:
         results["next_decision"] = {"date": str(next_decision), "features": {k: (str(v) if isinstance(v, (dt.date,)) else v)
                                                                               for k, v in row.items()},
                                     "probabilities": forecast.to_dict("records")}
+    if FUTURES_FILE.exists():
+        check = futures_check(next_decision)
+        check.to_csv(OUT_DIR / "futures_check.csv", index=False)
+        results["futures_check"] = check.to_dict("records")
     (OUT_DIR / "results.json").write_text(json.dumps(results, indent=2, default=str))
     return results

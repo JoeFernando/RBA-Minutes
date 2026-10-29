@@ -93,3 +93,32 @@ def test_market_implied_uses_the_last_close_before_the_decision():
     assert out["mkt_bab_change"] == pytest.approx(0.10)
     stale = predict.market_implied(market, dt.date(2026, 10, 20))  # more than a week after the last data
     assert np.isnan(stale["mkt_ois_change"]) and np.isnan(stale["mkt_bab_change"])
+
+
+def test_contract_month_from_columns_and_symbols():
+    assert predict._contract_month({"contract_month": "2026-11"}) == "2026-11"
+    assert predict._contract_month({"contract_month": "202611"}) == "2026-11"
+    assert predict._contract_month({"lastTradeDateOrContractMonth": "20261130"}) == "2026-11"
+    assert predict._contract_month({"local_symbol": "IBX6"}) == "2026-11"
+    assert predict._contract_month({"local_symbol": "IB H8"}) == "2028-03"
+
+
+def test_futures_implied_follows_the_rate_tracker_method(tmp_path, monkeypatch):
+    # Meeting on 3 November (30 days): 3 days at 4.60, then 27 days at the new rate.
+    # A fully priced 25 bp rise gives a November average of (3*4.60 + 27*4.85)/30 = 4.825.
+    csv = ("trade_date,contract_month,settlement,close\n"
+           "2026-11-02,2026-11,95.175,95.17\n2026-11-02,2026-12,95.15,95.15\n"
+           "2026-11-03,2026-11,95.10,95.10\n2026-11-03,2026-12,95.15,95.15\n")
+    path = tmp_path / "ib.csv"
+    path.write_text(csv)
+    futures = predict.load_futures(path)
+    assert futures["rate"].iloc[0] == pytest.approx(4.825)  # the settlement price is preferred
+    overnight = pd.Series([4.60], index=[dt.date(2026, 10, 30)])
+    out = predict.futures_implied(futures, overnight, dt.date(2026, 11, 3))
+    assert out["price_date"] == dt.date(2026, 11, 2)  # not the decision day's own close
+    assert out["futures_method"] == "meeting month"
+    assert out["post_meeting_rate"] == pytest.approx(4.85)
+    assert out["futures_prob_25bp"] == pytest.approx(1.0)
+    # A meeting in the last week of the month reads the next month's contract.
+    late = predict.futures_implied(futures, overnight, dt.date(2026, 11, 28))
+    assert late["futures_method"] == "next month" and late["post_meeting_rate"] == pytest.approx(4.85)
