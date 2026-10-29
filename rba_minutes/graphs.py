@@ -13,6 +13,7 @@ Images are saved under data/<publication>_graphs/<issue>/ and described in a
 <publication>_graphs table. SVG text is extracted so it can be searched.
 """
 
+import datetime as dt
 import html as html_lib
 import json
 import logging
@@ -207,3 +208,111 @@ def store(conn: sqlite3.Connection, records: list[dict], pub: str) -> int:
         )
     conn.commit()
     return len(records)
+
+
+# --- Underlying data for graphs (published as workbooks from 2024) ---------------------
+
+DATA_SCHEMA = """
+CREATE TABLE IF NOT EXISTS {pub}_graph_data (
+    issue_date      TEXT NOT NULL,
+    sheet           TEXT NOT NULL,          -- usually a chapter or box
+    graph_number    TEXT,
+    graph_title     TEXT,
+    source          TEXT,
+    panel           TEXT,
+    series          TEXT NOT NULL,          -- the column header
+    x_label         TEXT,                   -- the header of the x column ('Date', 'Date (quarterly)', 'Country')
+    x               TEXT,                   -- ISO date or category
+    value           REAL NOT NULL
+);
+CREATE INDEX IF NOT EXISTS {pub}_graph_data_graph ON {pub}_graph_data (issue_date, graph_number);
+"""
+
+_ROW_NAMES = {"publication", "title", "graph number", "graph title", "source", "sources", "panel", "data"}
+
+
+def _cell(value) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, (dt.datetime, dt.date)):
+        return value.strftime("%Y-%m-%d")
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return normalise_text(str(value))
+
+
+def parse_graph_data(path: Path, issue_date: str) -> tuple[list[dict], list[dict]]:
+    """(values, restricted graphs) from one graph-data workbook.
+
+    Each sheet has label rows (Graph number, Graph title, Source, Panel, Data)
+    over blocks of columns, one block per graph: a 'Graph number' cell starts
+    a block. In a block, an x column (dates or categories) is followed by the
+    series plotted against it; a block can hold several x columns (panels or
+    different frequencies). Graphs whose data cannot be published say 'Data
+    restricted'.
+    """
+    import openpyxl
+
+    workbook = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    values, restricted = [], []
+    for sheet in workbook.worksheets:
+        rows = [list(r) for r in sheet.iter_rows(values_only=True)]
+        labels = {}
+        for i, row in enumerate(rows[:20]):
+            name = _cell(row[0] if row else "").lower()
+            if name in _ROW_NAMES and name not in labels:
+                labels[name] = i
+        if "graph number" not in labels or "data" not in labels:
+            continue
+        width = max(len(r) for r in rows)
+        rows = [r + [None] * (width - len(r)) for r in rows]
+        number_row, header_row = rows[labels["graph number"]], rows[labels["data"]]
+        starts = [c for c in range(1, width) if _cell(number_row[c])]
+        body = rows[labels["data"] + 1:]
+        for b, start in enumerate(starts):
+            end = starts[b + 1] if b + 1 < len(starts) else width
+            meta = {
+                "issue_date": issue_date, "sheet": sheet.title, "graph_number": _cell(number_row[start]),
+                "graph_title": _cell(rows[labels["graph title"]][start]) if "graph title" in labels else "",
+                "source": _cell(rows[labels.get("source", labels.get("sources", -1))][start])
+                if ("source" in labels or "sources" in labels) else "",
+            }
+            if _cell(header_row[start]).lower().startswith("data restricted"):
+                restricted.append(meta)
+                continue
+            panel, x_col = "", None
+            for c in range(start, end):
+                header = _cell(header_row[c])
+                if "panel" in labels and _cell(rows[labels["panel"]][c]):
+                    panel = _cell(rows[labels["panel"]][c])
+                column = [r[c] for r in body if r[c] is not None]
+                if not header and not column:
+                    continue
+                numeric = [v for v in column if isinstance(v, (int, float)) and not isinstance(v, bool)]
+                if not column or len(numeric) < len(column) / 2 or header.lower().startswith("date"):
+                    x_col = c  # dates or categories: the x axis for the columns that follow
+                    continue
+                for r in body:
+                    v = r[c]
+                    if isinstance(v, (int, float)) and not isinstance(v, bool):
+                        values.append({**meta, "panel": panel, "series": header,
+                                       "x_label": _cell(header_row[x_col]) if x_col is not None else "",
+                                       "x": _cell(r[x_col]) if x_col is not None else "", "value": float(v)})
+    return values, restricted
+
+
+def store_graph_data(conn: sqlite3.Connection, data_dir: Path, pub: str) -> tuple[int, int]:
+    """Parse every graph-data workbook in data_dir into {pub}_graph_data. Returns (values, restricted graphs)."""
+    conn.executescript(f"DROP TABLE IF EXISTS {pub}_graph_data;" + DATA_SCHEMA.format(pub=pub))
+    n_values = n_restricted = 0
+    for path in sorted(data_dir.glob(f"{pub}-graph-data-*.xlsx")):
+        issue_date = re.search(r"(\d{4}-\d{2})", path.name).group(1)
+        values, restricted = parse_graph_data(path, issue_date)
+        conn.executemany(
+            f"INSERT INTO {pub}_graph_data (issue_date, sheet, graph_number, graph_title, source, panel, series, "
+            "x_label, x, value) VALUES (:issue_date, :sheet, :graph_number, :graph_title, :source, :panel, :series, "
+            ":x_label, :x, :value)", values)
+        n_values += len(values)
+        n_restricted += len(restricted)
+    conn.commit()
+    return n_values, n_restricted

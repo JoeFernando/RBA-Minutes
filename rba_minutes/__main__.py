@@ -181,6 +181,9 @@ def _graphs(pub: str, conn) -> None:
     raw_dir = config.DATA_DIR / f"raw_{pub}"
     records = graphs.collect(raw_dir, pub, config.DATA_DIR / f"{pub}_graphs")
     log.info("Stored %d %s graphs", graphs.store(conn, records, pub), pub.upper())
+    n_values, n_restricted = graphs.store_graph_data(conn, config.DATA_DIR / f"{pub}_graph_data", pub)
+    log.info("Stored %d values from the %s graph-data workbooks (%d graphs marked 'Data restricted')",
+             n_values, pub.upper(), n_restricted)
 
 
 def cmd_smp_graphs(args) -> None:
