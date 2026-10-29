@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2002-02",
+    "input_sha256": "cbf8d02acab157fbd8e4589f759e0ad0061c4210ec74651cb3f2b679987aa2a6",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "At its February meeting, in view of the recent changes in the balance of risks for the global economy and for domestic inflation, the Board decided to leave the cash rate unchanged.",
+      "The assessment as to underlying inflation is broadly the same as that presented in the November Statement, although the risks around this outlook now appear more evenly balanced, rather than being weighted to the downside.",
+      "As a result of these reductions over the past year, policy settings are now clearly expansionary and supporting growth in the domestic economy."
+    ],
+    "reasoning": "After 200 basis points of easing in 2001, the Board held the cash rate as global downside risks lessened and inflation risks shifted from the downside to evenly balanced. Inflation is expected to fall from its peak to around the middle of the target, and the domestic economy is resilient. There is no signal of further easing or of tightening, so the stance is neutral with a balanced focus on global growth risks and inflation."
+  },
+  {
+    "issue_date": "2002-05",
+    "input_sha256": "1827796d2b3a7920b44451a39bdc6fcec7d47868ac5a383e2606b4570185eaff",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Against this background the Board concluded at its May meeting that the previous setting of monetary policy was no longer appropriate.",
+      "Maintaining the cash rate at such a low level risked amplifying inflationary risks and fuelling other imbalances that could jeopardise a continuation of the current economic expansion.",
+      "However, the significant strengthening in the domestic economy that has become evident in recent months suggests that the longer-term risks to the inflation outlook have increased, with upward pressures on inflation likely to predominate beyond the end of this year."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points, saying the previous low setting was no longer appropriate given a strong domestic economy and improving global prospects. Inflation is forecast to stay within the band but rise back toward the top during 2003, with upward pressures predominating. The language points to a removal of stimulus and a tightening bias, though inflation is not forecast above target, so the hawkishness is mild rather than strong."
+  },
+  {
+    "issue_date": "2002-08",
+    "input_sha256": "add2545cd28460a53659d8e443aea3ead7c7b8c21cc8acb8998cacfc17feb2c6",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Even after these adjustments, however, the cash rate remained on the expansionary side of neutral.",
+      "If the effects on growth of the global economy, and consequently on Australia, turn out to be quite small, the case for further rises in interest rates would remain intact.",
+      "Given these uncertainties, the Board judged at both its July and August meetings that it was prudent to leave the cash rate unchanged."
+    ],
+    "reasoning": "The Board held rates in July and August because of global equity-market turmoil, but stated that the cash rate is still expansionary and that the case for further rises remains intact in its most plausible scenario. Underlying inflation is expected around the middle of the band in late 2002 with rising pressures in 2003, while downside global risks have increased. The tightening bias is retained but heavily conditioned on uncertainty, so this is a hedged, mildly hawkish stance."
+  },
+  {
+    "issue_date": "2002-11",
+    "input_sha256": "8eaabdc399643de205c5e4c9e83f3c9611285c9257789f3160e912959ae69cfe",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "But with global economic prospects less assured, this expectation is unlikely to be met, and hence the economy overall can be expected to slow from its recent strong pace over the coming year.",
+      "The risks around this forecast appear evenly balanced.",
+      "In view of these developments the Board at its recent meetings has judged that the most prudent course was to retain the current policy setting for the present time, while continuing to assess how the international and domestic economies evolve."
+    ],
+    "reasoning": "The earlier tightening bias has faded as global prospects weakened, the drought hit farm output and the housing cycle matured, and the economy is expected to slow. Underlying inflation is forecast to stay around 2.75 per cent with evenly balanced risks. The Board is holding with no directional signal, so the stance is neutral, with weaker growth as the main concern."
+  },
+  {
+    "issue_date": "2003-02",
+    "input_sha256": "1e2aab191bf7ccd6ee2888087ca6cbfefbdcf2c9f1aae231bdbc66785cded0ff",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "However, the case for doing so progressively weakened through the second half of 2002 as risks to the global recovery increased.",
+      "There is thus a risk that the recent international weakness will become more protracted and will weigh more significantly on growth in Australia than it has done to date.",
+      "In these circumstances, the Board judged that the best course was to leave the cash rate unchanged, while continuing to monitor the direction of the global and Australian economies."
+    ],
+    "reasoning": "The Board left the cash rate unchanged, noting that strong domestic demand would normally argue for less expansionary settings but that global risks have removed that case. Underlying inflation is forecast to stay around 2.5 per cent with balanced risks, and growth is expected to continue at a good but slower pace. The concern is tilted toward global downside risks to growth, but there is no easing signal, so the stance is neutral."
+  }
+]

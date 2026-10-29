@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2007-05",
+    "input_sha256": "57655c0ab8b5bd2be3399d71c16d5ba2f60a79ab7d67c7004afc15f61091632b",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Based on these trends, inflation is forecast to return to the top half of the target during 2008.",
+      "In weighing up all this information, the Board considered that the broad forces at work – a strong world economy, strong demand growth and limited spare capacity – were still likely, if they persisted, to result in some upward pressure on inflation over time.",
+      "Hence the Board judged, at its May meeting, that maintaining the current mildly restrictive stance of policy would leave adequate time to respond as needed to the possibility of higher medium-term inflation."
+    ],
+    "reasoning": "The Board held a 'mildly restrictive' setting after underlying inflation moderated faster than expected, but stressed that strong demand and limited spare capacity would likely put upward pressure on inflation over time. Inflation is forecast to return to the top half of the target in 2008, and the only policy response contemplated is to higher medium-term inflation, giving a mild tightening bias. The near-term softness in inflation and the explicit wait-and-see framing keep this at mildly rather than strongly hawkish."
+  },
+  {
+    "issue_date": "2007-08",
+    "input_sha256": "6b4ccf3ee48cf37c34bd5717fe38e022329a7154219d16b4af8fcc3fd4751007",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Weighing up all these considerations, the Board judged that a somewhat more restrictive monetary policy setting was required in order to contain inflation in the medium term.",
+      "Ongoing pressures are currently forecast to keep both underlying and CPI inflation near the top of the target range during 2008.",
+      "In assessing medium-term prospects it will remain important to keep a close watch on both domestic inflation risks and any further developments in international financial markets and their possible implications for the global economy."
+    ],
+    "reasoning": "The Board raised the cash rate in August after a higher-than-expected June quarter CPI and evidence of a pick-up in growth with limited spare capacity. After the tightening, inflation is forecast near the top of the target range in 2008. The closing statement weighs domestic inflation risks against downside risks from credit market turmoil, so it signals no clear further bias beyond the move already made."
+  },
+  {
+    "issue_date": "2007-11",
+    "input_sha256": "85c195a1b370dc89604a00b9422ed7ffadd2a639cd00b00a30ec2dc4da023e9b",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Weighing up these international and domestic factors, the Board judged that a further increase in the cash rate was needed in order to contain inflation in the medium term.",
+      "Looking further ahead, and taking into account the recent monetary policy decisions along with other factors such as the higher exchange rate and the expected moderation in global demand, the Bank projects that inflation will settle at a rate a little below 3 per cent over the next two years.",
+      "But it is also possible at this stage of a long economic expansion that inflation will be more difficult to contain, particularly if domestic demand does not moderate."
+    ],
+    "reasoning": "The Board tightened again in November as underlying inflation rose to around 3 per cent with stretched capacity and strong demand. After the move, inflation is projected to settle a little below 3 per cent, inside the target. Risks are set out on both sides, with lower outcomes if global conditions weaken and harder-to-contain inflation if domestic demand does not moderate, so no further bias is signalled."
+  },
+  {
+    "issue_date": "2008-02",
+    "input_sha256": "dc4ece389501cb806e4ae41b9a20306b874f9c8993c943984c5fbcbf6cc336b1",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "above_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Given the current strength of domestic demand and pressures on capacity, a significant moderation in demand will be needed if inflation is to be satisfactorily reduced over time.",
+      "On the current outlook, then, and allowing for the inevitable uncertainties in forecasting, the risk of inflation remaining uncomfortably high for some time is considerable.",
+      "Absent a further shift in economic risks to the downside, therefore, monetary policy is likely to need to be tighter in the period ahead."
+    ],
+    "reasoning": "Underlying inflation is around 3½ per cent and is expected to rise further in the short term, falling only gradually to around 3 per cent in two years even after the February increase. The Board explicitly says policy is likely to need to be tighter, and calls the risk of inflation staying uncomfortably high considerable. Growth is expected to slow as global conditions deteriorate and financial conditions tighten, but the statement is clearly dominated by inflation concerns."
+  },
+  {
+    "issue_date": "2008-05",
+    "input_sha256": "63261814b4b00bd6b004622bb70007eb0ff56e36346fc326dd3b5b8791c8b415",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In these circumstances, a significant slowing in the growth of demand from the rapid pace of 2007 will be needed in order to return inflation to the target over time.",
+      "On balance, the Board's assessment is that a period of below-trend growth in the Australian economy is now in prospect.",
+      "On balance, the Board judged that the setting of monetary policy was appropriate for the time being."
+    ],
+    "reasoning": "CPI inflation is 4.2 per cent and the Board remains focused on returning inflation to target, but it held rates as it judged that the four earlier increases and tighter financial conditions were slowing demand. Below-trend growth is now expected, with inflation forecast to fall to about 2¾ per cent by the end of the horizon. The risks it names are upside ones (demand not moderating, inflation expectations), but the 'appropriate for the time being' language signals a pause rather than further tightening."
+  }
+]

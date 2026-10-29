@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "1999-08",
+    "input_sha256": "2da76933fbb27f151eaabda01abecaa00f40d8bfc1e48c0035023c251279164e",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "It still, therefore, seems likely that a period of slower economic growth in Australia will be observed in the period ahead, although it must be admitted that the weaker data for capital spending intentions are, at this point, the only clear evidence for this.",
+      "The risks of a larger or more protracted slowdown appear, however, to have lessened over the past six months.",
+      "The Bank has, accordingly, seen no need to make any adjustments to interest rates since the change made last December."
+    ],
+    "reasoning": "The Bank judges that current inflation and its expected path, with CPI rising only a little above 2 per cent, are consistent with the target on a medium-term basis and that no rate change is needed. A modest slowdown is expected from the export drag, but the risk of a deeper slowdown has lessened, so neither easing nor tightening is signalled. The concerns are balanced between external weakness and a gradual rise in inflation."
+  },
+  {
+    "issue_date": "1999-11",
+    "input_sha256": "d70089f1ef1eea1d7752c4c9dd633fb8f135b312cb3b3fabae409e7d50e3ef01",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Growth now seems secure, and the risk of a sharp slowdown has fallen considerably.",
+      "The disinflationary forces seen over the past couple of years, both globally and domestically, are waning, suggesting that a fall in inflation back below the target is now unlikely.",
+      "It was on the basis of this assessment of the outlook, the stance of policy and the change in the balance of risks, that the Bank recently decided in favour of a modest increase in interest rates, in order to move monetary policy to a less accommodating position."
+    ],
+    "reasoning": "The Bank has just raised rates modestly to move policy to a less accommodating position, as growth prospects have improved and the risk of inflation falling below target has receded. Inflation is forecast to rise to around 2 3/4 per cent and to sit within 2-3 per cent once GST effects drop out. The language frames the move as recalibration rather than a fight against high inflation, so it is mildly hawkish. The balance of risks has moved away from the downside rather than being described as tilted to the upside."
+  },
+  {
+    "issue_date": "2000-02",
+    "input_sha256": "7850f94956d0f080852386e1aa99680d5d037b21f0d77ecec97f055a4b19f30e",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In considering Australian monetary policy, the Bank judged that, notwithstanding the increase in cash rates in November, policy remained too accommodative.",
+      "Looking ahead, moreover, the balance of risks on inflation is no longer tilted to the downside.",
+      "The Bank raised cash rates by a further 50 basis points, to 51⁄2 per cent, on 2 February."
+    ],
+    "reasoning": "The Bank raised rates by 50 basis points, judging policy still too accommodative given strong growth and gradually rising inflation. It cites higher inflation expectations, diminishing spare capacity, possible wage pressure and rapid credit and asset-price growth as reasons for concern. Inflation excluding the GST is expected to be in the upper half of the target, and the risks lean to more persistent inflationary pressures. The hike is described as a move to an approximately neutral setting, which tempers the hawkishness slightly but does not remove it."
+  },
+  {
+    "issue_date": "2000-05",
+    "input_sha256": "b9dd6ea8ced3c3248554ee166a849b64687e56aeb8aff6c375f3cf44d390769f",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In these circumstances there is some risk that wage pressures will strengthen, particularly given recent increases in inflation expectations and the prospect of some high CPI figures later in the year.",
+      "Added pressure on prices from this source, at a time when domestic pressure may be intensifying, would clearly be unhelpful.",
+      "That balance has shifted over the past year from a situation where the predominant risk was that of faltering growth and persistent undershooting of the inflation target, to one where the risk of rising inflation has attained greater importance."
+    ],
+    "reasoning": "After 125 basis points of tightening, the Bank stresses upside inflation risks from strengthening wages, rising inflation expectations and the weaker exchange rate. It expects recent policy changes to keep inflation, excluding tax effects, within the 2-3 per cent range but probably in the upper half. Growth is expected to remain robust as its mix shifts from domestic to external demand. The lean is hawkish, but the forecast of inflation staying in the band suggests the tightening may be close to sufficient, so the score is mild."
+  },
+  {
+    "issue_date": "2000-08",
+    "input_sha256": "1317ddcccd33f51f9f56b2ffe3743e47cf0678cdb8284d7d5c57d1f3e8eecaa1",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Notwithstanding the recent increases in interest rates, the stance of monetary policy is not unduly restricting growth at present.",
+      "The Bank's current assessment is that inflation (excluding tax effects) is likely to be in the upper part of the target zone over the next four to six quarters, though inflation risks overall are tilted somewhat to the upside.",
+      "The Board's assessment throughout this period has been that, with strong growth, a gradual increase in underlying inflation, and firming demand for credit, interest rates needed to rise to lessen the risks of higher inflation in the future."
+    ],
+    "reasoning": "The Bank has raised rates a fifth time and notes that policy is still not unduly restricting growth, with rapid credit growth and upstream price pressures. Inflation excluding tax effects is expected in the upper part of the target zone, with risks tilted somewhat to the upside. The closing guidance is data-dependent rather than an explicit signal of further hikes, so the hawkish lean is mild and moderately hedged."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2019-11",
+    "input_sha256": "3d724e5a294269f6a055f8b5e7275afab065e4cf1b29ed97403ef619caca02d2",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At the same time, spare capacity remains in the Australian economy, and inflation is below the medium-term target band.",
+      "These considerations pointed to a case for further easing.",
+      "Given the outlook, the Board is prepared to ease monetary policy further if needed to support sustainable growth in the economy, full employment and the achievement of the medium-term inflation target over time."
+    ],
+    "reasoning": "The Board cut the cash rate to 0.75 per cent in October and, while holding in November to assess the effects, explicitly states it is prepared to ease further. Inflation is below the target band and expected only to reach close to 2 per cent, with faster wages growth needed for inflation to be sustainably within the range. Growth is expected to pick up gradually, but spare capacity in the labour market is the central concern."
+  },
+  {
+    "issue_date": "2020-02",
+    "input_sha256": "e4ba086e3ceccd943845d1f86e7900e63122387b42af5a085da55dc5030c02eb",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "To maintain this progress, monetary policy is very likely to remain accommodative for some time.",
+      "Given the only gradual nature of the progress, the Board has been discussing the case for a further easing of monetary policy in order to speed the pace of progress and to make it more assured in the face of ongoing uncertainties.",
+      "If the unemployment rate were to be moving materially higher and there was no further progress being made towards the inflation target, the balance of arguments would tilt towards a further easing of monetary policy."
+    ],
+    "reasoning": "The Board held the cash rate but signalled policy will remain accommodative and that it has been actively discussing further easing, with a conditional trigger tied to unemployment and inflation. Concerns about very low rates and household borrowing temper the lean, so the easing bias is hedged. Inflation is forecast only to rise gradually to 2 per cent, the bottom of the band, and growth is expected to improve after a soft patch extended by drought, bushfires and the coronavirus."
+  },
+  {
+    "issue_date": "2020-05",
+    "input_sha256": "1423afafb0e0a8ac8a0eeef29ee138fd71b6644eafe7f3267c9ce1d3136f376a",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "While the exact size of the contraction is still uncertain, a decline in GDP of around 10 per cent from peak to trough is expected.",
+      "Given the outlook for the Australian economy, this means that the cash rate is unlikely to be increased for an extended period of time.",
+      "The Board is committed to do what it can to support jobs, incomes and businesses during this difficult period and to make sure that Australia is well placed for the expected recovery."
+    ],
+    "reasoning": "The Bank has cut the cash rate to 25 basis points, introduced a 3-year yield target and a term funding facility, and committed not to raise rates until progress is made on full employment and inflation. The economy faces a roughly 10 per cent contraction and unemployment near 10 per cent, and inflation is expected to remain below 2 per cent for some time. The overwhelming focus is supporting jobs and incomes, with readiness to scale up bond purchases."
+  },
+  {
+    "issue_date": "2020-08",
+    "input_sha256": "288e1b02ef4790e198ff5d6a48d921403226c4fc7e96dbacbdd1fc919cc52898",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "However, the pace of recovery is expected to be slower than previously forecast.",
+      "Other outcomes are possible depending on the strength of the recovery; nonetheless, both the upside and downside scenarios see inflation remaining below 2 per cent for the next couple of years.",
+      "The Board will not increase the cash rate target until progress is being made towards full employment and it is confident that inflation will be sustainably within the 2–3 per cent target band."
+    ],
+    "reasoning": "Policy remains extremely accommodative with a firm commitment not to raise rates until progress on employment and inflation, and the dominant concern is a severely disrupted labour market with unemployment expected to peak near 10 per cent. However, the Board concluded there was no need to adjust the mid-March package and views negative rates as extraordinarily unlikely, so no further easing is signalled. Growth is expected to recover from 2021 but more slowly than earlier forecast, and inflation stays below 2 per cent in all scenarios."
+  },
+  {
+    "issue_date": "2020-11",
+    "input_sha256": "d98a47d7521fad089eca14640eb5c2b9ae1aa07c3501b1cf3276e2655b66f56b",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "To further support the recovery and complement the significant support coming from fiscal policy, the Board therefore decided to introduce a further package of measures",
+      "The Board has committed not to increase the cash rate target until actual inflation is sustainably within the target range of 2–3 per cent.",
+      "If the circumstances require, the Board is prepared to do more and undertake additional purchases."
+    ],
+    "reasoning": "The Board eased further, cutting the cash rate and yield target to 0.1 per cent and launching $100 billion of longer-dated bond purchases, and is prepared to buy more if needed. It strengthened forward guidance to require actual inflation sustainably within the target and a tight labour market before any rate rise. Inflation is forecast to stay well below target and unemployment to peak near 8 per cent, while growth recovers in a bumpy way with downside risks from the pandemic."
+  }
+]

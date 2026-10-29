@@ -62,10 +62,15 @@ def fetch_table_pages(raw_dir: Path = RAW_DIR, refresh: bool = False) -> int:
 
 FRACTIONS = {"¼": 0.25, "½": 0.5, "¾": 0.75, "⅓": 1 / 3, "⅔": 2 / 3, "⅛": 0.125, "⅜": 0.375,
              "⅝": 0.625, "⅞": 0.875}
-_NUM = r"[−-]?(?:\d[\d,]*(?:\.\d+)?[¼½¾⅓⅔⅛⅜⅝⅞]?|[¼½¾⅓⅔⅛⅜⅝⅞])"
+# A leading en dash is a minus sign in some tables ('–0.2'); on its own it means nil.
+_NUM = r"[−+–-]?(?:\d[\d,]*(?:\.\d+)?[¼½¾⅓⅔⅛⅜⅝⅞]?|[¼½¾⅓⅔⅛⅜⅝⅞])"
+UNIT_SUFFIX = re.compile(r"\s*(?:bps?|basis points|ppts?|pp|percentage points)$", re.IGNORECASE)
+UP, DOWN = "↑▲", "↓▼"
 NUMBER = re.compile(rf"^\(?({_NUM})\)?$")
-RANGE = re.compile(rf"^({_NUM})\s*(?:–|—|to)\s*({_NUM})$")
-MISSING = {"", "–", "—", "-", "na", "n.a.", "n/a", "..", "...", "…", "nil", "*", "nc", "n.c."}
+RANGE = re.compile(rf"^({_NUM})\s*(?:–|—|−|to)\s*({_NUM})$")
+# '2¾ (3¼)' = current forecast (previous forecast); '1.4 (Sep)' = value (period).
+WITH_NOTE = re.compile(rf"^({_NUM})\s*\([^()]*\)$")
+MISSING = {"", "–", "—", "-", "na", "n.a.", "n/a", "(n/a)", "(na)", "..", "...", "…", "nil", "*", "nc", "n.c."}
 FOOTNOTE_MARK = re.compile(r"\((?:[a-z]{1,2}|\d{1,2})\)|\*+$")
 
 
@@ -75,7 +80,7 @@ def to_number(text: str) -> float | None:
     match = NUMBER.match(text)
     if not match:
         return None
-    token = match.group(1).replace(",", "").replace("−", "-")
+    token = match.group(1).replace(",", "").replace("−", "-").replace("–", "-").lstrip("+")
     negative = token.startswith("-")
     token = token.lstrip("-")
     fraction = FRACTIONS.get(token[-1:], 0.0) if token else 0.0
@@ -88,19 +93,46 @@ def to_number(text: str) -> float | None:
     return -value if negative else value
 
 
+def parse_direction(text: str) -> int | None:
+    """+1 / -1 for cells carrying an up or down arrow, 0 for 'No change', else None."""
+    if any(a in text for a in UP):
+        return 1
+    if any(a in text for a in DOWN):
+        return -1
+    if text.strip().lower() in ("no change", "unchanged"):
+        return 0
+    return None
+
+
 def parse_value(text: str) -> tuple[float | None, float | None, float | None]:
-    """(value, low, high) from a cell's text. A range gives low/high and its midpoint."""
-    cleaned = text.strip().rstrip("%").strip()
+    """(value, low, high) from a cell's text. A range gives low/high and its midpoint.
+
+    Arrows give the sign of the number next to them ('↓ 250' -> -250); a unit
+    such as 'bps' is dropped ('↑ 50 bps' -> 50).
+    """
+    direction = parse_direction(text)
+    cleaned = text.strip()
+    for arrow in UP + DOWN:
+        cleaned = cleaned.replace(arrow, "")
+    cleaned = UNIT_SUFFIX.sub("", cleaned.strip().rstrip("%").strip())
     if cleaned.lower() in MISSING:
         return None, None, None
+    if direction == -1:
+        value = to_number(cleaned)
+        if value is not None:
+            return -abs(value), None, None
     value = to_number(cleaned)
     if value is not None:
         return value, None, None
     match = RANGE.match(cleaned)
     if match:
         low, high = to_number(match.group(1)), to_number(match.group(2))
-        if low is not None and high is not None:
+        is_years = all(v is not None and v == int(v) and 1900 <= v <= 2100 for v in (low, high))
+        if low is not None and high is not None and low <= high and not is_years:
             return (low + high) / 2, low, high
+    match = WITH_NOTE.match(cleaned)
+    if match:
+        return to_number(match.group(1)), None, None
     return None, None, None
 
 
@@ -162,8 +194,9 @@ def _caption(table: Tag) -> tuple[str, str, str, str]:
             subtitle, _ = _cell_text(sub)
             sub.decompose()
         text, _ = _cell_text(caption)
-    match = re.match(r"^Table\s+([A-Z]?\d+(?:\.\d+)?[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
-    number, title = (match.group(1), match.group(2)) if match else ("", text)
+    match = (re.match(r"^Table\s+([A-Z]?\d+(?:\.\d+)?[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
+             or re.match(r"^([A-Z]?\d+(?:\.\d+)?)\s*:\s*(.*)$", text))      # "2.4: Foreign Exchange Reserves"
+    number, title = (match.group(1), match.group(2)) if match else ("", re.sub(r"^Table\s*:\s*", "", text))
     return number, title.strip(), subtitle.strip(), ""
 
 
@@ -226,10 +259,21 @@ def parse_table(table: Tag) -> dict:
     # a label with no values (e.g. "Less revisions since Budget") starts a
     # sub-group that covers the indented rows beneath it.
     cells, top_group, sub_group, row_idx = [], "", "", 0
+    labels = list(col_labels)
     for row in body:
         label = row[0]["text"] if label_cols else ""
         label_marks = row[0]["marks"] if label_cols else ""
         values = row[label_cols:]
+        # A body row made only of header cells is a header inside the table:
+        # one spanning every column names a panel ("Year-ended"), otherwise it
+        # relabels the columns for the rows below it.
+        filled = [v for v in values if v["text"]]
+        if not label and filled and all(v["is_th"] for v in filled):
+            if len({v["text"] for v in values}) == 1 and all(v["spanned"] for v in values[1:]):
+                top_group, sub_group = values[0]["text"], ""
+            else:
+                labels = list(labels[:label_cols]) + [v["text"] for v in values]
+            continue
         row_classes = row[0]["row_classes"] if row else []
         is_sub = "sub" in (row[0]["classes"] if row else [])
         all_empty = all(not v["text"] for v in values)
@@ -251,8 +295,9 @@ def parse_table(table: Tag) -> dict:
             cells.append({
                 "row_idx": row_idx, "col_idx": c - label_cols,
                 "row_label": label, "row_group": group, "row_level": 1 if is_sub else 0,
-                "col_label": col_labels[c] if c < len(col_labels) else "",
+                "col_label": labels[c] if c < len(labels) else "",
                 "value_text": cell["text"], "value_num": value, "value_low": low, "value_high": high,
+                "value_direction": parse_direction(cell["text"]),
                 "footnotes": ",".join(m for m in (label_marks, cell["marks"]) if m),
                 "is_total": int(is_total),
             })
@@ -329,6 +374,7 @@ CREATE TABLE IF NOT EXISTS smp_table_cells (
     value_num       REAL,                   -- parsed number; midpoint for ranges
     value_low       REAL,                   -- for ranges such as '2½–3'
     value_high      REAL,
+    value_direction INTEGER,                -- +1 / -1 for up / down arrows, 0 for 'No change'
     footnotes       TEXT,                   -- footnote marks on the row label or cell, e.g. '(a)'
     is_total        INTEGER NOT NULL,
     PRIMARY KEY (table_id, row_idx, col_idx)
@@ -336,7 +382,8 @@ CREATE TABLE IF NOT EXISTS smp_table_cells (
 
 CREATE VIEW IF NOT EXISTS v_smp_table_cells AS
 SELECT t.issue_date, t.table_number, t.title, t.subtitle, c.row_group, c.row_label, c.col_label,
-       c.value_text, c.value_num, c.value_low, c.value_high, c.footnotes, t.table_id, c.row_idx, c.col_idx
+       c.value_text, c.value_num, c.value_low, c.value_high, c.value_direction, c.footnotes,
+       t.table_id, c.row_idx, c.col_idx
 FROM smp_table_cells c JOIN smp_tables t USING (table_id)
 ORDER BY t.issue_date, t.position, c.row_idx, c.col_idx;
 """
@@ -344,9 +391,9 @@ ORDER BY t.issue_date, t.position, c.row_idx, c.col_idx;
 
 def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
     """Re-extract every table from the downloaded issues. Returns (tables, cells)."""
+    conn.executescript("DROP VIEW IF EXISTS v_smp_table_cells; DROP TABLE IF EXISTS smp_table_cells; "
+                       "DROP TABLE IF EXISTS smp_tables;")
     conn.executescript(SCHEMA)
-    conn.execute("DELETE FROM smp_table_cells")
-    conn.execute("DELETE FROM smp_tables")
     n_tables = n_cells = 0
     for folder in sorted(p for p in raw_dir.iterdir() if (p / "manifest.json").exists()):
         for position, t in enumerate(issue_tables(folder)):
@@ -360,9 +407,9 @@ def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
             ).fetchone()[0]
             conn.executemany(
                 "INSERT INTO smp_table_cells (table_id, row_idx, col_idx, row_label, row_group, row_level, col_label, "
-                "value_text, value_num, value_low, value_high, footnotes, is_total) "
+                "value_text, value_num, value_low, value_high, value_direction, footnotes, is_total) "
                 "VALUES (:table_id, :row_idx, :col_idx, :row_label, :row_group, :row_level, :col_label, "
-                ":value_text, :value_num, :value_low, :value_high, :footnotes, :is_total)",
+                ":value_text, :value_num, :value_low, :value_high, :value_direction, :footnotes, :is_total)",
                 [{**c, "table_id": table_id} for c in t["cells"]],
             )
             n_tables += 1
@@ -402,3 +449,70 @@ def export(conn: sqlite3.Connection, out_dir: Path = EXPORT_DIR) -> int:
                                 [rows[r]["values"].get(i, "") for i in range(len(labels))])
         count += 1
     return count
+
+
+def fetch_graph_data(raw_dir: Path = RAW_DIR, out_dir: Path = config.DATA_DIR / "smp_graph_data") -> list[Path]:
+    """Download the 'underlying data for selected graphs' workbooks (published from 2024).
+
+    Saved as source files only: each sheet places many graphs side by side, so
+    they are not parsed into tables here.
+    """
+    session = make_session()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    saved = []
+    for manifest_path in sorted(raw_dir.glob("*/manifest.json")):
+        manifest = json.loads(manifest_path.read_text())
+        if manifest["era"] != "smp" or manifest["issue_date"] < "2024":
+            continue
+        target = out_dir / f"smp-graph-data-{manifest['issue_date']}.xlsx"
+        if target.exists():
+            saved.append(target)
+            continue
+        response = session.get(manifest["url"] + "xlsx/smp-graph-data.xlsx", timeout=config.REQUEST_TIMEOUT_SECONDS)
+        if response.status_code == 200 and response.content[:2] == b"PK":
+            target.write_bytes(response.content)
+            saved.append(target)
+        time.sleep(config.REQUEST_DELAY_SECONDS)
+    return saved
+
+
+def cross_check_forecast_archive(conn: sqlite3.Connection) -> dict:
+    """Compare the RBA's forecast archive workbook with the forecast tables extracted from the HTML.
+
+    The archive (November 2018 onwards, loaded by `forecasts-load`) is an
+    independent publication of the same numbers, so every archive value
+    should appear in the matching issue's forecast table. Returns counts and
+    any mismatches.
+    """
+    def row_key(label: str) -> str:
+        label = label.lower().replace("’", "'").replace("savings", "saving")
+        return " ".join(sorted(re.findall(r"[a-z0-9$]+", label)))
+
+    def period_key(label: str) -> str | None:
+        match = re.search(r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*[\s-]*(\d{4})", label.lower())
+        return f"{match.group(1)}-{match.group(2)}" if match else None
+
+    if not conn.execute("SELECT name FROM sqlite_master WHERE name = 'smp_forecast_archive'").fetchone():
+        return {"skipped": "run forecasts-load first"}
+    cells: dict[tuple, list] = {}
+    issues = set()
+    for issue_date, row_label, col_label, value in conn.execute(
+        "SELECT t.issue_date, c.row_label, c.col_label, c.value_num FROM smp_table_cells c "
+        "JOIN smp_tables t USING (table_id) WHERE t.title LIKE '%Forecast Table%'"
+    ):
+        issues.add(issue_date)
+        period = period_key(col_label)
+        if period:
+            cells.setdefault((issue_date, row_key(row_label), period), []).append(value)
+    result = {"matched": 0, "different": [], "not_found": []}
+    for smp_date, variable, target_label, value in conn.execute(
+        "SELECT smp_date, variable, target_label, value FROM smp_forecast_archive"
+    ):
+        found = cells.get((smp_date, row_key(variable), period_key(target_label)))
+        if not found:
+            result["not_found"].append((smp_date, variable, target_label, value))
+        elif any(v is not None and abs(v - value) < 1e-9 for v in found):
+            result["matched"] += 1
+        else:
+            result["different"].append((smp_date, variable, target_label, value, found))
+    return result

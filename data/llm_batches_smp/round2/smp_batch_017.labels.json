@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2018-08",
+    "input_sha256": "59e6bdceda03f84830d7866c1d91834d9931e306ff7aa5b2f2aab177afd1f71c",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Higher interest rates are likely to be appropriate at some point, if the economy continues to evolve as expected.",
+      "Given the gradual nature of the improvement, however, the Board does not see a strong case to adjust the cash rate in the near term.",
+      "The Bank's forecasts are for CPI inflation to pick up to be around 2¼ per cent in both 2019 and 2020."
+    ],
+    "reasoning": "The Board holds the cash rate at 1½ per cent with no strong case for a near-term change, while signalling that the next move is likely to be up if the economy evolves as expected. Growth is forecast a little above 3 per cent in both years, with inflation rising gradually to around 2¼ per cent, inside the target band. Risks are mentioned on both sides (stronger US growth and inflation, trade tensions, weak household income), with no clear tilt. With the cash rate on hold and accommodative now, the overall stance is neutral with a mild tightening bias."
+  },
+  {
+    "issue_date": "2018-11",
+    "input_sha256": "9335d0645f9977cfd86c52fa9a233f5e75ccc7b1b4b81718570c5c2678db18b2",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Australian economy is performing well, and a little stronger than earlier expected.",
+      "If that progress is made, higher interest rates are likely to be appropriate at some point.",
+      "However, given the expected gradual nature of that progress, the Board does not see a strong case to adjust the cash rate in the near term."
+    ],
+    "reasoning": "Growth and inflation forecasts are upgraded slightly and unemployment has fallen to 5 per cent, with inflation expected to rise to a little above 2¼ per cent by end 2020. The Board repeats that higher rates are likely to be appropriate at some point but sees no strong case to move in the near term. Upside global inflation pressures are offset by possibly persistent low administered-price inflation and by concerns about household incomes, debt and falling housing prices. The stance is neutral with a tightening bias."
+  },
+  {
+    "issue_date": "2019-02",
+    "input_sha256": "95474aae943192e19ee97bef34d1cf94baca73b8a43092d249a4e065633f132c",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "If there were then to be a sustained increase in unemployment and a lack of progress in returning inflation to target, it might instead be appropriate to lower the cash rate.",
+      "In light of the recent data and the inherent uncertainties around the forecasts, the probabilities of these two sets of scenarios have shifted to be more evenly balanced than previously.",
+      "Decisions around utilities and other administered prices pose a downside risk to the inflation outlook, but would boost real household incomes."
+    ],
+    "reasoning": "The Board drops its earlier tightening lean and says the chances of a rate rise and a rate cut are now more evenly balanced, so the policy signal is neutral. Growth forecasts are revised down, especially for consumption, but growth is still expected around 3 per cent and then 2¾ per cent, with underlying inflation reaching 2¼ per cent by end 2020. The main worries are consumption, household income and the housing correction, and the risks to inflation from administered prices are explicitly to the downside."
+  },
+  {
+    "issue_date": "2019-05",
+    "input_sha256": "740a5bb6f3cf3a15cf4c43b331b51fe540fcb8dc153cb216c2d5cc3066b2b7f0",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Growth in the Australian economy has slowed and inflation remains low.",
+      "It concluded that the ongoing subdued rate of inflation suggests that a lower rate of unemployment is achievable while also having inflation consistent with the target.",
+      "Given this assessment, the Board will be paying close attention to developments in the labour market at its upcoming meetings."
+    ],
+    "reasoning": "Growth and inflation forecasts are revised lower: trimmed mean inflation is expected around 1¾ per cent in 2019 and reaches only a touch above 2 per cent by early 2021, below or at the very bottom of the target for most of the horizon. The Board's view that lower unemployment is achievable, along with its close watch on the labour market, points towards easing without an explicit commitment. Risks to inflation and activity are mainly to the downside (administered prices, weak pre-sales, household income), so the stance is mildly dovish."
+  },
+  {
+    "issue_date": "2019-08",
+    "input_sha256": "e60b16d076c934fdbf144010a3a0f5b2ab87b9c745697cfb46af7478430f2501",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In response to this accumulation of evidence, the Reserve Bank Board lowered the cash rate at both its June and July meetings, to a new low of 1 per cent.",
+      "Given the current environment, it is reasonable to expect that an extended period of low rates will be needed to achieve the Board's employment and inflation objectives.",
+      "The Board will continue to monitor developments in the labour market closely and is prepared to ease monetary policy further if needed to support sustainable growth in the economy and the achievement of the inflation target over time."
+    ],
+    "reasoning": "After cutting the cash rate twice to a record low of 1 per cent, the Board expects an extended period of low rates and says it is prepared to ease further. Spare capacity is larger than thought, unemployment has risen to 5.2 per cent and trimmed mean inflation is forecast below 2 per cent until 2021. Growth is expected to pick up gradually from about 2½ per cent to around 3 per cent with policy support, but global risks are clearly tilted to the downside. The stance is strongly dovish, focused on employment and spare capacity."
+  }
+]

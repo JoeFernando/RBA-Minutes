@@ -7,7 +7,8 @@
   llm-export  write batch files for labelling inside a Claude Code session
   llm-import  load the JSON labels written for those batch files
   check    report data-quality problems in the database
-  smp-scrape / smp-build / smp-score / smp-llm-export / smp-llm-import / smp-forecasts
+  smp-scrape / smp-build / smp-score / smp-tables / smp-boxes / smp-check /
+  smp-llm-export / smp-llm-import / smp-forecasts / forecasts-load
            the same steps for the Statement on Monetary Policy (1997 onwards)
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
@@ -150,6 +151,24 @@ def cmd_smp_check(args) -> None:
     print(f"{len(problems)} problems, {len(notes)} notes")
 
 
+def cmd_smp_tables(args) -> None:
+    from . import smp, smp_tables
+
+    log.info("Downloaded %d 'List of tables' pages", smp_tables.fetch_table_pages())
+    log.info("%d graph-data workbooks saved", len(smp_tables.fetch_graph_data()))
+    n_tables, n_cells = smp_tables.build(smp.connect(args.db))
+    log.info("Extracted %d tables (%d cells)", n_tables, n_cells)
+    log.info("Wrote %d table CSVs to %s", smp_tables.export(smp.connect(args.db)), smp_tables.EXPORT_DIR)
+    check = smp_tables.cross_check_forecast_archive(smp.connect(args.db))
+    if "skipped" in check:
+        log.info("Forecast archive cross-check skipped: %s", check["skipped"])
+    else:
+        log.info("Forecast archive cross-check: %d values match the HTML tables, %d differ, %d not found",
+                 check["matched"], len(check["different"]), len(check["not_found"]))
+        for item in check["different"] + check["not_found"]:
+            log.error("Forecast archive mismatch: %s", item)
+
+
 def cmd_smp_forecasts(args) -> None:
     from . import smp
 
@@ -266,6 +285,7 @@ def main(argv=None) -> None:
     p = add("smp-llm-import", cmd_smp_llm_import, "load SMP session labels")
     p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_smp")
     add("smp-forecasts", cmd_smp_forecasts, "download the RBA forecast archive")
+    add("smp-tables", cmd_smp_tables, "extract every SMP table into clean tables and CSVs")
     add("smp-boxes", cmd_smp_boxes, "download the RBA's yearly lists of SMP boxes")
     add("smp-check", cmd_smp_check, "check SMP coverage, overviews and boxes")
     add("forecasts-load", cmd_forecasts_load, "load RBA forecast files into tables")

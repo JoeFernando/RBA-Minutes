@@ -125,3 +125,21 @@ def test_smp_archive(conn):
     # one row per (SMP, sheet, target): the primary key would reject duplicates
     assert rows(conn, """SELECT COUNT(*) FROM (SELECT 1 FROM smp_forecast_archive
                          GROUP BY smp_date, source_sheet, target_period HAVING COUNT(*) > 1)""")[0][0] == 0
+
+
+def test_forecast_archive_matches_extracted_smp_tables():
+    """Every value in the RBA forecast archive appears in the forecast table extracted from that SMP's HTML."""
+    import sqlite3
+    from pathlib import Path
+
+    from rba_minutes import smp_tables
+
+    path = Path(__file__).resolve().parent.parent / "data" / "rba_minutes.sqlite"
+    conn = sqlite3.connect(path)
+    if not conn.execute("SELECT name FROM sqlite_master WHERE name = 'smp_table_cells'").fetchone():
+        pytest.skip("SMP tables not built")
+    result = smp_tables.cross_check_forecast_archive(conn)
+    if "skipped" in result:
+        pytest.skip(result["skipped"])
+    assert result["matched"] > 3000
+    assert result["different"] == [] and result["not_found"] == []

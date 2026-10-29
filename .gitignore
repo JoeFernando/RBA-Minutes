@@ -15,6 +15,6 @@ venv/
 # Raw downloads and regenerable exports (the SQLite database is committed)
 data/raw/
 data/exports/
-data/llm_batches/*.md
+data/llm_batches/**/*.md
 data/raw_smp/
 data/llm_batches_smp/**/*.md

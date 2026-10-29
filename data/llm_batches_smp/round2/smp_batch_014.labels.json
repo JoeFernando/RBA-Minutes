@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2014-11",
+    "input_sha256": "5c91ea4b94d91f0b43e6a6f495ec9d182186cd69511c421c09b306683ec33f30",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "On present indications, the most prudent course is likely to be a period of stability in interest rates.",
+      "GDP growth is still expected to be below trend until mid 2015, before picking up gradually to be a bit above trend by the end of 2016.",
+      "Inflation is projected to remain consistent with the target over the forecast period."
+    ],
+    "reasoning": "The Board explicitly signals a period of stability in interest rates, with inflation forecast to stay within the 2–3 per cent target. Below-trend growth, an elevated unemployment rate and a high exchange rate give a slight dovish tint, but there is no signal of easing. Growth is expected to pick up to above trend by the end of 2016."
+  },
+  {
+    "issue_date": "2015-02",
+    "input_sha256": "43764841144e3080e7b40bcbbf47e5b59031a491ed494cdbd8cb2da78209ead9",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given this assessment, and informed by a set of forecasts based on an unchanged cash rate, the Board judged at its February meeting that a further 25 basis point reduction in the cash rate was appropriate.",
+      "Hence, growth overall is now forecast to remain at a below-trend pace somewhat longer than had earlier been expected.",
+      "The outlook for consumer price inflation has been revised lower since the previous Statement, reflecting the effects of the fall in oil prices and the weaker outlook for labour and product markets."
+    ],
+    "reasoning": "The Board cut the cash rate after a long hold, citing weaker near-term growth, a later peak in unemployment and an inflation outlook revised lower. Spare capacity and an exchange rate above fundamental value are presented as reasons for more support. Underlying inflation stays within target and growth is expected to pick up to above trend late in the forecast period."
+  },
+  {
+    "issue_date": "2015-05",
+    "input_sha256": "3996d6650337fc8d7824c452cd37ac65df89e3e0d7b0c561d4d9b8dca8b29250",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At its May meeting the Board judged that, under these circumstances, it was appropriate to reduce the cash rate by a further 25 basis points to provide some additional support to economic activity.",
+      "The profile for GDP growth implies that there will be excess capacity in the labour market for longer than previously thought.",
+      "The Board will continue to assess the outlook and adjust policy as needed to foster sustainable growth in demand and inflation outcomes consistent with the inflation target over time."
+    ],
+    "reasoning": "A second 25 basis point cut is delivered because growth is expected to stay below trend for longer, with excess labour market capacity and contained inflation. However, the closing guidance is neutral ('adjust policy as needed'), dropping the earlier statement that further easing may be appropriate. Encouraging household demand trends temper the dovishness."
+  },
+  {
+    "issue_date": "2015-08",
+    "input_sha256": "3d51a6204862204fac19687daa19c376183ae4e1fbb760944c5ed22a3ebffe44",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Since the May Statement, the Board has judged that an accommodative stance of monetary policy remains appropriate.",
+      "Data on the domestic economy over the past few months have generally been positive.",
+      "Domestic cost pressures are likely to remain well contained and underlying inflation is expected to be around 2½ per cent over the forecast period."
+    ],
+    "reasoning": "The Board kept the cash rate unchanged and gives no directional signal beyond maintaining an accommodative stance. Domestic data are described as generally positive, with a better labour market, while spare capacity and headwinds remain. Inflation is forecast at around 2½ per cent and growth to pick up to over 3 per cent by 2017."
+  },
+  {
+    "issue_date": "2015-11",
+    "input_sha256": "2abe04842eeef3fb2ec3e659c4e452381cdf96ee3a54d2ff9192ec8d0527b781",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At the same time, the Board recognised that the economy is likely to be operating with a degree of spare capacity for some time yet and noted that the outlook for inflation may afford scope for further easing of policy, should that be appropriate to lend support to demand.",
+      "The profile of inflation has been revised down in light of the low outcome in the September quarter.",
+      "At the November meeting, the Board judged that the prospects for an improvement in economic conditions had firmed a little over recent months and that it was appropriate to leave the cash rate unchanged."
+    ],
+    "reasoning": "The cash rate was held as growth prospects firmed, but the Board added an explicit easing bias, noting that low inflation may afford scope for further easing. Underlying inflation was revised down to close to 2 per cent before picking up to about 2½ per cent, still within target. Spare capacity is expected to persist, so the lean is mildly dovish."
+  }
+]

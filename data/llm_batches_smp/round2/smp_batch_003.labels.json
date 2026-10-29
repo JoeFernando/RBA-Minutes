@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2000-08",
+    "input_sha256": "5b50c3be86175fa84dfb6054d2a21806ac549b2115999c998e6eb98c9ec5d667",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Notwithstanding the recent increases in interest rates, the stance of monetary policy is not unduly restricting growth at present.",
+      "The Bank's current assessment is that inflation (excluding tax effects) is likely to be in the upper part of the target zone over the next four to six quarters, though inflation risks overall are tilted somewhat to the upside.",
+      "The Board's assessment throughout this period has been that, with strong growth, a gradual increase in underlying inflation, and firming demand for credit, interest rates needed to rise to lessen the risks of higher inflation in the future."
+    ],
+    "reasoning": "The Bank has raised the cash rate five times, most recently in August, and says policy is still not unduly restricting growth amid rapid credit growth. Inflation is forecast in the upper part of the target with risks tilted to the upside, and growth is described as strong and likely to continue. The text points to a tightening bias with inflation as the clear focus."
+  },
+  {
+    "issue_date": "2000-11",
+    "input_sha256": "1b953e8153ffb60a04d527ddf307415cb8eaad4835fb986dab262aa8e7aadaf4",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "With this outlook, the monetary policy decision has been finely balanced, and the Bank has not made a change to interest rates since August.",
+      "At the same time, the current level of the exchange rate increases the risk that inflation could breach the target, once the direct GST effects have passed.",
+      "On the assumption that a substantial degree of pass-through occurred, underlying inflation could be around 3 per cent at the end of next year, with CPI inflation temporarily slightly below that, due to the assumed decline in oil prices."
+    ],
+    "reasoning": "Policy has been on hold since August, and the decision is described as finely balanced. Moderating domestic demand is set against exchange-rate pass-through that could push inflation to the top of or beyond the target. Growth is expected to slow from its recent pace. The upside inflation risk gives a mild hawkish lean, but the language is heavily hedged and signals no clear direction."
+  },
+  {
+    "issue_date": "2001-05",
+    "input_sha256": "9cad4573f33b93b657506b6c2cb48f9f6aed3956597f2cebdbf5f2b1fee7c66f",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given that inflation remained well-controlled, this combination of risks to the outlook for economic activity meant that there was a prima facie case for an easing of monetary policy, to return policy to a clearly expansionary setting.",
+      "Overall, the Bank expects that inflation will remain within the 2–3 per cent target zone in the period ahead.",
+      "With these encouraging signs, and with a significant easing in monetary policy having occurred since the beginning of February, the Bank stayed its hand at its May meeting."
+    ],
+    "reasoning": "The Bank cut rates three times in quick succession because of weak activity at home and abroad, and policy is now clearly expansionary. Inflation is expected to stay within target. With encouraging signs of recovery the Bank held in May and only says it will respond if appropriate. Concern remains on growth and unemployment, but the signal for future policy is roughly neutral."
+  },
+  {
+    "issue_date": "2001-08",
+    "input_sha256": "4e36551df54850400eaf09fb142845c58686651163f1cfcd858c2dbe6dadd6ab",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "With the change in the domestic economic news for the better and the resulting improvement in sentiment, the Bank judged that the stance of policy had been adjusted sufficiently to address the domestic downside risks to growth.",
+      "But provided that this is a temporary phenomenon – which would depend on inflation expectations remaining well-anchored, and wages growth remaining moderate – it would not call for a tightening of monetary policy.",
+      "The current stance of policy seems well-attuned to this task, but there are conflicting currents which could shift the balance of risks in either direction."
+    ],
+    "reasoning": "The Bank says policy has been adjusted sufficiently after earlier cuts, the domestic recovery is under way and the short-term outlook is firmer. Underlying inflation is forecast near 3 per cent in the near term and then about 2½ per cent through 2002. Temporarily higher inflation would not call for tightening, while global weakness poses downside risks to growth. The Bank describes conflicting currents in both directions and a balanced stance."
+  },
+  {
+    "issue_date": "2001-11",
+    "input_sha256": "8660eb549d0e22e80ff299a9f241dbc23e7ae451087571ecabd07a9b2dce3dbc",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "At its meeting on 4 September, the Board judged that the risks to the world economy and signs that inflation would soon peak made it appropriate to ease monetary policy further, notwithstanding the possibility that above-target inflation might be observed temporarily in the near term.",
+      "By any conventional measure, this represents an expansionary setting of monetary policy, a conclusion which can only be reinforced by the low level of the effective exchange rate.",
+      "Hence it remains the case, as at the time of the last Statement, that the downside risks to Australia's growth performance come mainly from abroad."
+    ],
+    "reasoning": "The Bank cut rates in September and October because of a sharply weaker world economy, and holds 'for the present' at an expansionary setting. Domestic demand is firming, but the external sector faces a tougher year, and the downside risks to growth come mainly from abroad. Underlying inflation may run slightly above 3 per cent in the near term before easing, while global disinflation exerts downward pressure. The concern is clearly growth, with a mild easing lean."
+  }
+]

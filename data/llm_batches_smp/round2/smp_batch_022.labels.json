@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2024-11",
+    "input_sha256": "13063790d3eac5a04f5cdccdd932528a3482b4fde5d8caef7ed1d088c743f8c6",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Underlying inflation remains too high.",
+      "This reinforces the need to remain vigilant to upside risks to inflation and the Board is not ruling anything in or out.",
+      "Policy will need to be sufficiently restrictive until the Board is confident that inflation is moving sustainably towards the target range."
+    ],
+    "reasoning": "The Board held the cash rate and stressed that underlying inflation remains too high, with demand still exceeding supply and a tight labour market. It calls for vigilance to upside inflation risks and for policy to stay sufficiently restrictive, but signals no further tightening, so the bias is a hold. Inflation is forecast to return to the 2.5 per cent midpoint by late 2026 and growth is expected to recover towards potential."
+  },
+  {
+    "issue_date": "2025-02",
+    "input_sha256": "fa4ee9528c5694c749b411638a8985bcf4550c0e6213b68ce9c16140431589a5",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Some of the upside risks to inflation appear to have eased and there are signs that disinflation might be occurring a little more quickly than earlier expected.",
+      "If monetary policy is eased too much and too soon, disinflation could stall and inflation would settle above the midpoint of the target range.",
+      "In removing a little of the policy restrictiveness, the Board acknowledges that progress has been made but is cautious about the outlook."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points on faster-than-expected disinflation, which is a move towards easier policy, but it framed the cut cautiously and warned against easing too much too soon. Forecasts conditioned on a market path with further easing have underlying inflation a little above 2½ per cent, within the range, and growth picking up. Upside and downside risks are both said to remain, and the discussion is still mainly about inflation."
+  },
+  {
+    "issue_date": "2025-05",
+    "input_sha256": "6ec53f34c67adec0a8473e07c54bb07d215a5dbe7791fccca0a71aa11e7ffb0e",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Monetary Policy Board judged that the risks to inflation had become more balanced but that the outlook is uncertain and depends heavily on unpredictable developments in global trade policy.",
+      "International developments are expected to weigh on the economy and, with inflation expected to remain around target, the Board judged that it was appropriate to ease monetary policy at this meeting.",
+      "The Board considered the severe downside scenario presented in this Statement and noted that monetary policy is well placed to respond decisively to international developments if they were to have material implications for activity and inflation in Australia."
+    ],
+    "reasoning": "The Board cut the cash rate to 3.85 per cent because inflation is within the range and global trade developments are expected to weigh on activity. It judges inflation risks to be more balanced, and it highlights a severe downside scenario along with readiness to respond decisively, so the main worry is activity. GDP growth is still expected to pick up, though more gradually, with inflation around the midpoint. The Board says it remains cautious, so the lean is only mildly dovish."
+  },
+  {
+    "issue_date": "2025-08",
+    "input_sha256": "5df99f7d38f6bcd9c016d4d492832f4d77dfaba0ffd7d9acba2203dd2144d4c7",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Monetary Policy Board judged that a further easing in monetary policy was appropriate, given that inflation has continued to moderate.",
+      "Supported by the assumed gradual removal of policy restrictiveness, the economy is judged to stay close to full employment over the forecast period and underlying inflation is projected to remain around the midpoint of the 2–3 per cent range.",
+      "With momentum in the domestic economy gradually lifting, the risks to the outlook and inflation are judged to be broadly balanced."
+    ],
+    "reasoning": "The Board cut the cash rate again to 3.60 per cent as underlying inflation moved towards the midpoint, and the forecasts assume a further gradual removal of policy restrictiveness. Inflation is projected to stay around the midpoint and GDP growth to pick up, with the economy near full employment. Risks are described as broadly balanced, and the cautious language keeps the lean mildly dovish."
+  },
+  {
+    "issue_date": "2025-11",
+    "input_sha256": "b8187f2860258bc45cfad9176b9e989f0e47bf6a93de0dac92c1c309844aeb51",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Recent data suggest more inflationary pressure in the Australian economy than had been expected in the August Statement, and the outlook for underlying inflation has been revised slightly higher.",
+      "The Monetary Policy Board judged that it was appropriate to leave the cash rate target unchanged at 3.60 per cent, and remains cautious about the outlook given recent evidence of more persistent inflation in the economy.",
+      "Underlying inflation is expected to be above the 2–3 per cent range until the second half of 2026, largely reflecting the strong September quarter outcome."
+    ],
+    "reasoning": "After a run of cuts, the Board held the cash rate because inflation and capacity pressure came in higher than expected, and the inflation forecast was revised up. Underlying inflation is above the range until the second half of 2026 and then settles a little above the midpoint, so it ends the horizon within the target. Growth is expected to stabilise around potential and risks are stated as balanced. The concern about persistent inflation, with no signal of a hike, makes this mildly hawkish with a neutral bias."
+  }
+]

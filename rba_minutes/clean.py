@@ -82,7 +82,8 @@ def normalise_text(text: str) -> str:
     text = re.sub("[­​‌‍⁠﻿]", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     # get_text(" ") puts a space between inline tags: "per cent ," -> "per cent,"
-    text = re.sub(r"\s+([,.;:!?%)\]])", r"\1", text)
+    text = re.sub(r"\s+([,.;:!?)\]])", r"\1", text)
+    text = re.sub(r"(\d)\s+%", r"\1%", text)  # "5 %" -> "5%", but "quarterly, %" stays
     text = re.sub(r"([(\[])\s+", r"\1", text)
     return text
 

@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "1998-05",
+    "input_sha256": "f0d3cea69f471b9b483b40e48141bd4c288f48090bfda6a349acfa893a4670e6",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In 1998, on present indications, growth is likely to be somewhat lower, and inflation higher, than the 1997 outcomes.",
+      "Under these circumstances, the Bank is comfortable for the present in maintaining the current structure of short-term interest rates.",
+      "There is nothing that Australian economic policy can do to prevent this worsening of external conditions."
+    ],
+    "reasoning": "The Bank holds rates and says it is comfortable with the current structure of short-term interest rates, giving no directional signal. Growth is expected to be lower than in 1997 because of the Asian crisis, while underlying inflation is forecast to rise modestly to around 2 to 2.5 per cent, in line with the target. The main worry is external demand weakness, but policy is described as already supportive, so the overall stance is balanced."
+  },
+  {
+    "issue_date": "1998-08",
+    "input_sha256": "9beb21e7a4f892ae96ff6e4f3bcf8d7a0b08788eee473dcf8c99f659b2630848",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Taking that into account, the Bank's assessment is that output is growing at a moderate but below-trend pace, and that this should continue in the period immediately ahead.",
+      "Inflationary pressures in the economy remain well controlled.",
+      "In the absence of unforeseen developments, this setting of policy remains appropriate."
+    ],
+    "reasoning": "Policy is described as already lending support to domestic demand, and the Bank says this setting remains appropriate, so there is no signal to move. Output is growing at a moderate but below-trend pace that is expected to continue, and underlying inflation is forecast to rise to around 2.5 to 3 per cent, within the target. Heightened uncertainty from Asia makes growth the main concern, but the language is a steady hold rather than a lean towards easing."
+  },
+  {
+    "issue_date": "1998-11",
+    "input_sha256": "fe76f6f8521e4fef2984d013cbe476b6becb6652d31f239b941cfad8ea1e8893",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Notwithstanding these uncertainties, it is hard to see circumstances in which growth in Australia will not decline somewhat from the good outcomes achieved in 1997 and the first half of 1998.",
+      "It appears unlikely, however, that the inflation target will be exceeded, given that domestic cost increases remain quiescent.",
+      "Monetary policy is seeking to steer a relatively steady path through these frequent changes in outlook and market sentiment."
+    ],
+    "reasoning": "The Bank stresses steadiness in policy settings and judges current settings broadly appropriate, giving no explicit directional bias. Growth is expected to decline from recent strong outcomes amid heightened global financial uncertainty, while inflation is expected to rise gradually but not exceed the target. Risks run both ways, with exchange-rate pass-through on one side and global weakness on the other, so the stance is neutral with growth as the main focus."
+  },
+  {
+    "issue_date": "1999-02",
+    "input_sha256": "c1c8939f487dcb92f46336d508fb1a81b92a9684d99c39e31f85d419ff4aae0c",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "downside",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "There is a clear case for monetary policy to be relatively easy, and policy has maintained an expansionary stance over the past year and a half, as the international environment has turned unfavourable for Australia.",
+      "Inflation remains lower than forecast.",
+      "In the period ahead, the current policy setting will, in the Bank's view, provide support to growth and result in a limited and gradual drift upward in inflation to rates consistent with the target."
+    ],
+    "reasoning": "The Bank says there is a clear case for policy to be relatively easy and notes it cut the cash rate late in 1998, which gives a mild dovish lean, although the current stance is judged appropriate with no further move signalled. Inflation has stayed below target for longer than expected and is forecast to drift up only to about 2 per cent, with the risks of weaker pass-through and lower world inflation pointing down. Strong domestic growth is expected to slow against a difficult external environment, so concerns are split between growth and low inflation."
+  },
+  {
+    "issue_date": "1999-05",
+    "input_sha256": "07325dfd41963c23971919899ea53ff7896237b48af0a398dde4f51b5b6b842e",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The risks of a larger decline in growth have diminished, however, since late last year.",
+      "The Bank expects inflation in underlying terms to be about 2 per cent during 1999, the same as its forecast in February, and a continuation of Australia's excellent inflation performance during the 1990s.",
+      "This shift in the balance of risks on the growth outlook, and the inflation forecast suggesting outcomes consistent with the target over the coming year, have been the key elements in the Bank maintaining an unchanged stance of policy over recent months."
+    ],
+    "reasoning": "The Bank has kept policy unchanged, citing reduced downside risks to growth and an inflation forecast consistent with the target. It still expects somewhat lower GDP growth in 1999, but notes buoyant asset markets and confidence that could make the forecast too pessimistic, which is a slight hawkish tilt. With inflation forecast at about 2 per cent and no directional signal, the overall stance is neutral."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2004-08",
+    "input_sha256": "0e354f465ac0bf445b32f6712a77c1247b1510fc236543de098798e7e0fbb497",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "On the other hand, with the policy stance in Australia still mildly accommodative, and the global economic environment likely to remain favourable to growth, it would be surprising if Australian interest rates did not have to increase further at some stage in the current expansion.",
+      "At the same time, it has become apparent that the restraining influence of the exchange rate on inflation has now reached its point of maximum effect, so that the underlying inflation rate can soon be expected to start increasing.",
+      "Beyond that period, it could be expected to rise further if the current strength of domestically sourced inflation persists."
+    ],
+    "reasoning": "The Board held the cash rate but described policy as still mildly accommodative and said it would be surprising if rates did not have to rise further in the expansion, a mild tightening bias. Underlying inflation is forecast to trough near 2 per cent and rise to around 2.5 per cent by end-2005, within the target, with upside risk if domestic inflation persists. Growth is described as good and firm, while the housing market cooling reduces urgency, so the hawkish lean is mild and hedged."
+  },
+  {
+    "issue_date": "2004-11",
+    "input_sha256": "8a23a7de274f00e00a883e59e9ba72be0f4f19c5d3fd681a1f637c066d825c1b",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Accordingly, while there is no pressing need for higher interest rates at this stage, it continues to appear likely that the economy will require higher interest rates at some stage of the current expansion.",
+      "Inflation in Australia remains relatively low, though signs of upward pressure are now beginning to emerge in some areas.",
+      "In these circumstances the Board did not see a case for monetary policy to be tightened when it reviewed the policy setting at its three most recent monthly meetings."
+    ],
+    "reasoning": "The Board held rates and saw no pressing need to tighten, but repeated that higher rates were likely to be required at some stage, a mild tightening bias. Underlying inflation is forecast to rise gradually to around 2.5 per cent by end-2005 and slightly higher by mid-2006, within the target. Growth is solid and well supported, and the text names upstream price pressures alongside possible oil-related drag on growth without stating a skew, so risks are treated as balanced."
+  },
+  {
+    "issue_date": "2005-02",
+    "input_sha256": "128d0044340b0fb33cb5c946b61e4828452e8bf8e1a5f01f61fc1b733ff251f8",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "On balance, the Board decided at its February meeting to leave interest rates unchanged, while noting that the likelihood of further monetary tightening being required in the months ahead had increased.",
+      "Nonetheless, continued pressure on raw materials prices, evidence of capacity constraints in some sectors and reports of higher employment costs – notwithstanding the steadiness to date of aggregate series for wages – constitute a risk that this forecast could prove to be too low.",
+      "With the expansion now in its fourteenth year, there is clearly much less spare capacity available than was the case in its early stages."
+    ],
+    "reasoning": "Although rates were held, the Board said the likelihood of tightening in the months ahead had increased, and it highlighted capacity constraints, rising producer prices and upside risks to an inflation forecast that already reaches 3 per cent by end-2006. The forecast stays at the top of the 2-3 per cent band, so it is coded within target, with risks explicitly to the upside. Growth is expected to continue at a good pace on strong demand and terms of trade gains, and the near-term tightening signal makes this strongly hawkish."
+  },
+  {
+    "issue_date": "2005-05",
+    "input_sha256": "c3f18944ffdc8ba41d1502a7c622d92f5516873e50ae7f93f1b726b222cf041f",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Based on previous cyclical experience, it would be surprising if interest rates did not have to increase further at some stage of the current expansion.",
+      "The Board's assessment of this information at its May meeting was that inflation remained likely to increase gradually from its current level of around 21⁄2 per cent, but that upside risks to this forecast had receded, partly as a result of the March tightening.",
+      "Nonetheless, given the tentative signs of easing in domestic demand pressures, the Board judged that there was a case to hold the cash rate steady for the time being, to allow further time to assess the strength of inflationary pressures."
+    ],
+    "reasoning": "After the March rate rise the Board held in May, citing tentative signs of easing demand and receding upside risks, but it kept a tightening bias by saying further increases would likely be needed at some stage. Underlying inflation is forecast to rise gradually to around 3 per cent by end-2006, at the top of the band. Domestic demand is slowing only mildly, with investment and terms of trade support, so growth is coded steady; the upside risks are said to have receded rather than gone, so they are still coded upside."
+  },
+  {
+    "issue_date": "2005-08",
+    "input_sha256": "62f869218e6ce0533f2a3eb7bb24ce4f774e8895d7e338ad5f9bde0f439cbf74",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Currently the risks to the forecasts are judged to be evenly balanced, whereas earlier in the year they had appeared to be weighted to the upside.",
+      "While the Board's judgment remains that underlying inflation is likely to increase over the next year or so, the extent of the increase should be quite limited, unless there is a significant re-acceleration in domestic demand.",
+      "Overall, the Australian economy is operating at a high level of capacity utilisation, and recent economic data have appeared consistent with an economy growing at a reasonable though not excessive pace."
+    ],
+    "reasoning": "The Board held the cash rate and judged that medium-term inflation risks had eased, with risks to the forecast now evenly balanced, and it dropped any explicit signal of further tightening. Underlying inflation is forecast to peak around 3 per cent in the second half of 2006, within the target. Domestic demand has slowed to a more sustainable pace while the economy keeps growing at a reasonable rate, so the stance is neutral with balanced concerns."
+  }
+]

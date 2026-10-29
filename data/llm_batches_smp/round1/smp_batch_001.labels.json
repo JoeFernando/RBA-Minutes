@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "1997-02",
+    "input_sha256": "12c405c19dcea09c41c9f9f1998105d2fe6e132f016bb447443988c8ba311a8f",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Given this assessment of the outlook for inflation and growth, and the uncertainties still surrounding wage outcomes, the Bank sees current monetary policy settings as broadly appropriate for the time being.",
+      "The outlook now is for stronger growth during 1997 than that experienced through 1996.",
+      "A rise in other types of wages, which pushed them near to the increases achieved in enterprise agreements, would lead to an aggregate wage outcome which was inconsistent with the inflation objective and so have implications for future monetary policy."
+    ],
+    "reasoning": "After three easings in 1996, the Bank judges current settings broadly appropriate, signalling a hold rather than further moves. Underlying inflation is 2.1 per cent with a good near-term outlook, and growth is expected to strengthen in 1997. The main caution is that enterprise bargaining outcomes could push aggregate wages to a level inconsistent with the inflation objective, an upside risk that keeps the stance balanced rather than dovish."
+  },
+  {
+    "issue_date": "1997-05",
+    "input_sha256": "6354ea0b88f0e7ce308f468c5cf56d7a042b14cb2cc2d84c0869591c7979b814",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The Bank's assessment is that the current level of cash rates is accommodating the pick-up in activity without prejudicing continued low inflation.",
+      "These figures will need to be closely watched to assess the extent to which they represent a significant change in trend but, taken at face value, they suggest that wages growth is becoming uncomfortably high.",
+      "It would also threaten faster inflation – to which monetary policy would have to respond – and thereby put at risk the potential for faster non-inflationary growth."
+    ],
+    "reasoning": "The Bank considers the current cash rate appropriate, accommodating a pick-up in growth while inflation stays near 2 per cent. However, it flags wages growth as becoming uncomfortably high and warns that monetary policy would have to respond to faster inflation, giving the statement a conditional hawkish edge. Because the near-term inflation outlook is described as good and no change is signalled, the overall stance is neutral with upside inflation risks."
+  },
+  {
+    "issue_date": "1997-08",
+    "input_sha256": "6af91e58c592e3627a7656806f16069619a0f9dd9b5bc98d3d2f8da13f2e3365",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "With aggregate wage pressures easing, inflation expectations declining, and ample spare capacity in the economy, the Bank judged that there were no major inflationary risks on the horizon, and that monetary policy could be eased to provide further support for growth.",
+      "These trends, and the Bank's assessment that inflation is likely to remain quite low for some time ahead, have provided scope for lower interest rates, and the Bank has eased monetary policy twice since the time of the Semi-Annual Statement to Parliament in early May.",
+      "The present setting of policy also embodies a judgment that even if growth in demand turned out to be a little higher than expected, the economy has scope, in the short term at least, to respond without serious inflation consequences."
+    ],
+    "reasoning": "The Bank has eased twice since May, citing inflation below 2 per cent, easing wage pressures, declining expectations and ample spare capacity, and it explicitly sees no major inflationary risks. The focus is on supporting growth and reducing unemployment, which has stalled at about 8½ per cent. No further easing is explicitly signalled, so the bias is neutral, but the stance and its justification are clearly dovish."
+  },
+  {
+    "issue_date": "1997-11",
+    "input_sha256": "144da1bfa24e0c35f58db956e0109378979762915bb47e3a35325e454bff9296",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Within that period, underlying inflation is likely to edge up to be a little above 2 per cent, and remain consistent with the target thereafter.",
+      "While this remains the case, monetary policy will be able to maintain its present stance, which is moderately encouraging to growth.",
+      "The outlook for Asia is the key uncertainty in assessing prospects for the Australian economy over the next year or two."
+    ],
+    "reasoning": "The Bank expects to maintain its present, moderately expansionary stance as long as inflation stays consistent with the target, which it forecasts to edge up to a little above 2 per cent. The Asian crisis is identified as the key uncertainty, threatening export sales and growth, while disappointing labour cost data is an offsetting upside concern. With no signalled change and risks running both ways, the stance is neutral."
+  },
+  {
+    "issue_date": "1998-02",
+    "input_sha256": "39d02610307f4f9563e6b4d12c1abb7ce446d02247c5346ba5d667dc34516d82",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "financial_stability",
+    "key_quotes": [
+      "The Bank's current expectation is that underlying inflation will gradually move up towards the target over the year ahead.",
+      "These trends will act to slow growth in the Australian economy from the rate it would otherwise have been.",
+      "In the period ahead, the pursuit of these medium-term objectives will require policy to place a good deal of importance on fostering financial market stability."
+    ],
+    "reasoning": "Policy is described as conducive to expansion with no change signalled, and underlying inflation, at 1.4 per cent, is expected only to move gradually up towards the target. Growth is expected to slow from 1997's strong pace as the Asian slump cuts export growth, though domestic momentum should sustain a reasonable pace. The statement places particular emphasis on fostering financial market stability amid regional turmoil, making that the dominant concern within an overall neutral stance."
+  }
+]

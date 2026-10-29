@@ -41,16 +41,29 @@ SMP_ISSUE = re.compile(r"^/publications/smp/(\d{4})/([a-z]{3})/$")
 SKIP_PAGES = {"graphs.html", "tables.html", "contents.html", "boxes.html", "index.html"}
 
 CHAPTER_CATEGORIES = [
+    ("administrative", r"copyright|disclaimer|abbreviations|glossary|^list of (figures|graphs|tables)"),
+    ("forecast_table", r"^forecast table|^forecasts?$"),
+    ("in_depth", r"^in depth\b"),
     ("overview", r"overview|introduction|in brief"),
     ("outlook", r"outlook|forecast"),
     ("inflation", r"inflation|price|wage"),
     ("financial", r"financial|market|foreign exchange|credit|interest rate"),
-    ("international", r"international|world|global"),
-    ("domestic", r"domestic|australia|economic|activity|labour|payments"),
+    ("international", r"international|world|global|east asia|united states|europe|china"),
+    ("domestic", r"domestic|australia|economic|activity|labour|payments|foreign trade|capital flows|drought"),
 ]
+# Stored, but left out of the issue's narrative text and its sentiment scores.
+# Boxes and "In Depth" chapters are the special studies; they are kept as
+# chapters of their own (see v_smp_special_studies).
+NON_NARRATIVE = {"box", "in_depth", "administrative", "forecast_table"}
 END_OF_TEXT = re.compile(r"^(footnotes?|endnotes?|references)\b", re.IGNORECASE)
 BOX_MARKER = re.compile(r"^@@BOX-(\d+)@@$")
 CHART_NOTE = re.compile(r"^(sources?|notes?)\s*:", re.IGNORECASE)
+# Page furniture and chart fragments that are not prose: download links,
+# bare axis numbers, and short chart notes such as "(a) Excluding exports".
+FRAGMENT = re.compile(
+    r"^download\b.*(\d\s*(kb|mb)|pdf version of this (table|graph|page))$|^[−–+-]?\d+(\.\d+)?$|^\([a-z]\)\s+\S+(\s+\S+){0,4}$",
+    re.IGNORECASE,
+)
 
 
 # --- Listing and downloading --------------------------------------------------
@@ -157,6 +170,8 @@ def _paragraphs(content) -> list[tuple[str, str, str]]:
             continue
         if CHART_NOTE.match(text) and len(text) < 300:
             continue  # "Sources: ABS; RBA." under graphs and tables
+        if name in ("p", "li") and FRAGMENT.match(text):
+            continue
         kind = {"h1": "title", "h2": "subheading", "h3": "subheading", "h4": "subheading",
                 "li": "list_item"}.get(name, "text")
         out.append((name, kind, text))
@@ -262,7 +277,7 @@ CREATE TABLE IF NOT EXISTS smp_issues (
     published_date  TEXT,                   -- from the page's dc.date metadata where present
     n_chapters      INTEGER NOT NULL,
     n_words         INTEGER NOT NULL,
-    full_text       TEXT NOT NULL,          -- all chapters except boxes, with titles
+    full_text       TEXT NOT NULL,          -- narrative chapters with titles (no boxes, forecast tables or notices)
     parser_version  TEXT NOT NULL,
     parsed_at       TEXT NOT NULL
 );
@@ -272,7 +287,7 @@ CREATE TABLE IF NOT EXISTS smp_chapters (
     issue_id        INTEGER NOT NULL REFERENCES smp_issues(issue_id) ON DELETE CASCADE,
     position        INTEGER NOT NULL,
     title           TEXT NOT NULL,
-    category        TEXT NOT NULL,          -- overview / international / financial / domestic / inflation / outlook / box / other
+    category        TEXT NOT NULL,          -- overview / international / financial / domestic / inflation / outlook / box / forecast_table / administrative / other
     url             TEXT NOT NULL,
     text            TEXT NOT NULL,
     n_words         INTEGER NOT NULL,
@@ -335,6 +350,15 @@ CREATE TABLE IF NOT EXISTS smp_llm_sentiment (
     UNIQUE (issue_date, model, prompt_version, input_scope, input_sha256)
 );
 
+CREATE VIEW IF NOT EXISTS v_smp_special_studies AS
+SELECT i.issue_date, c.position, c.category, c.title, c.n_words, c.url, c.text,
+       d.lm_tone, d.lm_uncertainty_per_1k, d.hawk_dove_index
+FROM smp_chapters c
+JOIN smp_issues i USING (issue_id)
+LEFT JOIN smp_dictionary_sentiment d ON d.chapter_id = c.chapter_id AND d.scope = 'chapter'
+WHERE c.category IN ('box', 'in_depth')
+ORDER BY i.issue_date, c.position;
+
 CREATE VIEW IF NOT EXISTS v_smp_sentiment AS
 SELECT
     i.issue_date, i.year, i.era, i.published_date, i.n_words,
@@ -361,7 +385,7 @@ def connect(path: Path = config.DB_PATH) -> sqlite3.Connection:
 
 
 def upsert_issue(conn: sqlite3.Connection, issue: dict) -> int:
-    main = [c for c in issue["chapters"] if c["category"] != "box"]
+    main = [c for c in issue["chapters"] if c["category"] not in NON_NARRATIVE]
     full_text = "\n\n".join(f"{c['title']}\n\n{c['text']}" for c in main)
     row = {
         "issue_date": issue["issue_date"],
@@ -427,7 +451,7 @@ def score_dictionary(conn: sqlite3.Connection) -> int:
             "SELECT chapter_id, category, text FROM smp_chapters WHERE issue_id = ? ORDER BY position",
             (issue_id,),
         ).fetchall()
-        main = [c for c in chapters if c["category"] != "box"]
+        main = [c for c in chapters if c["category"] not in NON_NARRATIVE]
         scopes = [("issue", None, "\n\n".join(c["text"] for c in main))]
         for scope in ("overview", "outlook"):
             text = "\n\n".join(c["text"] for c in main if c["category"] == scope)

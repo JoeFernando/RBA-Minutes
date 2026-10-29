@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2008-08",
+    "input_sha256": "2467bb1b2630148805e84c8e7441c5f4fc0fc3442792af2b5126988a1732c596",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "above_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "upside",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "On the assumption that the subdued demand conditions are likely to continue, scope to move to a less restrictive monetary policy stance in the period ahead is increasing.",
+      "In its recent policy deliberations, the Board has focused on both the risk that inflation may remain uncomfortably high, and on the accumulating evidence of a slowing in domestic demand and activity.",
+      "While inflation is likely to remain high in the short term, the Board judged at its August meeting that demand was slowing to an extent that could be expected to bring about a significant reduction in inflation over time."
+    ],
+    "reasoning": "Inflation is described as high and the Board still worries it may stay uncomfortably high, but demand is clearly slowing. Policy is held for now, and the Board explicitly signals growing scope to move to a less restrictive stance, an easing bias. With concern split between inflation and the slowdown, the overall lean is mildly dovish."
+  },
+  {
+    "issue_date": "2008-11",
+    "input_sha256": "e020bedf4254ab76505b4c9727bdd8b17d6c2f09e6a9c33857c1d89429ca22d9",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "above_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In view of this shift in the balance of risks, the Board judged at its October and November meetings that a significantly more rapid adjustment of the monetary policy setting was needed, and hence the Board decided to make unusually large reductions in the cash rate at those two meetings.",
+      "That, in turn, would mean weaker prospects for demand and output in Australia, and greater downward pressure on inflation over time.",
+      "Even so, a reduction of inflation to the target is still expected to take some time."
+    ],
+    "reasoning": "The Board has cut the cash rate by 200 basis points, including unusually large cuts, in response to severe financial turmoil and a weakening global outlook. Risks have shifted to weaker demand and greater downward pressure on inflation, although inflation is still expected to take some time to return to target. The focus is on avoiding an unduly sharp weakening in demand, which makes this strongly dovish."
+  },
+  {
+    "issue_date": "2009-02",
+    "input_sha256": "c31371e96f64030da2ca50379bafc5a41f6edf5a5f070307d63dbafdff741147",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "weakening",
+    "inflation_risks": "downside",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board has responded to these developments with a series of unusually large reductions in the cash rate at its recent meetings.",
+      "With job vacancies and hiring intentions falling and short-term economic prospects subdued, more significant rises in unemployment are likely in the period ahead.",
+      "In these circumstances, Australia's inflation rate is likely to continue to decline."
+    ],
+    "reasoning": "A severe global downturn has led to unusually large rate cuts, and policy is now providing significant stimulus alongside large fiscal measures. Unemployment is expected to rise more significantly and inflation to keep falling as capacity pressures ease. The dominant concern is cushioning growth and employment, so the stance is strongly dovish."
+  },
+  {
+    "issue_date": "2009-05",
+    "input_sha256": "a7d734cc541aa199abe9a090f447bb5a75994aa989d7b92bec47ff13abe5a9f8",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In assessing whether further reductions are appropriate over the period ahead, the Board will continue to monitor the implications of both economic and financial developments for prospects of a sustainable recovery in the Australian economy.",
+      "While near-term outcomes are likely to be weak, there are reasonable grounds to expect that a recovery will begin by the end of the year, provided global conditions continue to stabilise.",
+      "Forward-looking indicators, including job advertisements and business surveys, suggest a further decline in employment over the months ahead."
+    ],
+    "reasoning": "Rates are at their lowest since the early 1960s, and the Board is still considering further reductions, though it now favours smaller and less frequent moves. Near-term activity and employment are weak, but a gradual recovery is expected to begin by year end as global conditions stabilise. Inflation is gradually abating, and no clear skew in inflation risks is stated, so the stance is mildly dovish with an easing bias."
+  },
+  {
+    "issue_date": "2009-08",
+    "input_sha256": "5160637f55201a942bf2dfd490f8f20085cd44b1d0b548be64fba740c29aa989",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "However, the recent stronger-than-expected economic data and the general improvement in sentiment both in Australia and abroad have reduced the likelihood that a further reduction will be required.",
+      "On the other hand, with the cash rate at an unusually low level and the global economy stabilising, movement towards a more normal setting of monetary policy could be expected at some point if further signs of a durable recovery emerge.",
+      "For the time being though, the Board's judgment is that the present accommodative setting of monetary policy is appropriate given the economy's circumstances."
+    ],
+    "reasoning": "Conditions have been stronger than expected, growth is forecast to firm through 2010, and inflation is expected to trough at around 2 per cent. The Board says risks are more balanced, the case for further cuts has faded, and normalisation could be expected at some point, a conditional tightening bias. Because it keeps the accommodative setting for now and notes the outlook could still weaken, the current stance is neutral."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2021-02",
+    "input_sha256": "a51c395a94214ebf879206e3d0702858d17bc5cf2a6d1645e97347dd936114b1",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Both underlying price inflation and wages growth are expected to remain below 2 per cent over the forecast period, out to mid 2023.",
+      "In light of the outlook and the international context, the Board decided to purchase an additional $100 billion of bonds issued by the Australian Government and states and territories when the current bond purchase program is completed in mid April.",
+      "The Board does not expect these conditions to be met until 2024 at the earliest."
+    ],
+    "reasoning": "Despite a faster-than-expected recovery, the Board added a further $100 billion of bond purchases and committed to highly supportive conditions, with no cash rate increase expected until 2024 at the earliest. Underlying inflation is forecast to stay below 2 per cent through mid 2023, even in the upside scenario. Spare capacity and high unemployment are the central concern, while growth is forecast to strengthen."
+  },
+  {
+    "issue_date": "2021-05",
+    "input_sha256": "fcb7d37fd03d28201d7bbaf5cb0710c61af3632bf3b4b6fd78d2f7e99108f65d",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Accordingly, monetary policy will need to remain highly accommodative for some time yet.",
+      "The Board is prepared to undertake further bond purchases under this program to assist with progress towards the goals of full employment and inflation.",
+      "This is unlikely to be until 2024 at the earliest."
+    ],
+    "reasoning": "Activity and employment outlooks were upgraded substantially, but underlying inflation is forecast to reach only close to 2 per cent by mid 2023 and wages growth stays too low for the target. The Board signals further bond purchases and no cash rate rise until 2024 at the earliest. Supply-chain cost pressures are noted, but the upside and downside consumption scenarios are presented symmetrically."
+  },
+  {
+    "issue_date": "2021-08",
+    "input_sha256": "af0f1616d701e980f9f8219ff62b09aa1b8613dc16f79cde3acf3bad8e81242a",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The recent outbreaks of the Delta variant of the COVID-19 virus are interrupting the recovery.",
+      "The Board will nonetheless keep the rate of bond purchases under review in light of the evolving health situation, and is prepared to act if worsening health outcomes affect the economic outlook.",
+      "Under the current central scenario for the economy this will not be until 2024."
+    ],
+    "reasoning": "The Delta lockdowns are expected to cause a GDP contraction and higher unemployment, and the Board stands ready to add support, keeping highly accommodative conditions with no rate rise until 2024. The stance is only mildly dovish because the Board went ahead with tapering bond purchases to $4 billion a week and saw fiscal policy as the better tool. Underlying inflation is forecast at 1¾ per cent over 2022, reaching only 2¼ per cent at the end of 2023."
+  },
+  {
+    "issue_date": "2021-11",
+    "input_sha256": "c00fba95904510f79bbb095c711e872f98e668448878b7df85259ce850dc2615",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "However, in the Board's view, the latest data and forecasts do not warrant an increase in the cash rate in 2022.",
+      "Given the progress towards its goals, the Board now judges that it is no longer appropriate to maintain the target of 10 basis points for the April 2024 bond.",
+      "The Board will not raise the cash rate until these criteria are met, and is prepared to be patient."
+    ],
+    "reasoning": "The Board dropped the yield target and opened the door to a rate rise in 2023, but ruled out an increase in 2022 and stressed patience and highly supportive conditions. Trimmed mean inflation is forecast to move into the target range, at 2¼ per cent by end 2022 and around 2½ per cent by end 2023, with upside and downside scenarios on either side. The overall lean remains mildly accommodative, with no clear signal of near-term policy change."
+  },
+  {
+    "issue_date": "2022-02",
+    "input_sha256": "da96ad1d2aeb981f2d614e1404a6d76d53eb2b360004a5096ab18450e0329047",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Given the tighter labour market and strong demand conditions anticipated over coming years, inflation is expected to remain in the upper half of the Bank's inflation target range of 2 to 3 per cent.",
+      "Ceasing purchases under the bond purchase program does not imply a near-term increase in interest rates, nor does it represent a tightening of monetary policy.",
+      "Consequently, the Board is prepared to be patient as it monitors how the various factors affecting inflation in Australia evolve."
+    ],
+    "reasoning": "Inflation was revised up and is expected to stay in the upper half of the target range, the bond purchase program was ended, and the Board notes its goals may be achieved sooner than envisaged. These hawkish elements are balanced by explicit statements that there is no near-term rate rise, that it is too early to conclude inflation is sustainably in target, and that the Board is prepared to be patient. Risks to inflation are framed as two-sided, with possible reversal of supply-driven price rises alongside the upside scenario."
+  }
+]

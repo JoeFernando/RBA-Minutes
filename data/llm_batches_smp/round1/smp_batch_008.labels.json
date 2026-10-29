@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2005-11",
+    "input_sha256": "5c18769c9c34b371ebd3a10f1497b8c7032f5ec85ae27f4fa1c25248257a8583",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "At present the Bank's assessment is that underlying inflation is likely to increase gradually over the coming year, reflecting several forces.",
+      "Nevertheless, the Board recognises that, with inflation likely to be close to 3 per cent for some time, policy will need to be responsive to any sign that demand and inflation pressures are stronger than currently expected.",
+      "Of course, if oil prices instead were to continue rising, CPI inflation would be higher and, should such a situation persist, it would increase the likelihood of significant second-round price effects and increases in inflation expectations."
+    ],
+    "reasoning": "The cash rate is held and inflation is still expected to stay consistent with the target over the medium term, with underlying inflation levelling out at around 3 per cent. However, the Board highlights tight labour markets, high capacity utilisation and rising costs, and says policy will need to respond if demand and inflation pressures prove stronger than expected, which signals a mild tightening bias. Risks are tilted upwards through oil prices and second-round effects."
+  },
+  {
+    "issue_date": "2006-02",
+    "input_sha256": "2814ec2be31ed3c5beb0d0e455ade06a6f8e5ad07cf73e6e292401ab1594e0d8",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "At the current stage of the expansion there are a number of factors that could be expected to put upward pressure on inflation in the period ahead.",
+      "One risk is that the tightness of the labour market gives rise to significant further wage and price pressures, but it is also possible that global disinflationary forces will prove stronger and more persistent than expected.",
+      "However the Board recognises that policy would need to respond in the event that demand or inflation pressures prove stronger than currently expected."
+    ],
+    "reasoning": "The Board held the cash rate, and underlying inflation is forecast to rise only modestly, to 2.75 per cent, with growth broadly in line with potential. The text stresses limited spare capacity, a tight labour market and cost pressures, and keeps a conditional tightening bias. The risks are explicitly two-sided, so the hawkish lean is mild and hedged."
+  },
+  {
+    "issue_date": "2006-05",
+    "input_sha256": "d4a6d3241e0f09184ce17d4270b09653ad49883749d3cb407da0e04150c54a8f",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 5,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The Board's judgment at its May meeting was that the flow of recent information strengthened the case for an increase in the cash rate.",
+      "In reviewing the outlook to incorporate the March quarter inflation data and other domestic and international news, the Bank's assessment was that, other things equal, the medium-term inflation risks were increasing.",
+      "Taking account of this information, the Board's assessment was that inflationary risks had increased sufficiently to warrant an increase in the cash rate."
+    ],
+    "reasoning": "The Board raised the cash rate in May because inflation risks had increased. Underlying inflation reached 2.75 per cent earlier than expected, and the forecast stays at 2.75 per cent only because of the tightening. GDP growth is expected to pick up from below trend while capacity remains tight, and the Board notes it had already signalled that the next move was more likely up."
+  },
+  {
+    "issue_date": "2006-08",
+    "input_sha256": "1b40a53aa415de871f90e998511283c7d284c15448a0372045934dd616669dba",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 5,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "These developments indicate that underlying inflationary pressures have been a little stronger than was expected at the time of the May Statement.",
+      "Looking ahead, it appears likely that growth of the economy in the next year or two will on average be somewhat higher than it was over the year to the March quarter.",
+      "As a result of these considerations, the Board judged at its August meeting that a further increase in the cash rate was warranted in order to contain inflationary pressures in the medium term."
+    ],
+    "reasoning": "This was a second rate rise, driven by evidence of stronger demand, rapid credit growth, very tight capacity and underlying inflation rising to just under 3 per cent. Even after the tightening, underlying inflation is forecast to be around 3 per cent, at the top of the target band, and growth is expected to be somewhat higher. Inflation pressures have surprised on the upside, so the stance is clearly hawkish."
+  },
+  {
+    "issue_date": "2006-11",
+    "input_sha256": "cd4340e94f31476473073c6cc32f6be9112b23e09fdf076ff9003bf14946b7cc",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "upside",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Nevertheless, the Board's assessment, given the evidence of stronger inflation pressures since the start of this year, was that a somewhat more restrictive stance of monetary policy would be required in order to achieve average inflation outcomes of between 2 and 3 per cent over time.",
+      "What does seem clear, however, from several sources of information, is that the economy is operating with very limited spare capacity.",
+      "The Board will continue, over the months ahead, to assess whether these actions will prove sufficient to achieve the objective of 2–3 per cent inflation over time."
+    ],
+    "reasoning": "The Board raised the cash rate to 6.25 per cent, citing stronger inflation pressures, very limited spare capacity and higher inflation expectations. Underlying inflation is expected to run at about 3 per cent in the near term and to moderate later because of this year's tightening. Growth is expected to return gradually to trend, offset by the drought, and the Board is still assessing whether its actions are sufficient, which keeps a mild tightening lean. Confidence is somewhat lower because of the drought caveats and the dampening effect expected from earlier rate rises."
+  }
+]

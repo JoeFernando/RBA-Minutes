@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2016-02",
+    "input_sha256": "5c69da416277a0cef94f1e1c20a0fcad472b78f83c3b00e9c1b655ec9f1f268f",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Continued low inflation may provide scope for easier policy, should that be appropriate to lend support to demand.",
+      "At the February meeting, the Board judged that there were reasonable prospects for continued growth in the economy, with inflation close to target.",
+      "Inflationary pressures remain well contained overall."
+    ],
+    "reasoning": "The Board held the cash rate but explicitly flagged that continued low inflation may provide scope for easier policy, giving a mild easing bias. Underlying inflation is around 2 per cent and described as close to target, while GDP growth is forecast to increase gradually to a bit above the decade average. The main concern is whether financial turbulence and China risks portend weaker global and local demand."
+  },
+  {
+    "issue_date": "2016-05",
+    "input_sha256": "422260baab8303e8ecb35273d701e31233f969448f22985759b38ce867934b70",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Inflation was lower than expected in the March quarter.",
+      "The forecast for underlying inflation has been revised lower, reflecting the lower-than-expected outcome for inflation in the March quarter and an expectation that domestic cost pressures, including labour costs, will pick up more gradually than anticipated at the time of the February Statement.",
+      "Accordingly, the cash rate was reduced by 25 basis points."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points because the inflation outlook was lower than earlier anticipated, with underlying inflation at about 1½ per cent and broad-based weakness in domestic cost pressures. Growth is still expected to strengthen gradually to an above-trend rate. Risks to domestic cost pressures are described in both directions, so they are coded balanced, though the emphasis is on low inflation."
+  },
+  {
+    "issue_date": "2016-08",
+    "input_sha256": "70c8f520e8fa38c3b785864fd67b02b38926fee3bfa8741cbb03af29d1063e60",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The data coming to hand since then have not altered the outlook for output and unemployment, and confirm that inflation is likely to remain below 2 per cent over most of the forecast period.",
+      "While the prospects for growth in economic activity are positive, there is room for even stronger growth.",
+      "Accordingly, the cash rate was reduced by 25 basis points at the August meeting."
+    ],
+    "reasoning": "A second consecutive 25 basis point cut was delivered, justified by inflation likely remaining below 2 per cent over most of the forecast period and room for stronger growth. Diminished housing-related risks removed an obstacle to easing. GDP growth is forecast to rise above potential by 2018, while uncertainty about wages, housing and the exchange rate is presented without a clear directional tilt."
+  },
+  {
+    "issue_date": "2016-11",
+    "input_sha256": "99403384a0b25a0e206bc4f588089b4abf1fe6b41eca40960076b5f0737b9646",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Inflation is expected to remain low for some time, before gradually returning to more normal levels.",
+      "At the same time, housing prices are rising at a brisk rate in some locations, although overall housing credit growth and housing turnover remain lower than they were last year.",
+      "Taking all these considerations into account, at its recent meetings the Board judged that there were reasonable prospects for achieving sustainable growth in the economy with inflation returning to the medium-term target over time and, hence, it was appropriate to leave the cash rate at 1.50 per cent."
+    ],
+    "reasoning": "The Board held the cash rate at 1.50 per cent with no signal of further easing, judging that the earlier cuts give reasonable prospects for inflation returning to target over time. Underlying inflation is around 1½ per cent and only reaches about 2 per cent by the end of the forecast horizon, so the outlook is coded below target. Low inflation and spare capacity are weighed against brisk housing price growth, giving a balanced overall concern."
+  },
+  {
+    "issue_date": "2017-02",
+    "input_sha256": "5e9263a98cb6ee626ef8293ad6f10943853fe345799ec1be43993245bcb99c4e",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "below_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Taking account of the available information, and having eased monetary policy in 2016, the Board judged that holding the stance of policy unchanged at recent meetings would be consistent with sustainable growth in the economy and achieving the inflation target over time.",
+      "GDP growth is expected to pick up over 2017 to 2½–3½ per cent, supported by low interest rates, the diminishing drag on growth from falling resource investment and rising resource exports.",
+      "The increase in underlying inflation is likely to be gradual."
+    ],
+    "reasoning": "The Board held policy steady after the 2016 easings, with no directional signal for future moves. Growth is expected to pick up to 2½–3½ per cent after the weak September quarter, though not enough to lower unemployment much. Underlying inflation is 1½ per cent and expected to rise only gradually, so it is coded below target, while stronger global inflation pressures and housing conditions are set against spare labour capacity."
+  }
+]

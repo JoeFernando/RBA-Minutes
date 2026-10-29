@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2012-05",
+    "input_sha256": "2e2369df873d5b8aaa5cdadbe9ada7e1104d17150b6ab13e37910a1af04e2717",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The outlook for inflation has also been revised down.",
+      "Accordingly, at its May meeting, the Board decided on a further reduction in the cash rate.",
+      "In deciding the size of the adjustment, the Board judged that it was desirable for financial conditions to be easier than those which had prevailed in December, and that this required a 50 basis points reduction in the cash rate, on this occasion, in order to deliver the appropriate level of borrowing rates."
+    ],
+    "reasoning": "The Board delivered an outsized 50 basis point cut, explicitly seeking easier financial conditions after weaker-than-expected growth in 2011 and unusually low inflation. Underlying inflation is forecast to stay around 2-2¼ per cent, within the target, with GDP growth around 3 per cent. Risks cited run both ways (faster labour shedding near term versus stronger mining labour demand later), but the dominant concern is soft non-mining demand and employment."
+  },
+  {
+    "issue_date": "2012-08",
+    "input_sha256": "742c135f62aea8c713504908324540d1f949ae183250953a90437ba44ae5c20f",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The outlook for the Australian economy is largely unchanged from the May Statement.",
+      "The economy is then expected to grow at around 3 per cent over 2013 and 2014.",
+      "The Board judged that, with a more subdued international outlook, inflation expected to be consistent with the target and growth of the Australian economy close to trend, the stance of monetary policy – which had resulted in borrowing rates a little below average – remained appropriate."
+    ],
+    "reasoning": "After the June cut, the Board held at its July and August meetings, judging the slightly-below-average borrowing rates appropriate with growth close to trend and inflation consistent with target. Underlying inflation is forecast in the top half of the band before returning to the middle, and growth around 3 per cent. Downside global risks from Europe and the exchange rate are offset by an upside inflation risk from productivity, leaving no clear forward lean."
+  },
+  {
+    "issue_date": "2012-11",
+    "input_sha256": "ae7748b1a186ebca07462d950fa2476836cd679ed7db80a15df10a78e8a81863",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The outlook for the Australian economy is a little weaker than that presented in the August Statement.",
+      "Accordingly, at its October meeting, the Board judged that, with the growth outlook for next year looking a little weaker and inflation expected to be consistent with the target, it was appropriate for the stance of monetary policy to be more accommodative.",
+      "At the November meeting, with the more recent positive news on the international economy and with inflation a little higher than expected, though still likely to be consistent with target over the year ahead, the Board judged that the stance of monetary policy remained appropriate, for the time being."
+    ],
+    "reasoning": "The Board cut in October on a weaker growth outlook driven by an earlier, lower peak in mining investment, then held in November only 'for the time being', while flagging it would monitor other components of demand as the resource investment peak approaches. Underlying inflation is expected near 2½ per cent, within target, and growth a little below 2¾ per cent before edging up. Inflation risks are two-sided (soft demand versus a strong demand pick-up as exchange-rate disinflation wanes)."
+  },
+  {
+    "issue_date": "2013-02",
+    "input_sha256": "677b5801cce2dc9a6dfa8d29af2a90ab54bcafa19c6992c51447f36c8bdcb320",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The outlook for the Australian economy is slightly weaker than it appeared at the time of the November Statement.",
+      "The unemployment rate is expected to edge higher over the next year or so.",
+      "The current inflation outlook would afford scope to ease policy further, should that be necessary to support demand."
+    ],
+    "reasoning": "Following the December cut, the Board held in February given significant stimulus already in place, but explicitly retained an easing bias. Growth is expected a bit below trend in 2013 before picking up to around trend through 2014, with unemployment edging higher and underlying inflation near the middle of the target. The inflation risk paragraph lists downside (higher unemployment, exchange rate) and upside (wages, productivity) factors in roughly equal measure."
+  },
+  {
+    "issue_date": "2013-05",
+    "input_sha256": "d35baffa9f3029f5491ed96f8b06030281d8f404846b73a703d40e20ba9e731e",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Accordingly, the unemployment rate is expected to continue to edge higher for the next year or so, before a return to trend output growth gradually supports some improvement in labour market conditions.",
+      "Risks to the outlook for inflation appear broadly balanced.",
+      "At its May meeting, with inflation a little lower than had been expected, and growth of economic activity likely to remain below trend into next year, the Board judged that a further reduction in the cash rate would help to support sustainable growth in the economy, and would be consistent with achieving the inflation target."
+    ],
+    "reasoning": "The Board cut the cash rate again in May because inflation was a little lower than expected and growth was likely to stay below trend into the next year, with unemployment expected to keep edging up. Inflation is forecast near 2 per cent this year before returning to the middle of the target, and growth is expected to pick up to trend through 2014. The text explicitly describes inflation risks as broadly balanced; the concern is growth and the labour market."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "issue_date": "2017-05",
+    "input_sha256": "55aaf81652201cae64d802e6e26d8c9fa2f32768242512a132dc0b7ef5024ac8",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Headline inflation in the March quarter was a little above 2 per cent and is now expected to be between 2 and 3 per cent throughout the forecast period.",
+      "The Australian economy grew by 2½ per cent over 2016; growth is expected to pick up to 2¾–3¾ per cent by early 2018.",
+      "Taking account of the available information and having eased monetary policy in 2016, the Board has judged that holding the stance of policy unchanged at recent meetings would be consistent with sustainable growth in the economy and achieving the medium-term inflation target."
+    ],
+    "reasoning": "The Board held policy unchanged after the 2016 easing and expressed increased confidence that inflation and growth will both pick up gradually. Low wage growth and spare capacity hold inflation down, while household debt risks are being addressed by prudential measures, so neither concern dominates. There is no signal of a move in either direction."
+  },
+  {
+    "issue_date": "2017-08",
+    "input_sha256": "05d4b02c361282cf0cb3f5ac355d9b19ac7219f79d9a8d4af4daca51625505d6",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The economy is expected to grow at an annual rate of around 3 per cent over the next couple of years, which is a bit higher than estimates of potential growth.",
+      "Inflationary pressures could instead emerge more quickly if workers seek to ‘catch up’ after a long period of low wage growth.",
+      "Further exchange rate appreciation would tend to generate a slower pick-up in economic activity and inflation than currently forecast."
+    ],
+    "reasoning": "Forecasts are little changed, with growth picking up to around 3 per cent and underlying inflation reaching about 2 per cent and rising a little. Inflation risks are cited in both directions (wage catch-up versus exchange rate appreciation). The Board holds the cash rate at 1.5 per cent while balancing low inflation against household debt risks, with no directional signal."
+  },
+  {
+    "issue_date": "2017-11",
+    "input_sha256": "70f27aa0928827316b07d864c253833a4c08a2a30ab690f242752298891382d0",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Inflation and wage growth remain low.",
+      "Further out, the various measures of inflation are expected to reach 2–2¼ per cent by the end of the forecast period.",
+      "Accordingly, at its recent meetings the Reserve Bank Board has judged that holding the cash rate at its current level of 1.5 per cent would be consistent with sustainable growth in the economy and achieving the medium-term inflation target."
+    ],
+    "reasoning": "Inflation is a little below 2 per cent but forecast to rise to 2–2¼ per cent, and growth is expected to average about 3 per cent with an unchanged outlook. Strong labour market developments are offset by low wage growth and weak consumption. The Board holds rates steady with no lean toward tightening or easing."
+  },
+  {
+    "issue_date": "2018-02",
+    "input_sha256": "637234917efb35f39630d12c9b9ea91e6b5c690ba391762ad440a76fa467c9c3",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "strengthening",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "GDP growth picked up to 2¾ per cent over the year to the September quarter.",
+      "Inflation remains low and this is likely to continue for a while yet.",
+      "It will be some time, however, before the economy reaches current estimates of full employment and inflation returns to the midpoint of the target."
+    ],
+    "reasoning": "Growth is expected to rise to a little above 3 per cent and underlying inflation to around 2¼ per cent by mid 2020, unchanged from November. Inflation remains low and full employment is some way off, which justifies holding the cash rate but stops short of signalling any easing. The stance is balanced with no directional bias."
+  },
+  {
+    "issue_date": "2018-05",
+    "input_sha256": "4a9dd9b1ff1e81f78a968eb18a61c756d74a7cc5d5b45e7a58a59b8c8da10151",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "inflation_outlook": "within_target",
+    "growth_outlook": "steady",
+    "inflation_risks": "balanced",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Inflation remains low but has troughed and is expected to increase gradually over the next few years.",
+      "If the economy continues to perform as expected, higher interest rates are, however, likely to be appropriate at some point.",
+      "Notwithstanding this, the Board does not see a strong case for a near-term adjustment in the cash rate."
+    ],
+    "reasoning": "The Board explicitly signals that the next move is likely to be up if the economy performs as expected, which is a mild tightening bias. This is heavily qualified by the statement that there is no strong case for a near-term adjustment, and inflation is only expected to edge above 2 per cent. Growth is forecast to stay a bit above 3 per cent, with risks cited in both directions."
+  }
+]

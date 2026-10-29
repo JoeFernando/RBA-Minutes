@@ -226,6 +226,11 @@ def test_smp_list_issues_covers_both_eras():
     ("Domestic Economic Conditions", "", "domestic"),
     ("Box A: Insights From Liaison", ".../box-a-insights-from-liaison.html", "box"),
     ("The Effect of Oil Prices", ".../box-a.html", "box"),
+    ("Forecast Table – August 2021 – ‘Baseline’ Scenario", "", "forecast_table"),
+    ("Copyright and Disclaimer Notices", "", "administrative"),
+    ("In Depth – Full Employment", "", "in_depth"),
+    ("List of figures", "", "administrative"),
+    ("Developments in East Asia", "", "international"),
 ])
 def test_smp_categorise_chapter(title, url, category):
     from rba_minutes import smp
@@ -238,6 +243,10 @@ def test_smp_clean_title():
 
     assert smp._clean_title("Statement on Monetary Policy – May 2015 Overview") == "Overview"
     assert smp._clean_title("3. Outlook") == "Outlook"
+
+
+def test_normalise_percent_spacing():
+    assert normalise_text("rate (quarterly, %) rose 5 %") == "rate (quarterly, %) rose 5%"
 
 
 def test_normalise_keeps_vulgar_fractions():
@@ -303,3 +312,49 @@ def test_smp_bulletin_inline_box_does_not_swallow_chapter(tmp_path):
         ("Box 1: Productivity Growth", "box", "Box text only."),
         ("Inflation Trends and Prospects", "inflation", "Inflation text, around 2½ per cent."),
     ]
+
+
+@pytest.mark.parametrize("text, value, direction", [
+    ("+0.25", 0.25, None), ("↓ 250", -250.0, -1), ("↑ 50 bps", 50.0, 1), ("25 bps", 25.0, None),
+    ("↑", None, 1), ("↓ Apr 09", None, -1), ("No change", None, 0), ("(n/a)", None, None),
+    ("–0.2", -0.2, None), ("(–1)", -1.0, None), ("2½−3½", 3.0, None), ("2¾ (3¼)", 2.75, None),
+    ("1.4 (Sep)", 1.4, None), ("–", None, None), ("1 – 4", 2.5, None), ("2006–2007", None, None),
+    ("2013–14", None, None),
+])
+def test_smp_table_values_with_arrows_and_units(text, value, direction):
+    from rba_minutes.smp_tables import parse_direction, parse_value
+
+    assert parse_value(text)[0] == value
+    assert parse_direction(text) == direction
+
+
+def test_smp_parse_table_header_rows_inside_body():
+    # Layout of the 2011 forecast tables: two panels, each with its own column headers.
+    from bs4 import BeautifulSoup
+    from rba_minutes.smp_tables import parse_table
+
+    html = """<table><caption>Table 6.1: Output Growth and Inflation Forecasts</caption><tbody>
+      <tr><td class="tr-head"></td><th class="tr-head" colspan="2">Year-ended</th></tr>
+      <tr><td class="tr-head"></td><th class="tr-head">Dec<br/>2010</th><th class="tr-head">June<br/>2011</th></tr>
+      <tr><th scope="row">GDP growth</th><td>2.7</td><td>2½</td></tr>
+      <tr><td class="tr-head"></td><th class="tr-head" colspan="2">Year-average</th></tr>
+      <tr><td class="tr-head"></td><th class="tr-head">2010</th><th class="tr-head">2010/11</th></tr>
+      <tr><th scope="row">GDP growth</th><td>2.7</td><td>3¼</td></tr></tbody></table>"""
+    t = parse_table(BeautifulSoup(html, "lxml").find("table"))
+    got = [(c["row_group"], c["row_label"], c["col_label"], c["value_num"]) for c in t["cells"]]
+    assert got == [
+        ("Year-ended", "GDP growth", "Dec 2010", 2.7), ("Year-ended", "GDP growth", "June 2011", 2.5),
+        ("Year-average", "GDP growth", "2010", 2.7), ("Year-average", "GDP growth", "2010/11", 3.25),
+    ]
+
+
+def test_smp_caption_variants():
+    from bs4 import BeautifulSoup
+    from rba_minutes.smp_tables import parse_table
+
+    for caption, expected in [("2.4: Foreign Exchange Reserves", ("2.4", "Foreign Exchange Reserves")),
+                              ("Table: Output Growth Forecasts", ("", "Output Growth Forecasts")),
+                              ("Table B1: Timeline", ("B1", "Timeline"))]:
+        html = f"<table><caption>{caption}</caption><tr><th>a</th><th>b</th></tr><tr><th>x</th><td>1</td></tr></table>"
+        t = parse_table(BeautifulSoup(html, "lxml").find("table"))
+        assert (t["table_number"], t["title"]) == expected
