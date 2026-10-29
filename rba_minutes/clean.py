@@ -193,25 +193,39 @@ def parse_minutes(html: str | bytes, url: str) -> Minutes:
 
 # --- Cash rate decision (heuristic) -------------------------------------------
 
-_DECISION_VERB = re.compile(
-    r"\b(increas\w*|rais\w*|lift\w*|lower\w*|reduc\w*|cut\w*|decreas\w*|"
-    r"leav\w*|left|maintain\w*|keep\w*|kept|hold\w*)\s+(?:the\s+)?cash\s+rate",
-    re.IGNORECASE,
-)
-_DECISION_NOUN = re.compile(
-    r"\b(increase|rise|lift|reduction|cut|decrease)\s+(?:of\s+[\w.\s]{1,30}?\s+)?in\s+the\s+cash\s+rate",
-    re.IGNORECASE,
-)
-_UNCHANGED = re.compile(
-    r"cash\s+rate(?:\s+target)?\s+(?:(?:\w+\s+){0,3}unchanged|(?:should|would|will)\s+(?:remain|stay|be\s+(?:left|kept|maintained)))",
-    re.IGNORECASE,
-)
-_RATE_LEVEL = re.compile(r"\b(?:to|at)\s+(\d+(?:\.\d+)?)\s*(?:per\s*cent|%)", re.IGNORECASE)
+_CASH_RATE = r"(?:the\s+)?(?:target\s+for\s+the\s+)?cash\s+rate(?:\s+target)?"
+# Tried in order; the first pattern that matches a sentence decides it.
+_DECISION_PATTERNS = [
+    # "decided to increase the cash rate", "maintain the cash rate target at"
+    re.compile(r"\b(increas\w*|rais\w*|lift\w*|lower\w*|reduc\w*|cut\w*|decreas\w*|"
+               r"leav\w*|left|maintain\w*|keep\w*|kept|hold\w*)\s+" + _CASH_RATE, re.IGNORECASE),
+    # "a reduction in the target for the cash rate to 0.1 per cent"
+    re.compile(r"\b(increase|rise|lift|reduction|cut|decrease)\s+(?:of\s+[\w.\s]{1,30}?\s+)?in\s+" + _CASH_RATE,
+               re.IGNORECASE),
+    # "the cash rate should be increased by 25 basis points"
+    re.compile(_CASH_RATE + r"\s+(?:should|would|will)\s+be\s+(increased|raised|lifted|reduced|lowered|cut|"
+               r"decreased|left|kept|maintained)", re.IGNORECASE),
+    # "reaffirmed the elements of the policy package, namely: a target for the cash rate of 0.25 per cent"
+    re.compile(r"\b(reaffirm\w*|retain\w*|confirm\w*)\b[^.]{0,150}?" + _CASH_RATE, re.IGNORECASE),
+    # "leave the cash rate unchanged", "the cash rate should remain at 6.0 per cent"
+    re.compile(_CASH_RATE + r"\s+(?:(?:\w+\s+){0,3}(unchanged)|(?:should|would|will)\s+(remain|stay))", re.IGNORECASE),
+]
+_RATE_LEVEL = re.compile(r"\b(?:to|at)\s+(\d+(?:\.\d+)?)\s*(per\s*cent|%|basis\s+points)", re.IGNORECASE)
+_RATE_LEVEL_OF = re.compile(r"\bof\s+(\d+(?:\.\d+)?)\s*(per\s*cent|%|basis\s+points)", re.IGNORECASE)
 _VERB_TO_DECISION = [
     ("raise", ("increas", "rais", "lift", "rise")),
     ("lower", ("lower", "reduc", "cut", "decreas")),
-    ("hold", ("leav", "left", "maintain", "keep", "kept", "hold")),
+    ("hold", ("leav", "left", "maintain", "keep", "kept", "hold", "reaffirm", "retain", "confirm",
+              "unchanged", "remain", "stay")),
 ]
+
+
+def _rate_level(window: str) -> float | None:
+    match = _RATE_LEVEL.search(window) or _RATE_LEVEL_OF.search(window)
+    if not match:
+        return None
+    value = float(match.group(1))
+    return round(value / 100, 4) if match.group(2).lower().startswith("basis") else value
 
 
 def split_sentences(text: str) -> list[str]:
@@ -230,14 +244,11 @@ def extract_decision(minutes: Minutes) -> tuple[str | None, float | None, str | 
     for sentence in split_sentences(decision_sections[-1].text):
         if "cash rate" not in sentence.lower():
             continue
-        decision = None
-        verb = _DECISION_VERB.search(sentence) or _DECISION_NOUN.search(sentence)
-        if verb:
-            word = verb.group(1).lower()
-            decision = next(d for d, stems in _VERB_TO_DECISION if word.startswith(stems))
-        elif _UNCHANGED.search(sentence):
-            decision = "hold"
-        if decision:
-            level = _RATE_LEVEL.search(sentence[verb.start():] if verb else sentence)
-            return decision, float(level.group(1)) if level else None, sentence
+        for pattern in _DECISION_PATTERNS:
+            match = pattern.search(sentence)
+            if match:
+                word = next(g for g in match.groups() if g).lower()
+                decision = next(d for d, stems in _VERB_TO_DECISION if word.startswith(stems))
+                level = _rate_level(sentence[match.start():match.end() + 80])
+                return decision, level, sentence
     return None, None, None

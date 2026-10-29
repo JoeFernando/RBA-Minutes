@@ -99,6 +99,14 @@ def test_extract_decision(minutes):
     ("The Board agreed on a package of measures, comprising four elements, namely:\n\n"
      "a reduction in the cash rate to 0.25 per cent\n\na target of 0.25 per cent for the yield", ("lower", 0.25)),
     ("The Board decided unanimously to raise the cash rate target by 25 basis points to 4.60 per cent.", ("raise", 4.60)),
+    ("The Board decided that the cash rate should be increased by 25 basis points to 6.25 per cent.", ("raise", 6.25)),
+    ("The Board reaffirmed the elements of the policy package announced on 19 March 2020, namely:\n\n"
+     "a target for the cash rate of 0.25 per cent\n\na target of 0.25 per cent for the yield", ("hold", 0.25)),
+    ("The Board agreed on the following policy settings:\n\na reduction in the target for the cash rate to "
+     "0.1 per cent\n\na reduction in the interest rate", ("lower", 0.1)),
+    ("The Board decided upon the following policy settings:\n\nretain the April 2024 bond\n\n"
+     "maintain the cash rate target at 10 basis points and the interest rate", ("hold", 0.1)),
+    ("The Board decided to increase the cash rate target by 25 basis points to 35 basis points.", ("raise", 0.35)),
 ])
 def test_extract_decision_variants(minutes, sentence, expected):
     minutes.sections[5].paragraphs[0].text = sentence

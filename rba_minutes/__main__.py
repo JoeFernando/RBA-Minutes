@@ -93,10 +93,12 @@ def cmd_llm_import(args) -> None:
 def cmd_check(args) -> None:
     from . import quality
 
-    problems = quality.check(db.connect(args.db))
+    problems, notes = quality.check(db.connect(args.db))
+    for note in notes:
+        print(f"note: {note}")
     for problem in problems:
-        print(problem)
-    print(f"{len(problems)} problems found")
+        print(f"PROBLEM: {problem}")
+    print(f"{len(problems)} problems, {len(notes)} notes")
 
 
 EXPORTS = {

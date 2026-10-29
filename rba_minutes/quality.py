@@ -4,8 +4,8 @@ import re
 import sqlite3
 
 
-def check(conn: sqlite3.Connection) -> list[str]:
-    """Return human-readable problems found in the database (empty if none)."""
+def check(conn: sqlite3.Connection) -> tuple[list[str], list[str]]:
+    """Return (problems, notes) found in the database. Notes are informational."""
     problems = []
     meetings = conn.execute(
         "SELECT meeting_id, meeting_date, decision, cash_rate_target, n_words, full_text "
@@ -48,6 +48,7 @@ def check(conn: sqlite3.Connection) -> list[str]:
     other = conn.execute(
         "SELECT heading, COUNT(*) FROM sections WHERE category = 'other' GROUP BY heading ORDER BY 2 DESC"
     ).fetchall()
-    for heading, count in other:
-        problems.append(f"uncategorised heading '{heading}' ({count} meetings)")
-    return problems
+    # Special-topic items (e.g. "The neutral interest rate") are real discussion,
+    # scored with the rest of the meeting; listed so new heading wordings get noticed.
+    notes = [f"heading in category 'other': '{heading}' ({count} meetings)" for heading, count in other]
+    return problems, notes
