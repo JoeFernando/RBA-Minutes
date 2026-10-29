@@ -219,6 +219,52 @@ against 0.92), because its credit premium moves around. Still, it and the minute
 information, and together they score best on this sample, which runs to 2026. Exact ASX futures
 data for 2023-2026 would show how close the market alone gets.
 
+## Market momentum: does the change in pricing before a meeting matter?
+
+Built by `momentum_analysis()`. The OIS-implied move is read 1, 6 and 11 trading days before each
+decision (the day before, about one week and about two weeks). Earlier readings are scaled up by
+30 / (30 − days to the decision), because a 1-month rate taken earlier still covers days before the
+decision. Data: 2001-2022 OIS, 189 meetings tested out of sample (2005-2022), 46 moves.
+
+| Model | Log loss | Brier | Accuracy | Moves called | False alarms |
+|---|---:|---:|---:|---:|---:|
+| level the day before + 2-week change | **0.208** | **0.122** | 89.4% | 31 of 46 | 5 |
+| level the day before | 0.218 | 0.127 | 89.9% | 30 of 46 | 3 |
+| level the day before + 1-week change | 0.221 | 0.128 | **90.5%** | 30 of 46 | 2 |
+| level two weeks before (no later update) | 0.390 | 0.238 | 83.6% | 19 of 46 | 4 |
+
+| Compared with the level the day before | Log-loss gain per meeting | 90% interval | Meetings better |
+|---|---:|---:|---:|
+| + 2-week change | +0.010 | -0.004 to +0.028 | 78% |
+| + 1-week change | -0.003 | -0.020 to +0.015 | 71% |
+| level two weeks before instead | -0.172 | -0.241 to -0.122 | 10% |
+
+Logistic regression on the 79 meetings where a move was priced at 20% or more (did it happen?):
+
+| Term | Coefficient | Std error | p-value |
+|---|---:|---:|---:|
+| Constant | -3.00 | 0.95 | 0.002 |
+| Level priced the day before (pp) | 20.32 | 5.59 | <0.001 |
+| Two-week momentum towards the move (pp) | 9.20 | 4.37 | **0.035** |
+
+Meetings in the uncertain zone (20-80% priced the day before), by the two-week trend:
+
+| Two-week trend | Meetings | Move happened | Average priced the day before |
+|---|---:|---:|---:|
+| Fading (away from the move) | 17 | **4 (24%)** | 45% |
+| Building (towards the move) | 26 | 16 (62%) | 58% |
+
+Examples of fading pricing: February 2010 (raise 92% two weeks before, 79% the day before: held), April 2005
+(76% to 51%: held), November 2012 (cut 88% to 54%: held). Exceptions: December 2009 (88% to 66%) and
+December 2022 (93% to 76%) still raised. In the 2025-26 futures: November 2025 (cut 67% to 7%: held),
+August 2026 (raise 28% to 3%: held), and on the building side February 2026 (27% to 72%) and March
+2026 (18% to 58%), both raised.
+
+**Reading:** the final-day level carries almost all of the information; the two-week change adds a
+little (significant in the regression, not reliably out of sample). It matters most when pricing is
+fading: then the market overstated the chance of a move by about half. Building momentum lines up with
+the final level, with a modest extra lean towards the move.
+
 ## The RBA's forecasts against outcomes (1990-2025)
 
 From the RBA's forecast-by-horizon files (`forecasts_by_horizon`); error = outcome minus forecast,
@@ -283,6 +329,8 @@ moved when the market priced less than 20% either way.
 | macro + market | 0% | 18% | 82% |
 | market alone (0.216 in the 2005-22 backtest) | 0% | 24% | 76% |
 | Futures as priced, 30 October (IBKR close) | | 18% | 82% |
+| Regression on the level alone (79 priced meetings, 2001-22) | | 19% | 81% |
+| Regression on the level + two-week momentum (18% on 16 October to 82%) | | 7% | 93% |
 | ASX Rate Tracker as published, 29 October | | 20% | 80% |
 
 ### The futures before each recent decision (IBKR data, August 2025 to September 2026)
@@ -337,6 +385,11 @@ are much less sure (10–64%) because they cannot see what moved the market afte
 quarter CPI and the late-October news; the backtests show they should carry little weight next to the
 market.
 
+The pricing has built sharply over the last two weeks (18% on 16 October to 82% on 30 October), the
+pattern that preceded the February and March 2026 raises; with that momentum the regression gives 93%.
+Treat that with caution: the out-of-sample gain from momentum is not reliable, and the jump is about two
+standard deviations larger than usual among priced meetings.
+
 How confident: on 2001-2022 history, a raise priced at this level happened about four times in five.
 The RBA held three times in sixteen at similar pricing (April 2007, February 2010, October 2010), so a
 hold remains a real possibility. Pricing on 2 November could still move, and the models do
@@ -368,4 +421,8 @@ releases (the ABS does not publish a vintage database as the US does).
 | `scores_<sample>.csv` | The score tables above |
 | `sensitivity_minutes_era.csv` | Minutes-era gains for other penalty strengths |
 | `next_decision.csv` | Probabilities for 3 November 2026 |
+| `momentum_panel.csv` | The OIS-implied move 1, 6 and 11 trading days before each decision, 2001-2022 |
+| `scores_momentum.csv` | The momentum backtest scores |
+| `momentum_futures.csv` | The futures' priced move two weeks before and the day before each decision since August 2025 |
+| `futures_check.csv` | The futures' priced move the day before each decision since August 2025, with the bank bill stand-in |
 | `results.json` | Everything above in one file |

@@ -1591,6 +1591,351 @@
       }
     ]
   },
+  "momentum": {
+    "scores": [
+      {
+        "model": "level",
+        "n": 189,
+        "accuracy": 0.8994708994708994,
+        "log_loss": 0.2178220814856622,
+        "brier": 0.1269691346522524,
+        "moves": 46,
+        "moves_called": 30,
+        "false_alarms": 3,
+        "wrong_direction": 0
+      },
+      {
+        "model": "level+1w_change",
+        "n": 189,
+        "accuracy": 0.9047619047619048,
+        "log_loss": 0.22125348887087148,
+        "brier": 0.1279732328806778,
+        "moves": 46,
+        "moves_called": 30,
+        "false_alarms": 2,
+        "wrong_direction": 0
+      },
+      {
+        "model": "level+2w_change",
+        "n": 189,
+        "accuracy": 0.8941798941798942,
+        "log_loss": 0.20778270625233367,
+        "brier": 0.12150072788256902,
+        "moves": 46,
+        "moves_called": 31,
+        "false_alarms": 5,
+        "wrong_direction": 0
+      },
+      {
+        "model": "level_2w_before",
+        "n": 189,
+        "accuracy": 0.8359788359788359,
+        "log_loss": 0.38977123983984346,
+        "brier": 0.23828861830609466,
+        "moves": 46,
+        "moves_called": 19,
+        "false_alarms": 4,
+        "wrong_direction": 0
+      },
+      {
+        "model": "always_hold",
+        "n": 189,
+        "accuracy": 0.7566137566137566,
+        "log_loss": 3.362505215165908,
+        "brier": 0.48677248677248675,
+        "moves": 46,
+        "moves_called": 0,
+        "false_alarms": 0,
+        "wrong_direction": 0
+      },
+      {
+        "model": "repeat_last_decision",
+        "n": 189,
+        "accuracy": 0.7301587301587301,
+        "log_loss": 0.8853021011218707,
+        "brier": 0.4737301587301587,
+        "moves": 46,
+        "moves_called": 20,
+        "false_alarms": 25,
+        "wrong_direction": 0
+      },
+      {
+        "model": "class_frequencies",
+        "n": 189,
+        "accuracy": 0.7566137566137566,
+        "log_loss": 0.735339955894478,
+        "brier": 0.4022752972867081,
+        "moves": 46,
+        "moves_called": 0,
+        "false_alarms": 0,
+        "wrong_direction": 0
+      }
+    ],
+    "paired": [
+      {
+        "baseline": "level",
+        "model": "level+1w_change",
+        "mean_improvement": -0.003431407385209256,
+        "ci90_low": -0.020495771991867483,
+        "ci90_high": 0.014682909640876091,
+        "share_better": 0.708994708994709
+      },
+      {
+        "baseline": "level",
+        "model": "level+2w_change",
+        "mean_improvement": 0.010039375233328521,
+        "ci90_low": -0.0042832581905177,
+        "ci90_high": 0.027841530438060976,
+        "share_better": 0.783068783068783
+      },
+      {
+        "baseline": "level",
+        "model": "level_2w_before",
+        "mean_improvement": -0.17194915835418123,
+        "ci90_low": -0.241399061881711,
+        "ci90_high": -0.12236629281730484,
+        "share_better": 0.09523809523809523
+      }
+    ],
+    "regression": [
+      {
+        "term": "const",
+        "coef": -2.996033602897275,
+        "std_err": 0.9504893833121149,
+        "p_value": 0.001621030739683858
+      },
+      {
+        "term": "level",
+        "coef": 20.320340766868377,
+        "std_err": 5.590580149900469,
+        "p_value": 0.0002782542685221855
+      },
+      {
+        "term": "momentum",
+        "coef": 9.196585338721095,
+        "std_err": 4.368344329660586,
+        "p_value": 0.035266994016027786
+      }
+    ],
+    "regression_n": 79,
+    "zone": [
+      {
+        "trend": "building",
+        "meetings": 26,
+        "moved": 16,
+        "avg_priced": 0.5816627218934911
+      },
+      {
+        "trend": "fading",
+        "meetings": 17,
+        "moved": 4,
+        "avg_priced": 0.4489228272741457
+      }
+    ],
+    "fading": [
+      {
+        "decision_date": "2001-11-06",
+        "w2": -0.11500000000000021,
+        "d1": -0.11120689655172407,
+        "direction": 0
+      },
+      {
+        "decision_date": "2002-09-03",
+        "w2": 0.09999999999999964,
+        "d1": 0.0517241379310343,
+        "direction": 0
+      },
+      {
+        "decision_date": "2003-07-01",
+        "w2": -0.1850000000000005,
+        "d1": -0.1525862068965517,
+        "direction": 0
+      },
+      {
+        "decision_date": "2003-11-04",
+        "w2": 0.09500000000000064,
+        "d1": 0.08275862068965524,
+        "direction": 1
+      },
+      {
+        "decision_date": "2004-02-03",
+        "w2": 0.11249999999999982,
+        "d1": 0.07758620689655191,
+        "direction": 0
+      },
+      {
+        "decision_date": "2004-03-02",
+        "w2": 0.09500000000000064,
+        "d1": 0.07241379310344857,
+        "direction": 0
+      },
+      {
+        "decision_date": "2005-04-05",
+        "w2": 0.1909090909090917,
+        "d1": 0.1277586206896551,
+        "direction": 0
+      },
+      {
+        "decision_date": "2009-05-05",
+        "w2": -0.17999999999999972,
+        "d1": -0.05689655172413809,
+        "direction": 0
+      },
+      {
+        "decision_date": "2009-12-01",
+        "w2": 0.21999999999999975,
+        "d1": 0.16551724137931048,
+        "direction": 1
+      },
+      {
+        "decision_date": "2010-02-02",
+        "w2": 0.2312499999999995,
+        "d1": 0.19655172413793098,
+        "direction": 0
+      },
+      {
+        "decision_date": "2010-11-02",
+        "w2": 0.10500000000000043,
+        "d1": 0.08275862068965524,
+        "direction": 1
+      },
+      {
+        "decision_date": "2011-09-06",
+        "w2": -0.2599999999999998,
+        "d1": -0.0517241379310343,
+        "direction": 0
+      },
+      {
+        "decision_date": "2011-10-04",
+        "w2": -0.2499999999999991,
+        "d1": -0.10384615384615369,
+        "direction": 0
+      },
+      {
+        "decision_date": "2012-02-07",
+        "w2": -0.22499999999999964,
+        "d1": -0.17586206896551718,
+        "direction": 0
+      },
+      {
+        "decision_date": "2012-11-06",
+        "w2": -0.22000000000000064,
+        "d1": -0.13448275862068954,
+        "direction": 0
+      },
+      {
+        "decision_date": "2020-02-04",
+        "w2": -0.16249999999999987,
+        "d1": -0.07344827586206891,
+        "direction": 0
+      },
+      {
+        "decision_date": "2022-12-06",
+        "w2": 0.23181818181818173,
+        "d1": 0.19079999999999978,
+        "direction": 1
+      }
+    ],
+    "futures": [
+      {
+        "decision_date": "2025-08-12",
+        "two_weeks_before": "2025-07-30",
+        "priced_2w_before": -0.2550000000000061,
+        "price_date": "2025-08-11",
+        "priced_day_before": -0.2550000000000061,
+        "actual_change": -0.25
+      },
+      {
+        "decision_date": "2025-09-30",
+        "two_weeks_before": "2025-09-17",
+        "priced_2w_before": -0.03000000000000691,
+        "price_date": "2025-09-29",
+        "priced_day_before": -0.009999999999996678,
+        "actual_change": 0.0
+      },
+      {
+        "decision_date": "2025-11-04",
+        "two_weeks_before": "2025-10-22",
+        "priced_2w_before": -0.16730769230769438,
+        "price_date": "2025-11-03",
+        "priced_day_before": -0.017307692307699796,
+        "actual_change": 0.0
+      },
+      {
+        "decision_date": "2025-12-09",
+        "two_weeks_before": "2025-11-26",
+        "priced_2w_before": -0.007045454545456575,
+        "price_date": "2025-12-08",
+        "priced_day_before": -0.007045454545456575,
+        "actual_change": 0.0
+      },
+      {
+        "decision_date": "2026-02-03",
+        "two_weeks_before": "2026-01-20",
+        "priced_2w_before": 0.06719999999999615,
+        "price_date": "2026-02-02",
+        "priced_day_before": 0.17920000000000558,
+        "actual_change": 0.25
+      },
+      {
+        "decision_date": "2026-03-17",
+        "two_weeks_before": "2026-03-04",
+        "priced_2w_before": 0.044285714285724254,
+        "price_date": "2026-03-16",
+        "priced_day_before": 0.14392857142858517,
+        "actual_change": 0.25
+      },
+      {
+        "decision_date": "2026-05-05",
+        "two_weeks_before": "2026-04-22",
+        "priced_2w_before": 0.17884615384615454,
+        "price_date": "2026-05-04",
+        "priced_day_before": 0.1907692307692379,
+        "actual_change": 0.25
+      },
+      {
+        "decision_date": "2026-06-16",
+        "two_weeks_before": "2026-06-02",
+        "priced_2w_before": -1.1546319456101628e-14,
+        "price_date": "2026-06-15",
+        "priced_day_before": -1.1546319456101628e-14,
+        "actual_change": 0.0
+      },
+      {
+        "decision_date": "2026-08-11",
+        "two_weeks_before": "2026-07-27",
+        "priced_2w_before": 0.06974999999999554,
+        "price_date": "2026-08-10",
+        "priced_day_before": 0.007750000000005919,
+        "actual_change": 0.0
+      },
+      {
+        "decision_date": "2026-09-29",
+        "two_weeks_before": "2026-09-14",
+        "priced_2w_before": 0.1900000000000066,
+        "price_date": "2026-09-28",
+        "priced_day_before": 0.22999999999999865,
+        "actual_change": 0.25
+      },
+      {
+        "decision_date": "2026-11-03",
+        "two_weeks_before": "2026-10-16",
+        "priced_2w_before": 0.044444444444445175,
+        "price_date": "2026-10-30",
+        "priced_day_before": 0.20555555555555127,
+        "actual_change": NaN
+      }
+    ],
+    "current": {
+      "decision_date": "2026-11-03",
+      "price_date": "2026-10-30",
+      "level": 0.20555555555555127,
+      "momentum": 0.1611111111111061,
+      "p_move_level_only": 0.8057000896574725,
+      "p_move_level_and_momentum": 0.9347831932069982,
+      "momentum_vs_history_sd": 1.8775037785713125
+    }
+  },
   "futures_check": [
     {
       "decision_date": "2025-08-12",

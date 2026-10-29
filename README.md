@@ -367,6 +367,7 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 | RBA's year-ahead inflation forecast | 2004–2026, 233 meetings | Slightly, not significant | No |
 | Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 233 meetings | No | No |
 | **Market pricing** (1-month OIS minus the cash rate: the ASX Rate Tracker's information) | 2005–2022, 189 meetings | **Yes, by far the strongest** (log loss 0.629 → 0.216; 29 of 46 moves called, 2 false alarms) | **Yes** (accuracy 78.8% → 89.9%) |
+| Change in market pricing over the last two weeks, on top of its final level | 2005–2022, 189 meetings | Slightly (+0.010, not reliable out of sample; significant in a regression, p = 0.035) | No. But when pricing was fading, the move happened only 4 times in 17 despite 45% priced |
 | Minutes, on top of market pricing | 2011–2022, 131 meetings | Yes, small but significant (+0.020 per meeting) | Slightly (14 against 13 of 26 moves, no false alarms) |
 | ABS real GDP growth | 2003–2026, 251 meetings | No (slightly worse) | No |
 | ABS Wage Price Index growth | 2003–2026, 251 meetings | No (gain ≈ 0) | No |

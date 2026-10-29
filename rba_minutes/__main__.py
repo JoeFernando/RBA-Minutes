@@ -277,7 +277,7 @@ def cmd_predict(args) -> None:
     next_decision = dt.date.fromisoformat(args.next) if args.next else None
     results = predict.run(next_decision)
     for name, sample in results.items():
-        if "scores" in sample:
+        if isinstance(sample, dict) and "first_test" in sample:
             best = min(sample["scores"], key=lambda r: r["log_loss"])
             log.info("%s (%s to %s): best log loss %s (%.3f)", name, sample["first_test"], sample["last_test"],
                      best["model"], best["log_loss"])

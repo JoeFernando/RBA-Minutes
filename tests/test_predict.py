@@ -155,3 +155,16 @@ def test_load_asx_snapshot(tmp_path, monkeypatch):
     overnight = pd.Series([4.6], index=[asx["settlement_date"]])
     out = predict.futures_implied(asx["futures"], overnight, asx["next_meeting"])
     assert out["futures_prob_25bp"] == pytest.approx(0.80)  # reproduces the ASX's published figure
+
+
+def test_market_path_scales_early_readings_for_the_days_before_the_decision():
+    days = pd.bdate_range("2026-09-01", "2026-09-28").date
+    market = pd.DataFrame({"overnight": 4.35, "bab_1m": np.nan, "ois_1m": 4.35}, index=days)
+    market.loc[days[-1], "ois_1m"] = 4.55   # the day before: +0.20 priced
+    market.loc[days[-11], "ois_1m"] = 4.40  # two weeks before: +0.05 over a window that is partly pre-decision
+    out = predict.market_path(market, dt.date(2026, 9, 29))
+    assert out["d1"] == pytest.approx(0.20 * 30 / 29)
+    two_weeks_days = (dt.date(2026, 9, 29) - days[-11]).days
+    assert out["w2"] == pytest.approx(0.05 * 30 / (30 - two_weeks_days))
+    assert out["chg_w2"] == pytest.approx(out["d1"] - out["w2"])
+    assert predict.market_path(market.iloc[:5], dt.date(2026, 9, 29)) == {}  # too little history

@@ -313,6 +313,99 @@ def load_asx(folder: Path | None = None) -> dict | None:
     }
 
 
+# --- Momentum: does the change in pricing before a meeting add to its final level? ----------------
+
+MOMENTUM_LAGS = {"d1": 1, "w1": 6, "w2": 11}  # trading days before the decision: day before, ~1 and ~2 weeks
+
+
+def market_path(market: pd.DataFrame, when: dt.date) -> dict:
+    """The OIS-implied move for a decision at the close 1, 6 and 11 trading days before it.
+
+    A 1-month OIS rate taken N days before a decision covers N days before it too, so the priced
+    move is scaled up by 30 / (30 - N); readings 28 or more days out are left blank.
+    """
+    before = market[market.index < when].dropna(subset=["ois_1m", "overnight"])
+    if len(before) < max(MOMENTUM_LAGS.values()) or (when - before.index[-1]).days > 7:
+        return {}
+    out = {}
+    for name, k in MOMENTUM_LAGS.items():
+        row = before.iloc[-k]
+        days = (when - before.index[-k]).days
+        out[name] = (row["ois_1m"] - row["overnight"]) * 30 / (30 - days) if days < 28 else np.nan
+    out["chg_w1"] = out["d1"] - out["w1"]
+    out["chg_w2"] = out["d1"] - out["w2"]
+    return out
+
+
+def momentum_analysis(next_decision: dt.date | None = None) -> dict:
+    """Whether the change in market pricing over the last one or two weeks adds to its final level.
+
+    OIS 2001-2022: an out-of-sample comparison (level vs level plus change); a logistic regression,
+    on meetings where a move was priced (20% or more), of whether it happened on the final level and
+    the two-week momentum towards it; and the meetings in the uncertain zone (20-80% priced) split by
+    whether pricing was building or fading. The 2025-26 futures and the next decision are read the
+    same way with the Rate Tracker method.
+    """
+    import statsmodels.api as sm
+
+    market = load_market()
+    decisions = load_decisions()
+    rows = [{"decision_date": d.decision_date, "direction": d.direction, "cash_rate": d.cash_rate,
+             **market_path(market, d.decision_date)} for d in decisions.itertuples()]
+    data = pd.DataFrame([r for r in rows if "d1" in r]).dropna(subset=["d1", "w1", "w2"]).reset_index(drop=True)
+    data["previous_direction"] = data["direction"].shift(1).fillna(0).astype(int)
+    models = {"level": ["d1"], "level+1w_change": ["d1", "chg_w1"], "level+2w_change": ["d1", "chg_w2"],
+              "level_2w_before": ["w2"]}
+    table, preds = backtest(data, "2001-01-01", models, min_train=48)
+    paired = [paired_log_loss(preds, "level", m) for m in models if m != "level"]
+
+    priced = data[data["d1"].abs() >= 0.05].copy()  # a move priced at 20% or more
+    priced["side"] = np.sign(priced["d1"])
+    priced["moved"] = (priced["direction"] == priced["side"]).astype(int)
+    priced["level"] = priced["d1"].abs()
+    priced["momentum"] = priced["chg_w2"] * priced["side"]  # positive: pricing built towards the move
+    fit = sm.Logit(priced["moved"], sm.add_constant(priced[["level", "momentum"]])).fit(disp=0)
+    fit_level = sm.Logit(priced["moved"], sm.add_constant(priced[["level"]])).fit(disp=0)
+    regression = [{"term": t, "coef": float(fit.params[t]), "std_err": float(fit.bse[t]), "p_value": float(fit.pvalues[t])}
+                  for t in fit.params.index]
+
+    uncertain = priced[priced["level"] <= 0.20].copy()
+    uncertain["trend"] = np.where(uncertain["momentum"] > 0, "building", "fading")
+    zone = uncertain.groupby("trend").agg(meetings=("moved", "size"), moved=("moved", "sum"),
+                                          avg_priced=("level", "mean")).reset_index()
+    zone["avg_priced"] = zone["avg_priced"] / 0.25
+    fading = uncertain[uncertain["trend"] == "fading"][["decision_date", "w2", "d1", "direction"]]
+
+    futures_rows, current = [], None
+    if FUTURES_FILE.exists():
+        futures = load_futures()
+        overnight = market["overnight"].dropna()
+        outcome = dict(zip(decisions["decision_date"], decisions["change"]))
+        dates = [d for d in decisions["decision_date"] if d > futures["trade_date"].min()]
+        if next_decision and next_decision not in dates:
+            dates.append(next_decision)
+        for d in dates:
+            days = sorted(futures[futures["trade_date"] < d]["trade_date"].unique())
+            if len(days) < 11:
+                continue
+            last = futures_implied(futures[futures["trade_date"] <= days[-1]], overnight, d)
+            early = futures_implied(futures[futures["trade_date"] <= days[-11]], overnight, d)
+            if last and early:
+                futures_rows.append({"decision_date": d, "two_weeks_before": days[-11], "priced_2w_before": early["futures_change"],
+                                     "price_date": days[-1], "priced_day_before": last["futures_change"],
+                                     "actual_change": outcome.get(d, np.nan)})
+        if next_decision and futures_rows and futures_rows[-1]["decision_date"] == next_decision:
+            now = futures_rows[-1]
+            level, momentum = abs(now["priced_day_before"]), (now["priced_day_before"] - now["priced_2w_before"]) * np.sign(now["priced_day_before"])
+            current = {"decision_date": next_decision, "price_date": now["price_date"], "level": level, "momentum": momentum,
+                       "p_move_level_only": float(fit_level.predict(pd.DataFrame({"const": [1.0], "level": [level]}))[0]),
+                       "p_move_level_and_momentum": float(fit.predict(pd.DataFrame({"const": [1.0], "level": [level], "momentum": [momentum]}))[0]),
+                       "momentum_vs_history_sd": float(momentum / priced["momentum"].std())}
+    return {"data": data, "scores": table, "predictions": preds, "paired": paired, "regression": regression,
+            "regression_n": int(len(priced)), "zone": zone, "fading": fading,
+            "futures": pd.DataFrame(futures_rows), "current": current}
+
+
 def futures_check(next_decision: dt.date | None = None) -> pd.DataFrame:
     """Each decision the futures file covers: the move priced the day before, the bank bill stand-in and the outcome."""
     futures = load_futures()
@@ -749,6 +842,12 @@ def run(next_decision: dt.date | None = None) -> dict:
             "model_probabilities": market_rows,
         }
         pd.DataFrame(market_rows).to_csv(OUT_DIR / "next_decision_market.csv", index=False)
+    momentum = momentum_analysis(next_decision)
+    momentum["data"].to_csv(OUT_DIR / "momentum_panel.csv", index=False)
+    momentum["scores"].to_csv(OUT_DIR / "scores_momentum.csv", index=False)
+    momentum["futures"].to_csv(OUT_DIR / "momentum_futures.csv", index=False)
+    results["momentum"] = {k: (v.to_dict("records") if isinstance(v, pd.DataFrame) else v)
+                           for k, v in momentum.items() if k not in ("data", "predictions")}
     if FUTURES_FILE.exists():
         check = futures_check(next_decision)
         check.to_csv(OUT_DIR / "futures_check.csv", index=False)
