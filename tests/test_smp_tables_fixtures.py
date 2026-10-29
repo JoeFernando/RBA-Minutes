@@ -172,3 +172,73 @@ def test_phantom_column_from_wide_colspan_2013_forecasts():
     assert t["column_labels"] == ["June 2013", "Dec 2013", "June 2014", "Dec 2014", "Jun 2015", "Dec 2015"]
     assert cell(t, "CPI inflation", "Dec 2015", "Year-ended")["value_text"] == "1¾–2¾"
     assert cell(t, "GDP growth", "2012/13", "Year-average")["value_num"] == 2.75
+
+
+# --- Second audit (120 random tables) -----------------------------------------------
+
+def test_text_value_columns_are_not_panels_2001_exchange_rate_news():
+    t = table(201)
+    assert (t["table_number"], t["title"]) == ("B1", "")  # 'Table Bl' is a typo for B1
+    assert t["column_labels"] == ["Exchange rate move (US cents)", "News affecting interest rate expectations", "Other factors"]
+    assert cell(t, "28 January", "News affecting interest rate expectations")["value_text"] == "*"
+    assert cell(t, "17 April", "Other factors")["value_text"] == "*"
+
+
+def test_text_value_columns_are_not_panels_2002_equity_returns():
+    t = table(358)
+    assert t["n_cols"] == 3
+    assert cell(t, "Jun 1876 to Jun 1877", "Years of wealth gains reversed")["value_text"] == "3 years 7 months"
+
+
+def test_grand_total_keeps_its_section_2003_bond_issuance():
+    r = rows(table(434))
+    assert r[8] == ("Bond issues by Australian entities", "Total", 0)
+    assert r[11] == ("A$ bond issues by non-resident entities", "Total", 0)
+
+
+def test_bold_subtotal_stays_in_section_and_spanning_cell_label_2005_bulk_resources():
+    t = table(536)
+    assert rows(t)[4] == ("Coal", "Australia", 0)
+    assert rows(t)[9] == ("Iron ore", "Australia", 0)
+    assert cell(t, "Australia", "Committed expansion projects by 2007", "Coal")["value_num"] == 32
+
+
+def test_bold_rows_that_are_the_sections_members_2001_producer_prices():
+    r = rows(table(231))
+    assert r[6] == ("Final", "Domestic", 0)
+    assert r[9] == ("Final", "Imported", 0)
+
+
+def test_wrapped_row_labels_are_joined():
+    assert rows(table(612))[5] == ("Memo item:", "Real GDP adjusted for changes in terms of trade", 0)
+    assert rows(table(809))[5] == ("", "GDP adjusted for changes in the terms of trade", 0)
+
+
+def test_footnote_on_spanning_header_reaches_every_column_2015_cpi():
+    t = table(1188)
+    assert "(b)" in cell(t, "Trimmed mean", "Year-ended | June quarter 2015")["footnotes"]
+
+
+def test_dashed_sub_rows_under_dashed_row_2016_financial_aggregates():
+    r = rows(table(1209))
+    assert r[1][1:] == ("Housing", 1)
+    assert r[2][1:] == ("Owner-occupier", 2)
+    assert r[3][1:] == ("Investor", 2)
+
+
+def test_sub_headings_nest_under_plain_parent_2018_lending_rates():
+    r = rows(table(1288))
+    assert r[2][0] == "Housing loans > Variable interest-only rate"
+    assert r[6] == ("Housing loans", "Average outstanding rate", 1)
+
+
+def test_panel_heading_without_period_row_uses_table_headers_2025_forecasts():
+    t = table(1470)
+    assert cell(t, "Cash rate (%)", "Dec 2024", "Assumptions")["value_num"] == 4.3
+
+
+def test_continuation_rows_take_the_label_above():
+    t = table(1375)
+    assert [c["row_label"] for c in t["cells"] if c["col_label"] == "End date"][-3:] == ["RBA", "RBA", "RBA"]
+    assert rows(table(1021))[2] == ("Personal loans", "Personal loans", 0)
+    assert rows(table(223))[1] == ("", "Budget (bracketed)", 0)

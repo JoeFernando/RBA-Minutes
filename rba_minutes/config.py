@@ -13,6 +13,7 @@ RAW_DIR = DATA_DIR / "raw"
 EXPORT_DIR = DATA_DIR / "exports"
 DB_PATH = DATA_DIR / "rba_minutes.sqlite"          # minutes
 SMP_DB_PATH = DATA_DIR / "rba_smp.sqlite"          # Statements on Monetary Policy, their tables, and RBA forecasts
+FSR_DB_PATH = DATA_DIR / "rba_fsr.sqlite"          # Financial Stability Reviews, their tables and graphs
 
 USER_AGENT = (
     "rba-minutes-research/1.0 "
