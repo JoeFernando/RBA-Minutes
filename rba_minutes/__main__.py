@@ -7,6 +7,8 @@
   llm-export  write batch files for labelling inside a Claude Code session
   llm-import  load the JSON labels written for those batch files
   check    report data-quality problems in the database
+  smp-scrape / smp-build / smp-score / smp-llm-export / smp-llm-import / smp-forecasts
+           the same steps for the Statement on Monetary Policy (1997 onwards)
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -88,6 +90,54 @@ def cmd_llm_import(args) -> None:
         log.error(problem)
     if problems:
         sys.exit(1)
+
+
+def cmd_smp_scrape(args) -> None:
+    from . import smp
+
+    issues = smp.scrape_all(refresh=args.refresh)
+    log.info("%d SMP issues listed, cached in %s", len(issues), smp.RAW_DIR)
+
+
+def cmd_smp_build(args) -> None:
+    from . import smp
+
+    loaded, failures = smp.build(smp.connect(args.db))
+    log.info("Loaded %d SMP issues", loaded)
+    for failure in failures:
+        log.error("Skipped %s", failure)
+
+
+def cmd_smp_score(args) -> None:
+    from . import smp
+
+    log.info("Dictionary sentiment computed for %d SMP issues", smp.score_dictionary(smp.connect(args.db)))
+
+
+def cmd_smp_llm_export(args) -> None:
+    from . import smp
+
+    paths = smp.export_batches(smp.connect(args.db), args.out, args.batch_size)
+    log.info("Wrote %d SMP batch files to %s", len(paths), args.out)
+
+
+def cmd_smp_llm_import(args) -> None:
+    from . import smp
+
+    files = sorted(Path(args.dir).glob("smp_batch_*.labels.json"))
+    stored, problems = smp.import_labels(smp.connect(args.db), files)
+    log.info("Stored %d SMP labels from %d files", stored, len(files))
+    for problem in problems:
+        log.error(problem)
+    if problems:
+        sys.exit(1)
+
+
+def cmd_smp_forecasts(args) -> None:
+    from . import smp
+
+    for path in smp.download_forecasts():
+        log.info("Saved %s", path)
 
 
 def cmd_check(args) -> None:
@@ -182,6 +232,16 @@ def main(argv=None) -> None:
     p.add_argument("--scope", default="policy", choices=["policy", "full"])
     p.add_argument("--model", default=SESSION_MODEL)
     add("check", cmd_check, "report data-quality problems")
+    p = add("smp-scrape", cmd_smp_scrape, "download every SMP issue since 1997")
+    p.add_argument("--refresh", action="store_true")
+    add("smp-build", cmd_smp_build, "parse SMP issues into the database")
+    add("smp-score", cmd_smp_score, "dictionary sentiment for SMP issues")
+    p = add("smp-llm-export", cmd_smp_llm_export, "write SMP batch files for session labelling")
+    p.add_argument("--out", type=Path, default=config.DATA_DIR / "llm_batches_smp")
+    p.add_argument("--batch-size", type=int, default=10)
+    p = add("smp-llm-import", cmd_smp_llm_import, "load SMP session labels")
+    p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_smp")
+    add("smp-forecasts", cmd_smp_forecasts, "download the RBA forecast archive")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

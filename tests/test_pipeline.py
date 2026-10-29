@@ -196,3 +196,45 @@ def test_session_label_round_trip(tmp_path, minutes):
     row = conn.execute("SELECT stance, quotes_verified, model FROM llm_sentiment").fetchone()
     assert tuple(row) == ("hawkish", 1, "session")
     assert sentiment_llm.export_batches(conn, batch_dir / "again", model="session") == []
+
+
+# --- Statement on Monetary Policy -------------------------------------------------
+
+def test_smp_list_issues_covers_both_eras():
+    from rba_minutes import smp
+
+    html = """<a href="/publications/bulletin/1997/feb/1.html">February</a>
+              <a href="/publications/bulletin/1998/may/2.html">May</a>
+              <a href="/publications/bulletin/1997/">1997</a>
+              <a href="/publications/smp/2015/may/">May</a>
+              <a href="/publications/smp/2015/boxes.html">Boxes</a>
+              <a href="/publications/smp/forecasts-archive.html">Archive</a>"""
+    assert smp.list_issues(html) == [
+        {"issue_date": "1997-02", "era": "bulletin", "url": "https://www.rba.gov.au/publications/bulletin/1997/feb/1.html"},
+        {"issue_date": "1998-05", "era": "bulletin", "url": "https://www.rba.gov.au/publications/bulletin/1998/may/2.html"},
+        {"issue_date": "2015-05", "era": "smp", "url": "https://www.rba.gov.au/publications/smp/2015/may/"},
+    ]
+
+
+@pytest.mark.parametrize("title, url, category", [
+    ("Introduction", "", "overview"),
+    ("In Brief", "", "overview"),
+    ("International and Foreign Exchange Markets", "", "financial"),
+    ("International Economic Developments", "", "international"),
+    ("Inflation Trends and Prospects", "", "inflation"),
+    ("Economic Outlook", "", "outlook"),
+    ("Domestic Economic Conditions", "", "domestic"),
+    ("Box A: Insights From Liaison", ".../box-a-insights-from-liaison.html", "box"),
+    ("The Effect of Oil Prices", ".../box-a.html", "box"),
+])
+def test_smp_categorise_chapter(title, url, category):
+    from rba_minutes import smp
+
+    assert smp.categorise_chapter(title, url) == category
+
+
+def test_smp_clean_title():
+    from rba_minutes import smp
+
+    assert smp._clean_title("Statement on Monetary Policy – May 2015 Overview") == "Overview"
+    assert smp._clean_title("3. Outlook") == "Outlook"

@@ -16,3 +16,5 @@ venv/
 data/raw/
 data/exports/
 data/llm_batches/*.md
+data/raw_smp/
+data/llm_batches_smp/*.md
