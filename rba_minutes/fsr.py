@@ -51,13 +51,17 @@ CHAPTER_CATEGORIES = [
     ("administrative", r"copyright|disclaimer|abbreviations|glossary|^list of (figures|graphs|tables)"),
     ("focus_topic", r"^focus topic\b"),
     ("overview", r"overview|foreword|at a glance|in brief|financial stability assessment|^summary"),
-    ("global", r"global|international|world|macroeconomic environment|macro-financial"),
+    ("annex", r"^annex\b"),
+    ("global", r"global|international|world|macroeconomic|macro-financial"),
     ("regulation", r"regulat|architecture|infrastructure|developments in the financial system"),
     ("household_business", r"household|business|property|real estate|balance sheet|corporate"),
     ("financial_system", r"financial system|financial intermediar|financial institutions|\bbanks?\b"),
 ]
-SPECIAL_STUDIES = {"box", "focus_topic", "article"}
-NON_NARRATIVE = SPECIAL_STUDIES | {"administrative"}
+SPECIAL_STUDIES = {"box", "focus_topic", "article", "special_chapter"}
+# A long chapter outside the regular sequence ('Assessing the Effects of Housing
+# Lending Policy Measures', October 2018) is a special study too.
+SPECIAL_CHAPTER_MIN_WORDS = 2000
+NON_NARRATIVE = SPECIAL_STUDIES | {"administrative", "annex"}
 
 
 # --- Listing and downloading --------------------------------------------------
@@ -179,10 +183,13 @@ def parse_issue(folder: Path, articles: set[str] = frozenset()) -> dict:
         paragraphs = [(k, t) for n, k, t in blocks if n != "h1" and not re.match(r"^(more on|read (the|full))\b", t, re.I)]
         chapters.append({"title": _clean_title(heading), "url": page["url"], "paragraphs": paragraphs,
                          "content_html": content_html})
-    chapters = [c for c in chapters if c["paragraphs"]]
     for c in chapters:
         c["category"] = categorise_chapter(c["title"], c["url"], articles)
         c["text"] = "\n\n".join(t for _, t in c["paragraphs"])
+        if c["category"] == "other" and db.word_count(c["text"]) >= SPECIAL_CHAPTER_MIN_WORDS:
+            c["category"] = "special_chapter"
+    # Pages with no prose are dropped, except special studies that are only a table (Box E, March 2005).
+    chapters = [c for c in chapters if c["paragraphs"] or c["category"] in SPECIAL_STUDIES]
     if not chapters:
         raise ValueError(f"No chapters found in {folder}")
     return {
@@ -217,7 +224,7 @@ CREATE TABLE IF NOT EXISTS fsr_chapters (
     issue_id        INTEGER NOT NULL REFERENCES fsr_issues(issue_id) ON DELETE CASCADE,
     position        INTEGER NOT NULL,
     title           TEXT NOT NULL,
-    category        TEXT NOT NULL,          -- overview / global / household_business / financial_system / regulation / box / focus_topic / article / administrative / other
+    category        TEXT NOT NULL,          -- overview / global / household_business / financial_system / regulation / box / focus_topic / article / special_chapter / annex / administrative / other
     url             TEXT NOT NULL,
     text            TEXT NOT NULL,
     n_words         INTEGER NOT NULL,
@@ -288,7 +295,7 @@ SELECT i.issue_date, c.position, c.category, c.title, c.n_words, c.url, c.text,
 FROM fsr_chapters c
 JOIN fsr_issues i USING (issue_id)
 LEFT JOIN fsr_dictionary_sentiment d ON d.chapter_id = c.chapter_id AND d.scope = 'chapter'
-WHERE c.category IN ('box', 'focus_topic', 'article')
+WHERE c.category IN ('box', 'focus_topic', 'article', 'special_chapter')
 ORDER BY i.issue_date, c.position;
 
 CREATE VIEW IF NOT EXISTS v_fsr_sentiment AS

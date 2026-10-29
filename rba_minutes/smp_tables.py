@@ -12,6 +12,9 @@ rows with a <th scope="row"> label, group rows (class "tr-head", or a label
 with no values) and indented rows (class "sub"), and a <tfoot> with notes and
 sources. Each table is stored once (smp_tables) and cell by cell
 (smp_table_cells), keeping the published text alongside the parsed number.
+
+The Financial Stability Review uses the same markup and the same eras, so its
+tables go through the same code into fsr_tables and fsr_table_cells (pub="fsr").
 """
 
 import csv
@@ -36,12 +39,12 @@ EXPORT_DIR = config.EXPORT_DIR / "smp_tables"
 # --- Downloading the "List of tables" pages ---------------------------------------
 
 def fetch_table_pages(raw_dir: Path = RAW_DIR, refresh: bool = False) -> int:
-    """Download tables.html for each 2006-2023 issue and record it in the manifest."""
+    """Download each issue's 'List of tables' page (SMP 2006-2023, FSR) and record it in the manifest."""
     session = make_session()
     fetched = 0
     for manifest_path in sorted(raw_dir.glob("*/manifest.json")):
         manifest = json.loads(manifest_path.read_text())
-        if manifest["era"] != "smp" or ("table_pages" in manifest and not refresh):
+        if manifest["era"] not in ("smp", "fsr") or ("table_pages" in manifest and not refresh):
             continue
         manifest["table_pages"] = []
         if not any(p["file"].endswith("in-brief.html") for p in manifest["pages"]):
@@ -207,7 +210,7 @@ def _grid(rows: list[Tag]) -> list[list[dict]]:
             c += colspan
     width = max((len(r) for r in grid), default=0)
     empty = {"text": "", "marks": "", "is_th": False, "classes": [], "row_classes": [], "strong": False,
-             "colspan": 1, "spanned": False, "row_spanned": False, "col_spanned": False}
+             "colspan": 1, "spanned": False, "row_spanned": False, "col_spanned": False, "filler": True}
     return [[cell or dict(empty) for cell in row] + [dict(empty) for _ in range(width - len(row))] for row in grid]
 
 
@@ -301,7 +304,8 @@ def parse_table(table: Tag) -> dict:
         while body_rows:
             cells = body_rows[0].find_all(["th", "td"], recursive=False)
             filled = [c for c in cells if c.get_text(strip=True)]
-            if len(filled) >= 2 and all(c.name == "th" for c in filled):
+            stub_then_header = len(filled) == 1 and len(cells) > 1 and not cells[0].get_text(strip=True)
+            if (len(filled) >= 2 or stub_then_header) and all(c.name == "th" for c in filled):
                 head_rows.append(body_rows.pop(0))
             else:
                 break
@@ -309,6 +313,13 @@ def parse_table(table: Tag) -> dict:
     head = _grid(head_rows)
     body = _grid(body_rows)
     width = max([len(r) for r in head + body] or [0])
+    # A header row that leaves out the empty stub cell above the row labels is one cell
+    # short: it belongs under the value columns, so it is shifted right (2007-08 Table 5).
+    for r, row in enumerate(head):
+        short = width - sum(1 for cell in row if not cell.get("filler"))
+        if short > 0 and r > 0 and row and row[0]["text"] and not head[r - 1][0]["text"] \
+                and all(cell.get("filler") for cell in row[len(row) - short:]) and all(c.get("filler") for c in row[width:]):
+            head[r] = [dict(row[-1], text="", marks="", spanned=False) for _ in range(short)] + row[:len(row) - short]
     head = [r + [dict(r[-1] if r else {}, text="", spanned=False)] * (width - len(r)) for r in head]
     body = [r + [dict(r[-1], text="", spanned=False)] * (width - len(r)) for r in body]
 
@@ -357,7 +368,7 @@ def parse_table(table: Tag) -> dict:
             return False
         if all(v["is_th"] for v in filled):
             return True
-        return len(filled) == 1 and filled[0]["colspan"] >= width - label_cols - 1 or \
+        return len(filled) == 1 and filled[0]["colspan"] >= max(2, width - label_cols - 1) or \
             len(filled) >= 2 and all(PERIOD.match(v["text"]) for v in filled)
 
     # Columns that never hold a value (spacer columns, or columns created by a
@@ -511,7 +522,7 @@ def parse_table(table: Tag) -> dict:
     for i, row in enumerate(body):
         if header_like(row):
             filled = [v for v in row[label_cols:] if v["text"] and not v["spanned"]]
-            if len(filled) == 1 and filled[0]["colspan"] >= width - label_cols - 1:
+            if len(filled) == 1 and filled[0]["colspan"] >= max(2, width - label_cols - 1):
                 stack = [{"label": filled[0]["text"], "rank": -1, "scope": "section", "marks": filled[0]["marks"], "level": -1}]
                 labels = labels_for(col_parts)  # a new panel starts with the table's own column headers
             else:
@@ -579,13 +590,15 @@ def parse_table(table: Tag) -> dict:
                 label, prefix = f"{prefix} {label}", ""
             row_values = [row[c]["text"] for c in panels[0]["cols"] if row[c]["text"]]
             if not label and label_idx and row_values:
+                bracketed = all(t.startswith("(") and t.endswith(")") for t in row_values)
                 if previous_heading and stack:
                     label = stack[-1]["label"]   # the only row under its heading ('Personal loans')
+                elif previous_label and bracketed:
+                    label = f"{previous_label} (bracketed)"  # per cent of GDP, targets, etc. under their row
+                elif is_subtotal(i):
+                    label = "Total"              # an unlabelled sum of the rows above (−9.6 + 2.0 = −7.6)
                 elif previous_label:
-                    # A row continuing the one above: a second programme under 'RBA', or
-                    # bracketed figures (per cent of GDP, targets) under the row they belong to.
-                    bracketed = all(t.startswith("(") and t.endswith(")") for t in row_values)
-                    label = f"{previous_label} (bracketed)" if bracketed else previous_label
+                    label = previous_label       # a row continuing the one above (a second programme under 'RBA')
             if label_cell is not None and label_cell["strong"] and level == 0 and not TOTAL_LABEL.search(label) \
                     and not is_subtotal(i):
                 if previous_heading and stack:
@@ -698,9 +711,9 @@ def issue_tables(folder: Path) -> list[dict]:
 
 
 SCHEMA = """
-CREATE TABLE IF NOT EXISTS smp_tables (
+CREATE TABLE IF NOT EXISTS {pub}_tables (
     table_id        INTEGER PRIMARY KEY,
-    issue_date      TEXT NOT NULL,          -- YYYY-MM of the SMP issue
+    issue_date      TEXT NOT NULL,          -- YYYY-MM of the issue
     position        INTEGER NOT NULL,       -- order within the issue
     table_number    TEXT,                   -- as printed, e.g. '14', '3.1', 'A1'
     title           TEXT NOT NULL,
@@ -717,10 +730,10 @@ CREATE TABLE IF NOT EXISTS smp_tables (
     html            TEXT NOT NULL,          -- the published <table>, for checking
     UNIQUE (issue_date, position)
 );
-CREATE INDEX IF NOT EXISTS smp_tables_title_key ON smp_tables (title_key);
+CREATE INDEX IF NOT EXISTS {pub}_tables_title_key ON {pub}_tables (title_key);
 
-CREATE TABLE IF NOT EXISTS smp_table_cells (
-    table_id        INTEGER NOT NULL REFERENCES smp_tables(table_id) ON DELETE CASCADE,
+CREATE TABLE IF NOT EXISTS {pub}_table_cells (
+    table_id        INTEGER NOT NULL REFERENCES {pub}_tables(table_id) ON DELETE CASCADE,
     row_idx         INTEGER NOT NULL,
     col_idx         INTEGER NOT NULL,
     row_label       TEXT,
@@ -737,25 +750,25 @@ CREATE TABLE IF NOT EXISTS smp_table_cells (
     PRIMARY KEY (table_id, row_idx, col_idx)
 );
 
-CREATE VIEW IF NOT EXISTS v_smp_table_cells AS
+CREATE VIEW IF NOT EXISTS v_{pub}_table_cells AS
 SELECT t.issue_date, t.table_number, t.title, t.subtitle, c.row_group, c.row_label, c.col_label,
        c.value_text, c.value_num, c.value_low, c.value_high, c.value_direction, c.footnotes,
        t.table_id, c.row_idx, c.col_idx
-FROM smp_table_cells c JOIN smp_tables t USING (table_id)
+FROM {pub}_table_cells c JOIN {pub}_tables t USING (table_id)
 ORDER BY t.issue_date, t.position, c.row_idx, c.col_idx;
 """
 
 
-def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
+def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR, pub: str = "smp") -> tuple[int, int]:
     """Re-extract every table from the downloaded issues. Returns (tables, cells)."""
-    conn.executescript("DROP VIEW IF EXISTS v_smp_table_cells; DROP TABLE IF EXISTS smp_table_cells; "
-                       "DROP TABLE IF EXISTS smp_tables;")
-    conn.executescript(SCHEMA)
+    conn.executescript(f"DROP VIEW IF EXISTS v_{pub}_table_cells; DROP TABLE IF EXISTS {pub}_table_cells; "
+                       f"DROP TABLE IF EXISTS {pub}_tables;")
+    conn.executescript(SCHEMA.replace("{pub}", pub))
     n_tables = n_cells = 0
     for folder in sorted(p for p in raw_dir.iterdir() if (p / "manifest.json").exists()):
         for position, t in enumerate(issue_tables(folder)):
             table_id = conn.execute(
-                "INSERT INTO smp_tables (issue_date, position, table_number, title, title_key, subtitle, title_footnotes, "
+                f"INSERT INTO {pub}_tables (issue_date, position, table_number, title, title_key, subtitle, title_footnotes, "
                 "notes, sources, n_rows, n_cols, column_labels, page_title, source_url, html) "
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING table_id",
                 (t["issue_date"], position, t["table_number"], t["title"], title_key(t["title"]), t["subtitle"],
@@ -764,7 +777,7 @@ def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
                  t["page_title"], t["source_url"], t["html"]),
             ).fetchone()[0]
             conn.executemany(
-                "INSERT INTO smp_table_cells (table_id, row_idx, col_idx, row_label, row_group, row_level, col_label, "
+                f"INSERT INTO {pub}_table_cells (table_id, row_idx, col_idx, row_label, row_group, row_level, col_label, "
                 "value_text, value_num, value_low, value_high, value_direction, footnotes, is_total) "
                 "VALUES (:table_id, :row_idx, :col_idx, :row_label, :row_group, :row_level, :col_label, "
                 ":value_text, :value_num, :value_low, :value_high, :value_direction, :footnotes, :is_total)",
@@ -776,21 +789,21 @@ def build(conn: sqlite3.Connection, raw_dir: Path = RAW_DIR) -> tuple[int, int]:
     return n_tables, n_cells
 
 
-def export(conn: sqlite3.Connection, out_dir: Path = EXPORT_DIR) -> int:
+def export(conn: sqlite3.Connection, out_dir: Path = EXPORT_DIR, pub: str = "smp") -> int:
     """Write every cell to one long CSV, and each table to its own wide CSV."""
     out_dir.mkdir(parents=True, exist_ok=True)
-    cursor = conn.execute("SELECT * FROM v_smp_table_cells")
+    cursor = conn.execute(f"SELECT * FROM v_{pub}_table_cells")
     with open(out_dir / "all_cells.csv", "w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow([c[0] for c in cursor.description])
         writer.writerows(cursor)
-    tables = conn.execute("SELECT table_id, issue_date, position, table_number, title, column_labels FROM smp_tables")
+    tables = conn.execute(f"SELECT table_id, issue_date, position, table_number, title, column_labels FROM {pub}_tables")
     count = 0
     for table_id, issue_date, position, number, title, column_labels in tables.fetchall():
         labels = json.loads(column_labels)
         rows: dict[int, dict] = {}
         for r, c, group, label, text in conn.execute(
-            "SELECT row_idx, col_idx, row_group, row_label, value_text FROM smp_table_cells "
+            f"SELECT row_idx, col_idx, row_group, row_label, value_text FROM {pub}_table_cells "
             "WHERE table_id = ? ORDER BY row_idx, col_idx", (table_id,)
         ):
             row = rows.setdefault(r, {"group": group, "label": label, "values": {}})
@@ -809,7 +822,7 @@ def export(conn: sqlite3.Connection, out_dir: Path = EXPORT_DIR) -> int:
     return count
 
 
-def fetch_graph_data(raw_dir: Path = RAW_DIR, out_dir: Path = config.DATA_DIR / "smp_graph_data") -> list[Path]:
+def fetch_graph_data(raw_dir: Path = RAW_DIR, out_dir: Path = config.DATA_DIR / "smp_graph_data", pub: str = "smp") -> list[Path]:
     """Download the 'underlying data for selected graphs' workbooks (published from 2024).
 
     Saved as source files only: each sheet places many graphs side by side, so
@@ -820,13 +833,13 @@ def fetch_graph_data(raw_dir: Path = RAW_DIR, out_dir: Path = config.DATA_DIR / 
     saved = []
     for manifest_path in sorted(raw_dir.glob("*/manifest.json")):
         manifest = json.loads(manifest_path.read_text())
-        if manifest["era"] != "smp" or manifest["issue_date"] < "2024":
+        if manifest["era"] != pub or manifest["issue_date"] < "2024":
             continue
-        target = out_dir / f"smp-graph-data-{manifest['issue_date']}.xlsx"
+        target = out_dir / f"{pub}-graph-data-{manifest['issue_date']}.xlsx"
         if target.exists():
             saved.append(target)
             continue
-        response = session.get(manifest["url"] + "xlsx/smp-graph-data.xlsx", timeout=config.REQUEST_TIMEOUT_SECONDS)
+        response = session.get(manifest["url"] + f"xlsx/{pub}-graph-data.xlsx", timeout=config.REQUEST_TIMEOUT_SECONDS)
         if response.status_code == 200 and response.content[:2] == b"PK":
             target.write_bytes(response.content)
             saved.append(target)

@@ -242,3 +242,24 @@ def test_continuation_rows_take_the_label_above():
     assert [c["row_label"] for c in t["cells"] if c["col_label"] == "End date"][-3:] == ["RBA", "RBA", "RBA"]
     assert rows(table(1021))[2] == ("Personal loans", "Personal loans", 0)
     assert rows(table(223))[1] == ("", "Budget (bracketed)", 0)
+
+
+# --- Third audit (75 further random tables) ---------------------------------------
+
+def test_unlabelled_subtotal_in_one_column_table_1999_money_market_liquidity():
+    t = table(139)
+    assert rows(t)[2] == ("Net impact on liquidity", "Total", 0)
+    assert rows(t)[3][0] == "Reserve Bank operations"
+
+
+def test_header_row_missing_its_stub_cell_is_right_aligned_2007_consumer_prices():
+    t = table(717)
+    assert t["column_labels"] == ["Quarterly | June quarter 2007", "Quarterly | September quarter 2007",
+                                  "Year-ended | June quarter 2007", "Year-ended | September quarter 2007"]
+    assert cell(t, "CPI", "Year-ended | September quarter 2007")["value_num"] == 1.9
+
+
+def test_single_header_cell_after_stub_is_the_column_header_2020_bond_purchases():
+    t = table(1353)
+    assert t["column_labels"] == ["Face value $m"]
+    assert rows(t)[0] == ("", "Total AGS", 0)
