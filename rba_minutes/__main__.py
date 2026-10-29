@@ -6,6 +6,7 @@
   llm      classify each meeting with Claude (needs ANTHROPIC_API_KEY)
   llm-export  write batch files for labelling inside a Claude Code session
   llm-import  load the JSON labels written for those batch files
+  check    report data-quality problems in the database
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -89,6 +90,15 @@ def cmd_llm_import(args) -> None:
         sys.exit(1)
 
 
+def cmd_check(args) -> None:
+    from . import quality
+
+    problems = quality.check(db.connect(args.db))
+    for problem in problems:
+        print(problem)
+    print(f"{len(problems)} problems found")
+
+
 EXPORTS = {
     "meeting_sentiment.csv": "SELECT * FROM v_meeting_sentiment",
     "meetings.csv": "SELECT meeting_id, meeting_date, year, url, title, decision, cash_rate_target, "
@@ -169,6 +179,7 @@ def main(argv=None) -> None:
     p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches")
     p.add_argument("--scope", default="policy", choices=["policy", "full"])
     p.add_argument("--model", default=SESSION_MODEL)
+    add("check", cmd_check, "report data-quality problems")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

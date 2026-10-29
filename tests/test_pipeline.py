@@ -54,6 +54,8 @@ def test_normalise_text():
     ("Considerations for monetary policy", "policy_considerations"),
     ("The Decision", "decision"),
     ("Members Present", "attendance"),
+    ("Others participating", "attendance"),
+    ("Minutes", "administrative"),
     ("Something New", "other"),
 ])
 def test_categorise(heading, category):
@@ -93,6 +95,10 @@ def test_extract_decision(minutes):
     ("The Board decided to lower the cash rate target by 15 basis points to 0.1 per cent.", ("lower", 0.1)),
     ("The Board decided that the cash rate target would remain unchanged at 4.35 per cent.", ("hold", 4.35)),
     ("The Board decided to reduce the cash rate by 25 basis points to 4.10 per cent.", ("lower", 4.10)),
+    ("The Board decided that the cash rate should remain at 6.0 per cent.", ("hold", 6.0)),
+    ("The Board agreed on a package of measures, comprising four elements, namely:\n\n"
+     "a reduction in the cash rate to 0.25 per cent\n\na target of 0.25 per cent for the yield", ("lower", 0.25)),
+    ("The Board decided unanimously to raise the cash rate target by 25 basis points to 4.60 per cent.", ("raise", 4.60)),
 ])
 def test_extract_decision_variants(minutes, sentence, expected):
     minutes.sections[5].paragraphs[0].text = sentence

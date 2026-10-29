@@ -7,18 +7,19 @@ from dataclasses import dataclass, field
 
 from bs4 import BeautifulSoup, Tag
 
-PARSER_VERSION = "1"
+PARSER_VERSION = "2"
 
 # Sections that are not the board's discussion: kept in the database but
 # left out of sentiment scoring.
-NON_DISCUSSION = {"header", "attendance", "footnotes"}
+NON_DISCUSSION = {"header", "attendance", "administrative", "footnotes"}
 
 # Checked in order; the first match wins. "International Financial Markets"
 # is a markets section, so markets are tested before international.
 SECTION_CATEGORIES = [
     ("decision", r"\bdecision\b"),
     ("policy_considerations", r"consideration"),
-    ("attendance", r"\b(members?|present|attend|participants|apologies)\b"),
+    ("attendance", r"\b(members?|present|attend\w*|particip\w*|apologies)\b"),
+    ("administrative", r"^(minutes|business arising)$"),
     ("footnotes", r"\b(footnotes?|references|endnotes?)\b"),
     ("outlook", r"\b(outlook|forecasts?)\b"),
     ("financial_markets", r"financial|markets?\b|bank's operations|balance sheet|liquidity"),
@@ -197,10 +198,17 @@ _DECISION_VERB = re.compile(
     r"leav\w*|left|maintain\w*|keep\w*|kept|hold\w*)\s+(?:the\s+)?cash\s+rate",
     re.IGNORECASE,
 )
-_UNCHANGED = re.compile(r"cash\s+rate(?:\s+target)?\s+(?:\w+\s+){0,3}unchanged", re.IGNORECASE)
+_DECISION_NOUN = re.compile(
+    r"\b(increase|rise|lift|reduction|cut|decrease)\s+(?:of\s+[\w.\s]{1,30}?\s+)?in\s+the\s+cash\s+rate",
+    re.IGNORECASE,
+)
+_UNCHANGED = re.compile(
+    r"cash\s+rate(?:\s+target)?\s+(?:(?:\w+\s+){0,3}unchanged|(?:should|would|will)\s+(?:remain|stay|be\s+(?:left|kept|maintained)))",
+    re.IGNORECASE,
+)
 _RATE_LEVEL = re.compile(r"\b(?:to|at)\s+(\d+(?:\.\d+)?)\s*(?:per\s*cent|%)", re.IGNORECASE)
 _VERB_TO_DECISION = [
-    ("raise", ("increas", "rais", "lift")),
+    ("raise", ("increas", "rais", "lift", "rise")),
     ("lower", ("lower", "reduc", "cut", "decreas")),
     ("hold", ("leav", "left", "maintain", "keep", "kept", "hold")),
 ]
@@ -223,7 +231,7 @@ def extract_decision(minutes: Minutes) -> tuple[str | None, float | None, str | 
         if "cash rate" not in sentence.lower():
             continue
         decision = None
-        verb = _DECISION_VERB.search(sentence)
+        verb = _DECISION_VERB.search(sentence) or _DECISION_NOUN.search(sentence)
         if verb:
             word = verb.group(1).lower()
             decision = next(d for d, stems in _VERB_TO_DECISION if word.startswith(stems))
