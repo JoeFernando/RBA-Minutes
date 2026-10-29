@@ -11,6 +11,7 @@ fitted only on earlier meetings and then predicts that meeting.
 | Outcome | Every Board decision since January 1990 (402 decisions, from the RBA's cash rate page, which lists unchanged decisions too): cut, hold or raise |
 | Macro model | Trimmed mean inflation minus 2.5 (RBA table G1, used from 28 days after the quarter), six-month change in the unemployment rate (H5, from 18 days after the month), direction of the last move |
 | RBA forecast | The year-ahead trimmed mean forecast published in the latest SMP (from May 2000; internal forecasts not published at the time are excluded) |
+| Inflation surprise | The latest trimmed mean outcome minus the RBA's forecast for that quarter in the SMP of the same quarter (its nowcast; interpolated between the previous outcome and the next forecast where the archive has only half-yearly targets) |
 | SMP text | Latest SMP overview: Claude stance score (-2 to +2) and hawk/dove dictionary index; or dictionary only (hawk/dove index and Loughran-McDonald tone) |
 | Minutes text | Latest minutes (published two weeks after each meeting, so the previous meeting's minutes): Claude stance score and hawk/dove index; or the two dictionary hawk/dove indexes only |
 | FSR | Latest FSR: Claude risk level (low/moderate/elevated/high) and what its concerns imply for rates (tightening/neutral/easing) |
@@ -44,22 +45,27 @@ The macro model is clearly better than the naive baselines (gain over class freq
 last move are known.** The SMP stance is correlated with the next move (0.51, as reported earlier),
 but that information is already in the data.
 
-### Since 2004 (RBA forecasts published; 235 meetings, 59 moves)
+### Since 2004 (RBA forecasts published; 233 meetings, 59 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + RBA forecast + SMP text | 0.616 | 0.363 | 76.6% | 20 of 59 | 16 |
-| macro + RBA forecast | 0.626 | 0.364 | 77.4% | 19 of 59 | 13 |
-| macro + SMP text | 0.643 | 0.369 | 76.6% | 19 of 59 | 15 |
-| macro | 0.646 | 0.371 | 77.0% | 17 of 59 | 12 |
+| macro + RBA forecast + SMP text | 0.620 | 0.366 | 75.5% | 20 of 59 | 18 |
+| macro + RBA forecast | 0.630 | 0.367 | 77.3% | 19 of 59 | 13 |
+| macro + SMP text (Claude) | 0.647 | 0.372 | 76.4% | 19 of 59 | 15 |
+| macro | 0.651 | 0.373 | 76.8% | 17 of 59 | 12 |
+| macro + inflation surprise | 0.664 | 0.377 | 76.4% | 17 of 59 | 13 |
+| past class frequencies | 0.749 | 0.413 | 74.7% | 0 of 59 | 0 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| RBA forecast | +0.021 | -0.015 to +0.061 | 68% |
-| SMP text | +0.004 | -0.022 to +0.026 | 58% |
-| RBA forecast + SMP text | +0.030 | -0.003 to +0.062 | 68% |
+| RBA forecast | +0.021 | -0.015 to +0.061 | 67% |
+| SMP text (Claude) | +0.004 | -0.021 to +0.027 | 60% |
+| RBA forecast + SMP text | +0.031 | -0.002 to +0.063 | 67% |
+| inflation surprise | -0.013 | -0.025 to +0.000 | 42% |
 
-The RBA's own inflation forecast helps a little, but the gain is not statistically reliable.
+The RBA's own inflation forecast helps a little, but the gain is not statistically reliable. The
+inflation surprise (outcome against the RBA's nowcast) adds nothing: once the level of inflation is
+known, whether it beat the RBA's forecast has not helped predict the decision.
 
 ### Since 2008 (FSR era; 193 meetings, 51 moves)
 
@@ -82,23 +88,29 @@ for financial-stability risks.
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + minutes text (Claude) | **0.500** | **0.312** | 77.9% | 15 of 39 | 14 |
+| macro + minutes text (Claude) | **0.500** | 0.312 | 77.9% | 15 of 39 | 14 |
+| macro + inflation surprise + minutes text | 0.502 | **0.311** | **80.8%** | **16 of 39** | 10 |
 | text only (SMP + minutes) | 0.510 | 0.326 | 74.4% | 9 of 39 | 14 |
 | macro + all text, forecast and FSR | 0.535 | 0.319 | 78.5% | 15 of 39 | 13 |
 | macro + minutes dictionary | 0.550 | 0.324 | 79.7% | 13 of 39 | 9 |
-| macro + SMP text | 0.596 | 0.339 | 78.5% | 12 of 39 | 10 |
+| macro + SMP text (Claude) | 0.596 | 0.339 | 78.5% | 12 of 39 | 10 |
 | macro + FSR | 0.601 | 0.329 | 79.7% | 12 of 39 | 8 |
-| macro | 0.616 | 0.335 | **80.8%** | 12 of 39 | 6 |
+| macro + inflation surprise | 0.611 | 0.336 | 80.8% | 12 of 39 | 6 |
+| macro | 0.616 | 0.335 | 80.8% | 12 of 39 | 6 |
 | macro + RBA forecast | 0.621 | 0.336 | 79.7% | 10 of 39 | 6 |
 | past class frequencies | 0.726 | 0.395 | 77.3% | 0 of 39 | 0 |
+| repeat last decision | 0.862 | 0.460 | 73.8% | 16 of 39 | 22 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
 | minutes text (Claude) | **+0.116** | **+0.050 to +0.177** | 71% |
+| inflation surprise + minutes text | **+0.114** | **+0.045 to +0.185** | 73% |
 | minutes dictionary | **+0.066** | **+0.029 to +0.101** | 71% |
 | all text, forecast and FSR | +0.082 | +0.009 to +0.149 | 73% |
-| SMP text | +0.021 | -0.014 to +0.055 | 59% |
+| text only (SMP + minutes) | +0.107 | +0.008 to +0.201 | 60% |
+| SMP text (Claude) | +0.021 | -0.014 to +0.055 | 59% |
 | FSR | +0.015 | -0.039 to +0.065 | 69% |
+| inflation surprise | +0.005 | -0.015 to +0.033 | 58% |
 | RBA forecast | -0.004 | -0.047 to +0.040 | 74% |
 
 **The minutes are the one source that adds real predictive information.** Across the actual moves,
@@ -112,9 +124,10 @@ Two checks that the minutes result is genuine:
 | Hindsight in the LLM labels (Claude knows what the RBA did next) | The dictionary-only minutes measures, which cannot know the future, still improve log loss significantly (+0.066, interval +0.029 to +0.101) |
 | Sensitivity to the penalty C (0.1, 0.3, 1, 3, 10) | Minutes text gain +0.091 to +0.118, dictionary gain +0.057 to +0.065, all intervals above zero (`sensitivity_minutes_era.csv`) |
 
-**But better probabilities are not better calls.** The macro model has the highest accuracy (80.8%).
-The minutes models catch a few more moves (15 against 12 of 39) at the cost of more false alarms
-(14 against 6). Turning points stay hard. For example, the 29 September 2026 raise followed two
+**Better probabilities are mostly not better calls.** The macro model's accuracy (80.8%) is matched
+but not beaten. The minutes model catches a few more moves (15 against 12 of 39) at the cost of more
+false alarms (14 against 6); adding the inflation surprise to it gives the best balance (16 moves
+caught, 10 false alarms, 80.8%). Turning points stay hard. For example, the 29 September 2026 raise followed two
 holds, and every model gave it 13-17%.
 
 ## The RBA's forecasts against outcomes (1990-2025)
@@ -153,9 +166,11 @@ Inputs as of 2 November 2026:
 | Model | Cut | Hold | Raise | Backtest log loss (2010-26) |
 |---|---:|---:|---:|---:|
 | macro + minutes text (best log loss) | 0% | 49% | 51% | 0.500 |
+| macro + inflation surprise + minutes text (best balance of calls) | 0% | 46% | 54% | 0.502 |
 | macro + minutes dictionary (no LLM) | 1% | 68% | 32% | 0.550 |
 | macro + all text, forecast and FSR | 0% | 36% | 64% | 0.535 |
-| macro (best accuracy) | 6% | 84% | 10% | 0.616 |
+| macro + inflation surprise | 5% | 83% | 12% | 0.611 |
+| macro | 6% | 84% | 10% | 0.616 |
 | macro + RBA forecast + SMP text | 3% | 87% | 10% | 0.616 (2004-26) |
 
 **Reading:** the models disagree. On data alone (high but stable trimmed mean, rising unemployment) a
@@ -163,15 +178,14 @@ hold is likely. The September minutes were strongly hawkish, and the minutes-bas
 raise at roughly one in three to one in two. The best-scoring model in the backtest calls it close to
 a coin flip, with **a hold slightly more likely than not on balance across models**.
 
-One input the models do not use points towards a raise. Trimmed mean inflation in the September
-quarter (3.7%) is already above the 3.3% the RBA forecast in August for December 2026, and the
-quarterly pace picked up to 1.0%. An upside surprise against the RBA's own forecast is the kind of
-news that has preceded raises. The models see only the level of inflation, not the surprise.
+The September quarter trimmed mean (3.7%) came in about 0.25 points above the RBA's implied August
+nowcast, and above the 3.3% it forecast for December 2026. That looks like news for a raise, but
+historically the surprise has added nothing beyond the level of inflation (see above). Including it
+moves the probabilities only slightly (raise 10% → 12% on data alone, 51% → 54% with the minutes).
 
 This cannot be called "confidently": in the backtests no specification predicted turning points
 reliably. The models do not see market pricing, the RBA's November SMP (released with the decision),
-the inflation surprise against the RBA's forecast, or speeches since the minutes. Those are the next
-things to add.
+or speeches since the minutes. Those are the next things to add.
 
 ## Files
 

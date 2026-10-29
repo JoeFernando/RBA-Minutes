@@ -345,11 +345,12 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 | Added to inflation, unemployment and the last move | Sample | Better probabilities? | Better calls? |
 |---|---|---|---|
 | SMP tone (Claude or dictionary) | 2001–2026, 273 meetings | No (gain ≈ 0) | No |
-| RBA's year-ahead inflation forecast | 2004–2026, 235 meetings | Slightly, not significant | No |
+| RBA's year-ahead inflation forecast | 2004–2026, 233 meetings | Slightly, not significant | No |
+| Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 233 meetings | No | No |
 | FSR risk assessment | 2008–2026, 193 meetings | No | No |
 | **Minutes** (Claude, or dictionary only) | 2010–2026, 172 meetings | **Yes, significant** (log loss 0.616 → 0.500; dictionary-only 0.550) | No: 15 against 12 of 39 moves caught, but 14 against 6 false alarms |
 
-For the 3 November 2026 decision the models disagree: on data alone a hold is likely (84–87%); the minutes-based models put a raise at 32–64%; the best-scoring model calls it 51% raise / 49% hold.
+For the 3 November 2026 decision the models disagree: on data alone a hold is likely (83–87%); the minutes-based models put a raise at 32–64%; the best-scoring models call it about even (51–54% raise).
 
 ## Method notes and caveats
 

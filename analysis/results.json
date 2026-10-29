@@ -100,15 +100,15 @@
   },
   "smp_forecast_era": {
     "start": "2000-06-01",
-    "first_test": "2004-10-05",
+    "first_test": "2004-12-07",
     "last_test": "2026-09-29",
     "scores": [
       {
         "model": "macro",
-        "n": 235,
-        "accuracy": 0.7702127659574468,
-        "log_loss": 0.6463564171126358,
-        "brier": 0.37065733178990284,
+        "n": 233,
+        "accuracy": 0.7682403433476395,
+        "log_loss": 0.6506363678219041,
+        "brier": 0.3734775926995752,
         "moves": 59,
         "moves_called": 17,
         "false_alarms": 12,
@@ -116,10 +116,10 @@
       },
       {
         "model": "macro+rba_forecast",
-        "n": 235,
-        "accuracy": 0.774468085106383,
-        "log_loss": 0.6255257400173846,
-        "brier": 0.364491661217307,
+        "n": 233,
+        "accuracy": 0.7725321888412017,
+        "log_loss": 0.6299462983277243,
+        "brier": 0.36739924404613356,
         "moves": 59,
         "moves_called": 19,
         "false_alarms": 13,
@@ -127,10 +127,10 @@
       },
       {
         "model": "macro+smp_text",
-        "n": 235,
-        "accuracy": 0.7659574468085106,
-        "log_loss": 0.6427644194516268,
-        "brier": 0.36936666116337774,
+        "n": 233,
+        "accuracy": 0.7639484978540773,
+        "log_loss": 0.6465723056166752,
+        "brier": 0.3717672409102941,
         "moves": 59,
         "moves_called": 19,
         "false_alarms": 15,
@@ -138,21 +138,32 @@
       },
       {
         "model": "macro+rba_forecast+smp_text",
-        "n": 235,
-        "accuracy": 0.7659574468085106,
-        "log_loss": 0.6162686896542987,
-        "brier": 0.3629493520236288,
+        "n": 233,
+        "accuracy": 0.7553648068669528,
+        "log_loss": 0.620019063982518,
+        "brier": 0.36553483177509455,
         "moves": 59,
         "moves_called": 20,
-        "false_alarms": 16,
+        "false_alarms": 18,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+surprise",
+        "n": 233,
+        "accuracy": 0.7639484978540773,
+        "log_loss": 0.6637440949332597,
+        "brier": 0.3767254395866865,
+        "moves": 59,
+        "moves_called": 17,
+        "false_alarms": 13,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 235,
-        "accuracy": 0.7489361702127659,
-        "log_loss": 3.4685749911484773,
-        "brier": 0.502127659574468,
+        "n": 233,
+        "accuracy": 0.7467811158798283,
+        "log_loss": 3.4983481670381638,
+        "brier": 0.5064377682403434,
         "moves": 59,
         "moves_called": 0,
         "false_alarms": 0,
@@ -160,10 +171,10 @@
       },
       {
         "model": "repeat_last_decision",
-        "n": 235,
-        "accuracy": 0.7148936170212766,
-        "log_loss": 0.9294239530154561,
-        "brier": 0.4996808510638297,
+        "n": 233,
+        "accuracy": 0.7124463519313304,
+        "log_loss": 0.9364974589155217,
+        "brier": 0.5038412017167381,
         "moves": 59,
         "moves_called": 25,
         "false_alarms": 33,
@@ -171,10 +182,10 @@
       },
       {
         "model": "class_frequencies",
-        "n": 235,
-        "accuracy": 0.7489361702127659,
-        "log_loss": 0.744613590360411,
-        "brier": 0.4104130255315325,
+        "n": 233,
+        "accuracy": 0.7467811158798283,
+        "log_loss": 0.7485004667667304,
+        "brier": 0.41315084935183394,
         "moves": 59,
         "moves_called": 0,
         "false_alarms": 0,
@@ -185,34 +196,42 @@
       {
         "baseline": "macro",
         "model": "macro+rba_forecast",
-        "mean_improvement": 0.02083067709525107,
-        "ci90_low": -0.015112794528695883,
-        "ci90_high": 0.0613510100007565,
-        "share_better": 0.676595744680851
+        "mean_improvement": 0.02069006949417965,
+        "ci90_low": -0.01495914198382369,
+        "ci90_high": 0.06148358634354121,
+        "share_better": 0.6652360515021459
       },
       {
         "baseline": "macro",
         "model": "macro+smp_text",
-        "mean_improvement": 0.003591997661008968,
-        "ci90_low": -0.021830193084986817,
-        "ci90_high": 0.026197406690435063,
-        "share_better": 0.5787234042553191
+        "mean_improvement": 0.004064062205228897,
+        "ci90_low": -0.021479083497678696,
+        "ci90_high": 0.02693287439793654,
+        "share_better": 0.5965665236051502
       },
       {
         "baseline": "macro",
         "model": "macro+rba_forecast+smp_text",
-        "mean_improvement": 0.030087727458336766,
-        "ci90_low": -0.003318570841553317,
-        "ci90_high": 0.06195047220244249,
-        "share_better": 0.6808510638297872
+        "mean_improvement": 0.030617303839386153,
+        "ci90_low": -0.0023866716493834224,
+        "ci90_high": 0.06304865677807688,
+        "share_better": 0.6738197424892703
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+surprise",
+        "mean_improvement": -0.013107727111355721,
+        "ci90_low": -0.025193491570472883,
+        "ci90_high": 0.0003122043002759444,
+        "share_better": 0.41630901287553645
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.09825717324777546,
-        "ci90_low": -0.004899175747430745,
-        "ci90_high": 0.2234761100899932,
-        "share_better": 0.6978723404255319
+        "mean_improvement": 0.09786409894482627,
+        "ci90_low": -0.005089762717341714,
+        "ci90_high": 0.229233942829372,
+        "share_better": 0.6995708154506438
       }
     ]
   },
@@ -376,6 +395,28 @@
         "wrong_direction": 0
       },
       {
+        "model": "macro+surprise",
+        "n": 172,
+        "accuracy": 0.8081395348837209,
+        "log_loss": 0.6110713570905332,
+        "brier": 0.33563297056025615,
+        "moves": 39,
+        "moves_called": 12,
+        "false_alarms": 6,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+surprise+minutes_text",
+        "n": 172,
+        "accuracy": 0.8081395348837209,
+        "log_loss": 0.5017760052744709,
+        "brier": 0.3107846413734585,
+        "moves": 39,
+        "moves_called": 16,
+        "false_alarms": 10,
+        "wrong_direction": 0
+      },
+      {
         "model": "macro+fsr",
         "n": 172,
         "accuracy": 0.7965116279069767,
@@ -474,6 +515,22 @@
         "ci90_low": 0.029029759885226047,
         "ci90_high": 0.10110432562534954,
         "share_better": 0.7093023255813954
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+surprise",
+        "mean_improvement": 0.005197375875457753,
+        "ci90_low": -0.014645185423731106,
+        "ci90_high": 0.03285288999877704,
+        "share_better": 0.5755813953488372
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+surprise+minutes_text",
+        "mean_improvement": 0.11449272769151997,
+        "ci90_low": 0.04470784155985422,
+        "ci90_high": 0.1849324044212615,
+        "share_better": 0.7325581395348837
       },
       {
         "baseline": "macro",
@@ -641,6 +698,7 @@
       "tm_yoy": 3.7,
       "tm_quarter": "2026-09-30",
       "tm_gap": 1.2000000000000002,
+      "tm_surprise": 0.25,
       "unemployment": 4.7183487,
       "unemployment_change_6m": 0.42803599999999964,
       "rba_tm_forecast_gap": 0.2999999999999998,
@@ -715,6 +773,20 @@
         "p_cut": 0.0013851096785646795,
         "p_hold": 0.27626150966404606,
         "p_raise": 0.7223533806573892
+      },
+      {
+        "model": "macro+surprise",
+        "trained_on": 281,
+        "p_cut": 0.05238395678961121,
+        "p_hold": 0.8312766806186975,
+        "p_raise": 0.11633936259169132
+      },
+      {
+        "model": "macro+surprise+minutes_text",
+        "trained_on": 212,
+        "p_cut": 0.0009791855436312089,
+        "p_hold": 0.45919950151749944,
+        "p_raise": 0.5398213129388694
       },
       {
         "model": "macro+smp_dictionary",

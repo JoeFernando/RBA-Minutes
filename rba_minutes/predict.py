@@ -106,6 +106,46 @@ def load_rba_forecasts(smp_db: Path = config.SMP_DB_PATH) -> pd.DataFrame:
     return pd.Series(out).sort_index()
 
 
+def _quarter(label: str) -> dt.date:
+    """'2026-Q3' -> 2026-09-30, the quarter-end date used in table G1."""
+    year, q = int(label[:4]), int(label[-1])
+    return (pd.Timestamp(year=year, month=3 * q, day=1) + pd.offsets.MonthEnd(0)).date()
+
+
+def load_tm_nowcasts(smp_db: Path = config.SMP_DB_PATH) -> dict[dt.date, float]:
+    """The RBA's forecast of trimmed mean inflation for the quarter of each SMP (its nowcast), by quarter end.
+
+    From the historical file where it has the SMP's own quarter (horizon 0, SMP months only, so only
+    published forecasts); then from the archive, which has horizon 0 for May and November SMPs. For
+    February and August SMPs the nowcast is interpolated between the previous quarter's outcome and
+    the forecast for the next quarter.
+    """
+    conn = sqlite3.connect(smp_db)
+    smp_months = {r[0] for r in conn.execute("SELECT issue_date FROM smp_issues")}
+    out = {}
+    for month, target, value in conn.execute(
+            "SELECT forecast_month, target_quarter, forecast FROM forecasts_by_horizon "
+            "WHERE variable = 'underlying_ye' AND horizon = 0"):
+        if month in smp_months:
+            out[_quarter(target)] = value
+    tm, _ = load_macro()
+    archive = pd.read_sql("SELECT smp_date, target_period, horizon, value FROM smp_forecast_archive "
+                          "WHERE variable_code = 'underlying_ye'", conn)
+    for month, group in archive.groupby("smp_date"):
+        year, mon = int(month[:4]), int(month[5:])
+        own = _quarter(f"{year}-Q{(mon - 1) // 3 + 1}")
+        if own in out:
+            continue
+        h0 = group[group["horizon"] == 0]["value"]
+        h1 = group[group["horizon"] == 1]["value"]
+        previous = (pd.Timestamp(own) - pd.offsets.QuarterEnd(1)).date()
+        if len(h0):
+            out[own] = float(h0.iloc[0])
+        elif len(h1) and previous in tm.index:
+            out[own] = (float(tm[previous]) + float(h1.iloc[0])) / 2
+    return out
+
+
 def load_documents() -> dict[str, pd.DataFrame]:
     """Text features with the date each document became public."""
     minutes = pd.read_sql(
@@ -135,6 +175,7 @@ def build_panel() -> pd.DataFrame:
     decisions = load_decisions()
     tm, ur = load_macro()
     forecasts = load_rba_forecasts()
+    nowcasts = load_tm_nowcasts()
     smp_dates = load_documents()["smp"].set_index("issue_date")["available"]
     docs = load_documents()
     rows = []
@@ -153,6 +194,8 @@ def build_panel() -> pd.DataFrame:
             "moves_6m": int(recent["direction"].sum()),
             "tm_yoy": tm_value, "tm_quarter": tm_date,
             "tm_gap": tm_value - TARGET_MIDPOINT,
+            # the latest outcome against the RBA's own forecast for that quarter
+            "tm_surprise": tm_value - nowcasts[tm_date] if tm_date in nowcasts else np.nan,
             "unemployment": ur_value,
             "unemployment_change_6m": ur_value - ur_6m.iloc[-1] if len(ur_6m) else np.nan,
         }
@@ -186,6 +229,9 @@ MODELS = {
                        "smp_llm_stance_score", "smp_hawk_dove_index", "minutes_llm_stance_score",
                        "minutes_hawk_dove_index", "fsr_llm_risk_level_ordinal", "fsr_policy"],
     "text_only": ["smp_llm_stance_score", "minutes_llm_stance_score", "minutes_hawk_dove_index"],
+    "macro+surprise": ["tm_gap", "unemployment_change_6m", "last_move", "tm_surprise"],
+    "macro+surprise+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "tm_surprise",
+                                    "minutes_llm_stance_score", "minutes_hawk_dove_index"],
     # Dictionary measures only: no LLM, so no chance of hindsight from a labeller that knows what came next.
     "macro+smp_dictionary": ["tm_gap", "unemployment_change_6m", "last_move", "smp_hawk_dove_index", "smp_lm_tone"],
     "macro+minutes_dictionary": ["tm_gap", "unemployment_change_6m", "last_move", "minutes_hawk_dove_index",
@@ -306,9 +352,11 @@ def features_as_of(panel: pd.DataFrame, when: dt.date) -> pd.Series:
     tm_date, tm_value = _latest_before(tm, when, CPI_PUBLICATION_LAG)
     ur_date, ur_value = _latest_before(ur, when, LABOUR_PUBLICATION_LAG)
     ur_6m = ur[[x <= ur_date - dt.timedelta(days=170) for x in ur.index]]
+    nowcasts = load_tm_nowcasts()
     row = {"decision_date": when, "previous_direction": past["direction"].iloc[-1],
            "last_move": moves["direction"].iloc[-1], "moves_6m": int(recent["direction"].sum()),
            "tm_yoy": tm_value, "tm_quarter": tm_date, "tm_gap": tm_value - TARGET_MIDPOINT,
+           "tm_surprise": tm_value - nowcasts[tm_date] if tm_date in nowcasts else np.nan,
            "unemployment": ur_value, "unemployment_change_6m": ur_value - ur_6m.iloc[-1]}
     smp = _latest_doc(docs["smp"], when)
     row["rba_tm_forecast_gap"] = forecasts.get(smp["issue_date"], np.nan) - TARGET_MIDPOINT
@@ -344,12 +392,13 @@ def run(next_decision: dt.date | None = None) -> dict:
         "smp_era": ("1997-03-01", {k: MODELS[k] for k in ("macro", "macro+smp_text", "macro+smp_dictionary")}),
         # the RBA's year-ahead trimmed mean forecast is published in the SMP from May 2000
         "smp_forecast_era": ("2000-06-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
-                                                                   "macro+rba_forecast+smp_text")}),
+                                                                   "macro+rba_forecast+smp_text", "macro+surprise")}),
         # FSR from March 2004
         "fsr_era": ("2004-04-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast+smp_text", "macro+fsr")}),
         # minutes from October 2006: every source available
         "minutes_era": ("2006-11-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
                                                               "macro+minutes_text", "macro+minutes_dictionary",
+                                                              "macro+surprise", "macro+surprise+minutes_text",
                                                               "macro+fsr", "macro+all_text", "text_only")}),
     }
     for name, (start, models) in samples.items():
