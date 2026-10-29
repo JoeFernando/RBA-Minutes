@@ -175,15 +175,20 @@ def parse_issue(folder: Path) -> dict:
         _remove_noise(content)
         blocks = _paragraphs(content)
         if manifest["era"] == "bulletin":
-            # One page holds the whole issue: each <h2> starts a chapter.
-            current = None
+            # One page holds the whole issue: each <h2> starts a chapter. In
+            # some years the introduction has no heading and sits before the
+            # first <h2>, after an "On This Page" table of contents.
+            current = {"title": "Introduction", "url": page["url"], "paragraphs": [], "content_html": ""}
+            chapters.append(current)
             for name, kind, text in blocks:
                 if name == "h1":
                     title = title or text
+                elif name == "h2" and text.lower() == "on this page":
+                    current = None  # skip the contents list
                 elif name == "h2":
                     current = {"title": text, "url": page["url"], "paragraphs": [], "content_html": ""}
                     chapters.append(current)
-                elif current is not None:
+                elif current is not None and not text.startswith("Download the complete"):
                     current["paragraphs"].append((kind, text))
             if chapters:
                 chapters[0]["content_html"] = content_html
