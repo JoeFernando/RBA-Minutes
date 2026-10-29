@@ -239,7 +239,7 @@ RMSE 2.0).
 
 ## The next decision: 3 November 2026
 
-Inputs as of 2 November 2026:
+Inputs as of 29 October 2026 (the ASX settlement date; pricing can move before the meeting):
 
 | Input | Value |
 |---|---|
@@ -253,7 +253,37 @@ Inputs as of 2 November 2026:
 | September minutes (Claude stance) | +2, strongly hawkish |
 | August SMP (Claude stance) | +1, mildly hawkish |
 | October FSR | Elevated risk, rising; no clear implication for rates |
+| **ASX RBA Rate Tracker (29 October settlement)** | **80% chance of a 25 bp rise to 4.85%** (November futures imply 4.78%: 3 days at 4.60%, then 4.80%); up from 22% on 20 October and about 60% on 21–27 October, 82% on 28 October (CPI day) |
 | 1-month bank bill rate minus the overnight cash rate (28 October) | +0.14 percentage points (it was +0.10 to +0.18 before each 2026 raise and -0.03 before the holds) |
+
+### What the market prices, and how reliable that has been
+
+The ASX Rate Tracker's figure is reproduced exactly from its futures curve with the method in
+`futures_implied()` (priced move +0.20 percentage points = 80% of 25 bp). How often the RBA did what
+the market priced (1-month OIS the day before each decision, 2001-2022, 238 meetings):
+
+| Market priced | Meetings | Cut | Hold | Raise |
+|---|---:|---:|---:|---:|
+| A cut, 120% or more | 8 | 8 | 0 | 0 |
+| A cut, 60–120% | 19 | 16 | 3 | 0 |
+| A cut, 20–60% | 14 | 3 | 11 | 0 |
+| No move (within ±20%) | 161 | 0 | 161 | 0 |
+| A raise, 20–60% | 12 | 0 | 6 | 6 |
+| **A raise, 60–120%** | **19** | 0 | 3 | **16** |
+| A raise, 120% or more | 5 | 0 | 0 | 5 |
+
+When the market priced a raise at 60–100%, as now, the RBA raised 13 times out of 16 (81%). It never
+moved when the market priced less than 20% either way.
+
+| Model with market pricing (fitted on 2001-2022 OIS; today's input from the ASX futures) | Cut | Hold | Raise |
+|---|---:|---:|---:|
+| **market + minutes text** (best log loss in the 2011-22 backtest, 0.224) | 0% | 14% | **86%** |
+| macro + market + minutes text | 0% | 13% | 87% |
+| macro + market | 0% | 20% | 80% |
+| market alone (0.216 in the 2005-22 backtest) | 0% | 27% | 73% |
+| ASX Rate Tracker as published | | 20% | 80% |
+
+### Models without market pricing (for comparison)
 
 | Model | Cut | Hold | Raise | Backtest log loss (2010-26) |
 |---|---:|---:|---:|---:|
@@ -270,25 +300,17 @@ Inputs as of 2 November 2026:
 | macro + bank bills | 2% | 87% | 11% | 0.493 (2011-26) |
 | bank bills alone | 2% | 88% | 10% | 0.587 (2011-26) |
 
-**Reading:** the models disagree. On data alone (high but stable trimmed mean, rising unemployment) a
-hold is likely. The September minutes were strongly hawkish, and the minutes-based models put a
-raise at roughly one in three to one in two. The best-scoring model in the backtest calls it close to
-a coin flip, with **a hold slightly more likely than not on balance across models**.
+**Reading:** the market now prices a raise at 80%, and the models that include market pricing (by far
+the most accurate in every backtest) put it at 73–87%; adding the hawkish September minutes takes it
+to 86%. **A 25 basis point rise to 4.85% is the likely outcome.** The models without market pricing
+are much less sure (10–64%) because they cannot see what moved the market after the September
+quarter CPI and the late-October news; the backtests show they should carry little weight next to the
+market.
 
-The September quarter trimmed mean (3.7%) came in about 0.25 points above the RBA's implied August
-nowcast, and above the 3.3% it forecast for December 2026. That looks like news for a raise, but
-historically the surprise has added nothing beyond the level of inflation (see above). Including it
-moves the probabilities only slightly (raise 10% → 12% on data alone, 51% → 54% with the minutes).
-
-Market pricing is the strongest predictor in the backtests, but the clean measure (OIS) stops in
-2022. On the bank bill stand-in, the best-scoring model gives a raise 41%. The bank bill spread of
-+0.14 points sits within the +0.10 to +0.18 range seen before each 2026 raise, but bank bills have
-over-signalled moves before. The ASX Rate Tracker itself (not reachable from this environment) is the
-best single number for this call.
-
-This cannot be called "confidently": in the backtests no specification predicted turning points
-reliably, and the models do not see the RBA's November SMP (released with the decision) or speeches
-since the minutes.
+How confident: on history, a raise priced at this level happened about four times in five. The RBA
+held three times in sixteen at similar pricing (April 2007, February 2010, October 2010), so a hold
+remains a real possibility. Pricing on 30 October and 2 November could still move, and the models do
+not see the November SMP (released with the decision) or late speeches.
 
 ## Caveat: revised data, not real-time data
 

@@ -67,7 +67,7 @@ MACRO_SOURCES = {
 
 
 def fetch_macro(out_dir: Path = MACRO_DIR) -> list[Path]:
-    """Download the cash rate history, RBA tables G1 and H5, and ABS GDP and WPI."""
+    """Download the cash rate history, RBA tables G1, H5 and F1, ABS GDP and WPI, and today's ASX Rate Tracker."""
     import time
 
     from .scrape import make_session
@@ -83,6 +83,7 @@ def fetch_macro(out_dir: Path = MACRO_DIR) -> list[Path]:
         saved.append(out_dir / name)
         time.sleep(config.REQUEST_DELAY_SECONDS)
     (out_dir / "downloaded_at.txt").write_text(dt.datetime.now(dt.timezone.utc).isoformat() + "\n")
+    saved.append(fetch_asx(out_dir / "asx"))
     return saved
 
 
@@ -266,6 +267,50 @@ def futures_implied(futures: pd.DataFrame, overnight: pd.Series, decision: dt.da
     return {"price_date": day, "current_rate": current, "post_meeting_rate": post, "futures_change": change,
             "futures_prob_25bp": change / 0.25, "futures_method": method,
             "price_source": source.iloc[0] if len(source) else ""}
+
+
+ASX_DATA = "https://www.asx.com.au/content/dam/asx/data/"
+ASX_FILES = ("dynamic_text.csv", "market_exp.csv", "yield_curve.csv")  # the files behind the RBA Rate Tracker page
+ASX_DIR = MACRO_DIR / "asx"
+
+
+def fetch_asx(out_dir: Path = ASX_DIR) -> Path:
+    """Save today's ASX RBA Rate Tracker files under asx/<settlement date>/ (ASX replaces them daily)."""
+    from .scrape import make_session
+
+    session = make_session()
+    contents = {}
+    for name in ASX_FILES:
+        response = session.get(ASX_DATA + name, timeout=60)
+        response.raise_for_status()
+        contents[name] = response.content
+    date = json.loads(contents["dynamic_text.csv"].decode("utf-8").strip())["Crnt_Stlmnt_Dt"]
+    folder = out_dir / date
+    folder.mkdir(parents=True, exist_ok=True)
+    for name, content in contents.items():
+        (folder / name).write_bytes(content)
+    return folder
+
+
+def load_asx(folder: Path | None = None) -> dict | None:
+    """The latest saved ASX RBA Rate Tracker: next meeting, probability of a move, recent history, futures curve."""
+    folders = sorted(p for p in ASX_DIR.glob("*") if (p / "dynamic_text.csv").exists()) if folder is None else [folder]
+    if not folders:
+        return None
+    folder = folders[-1]
+    read = lambda name: json.loads((folder / name).read_text().strip())
+    text, expectations, curve = read("dynamic_text.csv"), read("market_exp.csv"), read("yield_curve.csv")
+    settlement = dt.date.fromisoformat(curve["Crnt_Stlmnt_Dt"])
+    futures = pd.DataFrame([{"trade_date": settlement, "contract_month": pd.Timestamp("01-" + m["Expiry_Month"]).strftime("%Y-%m"),
+                             "rate": m["Implied_Yield"], "source": "SETTLEMENT"} for m in curve["months"]])
+    history = pd.DataFrame(expectations["days"]).rename(columns={"Stlmnt_Dt": "settlement_date"})
+    return {
+        "folder": str(folder.relative_to(config.PROJECT_ROOT)), "settlement_date": settlement,
+        "next_meeting": dt.date.fromisoformat(text["Nxt_RBA_Mtng_Dt"]), "cash_rate_target": text["RBA_Trgt_Cash_Rate"],
+        "expected_rate": text["Ftre_Cash_Rate"], "expected_change": text["Ftre_Cash_Rate_Change"],
+        "probability": text["Mkt_Exptn_Rate"] / 100, "history": history.sort_values("settlement_date"),
+        "futures": futures,
+    }
 
 
 def futures_check(next_decision: dt.date | None = None) -> pd.DataFrame:
@@ -674,6 +719,27 @@ def run(next_decision: dt.date | None = None) -> dict:
         results["next_decision"] = {"date": str(next_decision), "features": {k: (str(v) if isinstance(v, (dt.date,)) else v)
                                                                               for k, v in row.items()},
                                     "probabilities": forecast.to_dict("records")}
+    asx = load_asx()
+    if asx and next_decision == asx["next_meeting"]:
+        # The ASX Rate Tracker's priced move, reproduced from its futures curve, as the market input
+        # (futures and OIS price the same expected cash rate; the models were fitted on OIS, 2001-2022).
+        overnight = pd.Series([asx["cash_rate_target"]], index=[asx["settlement_date"]])
+        implied = futures_implied(asx["futures"], overnight, next_decision)
+        row = features_as_of(panel, next_decision)
+        row["mkt_ois_change"] = implied["futures_change"]
+        market_rows = []
+        for name in ("market_ois", "macro+market_ois", "market_ois+minutes_text", "macro+market_ois+minutes_text"):
+            feats = MODELS[name]
+            p = _fit_predict(panel.dropna(subset=feats), pd.DataFrame([row]), feats)[0]
+            market_rows.append({"model": f"{name} (ASX futures)", "trained_on": int(panel.dropna(subset=feats).shape[0]),
+                                "p_cut": p[0], "p_hold": p[1], "p_raise": p[2]})
+        results["asx_rate_tracker"] = {
+            "settlement_date": str(asx["settlement_date"]), "next_meeting": str(asx["next_meeting"]),
+            "probability_of_move": asx["probability"], "expected_rate": asx["expected_rate"],
+            "reproduced_change": implied["futures_change"], "history": asx["history"].to_dict("records"),
+            "model_probabilities": market_rows,
+        }
+        pd.DataFrame(market_rows).to_csv(OUT_DIR / "next_decision_market.csv", index=False)
     if FUTURES_FILE.exists():
         check = futures_check(next_decision)
         check.to_csv(OUT_DIR / "futures_check.csv", index=False)

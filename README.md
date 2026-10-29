@@ -86,7 +86,7 @@ python -m rba_minutes fsr-tables
 python -m rba_minutes fsr-graphs
 ```
 
-Prediction backtests (and probabilities for the next decision; `--refresh-data` first downloads the RBA cash rate history, RBA tables G1 and H5 (ABS CPI and Labour Force), daily F1 money-market rates (OIS, bank bills), and ABS real GDP and Wage Price Index from the ABS Data API into `data/macro/`):
+Prediction backtests (and probabilities for the next decision; `--refresh-data` first downloads the RBA cash rate history, RBA tables G1 and H5 (ABS CPI and Labour Force), daily F1 money-market rates (OIS, bank bills), ABS real GDP and Wage Price Index from the ABS Data API, and today's ASX RBA Rate Tracker files into `data/macro/`):
 
 ```bash
 python -m rba_minutes predict --refresh-data --next 2026-11-03
@@ -377,7 +377,7 @@ Macro data are today's revised figures rather than the first estimates available
 
 Once market pricing is known, inflation, unemployment and the last move add nothing. The RBA stopped publishing OIS in December 2022; the 1-month bank bill rate stands in to 2026 but is a noisier signal.
 
-For the 3 November 2026 decision the models disagree: on data alone a hold is likely (83–87%); the minutes-based models put a raise at 32–64%; the best models with market pricing (bank bills) give a raise 41%.
+For the 3 November 2026 decision, the ASX RBA Rate Tracker (29 October settlement, saved in `data/macro/asx/`) prices an 80% chance of a 25 bp rise to 4.85%; the backtested models that include market pricing give 73–87% (86% with the September minutes). On 2001–2022 history, a raise priced this strongly happened about four times in five.
 
 ## Method notes and caveats
 

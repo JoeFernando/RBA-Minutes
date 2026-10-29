@@ -133,3 +133,25 @@ def test_traded_price_preferred_over_midpoint(tmp_path):
     f = predict.load_futures(path).set_index("contract_month")
     assert f.loc["2026-11", "rate"] == pytest.approx(4.825) and f.loc["2026-11", "source"] == "TRADES"
     assert f.loc["2026-12", "source"] == "MIDPOINT"  # used when there was no trade
+
+
+def test_load_asx_snapshot(tmp_path, monkeypatch):
+    folder = tmp_path / "2026-10-29"
+    folder.mkdir()
+    (folder / "dynamic_text.csv").write_text(
+        '{"Nxt_RBA_Mtng_Dt": "2026-11-03", "RBA_Trgt_Cash_Rate": 4.6, "Ftre_Cash_Rate": 4.85, '
+        '"Ftre_Cash_Rate_Change": 0.25, "Mkt_Exptn_Rate": 80, "Crnt_Stlmnt_Dt": "2026-10-29"}')
+    (folder / "market_exp.csv").write_text(
+        '{"days": [{"Stlmnt_Dt": "2026-10-29", "Prob_No_Change": 20, "Prob_Change": 80}, '
+        '{"Stlmnt_Dt": "2026-10-28", "Prob_No_Change": 18, "Prob_Change": 82}]}')
+    (folder / "yield_curve.csv").write_text(
+        '{"Crnt_Stlmnt_Dt": "2026-10-29", "RBA_Trgt_Cash_Rate": 4.6, "months": ['
+        '{"Expiry_Month": "Oct-26", "Implied_Yield": 4.595}, {"Expiry_Month": "Nov-26", "Implied_Yield": 4.78}]}')
+    monkeypatch.setattr(predict, "ASX_DIR", tmp_path)
+    monkeypatch.setattr(predict.config, "PROJECT_ROOT", tmp_path)
+    asx = predict.load_asx()
+    assert asx["next_meeting"] == dt.date(2026, 11, 3) and asx["probability"] == 0.8
+    assert asx["history"]["settlement_date"].tolist() == ["2026-10-28", "2026-10-29"]
+    overnight = pd.Series([4.6], index=[asx["settlement_date"]])
+    out = predict.futures_implied(asx["futures"], overnight, asx["next_meeting"])
+    assert out["futures_prob_25bp"] == pytest.approx(0.80)  # reproduces the ASX's published figure
