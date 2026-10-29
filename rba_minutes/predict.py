@@ -541,7 +541,7 @@ def run(next_decision: dt.date | None = None) -> dict:
         tests = [paired_log_loss(preds, "macro", m) for m in models if m != "macro"]
         tests += [paired_log_loss(preds, "class_frequencies", "macro")]
         if "market_ois" in models:  # what adds to market pricing
-            tests += [paired_log_loss(preds, "market_ois", m) for m in models if m.endswith("market_ois") or "market_ois+" in m]
+            tests += [paired_log_loss(preds, "market_ois", m) for m in models if m != "market_ois" and (m.endswith("market_ois") or "market_ois+" in m)]
         results[name] = {"start": start, "first_test": str(preds["decision_date"].min()),
                          "last_test": str(preds["decision_date"].max()),
                          "scores": table.to_dict("records"), "paired": tests}

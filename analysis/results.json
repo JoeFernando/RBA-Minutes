@@ -216,14 +216,6 @@
       },
       {
         "baseline": "market_ois",
-        "model": "market_ois",
-        "mean_improvement": 0.0,
-        "ci90_low": 0.0,
-        "ci90_high": 0.0,
-        "share_better": 0.0
-      },
-      {
-        "baseline": "market_ois",
         "model": "macro+market_ois",
         "mean_improvement": -0.033944897416599756,
         "ci90_low": -0.09275647815346516,
@@ -385,14 +377,6 @@
         "ci90_low": -0.039252772194171594,
         "ci90_high": 0.21069129112963841,
         "share_better": 0.816793893129771
-      },
-      {
-        "baseline": "market_ois",
-        "model": "market_ois",
-        "mean_improvement": 0.0,
-        "ci90_low": 0.0,
-        "ci90_high": 0.0,
-        "share_better": 0.0
       },
       {
         "baseline": "market_ois",
