@@ -1,0 +1,161 @@
+[
+  {
+    "meeting_date": "2008-08-05",
+    "input_sha256": "02463927bc898841033f7c87ef91fd8e01f8b2875add173886f42127637a2f51",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "On balance, it was now looking more likely that demand would remain on a slower track, and economic growth would be fairly slow, over the period ahead.",
+      "On these considerations, a case could be made for an early reduction in the cash rate.",
+      "Nonetheless, given the slower trend in demand, scope to move towards a less restrictive setting of monetary policy was judged to be increasing."
+    ],
+    "reasoning": "The Board weighed two considerations: the risk that prolonged above-target inflation would affect wage setting, and tight financial conditions amid a clear slowing in demand. It held, but said a case could be made for an early cut and that scope to ease was increasing, signalling an easing bias."
+  },
+  {
+    "meeting_date": "2008-09-02",
+    "input_sha256": "3b9bdfb16dc62567e92ae888b82b794030b10501b3149bc0a1a5f4395db51230",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "In weighing these various factors, members concluded that the slowdown in demand the Board had been seeking was unfolding.",
+      "However, there were also risks in waiting too long to have some easing of policy from a quite restrictive setting.",
+      "After considering all the evidence, the Board came to the view this balance was best achieved by reducing the cash rate at this meeting."
+    ],
+    "reasoning": "The Board cut the cash rate by 25 basis points, judging that the desired slowdown in demand was under way and that waiting too long risked a sharper weakening. It noted that policy might need to stay on the restrictive side of normal for some time, so the easing is measured rather than aggressive."
+  },
+  {
+    "meeting_date": "2008-10-07",
+    "input_sha256": "c9542b99bb8bfb238704fb472ca35b73cfc613da89634065222b567f3a8ca290",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The key factors for members' consideration were the sharply worsening conditions in international financial markets during September and the consequential deterioration in the global economic outlook.",
+      "In view of the latest economic and financial market developments, members judged that the material change to the balance of risks surrounding the outlook for growth and inflation in Australia meant that a significantly less restrictive stance of monetary policy was now appropriate.",
+      "Members concluded that, despite the possibility of a short-term adverse reaction, stronger action would help sentiment over time."
+    ],
+    "reasoning": "Sharply worsening global financial conditions and a deteriorating world outlook led the Board to cut by an unusually large 100 basis points. Members saw increased downside risks to growth and better prospects for lower inflation, and noted policy had significant capacity to provide further stimulus."
+  },
+  {
+    "meeting_date": "2008-11-04",
+    "input_sha256": "6598ae1630171498d2a21c3bbc476e7f1680af28d47647f374d2980dcccc8236",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "They noted that over the past month the staff forecast for growth had been lowered and that, despite this, the most recent information suggested that the risks to the outlook remained to the downside.",
+      "Members agreed that a further sizeable reduction in official interest rates was appropriate.",
+      "In addition, given the changing balance of risks, there was an advantage in moving the setting of monetary policy quickly to a neutral position."
+    ],
+    "reasoning": "The Board cut by 75 basis points in response to the deteriorating world economy and downside risks to domestic activity. It wanted to move policy quickly to neutral, and saw inflation risks from the exchange rate depreciation as manageable in a disinflationary environment."
+  },
+  {
+    "meeting_date": "2008-12-02",
+    "input_sha256": "e09c2b30707c32695a80c5a41e9a6434a0e7d475d675708892fa863cff1b18f4",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members agreed that it was appropriate to shift the monetary policy setting from its current roughly neutral position to one that was clearly expansionary.",
+      "In particular, a reduction of this size would move monetary policy quickly to an expansionary setting.",
+      "The size of the response to date was judged to be such that a period of assessment of local and overseas events was warranted over the summer."
+    ],
+    "reasoning": "The Board cut by another 100 basis points to move policy to a clearly expansionary setting as the world economy deteriorated and domestic demand moderated. Having delivered a major easing, it signalled a period of assessment over the summer, so the forward bias is neutral."
+  },
+  {
+    "meeting_date": "2009-02-03",
+    "input_sha256": "dc92aa38c69cd74478232274573425f076597805a4fb3b0a8ac266fc4f69082e",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Nonetheless, the near-term outlook was very weak.",
+      "Even so, given the contractionary forces coming from abroad and the clear evidence that inflation was on a downward trend again, members judged that another substantial easing of monetary policy at this time was appropriate.",
+      "Members agreed that, together with earlier rate cuts, this would amount to a very significant easing of monetary policy."
+    ],
+    "reasoning": "A sharp global contraction and a very weak near-term outlook led the Board to cut by a further 100 basis points, with inflation clearly trending down. It described the cumulative monetary and fiscal stimulus as very significant and gave no explicit signal on further moves."
+  },
+  {
+    "meeting_date": "2009-03-03",
+    "input_sha256": "db70c7d4030dc7b8e4b142964df845a1f170d4a36e45285c9b9862dbfcfd76a8",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The near-term outlook for the global economy therefore remained very weak and official forecasts of world economic growth in 2009 were likely to be revised down further.",
+      "Members could see reasonable cases for both courses of action.",
+      "Members believed this would leave adequate flexibility for policy at future meetings."
+    ],
+    "reasoning": "The Board paused after a series of large cuts, with members seeing reasonable cases both for adding stimulus and for waiting. The outlook was described as very weak and the flexibility retained was for further easing, so the lean is mildly dovish but hedged."
+  },
+  {
+    "meeting_date": "2009-04-07",
+    "input_sha256": "834cdb9a82642e1b1e63a747d75a9bfd1dc59616aec1bc897361776656959b93",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Nonetheless, the effect of recent international and domestic information had been that the near-term outlook for demand and output in Australia was now weaker than earlier expected, though a recovery in demand was likely towards the end of the year.",
+      "A period of low capacity utilisation and a weaker labour market was seen as increasing the likelihood of a decline in inflation over the medium term.",
+      "As such, members saw scope for a modest reduction in the cash rate."
+    ],
+    "reasoning": "A weaker near-term outlook, declining capacity utilisation and a softening labour market led the Board to cut by 25 basis points. The move was described as modest given the major easing already in place, and no further direction was signalled."
+  },
+  {
+    "meeting_date": "2009-05-05",
+    "input_sha256": "b733a0a4a0cef7899c824caf22e546d723b54259cd073c717c770a3540a3f318",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "They noted that the coming year would see higher unemployment and falling inflation, though the earlier depreciation of the exchange rate would slow the decline in prices for some time.",
+      "The question faced by the Board was whether monetary policy should be eased further at this stage, or whether the cash rate should be maintained at its current level pending further information on how economic and financial conditions were unfolding.",
+      "They would continue to monitor the strength and durability of the tentative signs of an improvement in the global and domestic economies."
+    ],
+    "reasoning": "The Board held, citing tentative signs of improvement globally and in financial markets and the large stimulus already in place. It still expected higher unemployment and falling inflation and framed the choice as between further easing and holding, so the lean is mildly dovish."
+  },
+  {
+    "meeting_date": "2009-06-02",
+    "input_sha256": "7e0f24a7aecac329995fdc8d3076a4dfcea4ad580fcdf48520df3b2da3c90462",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Here too the outlook was for a fairly gradual expansion getting under way later in the year, with spare capacity tending to increase and inflation tending to decline.",
+      "Board members did not see a pressing case for any further action at this meeting, though they viewed the inflation outlook as affording scope for some further easing of monetary policy, if that were to be needed to support demand at a later stage."
+    ],
+    "reasoning": "The Board held as the global economy stabilised and downside risks lessened. Spare capacity was still expected to increase and inflation to decline, and members kept open scope for further easing if needed, a mild and conditional easing bias."
+  }
+]

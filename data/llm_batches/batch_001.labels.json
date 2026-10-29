@@ -1,0 +1,158 @@
+[
+  {
+    "meeting_date": "2006-10-03",
+    "input_sha256": "45248e2739ccc9cbdaaef93f7c5d306d5b47e1fc14bcc97361392de1701cc510",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members felt that it was very important to resist the current period of relatively high inflation and to ensure that inflation expectations were contained.",
+      "With the staff forecast of inflation of around 3 per cent remaining uncomfortably high, the Board considered whether there was a case to tighten monetary policy again this month.",
+      "Noting that several key data releases were scheduled for the month ahead, importantly including the September quarter CPI, the Board judged that a clearer assessment of the need for any further tightening could be made at the November meeting."
+    ],
+    "reasoning": "The Board held the cash rate but explicitly weighed a further tightening because forecast inflation was uncomfortably high. Weak national accounts data gave a reason to wait, but the discussion is framed entirely around the need for any further tightening, signalling a tightening bias."
+  },
+  {
+    "meeting_date": "2006-11-07",
+    "input_sha256": "5de672751016ed9c69da8c165ec65cbd8326fd5e299fd9dace6ff3450ac1d09f",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Nonetheless, the Board judged that the risk of inflation exceeding 2–3 per cent in the medium term remained significant.",
+      "Members also discussed the merits of tightening by 50 basis points, given that the effect on inflation of a single 25 basis point tightening was normally thought to be modest.",
+      "Overall, the Board judged that a 25 basis point rise would leave policy with adequate flexibility to move further in the months ahead if needed."
+    ],
+    "reasoning": "The Board raised the cash rate by 25 basis points, citing a significant risk of inflation exceeding the target, and even discussed a 50 basis point move. It explicitly kept open the option of moving further in the months ahead, a clear tightening bias."
+  },
+  {
+    "meeting_date": "2006-12-05",
+    "input_sha256": "9203fe06561113718466b0d4928cbf918c938b6c2f25ab1d005dc98e23a7d549",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Board members also noted some risk that inflation could remain stubbornly high.",
+      "Overall, the Board judged that with the existing stance of policy mildly restrictive, there was time to assess trends in the world and domestic economies over the summer before considering further action."
+    ],
+    "reasoning": "The Board held after the November rise, with inflation forecast to decline only gradually and some risk that it would remain stubbornly high. Moderate activity data and a lower risk to inflation expectations soften the tone, but the reference to considering further action from a mildly restrictive stance leaves a mild tightening lean."
+  },
+  {
+    "meeting_date": "2007-02-06",
+    "input_sha256": "0adaa4f5836a2888553ddc26bb846d5382886ebd58a54d4e0d0a3247026e5713",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "While members noted that the most likely outlook for inflation would be for it to be consistent with the target of 2–3 per cent, they were still wary of possible inflation risks.",
+      "This meant that it was appropriate for the monetary policy stance to remain mildly restrictive, but members did not see a case for a further tightening at present.",
+      "The Board decided to leave the cash rate steady, but would monitor incoming data and adjust policy as necessary to ensure that inflation remained satisfactorily contained in the medium term."
+    ],
+    "reasoning": "Lower-than-expected CPI data gave the Board more confidence that inflation would ease, so it held the rate. However, members remained wary of inflation risks from high capacity utilisation and wage pressures and wanted policy to stay mildly restrictive, so the lean is mildly hawkish."
+  },
+  {
+    "meeting_date": "2007-03-06",
+    "input_sha256": "1f1a0719580d93e40388afb3ef4947445f5bf03ab554904a4d012fca19feabd0",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "While members saw no case to change policy at this meeting, they were not sure that rates had been increased sufficiently to bring inflation back towards the centre of the target band.",
+      "Economic and financial conditions would be monitored over the period ahead to determine if further adjustments to policy would be required."
+    ],
+    "reasoning": "The Board held, citing a mildly restrictive stance and recent financial market instability. Its stated doubt that rates had been raised enough to bring inflation back to the centre of the target band signals a tightening bias."
+  },
+  {
+    "meeting_date": "2007-04-03",
+    "input_sha256": "aa124737ef5e91eb945738675aa63ed2d98ebda69aabd8f8e8aedf0c9d7d7006",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In the light of all this, members agreed that the recent strength in the domestic economy would add some upside risks to the outlook for inflation.",
+      "This, of itself, meant that the case for tightening policy was growing.",
+      "On the other hand, the uncertainty about the recent path of inflation and about the outlook for the US and global economies meant that it would be prudent to wait another month, to see the March quarter CPI and evaluate further the US outlook, before taking any decision to raise interest rates further."
+    ],
+    "reasoning": "Strong domestic data led members to see upside risks to inflation and a growing case for tightening. They held only to wait for the March quarter CPI and more clarity on the US, so the bias is clearly towards a rise."
+  },
+  {
+    "meeting_date": "2007-05-01",
+    "input_sha256": "8eb222cbc83d3b9efa98a04ee684b5117d914f2ce25ac3b49c12cce0782d0460",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "However, they expected that the strength of the economy would again increase inflationary pressures in the medium term.",
+      "They also noted that monetary policy was already moderately restrictive, and the effects of previous policy tightening were still to be felt fully.",
+      "The Board concluded that these considerations meant that there was more time to evaluate the strength of inflationary pressures and the appropriate monetary policy response, and accordingly, they decided that no change to the cash rate was necessary for the time being."
+    ],
+    "reasoning": "A benign March quarter CPI lowered the near-term inflation outlook and gave the Board more time, softening the previous month's push towards tightening. Members still expected inflation pressures to build in the medium term from a strong economy, so any future move would be upward, but the current tone is balanced."
+  },
+  {
+    "meeting_date": "2007-06-05",
+    "input_sha256": "3bbbb82df6d8fd51350055e628c0b4f6eef28385aa59f7259fc22122cc05a63d",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Domestically, the indications were that demand and activity had increased at a strong pace in the March quarter, but domestic price and wage pressures had remained contained.",
+      "Members concluded that maintaining the current mildly restrictive stance of monetary policy for the time being would leave policy with adequate flexibility to respond as needed to the medium-term risks."
+    ],
+    "reasoning": "The Board described conditions as favourable, with strong activity but contained price and wage pressures, and held policy. Inflation was forecast to rise in 2008, so the medium-term risks it wants flexibility for are on the upside, but the immediate tone is balanced."
+  },
+  {
+    "meeting_date": "2007-07-03",
+    "input_sha256": "4b774119d1c6bf313d0888e4b97454667f98deab82dc6e7012a1fd72950a73c0",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The recent strength in activity suggested that the upside risks to this forecast may have increased, though the appreciation of the exchange rate would be a dampening factor.",
+      "Taking all these considerations into account, members believed that tighter policy could well be needed before long."
+    ],
+    "reasoning": "Stronger activity and revised-up growth forecasts raised the upside risks to an inflation forecast already rising to 2¾ per cent. Members said tighter policy could well be needed before long and held only pending the June quarter inflation data, a clear tightening lean."
+  },
+  {
+    "meeting_date": "2007-08-07",
+    "input_sha256": "356de4c20c7f04e777f769b4713b5b637160f8e87347597471aa73b2059d7e8f",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 5,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In discussing the recommendation to tighten monetary policy, Board members noted that the macroeconomic case was clear.",
+      "The forecast was that underlying inflation on a year-ended basis would now rise to the top of the target band over the next six months and remain there subsequently.",
+      "Members judged that waiting further to see how events unfolded in credit markets may not clarify the picture in the near term, and that meanwhile a strong case existed for policy action now to forestall an unacceptable rise in inflation."
+    ],
+    "reasoning": "The Board raised the cash rate, describing the macroeconomic case as clear after a higher-than-expected June quarter CPI lifted the inflation outlook. It acknowledged the US credit market turmoil but judged the risks distant, and acted to forestall an unacceptable rise in inflation."
+  }
+]

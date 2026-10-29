@@ -1,0 +1,161 @@
+[
+  {
+    "meeting_date": "2015-11-03",
+    "input_sha256": "881be93318e9037688761808b4d5250977c8b0a5d1f8d56a11bbda7ee4563974",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "They judged that the inflation outlook may afford some scope for further easing of monetary policy, should that be appropriate to lend support to demand.",
+      "However, members recognised that there was still evidence of spare capacity, including the relatively high unemployment rate, low wage growth and the lower-than-expected inflation outcome in the September quarter.",
+      "In these circumstances, members judged that monetary policy needed to be accommodative."
+    ],
+    "reasoning": "The Board held the cash rate but said the lower inflation outlook may leave scope for further easing. Persistent spare capacity, a relatively high unemployment rate and a lower-than-expected inflation outcome point to a mild easing bias. Some improvement in activity tempers the dovishness."
+  },
+  {
+    "meeting_date": "2015-12-01",
+    "input_sha256": "65f76fa6d7ca088a4c16eed679a1edcec3728c1ae8fb75519d2dc47fde6e62de",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members judged that the outlook for inflation may afford some scope for a further easing of monetary policy should that be appropriate to lend support to demand.",
+      "Even so, members recognised that there was still evidence of spare capacity in the economy, including in the labour market.",
+      "Members noted that recent domestic data had generally been positive."
+    ],
+    "reasoning": "The Board held the cash rate and repeated that the inflation outlook may leave scope for further easing. Recent domestic data were generally positive, but spare capacity and low wage growth remained. The result is a mild, conditional easing bias."
+  },
+  {
+    "meeting_date": "2016-02-02",
+    "input_sha256": "606ad3089420e46379e54520d510fde91d045bda45c9cbc6f69e1c52ff51b8eb",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board noted that the outlook for continued low inflation may provide scope for easier monetary policy, should that be appropriate to lend further support to demand.",
+      "Over the period ahead, new information would enable the Board to assess whether the recent improvement in labour market conditions was continuing and whether recent financial market turbulence presaged weaker global and domestic demand.",
+      "In considering the stance of monetary policy, members noted that recent domestic data had, on balance, been positive and judged that there were reasonable prospects for growth to increase gradually over the forecast period while maintaining inflation close to target."
+    ],
+    "reasoning": "The Board left the cash rate unchanged while signalling that low inflation may leave scope for easier policy. Positive domestic data and stronger employment were balanced against financial market turbulence and the risk of weaker demand. The easing bias is conditional, so the stance is mildly dovish."
+  },
+  {
+    "meeting_date": "2016-03-01",
+    "input_sha256": "4b45aaab4d452f9770ae0bf87da66d03b1a219e9af59b00e9bd47eafa4c808d8",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members noted that continued low inflation would provide scope to ease monetary policy further, should that be appropriate to lend support to demand.",
+      "Members judged that there were reasonable prospects for continued growth in the economy and that it was appropriate to leave the cash rate unchanged at an accommodative setting.",
+      "However, given the usual lags in the data, it was still too early to assess whether the bout of financial market volatility since the turn of the year foreshadowed or would lead to a weakening in global economic conditions."
+    ],
+    "reasoning": "The Board held the cash rate and said continued low inflation would provide scope for further easing if needed. Growth was slightly below trend, wage growth low, and the Board was watching whether financial volatility would weaken demand. The conditional easing bias makes the stance mildly dovish."
+  },
+  {
+    "meeting_date": "2016-04-05",
+    "input_sha256": "d66cba4336b7016e2faf9dd23e3be9a8bb57fd211bc7f7d7c858e698a22895bd",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Combined with the appreciation of the exchange rate and the low level of inflation globally, this suggested that inflation in Australia was likely to remain low over the next year or two.",
+      "Given these conditions, members assessed that it was appropriate for monetary policy to be very accommodative.",
+      "Continued low inflation would provide scope to ease monetary policy further, should that be appropriate to lend support to demand."
+    ],
+    "reasoning": "The Board held the cash rate, described policy as very accommodative, and said continued low inflation would provide scope to ease further. The main concern was persistently low inflation, reinforced by an appreciating exchange rate that could complicate rebalancing. This is a mild dovish lean with an easing bias."
+  },
+  {
+    "meeting_date": "2016-05-03",
+    "input_sha256": "2e84e00f6a859a8a401ef618886da8302cb9921c607cf2416674aa948280571d",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Although the March quarter outcome for the CPI reflected some temporary factors, the broad-based softness in prices and labour costs signalled less momentum in domestic inflationary pressures than had previously been expected.",
+      "On balance, members were persuaded that prospects for sustainable growth in the economy, with inflation returning to target over time, would be improved by easing monetary policy at this meeting.",
+      "At the same time, they took careful note of developments in the housing market, which indicated that supervisory measures were strengthening lending standards and that the potential risks of lowering interest rates therefore were less than they had been a year earlier."
+    ],
+    "reasoning": "The Board cut the cash rate to 1.75 per cent after inflation and labour costs came in below expectations and the inflation outlook was revised down. Lower housing-related risks made easing more palatable. The decision is strongly dovish and driven by low inflation. No explicit guidance on further moves was given."
+  },
+  {
+    "meeting_date": "2016-06-07",
+    "input_sha256": "48de70c5c13040f8fdbe0f0dac116b3eda9addca5754d13dfff51803e3b00823",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Given these developments, and following the reduction in the cash rate in May, the Board judged that leaving the stance of monetary policy unchanged at this meeting would be consistent with sustainable growth in the economy and inflation returning to target over time.",
+      "Recent data on the domestic economy had generally been positive.",
+      "Nevertheless, inflation was expected to remain low for some time."
+    ],
+    "reasoning": "After the May cut, the Board held the cash rate and said the current setting was consistent with growth and inflation returning to target. Stronger-than-expected GDP and a falling unemployment rate were balanced against low inflation and subdued labour costs. No direction was signalled."
+  },
+  {
+    "meeting_date": "2016-07-05",
+    "input_sha256": "12381c5b2f84eb4db37aea5334c1e20b22335fdccf5b181753410e992d7f038b",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 2,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Inflation was still expected to remain quite low for some time given very subdued growth in labour costs and very low cost pressures elsewhere in the world.",
+      "Taking account of the available information, the Board judged that holding monetary policy steady would be the most prudent course of action at this meeting.",
+      "This information would allow the Board to refine its assessment of the outlook for growth and inflation and to make any adjustment to the stance of policy that may be appropriate."
+    ],
+    "reasoning": "The Board held steady but described this as prudent only 'at this meeting', pending inflation data and updated forecasts that would allow it to make any adjustment that may be appropriate. Given the emphasis on very low inflation and mixed labour market conditions, that wording implies a possible easing, but the language is hedged. This is a mild, low-confidence dovish lean."
+  },
+  {
+    "meeting_date": "2016-08-02",
+    "input_sha256": "eb52e2495fb7e2136a1e6204a9380189c0880d3f394b2ab3d1591f98acdd03b7",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "lower",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In coming to their policy decision, members noted that the recent CPI data had confirmed that inflation was likely to remain low for some time.",
+      "They also observed that while prospects for growth were positive, there was room for stronger growth, which could be assisted by lower interest rates.",
+      "Taking all these considerations into account, the Board, on balance, judged that prospects for sustainable growth in the economy, with inflation returning to target over time, would be improved by easing monetary policy at this meeting."
+    ],
+    "reasoning": "The Board cut the cash rate to 1.5 per cent, citing CPI data confirming that inflation would stay low and room for stronger growth. Easing housing conditions were judged to reduce the risks of lower rates. The decision is clearly dovish and driven by low inflation. There was no explicit forward guidance."
+  },
+  {
+    "meeting_date": "2016-09-06",
+    "input_sha256": "87f83d49773d2fef679e209d2495f379999f8f1b2bec112e22349bdce95292a1",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Taking into account the recent data, and having eased monetary policy at its May and August meetings, the Board judged that the current stance of monetary policy was consistent with sustainable growth in the Australian economy and achieving the inflation target over time.",
+      "Members observed that the data for the international and domestic economies over the past month had been broadly consistent with the forecasts published in the August Statement on Monetary Policy."
+    ],
+    "reasoning": "After easing in May and August, the Board held the cash rate and judged the current stance consistent with growth and the inflation target over time. Data were in line with forecasts, growth was around potential and cost pressures were low, with no further easing signalled. The stance is neutral."
+  }
+]

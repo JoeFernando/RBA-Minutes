@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2020-05-05",
+    "input_sha256": "947aa8e65097acaeb346fb02a3d60256cb2681b62ab46901f606aef9e51c8c25",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "In the various scenarios for the Australian economy considered by the Board, the labour market was expected to have ongoing spare capacity, and inflation was expected to be below 2 per cent over the following few years.",
+      "As the Bank's policy package had been introduced only recently, members assessed that the best course of action was to maintain the current policy settings and monitor economic and financial outcomes closely.",
+      "The Board determined that it would not increase the cash rate target until progress is made towards full employment and it is confident that inflation will be sustainably within the 2–3 per cent target band."
+    ],
+    "reasoning": "Amid a very severe contraction, the Board reaffirmed its emergency package and its commitment not to raise the cash rate until progress towards full employment and inflation targets. It chose to maintain settings rather than add stimulus, also broadening collateral for market operations. The stance is strongly accommodative with no signalled change in direction."
+  },
+  {
+    "meeting_date": "2020-06-02",
+    "input_sha256": "ba3319292b8728cfdff0748b3af6aa368961c324f1d06824bcaf0e4c08467d0e",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members recognised that the Australian economy was experiencing the biggest economic contraction since the 1930s.",
+      "This accommodative approach would be maintained as long as required.",
+      "The Board determined that it would not increase the cash rate target until progress is made towards full employment and it is confident that inflation will be sustainably within the 2–3 per cent target band."
+    ],
+    "reasoning": "The Board reaffirmed its emergency settings, noting the biggest contraction since the 1930s although the downturn might be shallower than feared. It committed to maintain the accommodative approach as long as required, without signalling further easing. The stance is strongly dovish with a neutral bias."
+  },
+  {
+    "meeting_date": "2020-07-07",
+    "input_sha256": "0b9ee3672323c0d027d9bae8b47986c4bc2f49f9e4adea17961338da9c36dedb",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "After reviewing experience both overseas and in Australia, members agreed that there was no need to adjust the package of measures in Australia in the current environment.",
+      "Members agreed that negative interest rates in Australia remain extraordinarily unlikely.",
+      "This accommodative approach would be maintained for as long as necessary."
+    ],
+    "reasoning": "The Board reviewed alternative policy tools and judged that no adjustment to its package was needed, while ruling out negative rates. It reiterated that the accommodative approach would be maintained for as long as necessary given very weak labour market conditions. The stance is strongly accommodative but with no new easing signal."
+  },
+  {
+    "meeting_date": "2020-08-04",
+    "input_sha256": "90d877be34a7e0113ea2bb38031e8c79053659fac141d7d231857c5d75ca4cc6",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The recovery was, however, likely to be slower than earlier expected, with the COVID-19 outbreak in Victoria having a major impact on the economy.",
+      "Members reaffirmed that there was no need to adjust the package of measures in Australia in the current environment.",
+      "The Board considered that its actions were keeping funding costs low and supporting the supply of credit to households and businesses, and resolved that this accommodative approach would be maintained for as long as necessary."
+    ],
+    "reasoning": "The Board reaffirmed its package and resumed bond purchases to keep the 3-year yield at target, noting the recovery would be slower due to the Victorian outbreak. It saw no need to adjust the package but did not rule it out. The stance remains strongly dovish with a neutral directional bias."
+  },
+  {
+    "meeting_date": "2020-09-01",
+    "input_sha256": "9c1271ed2642b9b783971da29c867333b80eb6f966427aa6a67f654c3951496f",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "other",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "They agreed that the TFF had worked as intended and that, given the economic outlook, an expansion of the TFF was appropriate.",
+      "This further easing of monetary policy would bring the total amount available under this facility to around $200 billion.",
+      "It agreed to maintain highly accommodative settings as long as required and to continue to consider how further monetary measures could support the recovery."
+    ],
+    "reasoning": "The main decision was to expand and extend the Term Funding Facility, which the Board described as a further easing of monetary policy, while the cash rate was unchanged. It also said it would continue to consider further monetary measures. The stance is strongly dovish with an easing bias."
+  },
+  {
+    "meeting_date": "2020-10-06",
+    "input_sha256": "9b71ffc38e9ed0ca9e887c2ee715fd082fb6a63ea3789f2384de20f66eeaaabe",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board discussed the case for additional monetary easing to support jobs and the overall economy.",
+      "Members indicated that they would also like to see more than just progress towards full employment before considering an increase in the cash rate, as the Board views addressing the high rate of unemployment as an important national priority.",
+      "It agreed to maintain highly accommodative policy settings as long as required and to continue to consider how additional monetary easing could support jobs as the economy opens up further."
+    ],
+    "reasoning": "The Board held settings but discussed specific options for further easing and judged that easing would gain more traction as the economy reopened. It strengthened its forward guidance to require actual inflation in the target and more than progress towards full employment before any rise. The stance is strongly dovish with a clear easing bias."
+  },
+  {
+    "meeting_date": "2020-11-03",
+    "input_sha256": "31b4e2bd18dc4132bc362d2d30efb744e25728aea3b075dd64b4621b5900a7f6",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board viewed addressing the high rate of unemployment as an important national priority.",
+      "Given the outlook, the Board does not expect to increase the cash rate for at least 3 years.",
+      "The Board is prepared to do more if necessary."
+    ],
+    "reasoning": "The Board cut the cash rate to 0.1 per cent, lowered the yield target and introduced a $100 billion bond purchase program, citing an extended period of high unemployment. It expected no rate rise for at least three years and was prepared to do more. The language is unambiguous and strongly dovish."
+  },
+  {
+    "meeting_date": "2020-12-01",
+    "input_sha256": "cf95e32254744d118888216e678e26eb8aa5a8fca9f95508c9f2d127730b1038",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "It would take some time for output to reach its pre-pandemic level and an extended period of high unemployment was in prospect.",
+      "Given the outlook, the Board does not expect to increase the cash rate for at least 3 years.",
+      "The Board is prepared to do more if necessary."
+    ],
+    "reasoning": "Following the November package, the Board maintained settings as data came in better than expected. It still expected an extended period of high unemployment, no rate rise for at least three years, and stated it was prepared to do more. The stance is strongly dovish, though somewhat less urgent than the prior meeting."
+  },
+  {
+    "meeting_date": "2021-02-02",
+    "input_sha256": "924fe96c0acde844639ea03ef678bacccbd4113addf0160da384fbfb928a323f",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "other",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Given this, it would be premature to consider withdrawing monetary stimulus.",
+      "The decision to extend the bond purchase program would ensure a continuation of the Bank's monetary support for the Australian economy.",
+      "The Board does not expect these conditions to be met until 2024 at the earliest."
+    ],
+    "reasoning": "The main decision was to buy an additional $100 billion of government bonds after the existing program ended, while the cash rate was unchanged at its effective lower bound. Despite a stronger-than-expected recovery, the Board judged it premature to withdraw stimulus and did not expect to raise rates until 2024 at the earliest. The stance is strongly dovish."
+  },
+  {
+    "meeting_date": "2021-03-02",
+    "input_sha256": "1c7a8dcb325efecf80a78fe537d86b1f6f3749ea89090db3b572eb14d797cebf",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members concluded that very significant monetary support would be required for some time, as it would be some years before the Bank's goals for inflation and unemployment were achieved.",
+      "The Board agreed that it would not consider removing the target completely or changing the target yield of 10 basis points.",
+      "The Board does not expect these conditions to be met until 2024 at the earliest."
+    ],
+    "reasoning": "The Board maintained all settings and committed to stimulatory conditions for as long as necessary, saying it would look through a temporary rise in CPI inflation. It ruled out removing or changing the yield target and expected no rate rise until 2024 at the earliest. The stance is strongly dovish, and the Bank said it was prepared to do more with bond purchases if necessary."
+  }
+]

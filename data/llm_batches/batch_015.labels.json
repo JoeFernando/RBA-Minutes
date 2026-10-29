@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2019-07-02",
+    "input_sha256": "178b6865a689fd39ab837e4e231ac48e8e444e690da51fb74a873589598668f1",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Taking into account all the available information, the Board decided that it was appropriate to lower the cash rate by 25 basis points.",
+      "This decision, together with the reduction in the cash rate decided at the previous meeting, would assist in reducing spare capacity in the economy and making faster progress in reducing the unemployment rate.",
+      "The Board would continue to monitor developments in the labour market closely and adjust monetary policy if needed to support sustainable growth in the economy and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board cut the cash rate for a second consecutive meeting, citing spare capacity in the labour market, low wages growth and weak GDP growth. It left the door open to further adjustment if needed. The language is clearly and firmly dovish."
+  },
+  {
+    "meeting_date": "2019-08-06",
+    "input_sha256": "22e4fd9a054b02cd6fc4a09c921fea63fc522566a104bd8f7cf71de6ca79c187",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Based on the information available and the central scenario that was presented, members judged it reasonable to expect that an extended period of low interest rates would be required in Australia to make sustained progress towards full employment and achieve more assured progress towards the inflation target.",
+      "Members would consider a further easing of monetary policy if the accumulation of additional evidence suggested this was needed to support sustainable growth in the economy and the achievement of the inflation target over time.",
+      "However, the unemployment rate had increased and there appeared to have been more spare capacity in the labour market than previously appreciated, although there was uncertainty around the extent of this."
+    ],
+    "reasoning": "Having eased at the previous two meetings, the Board paused to assess developments but signalled an extended period of low rates and willingness to ease further. Concerns centred on spare capacity, a rising unemployment rate and subdued wages. The hold with an explicit easing bias is mildly dovish."
+  },
+  {
+    "meeting_date": "2019-09-03",
+    "input_sha256": "a71b6ede625a62973eeedfe1b3f624d186fea6697eff851384c0ce35fbbc219d",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members would assess developments in both the international and domestic economies, including labour market conditions, and would ease monetary policy further if needed to support sustainable growth in the economy and the achievement of the inflation target over time.",
+      "Taken together, recent outcomes suggested that spare capacity remained in the labour market and that the Australian economy could sustain lower rates of unemployment and underemployment.",
+      "Private final demand, which includes consumption, business investment and dwelling investment, was expected to have been weak."
+    ],
+    "reasoning": "The Board held but stated it would ease further if needed and expected an extended period of low rates. Downside global risks, weak private demand and spare labour market capacity dominated the discussion. The tone is dovish with a clear easing bias, though no cut was made."
+  },
+  {
+    "meeting_date": "2019-10-01",
+    "input_sha256": "dc57e057cbc7a2eec15bbd6e0609d455c92b4b2cdc85efc8edcebacafe89b056",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members concluded that these various factors did not outweigh the case for a further easing of monetary policy at the present meeting.",
+      "Members noted that the Bank's most recent forecasts suggested that the unemployment and inflation outcomes over the following couple of years were likely to be short of the Bank's goals.",
+      "The Board would continue to monitor developments, including in the labour market, and was prepared to ease monetary policy further if needed to support sustainable growth in the economy, full employment and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board cut the cash rate again after weighing arguments against easing, judging that unemployment and inflation were likely to fall short of its goals. It said it was prepared to ease further. The decision and guidance are strongly dovish."
+  },
+  {
+    "meeting_date": "2019-11-05",
+    "input_sha256": "100f6e8ba38dd637ce57ac3dfcecae043e07e6fdc6b01d8eef79bb729b437894",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board agreed that a case could be made to ease monetary policy at this meeting, but that the most appropriate approach would be to maintain the current stance of monetary policy and to make another full assessment once more evidence of the effects of the earlier monetary easing had become available.",
+      "Spare capacity was likely to remain in the labour market for some years.",
+      "The Board would continue to monitor developments, including in the labour market, and was prepared to ease monetary policy further if needed to support sustainable growth in the economy, full employment and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board considered a further cut but chose to hold to assess the effects of earlier easing, noting signs of a gentle turning point and reduced global pessimism. It retained an explicit readiness to ease further and expected spare capacity to persist. The stance is mildly dovish."
+  },
+  {
+    "meeting_date": "2019-12-03",
+    "input_sha256": "34ecc6c7a3f57ac4ce9ec612bcd7f87f2c4baf1e3ccef42fca097e7cc7f19bde",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Economic growth and the unemployment rate remained broadly consistent with the forecasts, but members agreed that it would be concerning if there were a deterioration in the outlook.",
+      "It was noted that the current rate of wages growth was not consistent with inflation being sustainably within the target range, unless productivity growth was extraordinarily weak, nor was it consistent with consumption growth returning to trend.",
+      "As part of their deliberations, members noted that the Board had the ability to provide further stimulus to the economy, if required."
+    ],
+    "reasoning": "The Board held while assessing the transmission of earlier cuts, and reaffirmed its readiness to ease further and the need for an extended period of low rates. Weak household income and wages growth remained the central concerns. The tone is mildly dovish with an easing bias."
+  },
+  {
+    "meeting_date": "2020-02-04",
+    "input_sha256": "382ab63ce1723a32cda7b609e0c9ea8497a172dfc47dc96f72d5d14e2a1512e2",
+    "stance": "dovish",
+    "stance_score": -1,
+    "confidence": 3,
+    "policy_bias": "easing",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board concluded that the cash rate should be held steady at this meeting.",
+      "Lower interest rates could speed progress towards the Bank's goals and make it more assured in the face of the current uncertainties.",
+      "The Board would continue to monitor developments carefully, including in the labour market, and remained prepared to ease monetary policy further if needed to support sustainable growth in the economy, full employment and the achievement of the inflation target over time."
+    ],
+    "reasoning": "The Board reviewed the case for a further cut but held, weighing long policy lags, risks of very low rates and a housing upswing. It remained prepared to ease further and flagged the coronavirus as a new downside risk. This is a hold with a mild dovish lean."
+  },
+  {
+    "meeting_date": "2020-03-03",
+    "input_sha256": "d26257c380429f853abb7a1d5055abdbf29dab3d3c2c864f1c516ddbdd807ac8",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board concluded that it was appropriate to ease monetary policy further in response to the global COVID-19 outbreak to provide additional support to employment and economic activity.",
+      "However, this scenario was considered very unlikely, with the more realistic scenario being that the outbreak would have a significant effect on the Australian economy.",
+      "The Board was prepared to ease monetary policy further to support the Australian economy."
+    ],
+    "reasoning": "The Board cut the cash rate in response to the COVID-19 outbreak, judging it likely to have a significant effect on the economy. It stated it was prepared to ease further. The language is unambiguous and strongly dovish."
+  },
+  {
+    "meeting_date": "2020-03-18",
+    "input_sha256": "c5cbc3da8e7c635a8e96998a91f9778b823a4ce8dcb963f69fa0d452011f129b",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 5,
+    "policy_bias": "easing",
+    "decision": "lower",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "Members supported the proposal and agreed that the cash rate would not be increased from its lower level until progress is made towards full employment and there is confidence that inflation will be sustainably within the 2–3 per target cent range.",
+      "Nonetheless, members strongly supported the proposed policy response as a comprehensive package to complement the fiscal response announced by governments in Australia in the preceding week or so.",
+      "Members also agreed that the cash rate was now at its effective lower bound."
+    ],
+    "reasoning": "At this unscheduled meeting the Board cut the cash rate to its effective lower bound and adopted a 3-year yield target, a term funding facility and other measures. It committed not to raise the cash rate until progress was made towards full employment and inflation. Although the cash rate was only part of a wider package, the cut was its centrepiece and the stance is strongly dovish."
+  },
+  {
+    "meeting_date": "2020-04-07",
+    "input_sha256": "3c8635c345d24edb1a9c127b1cc0b53896cd84f4ae69ec987699a18594ab31e4",
+    "stance": "dovish",
+    "stance_score": -2,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "growth_employment",
+    "key_quotes": [
+      "The Board remained committed to supporting jobs, incomes and businesses as Australia responds to the COVID-19 outbreak.",
+      "The Board would not increase the cash rate target until progress is made towards full employment and it is confident that inflation will be sustainably within the 2–3 per cent target band.",
+      "The Bank would continue to do what was necessary to achieve the three-year yield target, with the target expected to remain in place until progress was being made towards its goals for full employment and inflation."
+    ],
+    "reasoning": "The Board reaffirmed the emergency package set on 19 March, including the cash rate at the effective lower bound and the yield target, with firm guidance against raising rates. No further easing was signalled, and members noted bond purchases could be scaled back if conditions improved. The stance remains strongly accommodative, with a neutral bias for the direction of further changes."
+  }
+]

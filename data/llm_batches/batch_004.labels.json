@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2009-07-07",
+    "input_sha256": "a64ab605d71f5a6aba01b2aca7efed197d22584bc0b2202bcfe59189b4f7b307",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Recent information on the domestic economy suggested that economic activity was not as weak as had been expected.",
+      "Members noted that the current inflation outlook afforded scope for some further easing of monetary policy, if that were to be needed to give further support to demand at a later stage.",
+      "Accordingly, members judged the current stance of monetary policy to be consistent with fostering sustainable growth and low inflation, while leaving adequate flexibility to respond to developments as needed over the period ahead."
+    ],
+    "reasoning": "Domestic activity was stronger than expected and downside risks had diminished, though disinflationary pressures were expected to persist. The Board retained the option of further easing only if needed and judged current policy appropriate, so the overall tone is balanced."
+  },
+  {
+    "meeting_date": "2009-08-04",
+    "input_sha256": "c3e6a38af7220fd7cb662f2da2f4f568e16734dca1e67c63994acfc25ea0c8c3",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Given the recent improvement in the global and domestic outlooks, it now appeared unlikely that this would be necessary.",
+      "In fact, if the economy evolved as anticipated in the forecasts, the Bank would in due course need to adopt a less expansionary policy stance.",
+      "There was a risk of overstaying a very accommodative setting in a recovering economy, particularly when underlying inflation still needed to decline to reach the target."
+    ],
+    "reasoning": "With the global and domestic outlooks improving and growth forecasts revised up, the Board dropped its easing bias and said it would in due course need a less expansionary stance. It weighed the risk of overstaying accommodation against tightening prematurely and held for now, a mild, conditional tightening lean."
+  },
+  {
+    "meeting_date": "2009-09-01",
+    "input_sha256": "1c8be1c95c2978542ba46fffd69da65826f9b1ea13e258a8e21b69f932ac1494",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members noted that indicators of the domestic economy over the past month had again been better than expected.",
+      "Nonetheless, with underlying inflation still relatively high on the latest reading and economic activity substantially stronger than expected, members were conscious of the need to balance the task of controlling inflation over the medium term with that of supporting economic recovery.",
+      "The meeting concluded that the balance was best struck by leaving the cash rate unchanged for the time being, pending further evaluation of incoming information at future meetings."
+    ],
+    "reasoning": "Domestic data were again better than expected and the Board noted the economy was evolving in line with forecasts that implied a less expansionary stance in due course. It held while balancing inflation control against supporting recovery, keeping a mild tightening bias."
+  },
+  {
+    "meeting_date": "2009-10-06",
+    "input_sha256": "35a85149b8dd007cdc5563fb940d17a0c3b7a94bf3d997a1a48fdb174bab5b7a",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "On the other hand, members judged that, compared with previous meetings, the risks in waiting had increased.",
+      "Keeping interest rates at very low levels for an extended period could therefore threaten the achievement of the inflation target over the medium term.",
+      "This meant that the balance of risks was now such that the current very expansionary setting of policy was no longer necessary, and possibly imprudent."
+    ],
+    "reasoning": "The Board raised the cash rate as downside risks had diminished and the expected trough in inflation was higher than earlier thought. It judged very low rates could threaten the inflation target and build imbalances, so it began withdrawing stimulus from a very expansionary setting."
+  },
+  {
+    "meeting_date": "2009-11-03",
+    "input_sha256": "bc12b73d73de43a7423b52814555aabc86821aca3811c1913fcc26909375a58a",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Board therefore concluded that it remained prudent, over time, gradually to reduce the degree of monetary accommodation.",
+      "After giving careful consideration to these issues, members judged that it was prudent to take a further step to lessen the degree of monetary stimulus.",
+      "Looking ahead, members expected that if economic conditions evolved as expected, further gradual adjustment in the cash rate would most likely be appropriate over time, though the pace of the adjustment remained an open question."
+    ],
+    "reasoning": "The Board raised again as conditions were better than expected and spare capacity smaller than thought. It weighed fragile confidence and a higher exchange rate against the risks of prolonged low rates, and signalled further gradual increases were likely."
+  },
+  {
+    "meeting_date": "2009-12-01",
+    "input_sha256": "fd7cf5fee36c2a5fbc96715a1684144caa82e1f18cb2810b49a015a7700b749e",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members agreed that the level of the cash rate set when the outlook appeared to be much weaker would be too low for an economy that had resumed expanding, with a smaller amount of spare capacity than had earlier been expected.",
+      "Members agreed that, if developments unfolded as currently expected, monetary policy would need to be adjusted further over time to lessen the degree of stimulus.",
+      "Members saw the arguments as finely balanced, but concluded that the stance of monetary policy would best reflect the circumstances facing the economy over the period ahead if there were an increase in the cash rate of 25 basis points at this meeting."
+    ],
+    "reasoning": "The Board raised for a third time, judging the emergency-level cash rate too low for an expanding economy. It described the decision as finely balanced and the adjustment as normalisation rather than an attempt to slow demand, while signalling further adjustment over time."
+  },
+  {
+    "meeting_date": "2010-02-02",
+    "input_sha256": "a6dfbdcc4b5096352eec212ccbbfe0ff52b081d496ef709fd7fa837144e6a69e",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Members judged that monetary conditions were no longer exceptionally accommodative, though the structure of interest rates was still somewhat below average.",
+      "Members expected that, if economic conditions continued to improve as expected, further increases in the cash rate were likely to be necessary.",
+      "They concluded that, on balance, the stronger case was to leave the cash rate unchanged for the time being."
+    ],
+    "reasoning": "The Board paused, against market expectations, to assess the effects of earlier increases and overseas developments, noting policy was no longer exceptionally accommodative. It nonetheless said further increases were likely to be necessary if conditions improved as expected, keeping a tightening bias."
+  },
+  {
+    "meeting_date": "2010-03-02",
+    "input_sha256": "dc875b89030ae299b2935deb51d96e1dad2f34cbf36af7d0c80ea63d8137ddfc",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Domestically, most economic indicators continued to point to a strengthening in economic activity.",
+      "Members concurred that the appropriate course was to set policy as required by the most likely outcome, and to be ready to respond to other outcomes if they eventuated.",
+      "On balance, members concluded that the evidence that had become available recently had confirmed that it remained appropriate for interest rates to move gradually towards normal levels, and that it was timely to take another step in that direction."
+    ],
+    "reasoning": "Strengthening domestic activity, a firming labour market, rising house prices and a mining boost led the Board to resume raising rates. It framed the move as gradual normalisation, with inflation forecast to fall further and European fiscal risks noted but not the central case."
+  },
+  {
+    "meeting_date": "2010-04-06",
+    "input_sha256": "409413e5fdab5705dbf9ca5082109d3ae9f6d1daf8a6a2e2aa348736d2567542",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Since lending rates were still a little below average, members expected that they would probably need to rise further in the period ahead.",
+      "On the question of timing, the fact that the prospective rise in the terms of trade was now likely to be noticeably stronger than had been expected was a factor suggesting that it might be prudent not to delay adjustment.",
+      "Overall, members considered that the outlook for the economy suggested that there was a case for a further step in the process of returning interest rates to more normal levels."
+    ],
+    "reasoning": "With trend growth and on-target inflation forecast, the Board argued interest rates should be close to average and raised again. A stronger-than-expected terms of trade argued against delay, and members expected lending rates would probably need to rise further."
+  },
+  {
+    "meeting_date": "2010-05-04",
+    "input_sha256": "ed1b92e5e0b307b709018096101ebe46aa1623f9d0c3aa59f6a41f61d83240ef",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "The forecast for inflation had been revised up, and over the next couple of years it was likely that inflation would not be much below the top of the target range.",
+      "Members were conscious of the need for this not to result in a material worsening in the medium-term outlook for inflation.",
+      "Members felt that this would leave monetary policy well placed for the present."
+    ],
+    "reasoning": "Higher-than-expected inflation and a building resources boom led the Board to raise again despite European sovereign debt turmoil. It said borrowing rates would then be around average and policy well placed for the present, implying a neutral forward bias."
+  }
+]

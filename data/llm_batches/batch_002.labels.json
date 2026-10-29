@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2007-09-04",
+    "input_sha256": "ef0923c6cfd9884d91a0ea8e653e24500d7be0fb78808822617a372a229c9a0b",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 2,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "financial_stability",
+    "key_quotes": [
+      "The higher cost of funding faced by these institutions, if sustained, would at some point be passed on to indicator lending rates.",
+      "While the strength of the underlying economy was seen by members as possibly requiring a further monetary policy tightening to prevent inflation from rising above the target range, the financial developments over the past month could result in a tightening of financial conditions independently of movements in the cash rate.",
+      "Under those circumstances, members judged that a stable policy setting was appropriate for the time being."
+    ],
+    "reasoning": "The domestic economy was seen as strong enough to possibly require further tightening to keep inflation within the target. However, the deliberations centred on global financial market turbulence and higher funding costs, which could tighten conditions independently of the cash rate, so the Board held with a hedged tightening lean."
+  },
+  {
+    "meeting_date": "2007-10-02",
+    "input_sha256": "93cc445a8b59ff8feea00ad2caebb6f95cb109d50cf20192d3adb11fdb8fa10a",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Conditions in the Australian economy had been very strong this year and the outlook was for further robust growth, with underlying inflation remaining at an uncomfortably high level.",
+      "Members noted that a prima facie case to tighten policy further could be argued, based on the inflation risks from the strong momentum of the domestic economy and despite the slowing in the United States.",
+      "However, the state of financial markets, while improving over the month, remained uncertain, which suggested caution in policy-setting."
+    ],
+    "reasoning": "Members saw underlying inflation as uncomfortably high and a prima facie case for tightening given strong domestic momentum. They held out of caution over fragile financial markets and to await the September quarter CPI, leaving a clear tightening bias."
+  },
+  {
+    "meeting_date": "2007-11-06",
+    "input_sha256": "c05587e7b0d8fcef22f410541b85a22b9e411681ddb64c51dfeb1cdbe9fed821",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 5,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "In considering the recommendation, Board members agreed that on domestic economic grounds, the case for a further tightening of monetary policy was clear.",
+      "The labour market had tightened further and underlying inflation had risen to around 3 per cent.",
+      "In weighing all the information available on domestic and overseas economic conditions and developments in financial markets, members judged that, on balance, a further increase in the cash rate was needed to contain inflation to 2–3 per cent in the medium term."
+    ],
+    "reasoning": "The Board raised the cash rate, saying the domestic case for tightening was clear given strong demand, a tight labour market and rising inflation. Credit market concerns were judged less pressing in Australia, and the risk of inflation staying above target dominated."
+  },
+  {
+    "meeting_date": "2007-12-04",
+    "input_sha256": "e1db147fc7f4dc2fb7aafacfa1f69f698dceccf9f4d9b492e177287230471f17",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members remained concerned about the outlook for inflation.",
+      "The information available on the domestic economy thus suggested that higher interest rates were likely to be required.",
+      "It was agreed that a statement explaining the decision should make clear the Board's continuing concern about the outlook for inflation."
+    ],
+    "reasoning": "The Board held only because market interest rates had risen independently of the cash rate, noting there would otherwise have been a strong domestic case for a rise. It stressed its continuing concern about inflation and that higher rates were likely to be required, a firm tightening bias."
+  },
+  {
+    "meeting_date": "2008-02-05",
+    "input_sha256": "20ddaa476e2517634d6d38af3e86922ccdf593c3c5ac9ae6da5c037aea6f93d1",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 5,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members were strongly of the view that a significant slowing in demand from the pace observed through 2007 would be required for inflation to return to the target.",
+      "They therefore concluded that the outlook for inflation required an immediate response from monetary policy.",
+      "However, the judgement was finely balanced and the Board would continue to review whether policy was sufficiently restrictive to return inflation to the 2–3 per cent target within a reasonable period."
+    ],
+    "reasoning": "Higher-than-expected inflation and rising inflation expectations led the Board to call for an immediate policy response, and it seriously considered a 50 basis point rise before choosing 25. It signalled that further tightening could follow at subsequent meetings."
+  },
+  {
+    "meeting_date": "2008-03-04",
+    "input_sha256": "c4602c15131a495b31d9b8b9973dd0b3697d93c9f01073cf18d18ac06c7e873a",
+    "stance": "hawkish",
+    "stance_score": 2,
+    "confidence": 4,
+    "policy_bias": "tightening",
+    "decision": "raise",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members viewed the standard macroeconomic considerations as continuing to suggest the need for further tightening.",
+      "Overall, the economy still faced a period in which inflation could be uncomfortably high.",
+      "On balance, members concluded that a further 25 basis point rise in the cash rate was necessary to restrain demand, in order to reduce inflation over time."
+    ],
+    "reasoning": "The Board raised the cash rate again, citing strong labour markets, rising terms of trade and inflation set to rise further from an already high level. It noted the substantial overall tightening in financial conditions but kept flexibility to respond to new information while the inflation concern remained dominant."
+  },
+  {
+    "meeting_date": "2008-04-01",
+    "input_sha256": "1eae5f6aa02d884e68220cc7251a6063beb4617f145c58eb664c09703d1c9878",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Members judged that, taking account of the additional rises in funding costs that banks had passed on to borrowers, the current stance of monetary policy was exerting a significant restraining influence on both households and businesses.",
+      "Provided this moderation continued, members expected inflation to decline over time, though they recognised that there were significant risks in both directions.",
+      "Members decided that it would be appropriate to maintain the current setting of monetary policy for the time being, and to continue to evaluate prospects for economic activity and inflation in the light of new information."
+    ],
+    "reasoning": "Signs of slowing domestic demand and a significant restraining influence from policy led the Board to hold. Inflation remained the central concern but members saw significant risks in both directions and gave no signal of a further move."
+  },
+  {
+    "meeting_date": "2008-05-06",
+    "input_sha256": "6cf4e622ff0777ae477c2222b8d49cca438fe0b21261815b47bd55d6e379bb20",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "Nevertheless, CPI and underlying inflation had risen further and was uncomfortably high.",
+      "Members spent considerable time discussing the case for a further rise in the cash rate.",
+      "However, should demand not slow as expected or should expectations of high ongoing inflation begin to affect wage and price setting, the outlook, and the stance of policy, would need to be reviewed."
+    ],
+    "reasoning": "Inflation had risen further and was described as uncomfortably high, and the Board spent considerable time on the case for another rise. It held given tight financial conditions and uncertainty, but explicitly flagged that policy would need to be reviewed if demand did not slow or expectations rose."
+  },
+  {
+    "meeting_date": "2008-06-03",
+    "input_sha256": "6d66c172a4f44e406224acfa8ecb8c5f5406d922b241b755a1405a03559d32a7",
+    "stance": "hawkish",
+    "stance_score": 1,
+    "confidence": 3,
+    "policy_bias": "tightening",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "As in previous meetings, the central issue was that, over the past year, inflation had picked up to an uncomfortably high rate, against a background of limited spare capacity and earlier strong growth in demand.",
+      "Members agreed that it was important for the slowing trend to continue.",
+      "However, should demand not slow as expected or should expectations of high ongoing inflation begin to affect wage- and price-setting behaviour, the outlook, and the stance of policy, would need to be reviewed."
+    ],
+    "reasoning": "The central issue remained uncomfortably high inflation, and the Board held because demand appeared to be moderating as needed. It repeated the conditional warning that policy would be reviewed if demand did not slow or inflation expectations rose, a mild tightening bias."
+  },
+  {
+    "meeting_date": "2008-07-01",
+    "input_sha256": "daa35edef6c49c2187e14a76176bb94d21a69f78fc65c3d7fa7e1349d8f417d5",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "inflation",
+    "key_quotes": [
+      "On the other hand, members expected that the CPI for the June quarter, which would be released before the next Board meeting, would show another high reading.",
+      "On balance, while members remained concerned about the current rate of inflation and the uncertainties about the outlook, the increasing signs that demand was slowing suggested that the existing policy setting was exerting the appropriate degree of restraint.",
+      "Provided demand continued to evolve as expected, inflation was likely to decline over time."
+    ],
+    "reasoning": "Clear signs of slowing consumer spending, credit and confidence, and early softening in the labour market, led the Board to judge that policy was exerting the appropriate restraint. Members remained concerned about high inflation and its effect on expectations, but dropped the conditional tightening language, so the stance is balanced."
+  }
+]

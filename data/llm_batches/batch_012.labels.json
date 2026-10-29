@@ -1,0 +1,162 @@
+[
+  {
+    "meeting_date": "2016-10-04",
+    "input_sha256": "4975c8f10dba560ea1dee7482fa0ec87d08fe1396ef01a82c4cb5b5bff24a423",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "There was a reasonable prospect of sustaining growth in economic activity that would support further employment growth and, in time, a gradual increase in wage growth and inflation.",
+      "At the same time, however, there remained considerable uncertainty about momentum in the labour and housing markets.",
+      "Taking account of developments since the previous meeting, the Board judged that holding the stance of policy unchanged at this meeting would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate, noting that data matched forecasts and that the headwinds from the mining adjustment were waning. Uncertainty about labour market momentum and renewed strength in Sydney and Melbourne housing prices were noted on both sides. The Board would review at the next meeting with new CPI data, but gave no directional signal."
+  },
+  {
+    "meeting_date": "2016-11-01",
+    "input_sha256": "66a5f754ee1d1b03adeaba6da8a543929ee363f21d2508259fba3abcddf7c56a",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The overall assessment was that the risks around the inflation forecast were broadly balanced.",
+      "Members noted that this was a marked change from the pattern of downward revisions to the forecast for the terms of trade over the previous few years and implied a more positive outlook for nominal growth in the Australian economy.",
+      "Taking account of the available information, and having eased monetary policy at its May and August meetings, the Board judged that holding the stance of policy unchanged at this meeting would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate and judged the risks around the inflation forecast to be broadly balanced. A higher terms of trade and steadier global conditions improved the outlook, against continuing uncertainty about the labour market and a more complicated housing picture. The stance is neutral."
+  },
+  {
+    "meeting_date": "2016-12-06",
+    "input_sha256": "976a13ca66efa72ceb94261258455167ffa988e8efb58dbb86ffe3691a2066bb",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Over recent years the Board had sought to balance the benefits of lower interest rates in supporting growth and achieving the inflation target with the potential risks to household balance sheets.",
+      "Members recognised that this balance would need to be kept under review.",
+      "Taking into account the information that had become available over the previous month, and having eased monetary policy earlier in the year, the Board judged that holding the stance of policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate and reviewed the easing phase, weighing support for growth and inflation against risks to household balance sheets. Weaker September quarter GDP and continuing labour market slack were offset by a more positive global environment and strengthening housing conditions. The overall stance is neutral, balancing growth against financial stability."
+  },
+  {
+    "meeting_date": "2017-02-07",
+    "input_sha256": "8a02d6e85b6951b14e02635196494076a5129adf547cccb09706735f2187d94b",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Medium-term inflation expectations had remained well anchored and inflation was expected to increase gradually.",
+      "The unemployment rate was forecast to edge lower, which implied that spare capacity would persist in the labour market for some time.",
+      "Taking account of all the information available, including the updated forecasts, an assessment of the risks affecting these forecasts and the level of the cash rate, the Board judged that holding the stance of policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate, citing more positive global growth and a fall in GDP that reflected temporary factors. Inflation was expected to rise gradually from low levels and spare labour capacity to persist. Investor credit growth in Sydney and Melbourne was noted, but no directional signal was given."
+  },
+  {
+    "meeting_date": "2017-03-07",
+    "input_sha256": "0094aaab4251cc9430a621fbb406a036aa1beca3caf3839bbe496d651e457d78",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "financial_stability",
+    "key_quotes": [
+      "Recent data continued to suggest that there had been a build-up of risks associated with the housing market.",
+      "Borrowing for housing by investors had picked up over recent months and growth in household debt had been faster than that in household income.",
+      "Given all of these considerations, the Board judged that holding the stance of policy unchanged at this meeting would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate while emphasising a build-up of housing-market risks and household debt rising faster than income. The growth outlook had improved, with GDP picking up and the terms of trade higher, but spare labour capacity and subdued wages remained. Financial stability concerns argue against easing without pointing to tightening, so the stance is neutral."
+  },
+  {
+    "meeting_date": "2017-04-04",
+    "input_sha256": "d4cc851d5e154521a64f02f30fa6e7947e483ce83889b0a07cea5b6ce788f724",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "financial_stability",
+    "key_quotes": [
+      "Growth in housing credit continued to outpace growth in household incomes, suggesting that the risks associated with the housing market and household balance sheets had been rising.",
+      "The Board judged that developments in the labour and housing markets warranted careful monitoring over coming months.",
+      "Taking into account the available information, the Board judged that holding the stance of monetary policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the cash rate, highlighting rising risks from housing credit outpacing incomes and newly announced supervisory measures. Softer labour market conditions and gradual underlying inflation balanced stronger global growth. No direction was signalled, and housing-related financial stability was the most prominent concern."
+  },
+  {
+    "meeting_date": "2017-05-02",
+    "input_sha256": "92a6e1a52c2de71bf7af067a01473af46e952fc93d16323caf83d5400acc5f2b",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "The Board continued to judge that developments in the labour and housing markets warranted careful monitoring.",
+      "Taking into account all the available information and the updated forecasts, the Board's assessment was that maintaining the current accommodative stance of monetary policy would be consistent with achieving sustainable growth and the inflation target over time.",
+      "Growth in housing credit had continued to outpace growth in household incomes, which suggested that the risks associated with household balance sheets had been rising."
+    ],
+    "reasoning": "The Board kept the accommodative stance unchanged with a positive global outlook and inflation expected to rise gradually. It weighed subdued wage growth and mixed labour data against rising household balance-sheet risks and named both the labour and housing markets for careful monitoring. The stance is neutral."
+  },
+  {
+    "meeting_date": "2017-06-06",
+    "input_sha256": "38960f3c039c16f567bee69b3068212e4dbd882014975c4ae6ac212923c1d4b6",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "financial_stability",
+    "key_quotes": [
+      "Over recent times, with interest rates at low levels, the Board has set monetary policy to support the economy in its transition following the mining investment boom, while also paying close attention to trends in household borrowing and related financial stability considerations.",
+      "APRA's recent prudential supervision measures should help address the risks associated with high and rising levels of indebtedness.",
+      "The Board continued to judge that developments in the labour and housing markets warranted careful monitoring."
+    ],
+    "reasoning": "The Board held the accommodative stance after an extended discussion of how financial stability bears on monetary policy and the role of prudential regulators. Growth was expected to rise gradually, with wages and inflation picking up slowly, while household debt and consumption restraint were flagged. The stance is neutral, with financial stability prominent."
+  },
+  {
+    "meeting_date": "2017-07-04",
+    "input_sha256": "6d3aeaf921d4b0a4355b4e8b1e5aca041faae9572a59e7b8bc9872d7d133f673",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 3,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "All estimates of the neutral real interest rate for Australia suggested that monetary policy had been clearly expansionary for the preceding five years or so.",
+      "Members noted that the strength of recent labour market data had removed some of the downside risk in the Bank's forecast of wage growth.",
+      "Taking into account all the available information, the Board judged that holding the accommodative stance of monetary policy unchanged at this meeting would be consistent with sustainable growth in the economy and achieving the inflation target over time."
+    ],
+    "reasoning": "The Board held the accommodative stance and discussed estimates putting the neutral nominal cash rate near 3.5 per cent, implying policy was clearly expansionary. It also noted positive labour data and more hawkish moves by central banks abroad. These points have a slight hawkish undertone, but the Board itself signalled no change and kept monitoring household debt and consumption risks, so the stance is neutral."
+  },
+  {
+    "meeting_date": "2017-08-01",
+    "input_sha256": "d9d2f72766cf61f2a5280377a9b54870378ea8ef9d6aad8d0170a96d925ecb2e",
+    "stance": "neutral",
+    "stance_score": 0,
+    "confidence": 4,
+    "policy_bias": "neutral",
+    "decision": "hold",
+    "dominant_concern": "balanced",
+    "key_quotes": [
+      "Taking account of the available information and the need to balance the risks associated with high household debt in a low-inflation environment, the Board judged that holding the stance of monetary policy unchanged would be consistent with sustainable growth in the economy and achieving the inflation target over time.",
+      "However, a further appreciation of the exchange rate would be expected to result in a slower pick-up in inflation and economic activity than currently forecast.",
+      "Inflation was still expected to increase gradually as the economy strengthened."
+    ],
+    "reasoning": "The Board held the cash rate, saying explicitly that it was balancing the risks of high household debt against a low-inflation environment. Stronger employment and business conditions were offset by low wage growth and the risk that an appreciating exchange rate would slow inflation and growth. No directional bias was given."
+  }
+]
