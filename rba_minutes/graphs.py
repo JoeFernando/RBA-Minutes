@@ -32,13 +32,18 @@ from .scrape import make_session
 
 log = logging.getLogger(__name__)
 
-GRAPH_LABEL = re.compile(r"^(?:Graph|Figure|Chart)\s*([A-Z]?\d+(?:\.\d+)?[a-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", re.S)
+GRAPH_LABEL = re.compile(
+    r"^(Box\s+\w+\s+)?(?:Graph|Figure|Chart)\s*([A-Z]?\d+(?:\.\d+)?[a-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", re.S)
 
 
 def _split_label(text: str) -> tuple[str, str]:
+    """('2.1', 'Title') from 'Graph 2.1: Title'; ('Box 1 Graph 2', 'Title') from a 1997-2005 box graph."""
     text = normalise_text(text)
     match = GRAPH_LABEL.match(text)
-    return (match.group(1), match.group(2).strip()) if match else ("", text)
+    if not match:
+        return "", text
+    box = f"{match.group(1).strip()} Graph " if match.group(1) else ""
+    return box + match.group(2), match.group(3).strip().lstrip(":").strip()
 
 
 def _is_graph_img(img) -> bool:
@@ -67,8 +72,12 @@ def find_graphs(page_html: bytes, page_url: str) -> list[dict]:
             else:  # 2024+: number in the caption, a long description in alt
                 number, title = _split_label(caption_text)
                 description = alt
+            # The section it sits in: its box (1997-2005 boxes sit inside chapters), else the heading above it.
+            box = el.find_parent("div", class_="box-info")
+            heading = box.find(["h2", "h3"]) if box is not None else el.find_previous("h2")
             found.append({"number": number, "title": title, "description": description,
-                          "image_url": url, "graph_page": None})
+                          "image_url": url, "graph_page": None,
+                          "section": normalise_text(heading.get_text(" ")) if heading is not None else ""})
         elif el.name == "a" and re.search(r"/graphs/graph-[\w.-]+\.html$", urljoin(page_url, el.get("href", ""))):
             url = urljoin(page_url, el["href"]).split("#")[0]
             if url in seen:
@@ -153,12 +162,15 @@ def collect(raw_dir: Path, pub: str, image_dir: Path, workers: int = 3, delay: f
             heading = _find_content(BeautifulSoup(html, "lxml")).find("h1")
             chapter = normalise_text(heading.get_text(" ")) if heading else ""
             for graph in find_graphs(html, page["url"]):
-                graph["chapter_title"] = re.sub(r"^.*?(Statement on Monetary Policy|Financial Stability Review)\s*[–-]\s*\w+\s+\d{4}\s*", "", chapter)
+                section = graph.pop("section", "")
+                graph["chapter_title"] = section if manifest["era"] == "bulletin" and section else re.sub(r"^.*?(Statement on Monetary Policy|Financial Stability Review)\s*[–-]\s*\w+\s+\d{4}\s*", "", chapter)
                 if graph["graph_page"]:
                     page_html = fetch(graph["graph_page"])
                     if page_html:
                         inner = find_graphs(page_html, graph["graph_page"])
                         image = next((g for g in inner if g["image_url"]), None)
+                        if image:
+                            image.pop("section", None)
                         if image:
                             graph["image_url"] = image["image_url"]
                             number, title = image["number"], image["title"]
@@ -192,6 +204,38 @@ def collect(raw_dir: Path, pub: str, image_dir: Path, workers: int = 3, delay: f
         results = list(pool.map(process_issue, folders))
     return [dict(r, issue_date=json.loads((f / "manifest.json").read_text())["issue_date"])
             for f, recs in zip(folders, results) for r in recs]
+
+
+def fill_missing_titles(raw_dir: Path, delay: float = 1.0) -> int:
+    """Titles from each issue's 'List of graphs' page, for graph pages that give only 'Graph 2'.
+
+    Some years (e.g. SMP 2007, FSR September 2005) put the title only in the image.
+    Updates the cached graphs.json files; returns the number of titles filled.
+    """
+    session = make_session()
+    filled = 0
+    for cache in sorted(raw_dir.glob("*/graphs.json")):
+        records = json.loads(cache.read_text())
+        missing = [r for r in records if not r.get("title") and r.get("graph_page")]
+        if not missing:
+            continue
+        manifest = json.loads((cache.parent / "manifest.json").read_text())
+        response = session.get(manifest["url"] + "graphs.html", timeout=config.REQUEST_TIMEOUT_SECONDS)
+        time.sleep(delay)
+        if response.status_code != 200:
+            continue
+        content = _find_content(BeautifulSoup(response.content, "lxml"))
+        titles = {}
+        for anchor in content.find_all("a", href=re.compile(r"graphs/graph-[\w.-]+\.html")):
+            holder = anchor.find_parent(["li", "p", "td", "tr"]) or anchor.parent
+            text = normalise_text(holder.get_text(" ")).replace(normalise_text(anchor.get_text(" ")), "", 1)
+            titles[urljoin(manifest["url"] + "graphs.html", anchor["href"]).split("#")[0]] = text.strip(" :–-")
+        for r in missing:
+            if titles.get(r["graph_page"]):
+                r["title"] = titles[r["graph_page"]]
+                filled += 1
+        cache.write_text(json.dumps(records, indent=1, ensure_ascii=False))
+    return filled
 
 
 def store(conn: sqlite3.Connection, records: list[dict], pub: str) -> int:
