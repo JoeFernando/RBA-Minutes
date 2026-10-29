@@ -1,0 +1,162 @@
+[
+  {
+    "issue_date": "2012-03",
+    "input_sha256": "42835e3ff8ffe681d27f014e954d7edd224c470fffc64e04e239143da120806b",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 3,
+    "key_quotes": [
+      "Global market sentiment has improved noticeably since late December.",
+      "Even though conditions in financial markets have improved, the ongoing difficulties in Europe as well as the subdued outlook for global growth will continue to pose risks to global financial stability in the period ahead.",
+      "The Australian banking system remains in a relatively strong condition."
+    ],
+    "reasoning": "The euro area sovereign and bank funding crisis is the dominant risk, having spread to tighter wholesale funding for Australian banks, though sentiment has improved noticeably since late December. Australian banks are described as relatively strong, households are cautious with low aggregate stress, and credit growth is slow. The concerns centre on global stress, deleveraging and tighter funding, which on their own point towards easier policy."
+  },
+  {
+    "issue_date": "2012-09",
+    "input_sha256": "fcaf5f51e465c7ff180b405e56f8c3c60da213bf003a791edc233bb4bd9007db",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 3,
+    "key_quotes": [
+      "Along with the weaker near-term outlook for global growth, the euro area problems will continue to pose heightened risks to global financial stability in the period ahead.",
+      "Against this backdrop, the Australian banking system has remained in a relatively strong position.",
+      "Although there are some isolated pockets of weakness, aggregate measures of financial stress remain low."
+    ],
+    "reasoning": "The euro area crisis flared again between April and July before improving after the ECB announced Outright Monetary Transactions, leaving risks heightened but broadly similar to six months earlier. Australian banks are strong, with better funding and capital, and household stress is low with household credit growing in line with income. The emphasis on global stress, weaker global growth and moderate credit demand points to easing rather than tightening."
+  },
+  {
+    "issue_date": "2013-03",
+    "input_sha256": "dbe918641c5ff92f8f5f84126ccbf7af9e7413e0ef7c4f369062dc642e726cf9",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Global financial conditions have improved significantly since the previous Financial Stability Review, despite the new uncertainty created by the proposed sovereign bailout for Cyprus in the past few weeks.",
+      "The euro area nonetheless still faces significant challenges to its stability.",
+      "The Australian banking system also remains in a relatively strong position."
+    ],
+    "reasoning": "Global conditions have improved significantly, although unresolved euro area problems (highlighted by Cyprus) remain the main risk. Australian banks are profitable and well capitalised, and household arrears are low, with household credit growth slow and housing markets only recovering. Households are high in debt but borrowing cautiously, so the Review gives no clear signal for interest rates."
+  },
+  {
+    "issue_date": "2013-09",
+    "input_sha256": "32ded7acc73bce31e3b2dd9afad16396684a8117b089e41a383b5022635d814c",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "The main risks to the global financial system have shifted somewhat over the past six months.",
+      "The Australian banking system continues to perform relatively well.",
+      "The risk profile of new household borrowing remains reasonably sound and indicators of household financial stress are low."
+    ],
+    "reasoning": "Risks are described as having shifted rather than grown: the euro area has improved somewhat while market volatility and emerging market pressures have risen. Australian banks perform well and household stress is low, though property activity and housing prices have picked up after rate cuts and SMSF property borrowing is flagged as worth watching. The housing comments are mild cautions rather than a clear call, so the policy implication is neutral."
+  },
+  {
+    "issue_date": "2014-03",
+    "input_sha256": "95becf59325d19e39e55ad32f4d673661cfdff1a09c611a856978542882936c3",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "The Australian banking system continued to perform strongly in 2013.",
+      "One area that warrants particular attention is banks' housing loan practices.",
+      "The recent momentum in household risk appetite and borrowing behaviour, in particular, therefore warrants continued close observation."
+    ],
+    "reasoning": "Global conditions are broadly favourable apart from emerging market and euro area fragilities, and the Australian banking system performed strongly. The main domestic concern is rising housing prices and investor lending, which could encourage speculation, and some lenders using less conservative serviceability assessments, although lending standards are broadly steady in aggregate. Concern about a housing credit upswing implies tightening, but the language is measured."
+  },
+  {
+    "issue_date": "2014-09",
+    "input_sha256": "c25650e79ed7418235c4eb5a7881071bb35ada165cde56a027b71359b05335a8",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "As a result, the composition of housing and mortgage markets is becoming unbalanced, with new lending to investors being out of proportion to rental housing's share of the housing stock.",
+      "Even so, a broader risk remains that additional speculative demand can amplify the property price cycle and increase the potential for prices to fall later, with associated effects on household wealth and spending.",
+      "Furthermore, the direct risks to financial institutions would increase if these high rates of lending growth persist, or increase further."
+    ],
+    "reasoning": "Low interest rates and strong price competition among lenders have driven a sharp rise in investor housing lending, which the Review calls unbalanced and speculative, and the Bank is discussing further steps with APRA. Global search-for-yield behaviour and stretched commercial property prices add to the risks, while banks remain strongly capitalised and profitable. Concern about a speculative housing credit boom under easy funding conditions points clearly to tightening."
+  },
+  {
+    "issue_date": "2015-03",
+    "input_sha256": "ebc9b1107c4e9d0114308c19b802fe00e900bde0abd4a56643d35c78a1a47db3",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "Household sector risks continue to revolve largely around the housing and mortgage markets.",
+      "Ongoing strong speculative demand would tend to amplify the run-up in housing prices and increase the risk that prices in at least some regions might fall significantly later on.",
+      "Competition among lenders remains vigorous in a number of domestic markets and lending margins have fallen."
+    ],
+    "reasoning": "Global volatility has increased, and domestically the Review says risks in commercial property lending appear to be building, alongside continued speculative investor demand for housing. Lending competition is vigorous and margins have fallen, while household stress is low and the banking system performs strongly. Concern about speculative housing demand and lending standards amid low rates implies tightening."
+  },
+  {
+    "issue_date": "2015-10",
+    "input_sha256": "fb635ee81c6a06226027fe485141ad8ce9b72dca07905077f125d76fb098368d",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "The risks surrounding housing and mortgage markets seem higher than average at present.",
+      "Risks have been growing in commercial lending related to property, which historically has been a common source of financial instability both domestically and abroad.",
+      "These risks appear to be comfortably manageable at this stage, but they underscore the need to maintain sound lending standards and the resilience of the financial and non-financial sectors."
+    ],
+    "reasoning": "Domestic risks centre on buoyant Sydney and Melbourne housing markets with heavy investor activity, along with growing risks in property-related commercial lending; global risks have shifted towards China and emerging markets. Lending standards have since been tightened, banks have raised capital, and there are tentative signs of moderating housing demand, so overall risks look broadly unchanged and comfortably manageable. Concern about the housing boom and lending standards points to tightening."
+  }
+]

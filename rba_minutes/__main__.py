@@ -10,6 +10,10 @@
   smp-scrape / smp-build / smp-score / smp-tables / smp-boxes / smp-check /
   smp-llm-export / smp-llm-import / smp-forecasts / forecasts-load
            the same steps for the Statement on Monetary Policy (1997 onwards)
+  smp-graphs  download every SMP graph (images, titles, SVG text) and store their details
+  fsr-scrape / fsr-build / fsr-score / fsr-tables / fsr-graphs / fsr-check /
+  fsr-llm-export / fsr-llm-import
+           the same steps for the Financial Stability Review (2004 onwards)
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -169,6 +173,87 @@ def cmd_smp_tables(args) -> None:
             log.error("Forecast archive mismatch: %s", item)
 
 
+def _graphs(pub: str, conn) -> None:
+    from . import graphs
+
+    raw_dir = config.DATA_DIR / f"raw_{pub}"
+    records = graphs.collect(raw_dir, pub, config.DATA_DIR / f"{pub}_graphs")
+    log.info("Stored %d %s graphs", graphs.store(conn, records, pub), pub.upper())
+
+
+def cmd_smp_graphs(args) -> None:
+    from . import smp
+
+    _graphs("smp", smp.connect(args.smp_db))
+
+
+def cmd_fsr_scrape(args) -> None:
+    from . import fsr
+
+    log.info("%d FSR issues listed", len(fsr.scrape_all(refresh=args.refresh)))
+
+
+def cmd_fsr_build(args) -> None:
+    from . import fsr
+
+    loaded, failures = fsr.build(fsr.connect(args.fsr_db))
+    log.info("Loaded %d FSR issues", loaded)
+    for failure in failures:
+        log.error("Failed: %s", failure)
+
+
+def cmd_fsr_score(args) -> None:
+    from . import fsr
+
+    log.info("Dictionary sentiment computed for %d FSR issues", fsr.score_dictionary(fsr.connect(args.fsr_db)))
+
+
+def cmd_fsr_tables(args) -> None:
+    from . import fsr, smp_tables
+
+    log.info("Downloaded %d 'List of tables' pages", smp_tables.fetch_table_pages(fsr.RAW_DIR))
+    log.info("%d graph-data workbooks saved",
+             len(smp_tables.fetch_graph_data(fsr.RAW_DIR, config.DATA_DIR / "fsr_graph_data", pub="fsr")))
+    n_tables, n_cells = smp_tables.build(fsr.connect(args.fsr_db), fsr.RAW_DIR, pub="fsr")
+    log.info("Extracted %d tables (%d cells)", n_tables, n_cells)
+    out_dir = config.EXPORT_DIR / "fsr_tables"
+    log.info("Wrote %d table CSVs to %s", smp_tables.export(fsr.connect(args.fsr_db), out_dir, pub="fsr"), out_dir)
+
+
+def cmd_fsr_graphs(args) -> None:
+    from . import fsr
+
+    _graphs("fsr", fsr.connect(args.fsr_db))
+
+
+def cmd_fsr_check(args) -> None:
+    from . import fsr
+
+    problems, notes = fsr.check(fsr.connect(args.fsr_db))
+    for note in notes:
+        print(f"note: {note}")
+    for problem in problems:
+        print(f"PROBLEM: {problem}")
+    print(f"{len(problems)} problems, {len(notes)} notes")
+
+
+def cmd_fsr_llm_export(args) -> None:
+    from . import fsr
+
+    paths = fsr.export_batches(fsr.connect(args.fsr_db), args.out, args.batch_size)
+    log.info("Wrote %d FSR batch files to %s", len(paths), args.out)
+
+
+def cmd_fsr_llm_import(args) -> None:
+    from . import fsr
+
+    files = sorted(args.dir.glob("**/fsr_batch_*.labels.json"))
+    stored, problems = fsr.import_labels(fsr.connect(args.fsr_db), files)
+    log.info("Stored %d FSR assessments from %d files", stored, len(files))
+    for problem in problems:
+        log.warning(problem)
+
+
 def cmd_smp_forecasts(args) -> None:
     from . import smp
 
@@ -247,6 +332,8 @@ def main(argv=None) -> None:
     parser.add_argument("--db", type=Path, default=config.DB_PATH, help="minutes database (default: %(default)s)")
     parser.add_argument("--smp-db", type=Path, default=config.SMP_DB_PATH,
                         help="SMP, tables and forecasts database (default: %(default)s)")
+    parser.add_argument("--fsr-db", type=Path, default=config.FSR_DB_PATH,
+                        help="Financial Stability Review database (default: %(default)s)")
     parser.add_argument("-v", "--verbose", action="store_true")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -293,6 +380,19 @@ def main(argv=None) -> None:
     add("smp-boxes", cmd_smp_boxes, "download the RBA's yearly lists of SMP boxes")
     add("smp-check", cmd_smp_check, "check SMP coverage, overviews and boxes")
     add("forecasts-load", cmd_forecasts_load, "load RBA forecast files into tables")
+    add("smp-graphs", cmd_smp_graphs, "download every SMP graph and store titles, images and SVG text")
+    p = add("fsr-scrape", cmd_fsr_scrape, "download every Financial Stability Review since 2004")
+    p.add_argument("--refresh", action="store_true")
+    add("fsr-build", cmd_fsr_build, "parse FSR issues into the FSR database")
+    add("fsr-score", cmd_fsr_score, "dictionary sentiment for FSR issues")
+    add("fsr-tables", cmd_fsr_tables, "extract every FSR table into clean tables and CSVs")
+    add("fsr-graphs", cmd_fsr_graphs, "download every FSR graph and store titles, images and SVG text")
+    add("fsr-check", cmd_fsr_check, "check FSR coverage, overviews, boxes and articles")
+    p = add("fsr-llm-export", cmd_fsr_llm_export, "write FSR batch files for session labelling")
+    p.add_argument("--out", type=Path, default=config.DATA_DIR / "llm_batches_fsr")
+    p.add_argument("--batch-size", type=int, default=8)
+    p = add("fsr-llm-import", cmd_fsr_llm_import, "load FSR session labels")
+    p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_fsr")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

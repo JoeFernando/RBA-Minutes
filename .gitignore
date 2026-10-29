@@ -20,3 +20,6 @@ data/raw_smp/
 data/llm_batches_smp/**/*.md
 data/smp_graphs/
 !tests/fixtures/**/*.html
+data/fsr_graphs/
+data/llm_batches_fsr/**/*.md
+data/raw_fsr/

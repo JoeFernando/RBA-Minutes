@@ -1,0 +1,122 @@
+[
+  {
+    "issue_date": "2024-03",
+    "input_sha256": "6c5b381e1c990570233b2f428a8505bfa31c46cc71841f50d59c15497b844c6e",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "strong",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The outlook for the global economy has improved following the peak in inflation, but global financial stability risks remain elevated.",
+      "Most Australian households and businesses remain able to service their debt and meet essential expenses.",
+      "The Australian financial system has a high level of resilience and is well positioned to continue to support the economy."
+    ],
+    "reasoning": "Global financial stability risks are described as elevated (China property, CRE, disorderly asset repricing), but domestic risks from lending are contained and the system is judged highly resilient, giving a moderate overall level that is broadly unchanged. Households face challenging conditions from high inflation and interest rates, with acute budget pressures for some, though most continue to service debt and housing prices are rising. The domestic concern is borrower strain under tight monetary policy rather than leverage build-up, which on its own points mildly towards easing."
+  },
+  {
+    "issue_date": "2024-09",
+    "input_sha256": "aa9faa06cd64edfb5ba88d62c0d3a0c1a33b4a41a76851e8439b33af29269911",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "Risks to the Australian financial system from lending to households, businesses and commercial real estate (CRE) remain contained.",
+      "The Australian financial system continues to display a high level of resilience.",
+      "Domestic vulnerabilities could increase if households respond to any easing in financial conditions by taking on excessive debt."
+    ],
+    "reasoning": "The Review highlights global vulnerabilities (operational/digital risks, low risk premia and leverage, China) while judging domestic lending risks contained and the system highly resilient, so overall risk is moderate and steady. Budget pressures persist under restrictive policy and a small but rising share of mortgagors are in arrears, indicating moderate household stress. Concerns cut both ways: borrower stress from high rates versus the risk of excessive debt if conditions ease, so the policy implication is neutral."
+  },
+  {
+    "issue_date": "2025-04",
+    "input_sha256": "73b067fc5c66322a1bf8444112a06144a90c6e40b8d6522efdd98d63523f57d6",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "The Australian financial system has continued to display a high level of resilience.",
+      "Heightened geopolitical tensions and policy uncertainty in major economies has the potential to interact with existing vulnerabilities.",
+      "Looking further ahead, resilience could be undermined if lending standards deteriorate and households respond to an actual or anticipated easing in financial conditions by accumulating excessive debt."
+    ],
+    "reasoning": "Domestic risks remain contained, with mortgage arrears stabilising at pre-pandemic levels and banks holding strong capital and liquidity, while the main threats come from US trade policy uncertainty, global market vulnerabilities, China and operational risks. Budget pressures remain pervasive but have eased a little, and financial conditions are described as easing, implying broadly neutral credit conditions. Concerns about borrower stress are balanced by a forward-looking warning about excessive debt accumulation as conditions ease, so the policy implication is neutral."
+  },
+  {
+    "issue_date": "2025-10",
+    "input_sha256": "ea296008781146cc0e199fff50da1f9611e07a712ac24ddb7f384725fec92edb",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "Global financial stability risks are elevated and an international shock could spill over to the Australian financial system.",
+      "With such a wide range of risks, the possibility of a material shock to the international financial system is rising.",
+      "The Australian financial system remains financially resilient overall."
+    ],
+    "reasoning": "Global risks are explicitly described as elevated and the possibility of a material international shock as rising, but the domestic system remains resilient and household severe stress is small and declining, giving a moderate overall level with a rising trend driven by international factors. Cash flow pressures have eased a little while vulnerable borrowers still face challenges. The Review flags possible build-up of housing and business lending vulnerabilities during the easing phase but finds little evidence yet, and global shock risks carry no clear rate implication, so the implication is neutral."
+  },
+  {
+    "issue_date": "2026-03",
+    "input_sha256": "5cf4aa9a64537720c4ffea668c74b1cd15101a9de6beef7c5f57570c5476f822",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "global",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "Global financial stability risks are elevated in a rapidly evolving international environment.",
+      "The Australian financial system has a good degree of resilience, though the risk of a more material adverse shock has increased over recent weeks.",
+      "While overall lending standards have remained sound, there is early evidence that some forms of riskier lending have picked up."
+    ],
+    "reasoning": "The escalation of conflict in the Middle East, high leverage and concentration in global markets, AI valuation risk and sovereign debt vulnerabilities make global risks elevated, and the Review says the risk of a material adverse shock has increased. Domestically, arrears are low and households and businesses are unlikely to be a source of instability, supported by strong labour and housing markets. The domestic concerns centre on strong credit growth, rising high-DTI investor and high-LVR lending and easing business lending standards, which on their own point to tightening."
+  },
+  {
+    "issue_date": "2026-10",
+    "input_sha256": "a76bb293f4add438b01179cb3539b305953e494f0ecd5e07a7fe2d52c3ee2e12",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "weakening",
+    "credit_conditions": "loose",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "At the same time, threats to global financial stability continue to mount.",
+      "Domestic cyclical developments do not pose systemic risks to financial stability in Australia at present, but are being closely monitored.",
+      "Most Australian borrowers appear well positioned to manage ongoing cost pressures and declining housing prices."
+    ],
+    "reasoning": "The Review stresses that threats to global financial stability continue to mount (geopolitical conflicts, rising sovereign debt and leveraged bond-market participants, the AI investment boom with low risk premia, private credit, operational risks), making external factors the most prominent threat. Domestically the system has a good degree of resilience, arrears are low and borrowers have buffers despite slowing growth and declining housing prices, while business credit conditions are favourable amid strong lending competition. Concerns about cost pressures and falling housing prices are offset by warnings to keep lending standards sound amid strong competition, so the domestic implication for rates is neutral."
+  }
+]

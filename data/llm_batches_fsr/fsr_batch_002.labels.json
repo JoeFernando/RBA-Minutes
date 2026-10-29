@@ -1,0 +1,162 @@
+[
+  {
+    "issue_date": "2008-03",
+    "input_sha256": "9db08e5ae4ba0923ae52f626ed85178049dfad7ba7dc597dd8333bb1615f80b6",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "weakening",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The global financial system is currently under more strain than it has been at any time since at least the early 1990s.",
+      "In Australia, the financial system has coped better with the recent strains than have the financial systems of many other countries.",
+      "In addition, lenders have tightened credit standards, particularly to firms with complex and highly leveraged balance sheets."
+    ],
+    "reasoning": "The Review describes the most severe global financial strain since the early 1990s, with confidence brittle and credit conditions tightening, while the Australian system is well capitalised and highly profitable. Domestically, funding costs and mortgage rates have risen faster than the cash rate, RMBS issuance has dried up and some pockets of household stress are emerging, with arrears expected to rise from low levels. The concerns centre on tighter credit and financial stress, implying an easing bias."
+  },
+  {
+    "issue_date": "2008-09",
+    "input_sha256": "6bc21281505ec143ce2f261e23a8de8aa4088bcc690ecc2d6038b0a12005a017",
+    "risk_level": "high",
+    "risk_score": 5,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "weakening",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The problems in the global financial system are proving to be much more pervasive and costly than was anticipated by many observers a year ago.",
+      "This has increased the risk of a damaging feedback loop running from the financial sector to the economy and back to the financial sector.",
+      "While the Australian financial system has not been completely insulated from developments abroad, it is weathering the current difficulties much better than many other financial systems."
+    ],
+    "reasoning": "Global conditions have deteriorated further, with acute uncertainty about the viability of large US institutions and a heightened risk of a financial-real feedback loop. Australian banks remain soundly capitalised with few problem loans, but banks are more cautious in lending, funding costs are up and households have entered a period of balance-sheet consolidation with slower credit demand. The emphasis on stress, tighter lending and deleveraging implies easing."
+  },
+  {
+    "issue_date": "2009-03",
+    "input_sha256": "e98041a08e54e5d31af8f10ee9c7bb21a4c23056efddee765a593c676765e7ad",
+    "risk_level": "high",
+    "risk_score": 5,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The global financial system has continued to experience significant stress.",
+      "As a result, an adverse feedback loop has developed, with the troubles in the financial sector weighing on the real economy, which is in turn making it more difficult to solve the problems in the financial system.",
+      "In contrast to the experience in many countries, the Australian banking system has performed well over recent times."
+    ],
+    "reasoning": "The Review says an adverse feedback loop between the financial sector and the real economy has now developed globally, with major economies contracting and lending standards tightened, a worsening from the previous Review. Australian banks remain profitable, well capitalised and supported by the guarantee, though arrears have risen and are expected to rise further. Credit growth has slowed on tighter standards and weaker demand while housing credit grows broadly in line with income; the concerns about deleveraging and stress imply easing."
+  },
+  {
+    "issue_date": "2009-09",
+    "input_sha256": "0e57d05c884147c805ef97751326483209e74acee0c43fb1a988f5c5b1948435",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Conditions in the global financial system have improved significantly since the time of the last Financial Stability Review in March.",
+      "But, while further setbacks cannot be ruled out, the severe downside risks that loomed six months ago have significantly abated.",
+      "The Australian financial system has, throughout the crisis period, remained resilient."
+    ],
+    "reasoning": "Global conditions have improved markedly since March and severe downside risks have abated, though the situation remains challenging with loan losses still to unfold and emergency support to be withdrawn. The Australian system has remained resilient and funding markets are reopening. Owner-occupier lending and established housing conditions have firmed while business credit is falling on weaker demand and somewhat tighter standards, so the concerns are mixed with no clear rate implication."
+  },
+  {
+    "issue_date": "2010-03",
+    "input_sha256": "865eb6d83590f31bf5dda07bcc246e06c296dc86fd70191f928a535ff900c38f",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "With the world economy now recovering, financial risks appear to be abating.",
+      "However, significant challenges and uncertainties for the global financial system remain.",
+      "There has been a more significant deterioration in the quality of banks' business loan portfolios, particularly for commercial property, and this remains an area to watch closely in the period ahead."
+    ],
+    "reasoning": "The Review says financial risks appear to be abating as the world economy recovers, though sentiment in advanced economies remains fragile and sovereign concerns have emerged in Europe. Australian banks' loan losses may have peaked, funding conditions have improved and the guarantee is being closed, with commercial property the main domestic area to watch. Housing credit and prices strengthened in 2009 before higher rates dampened finance, and business credit supply is becoming less restrictive, so there is no clear rate implication."
+  },
+  {
+    "issue_date": "2010-09",
+    "input_sha256": "58be588dccb68fc50ddd8e150f66373b4794845e634afea5f1544fcac1cade4b",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "The Australian financial system remains in relatively strong condition, as does the broader economy.",
+      "During April and May, markets focused on concerns about euro area sovereign debt, and the potential for negative feedbacks through credit and funding markets.",
+      "Households continue to exhibit a somewhat more cautious approach to debt than prior to the crisis, with welcome signs that the recent housing market strength led by first-home buyers has cooled."
+    ],
+    "reasoning": "International bank health has mostly improved but euro area sovereign debt concerns created significant uncertainty and periodic funding-market nervousness, leaving the overall risk picture broadly unchanged. Australian banks' profitability and balance sheets continue to strengthen, bad debts have peaked and housing arrears remain fairly low. Housing strength has cooled and business credit availability is improving except for commercial property, so the Review's concerns carry no clear rate implication."
+  },
+  {
+    "issue_date": "2011-03",
+    "input_sha256": "6633c1cd97d751f4af7ce19c87b42d672342a02339bf7f3920f5a4e1a6efe2c1",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Confidence in the banking systems of major countries has generally improved since the previous Financial Stability Review.",
+      "Some banking systems are still under considerable strain, however, notably in parts of Europe, where recovery is being undermined by market concerns about sovereign debt sustainability.",
+      "While indicators of financial stress are relatively subdued, a continuation of this recent borrowing restraint would help build additional resilience into households' balance sheets."
+    ],
+    "reasoning": "Confidence in major banking systems has improved since the previous Review, though parts of Europe remain under strain and global banks face funding and asset-quality challenges; natural disasters are judged to be within insurers' capacity to absorb. Australian banks have recovered profitability, improved liquidity and bolstered capital. Households and businesses remain cautious borrowers with subdued stress indicators, and the Review's warning against chasing pre-crisis growth rates is a forward-looking caution rather than a call for a change in rates."
+  },
+  {
+    "issue_date": "2011-09",
+    "input_sha256": "9038c9eef0d43268d3f58b3bc2c9c782e1448a43678c29e68eaccc30e2c398e2",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 3,
+    "key_quotes": [
+      "Market concerns about sovereign debt sustainability in Europe have escalated over the past six months and spread to a wider range of countries in that region.",
+      "Much will depend on the ability of governments, especially in Europe, to resolve the sovereign debt problems affecting some countries.",
+      "The Australian banking system is considerably better placed to cope with periods of market strain than it was before the crisis, having substantially strengthened its liquidity, funding and capital positions in recent years."
+    ],
+    "reasoning": "European sovereign debt concerns have escalated and triggered heightened global market turbulence, with the Review unsure whether this is a temporary bout or the start of a more serious dislocation. Australian banks have seen modest share-price falls and some tightening in wholesale funding but are much better placed than before the crisis. Households remain cautious with low arrears and slow credit growth; the concerns about global turbulence and subdued borrowing lean towards easing."
+  }
+]

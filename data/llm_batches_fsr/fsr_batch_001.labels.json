@@ -1,0 +1,162 @@
+[
+  {
+    "issue_date": "2004-03",
+    "input_sha256": "77c3165f839d94cebc6822155e8195e6f2165e0f4017821b66c2a7eb4369d1cd",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "The Reserve Bank's overall assessment is that the Australian financial system is currently in good shape.",
+      "One consequence of these changes is that the overall riskiness of the mortgage portfolios of financial institutions is likely to have increased.",
+      "These developments raise the possibility that future default rates may not be as benign as those in the past."
+    ],
+    "reasoning": "Banks are described as very strong and default rates are very low, so resilience is strong and household stress low. The main concern is the rapid run-up in house prices and household debt, with looser lending (cheaper products, new borrowers, investor lending) raising mortgage risk. Concern about a housing and credit boom implies a tightening bias, and global risk mispricing is a secondary concern."
+  },
+  {
+    "issue_date": "2004-09",
+    "input_sha256": "e8ac21af715814913bc5b0cdc4799e4e64c1663ef41b25875b186e7ec6dcf64e",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "As has been the case for some years now, the Australian financial system remains in good shape, with recent developments generally being favourable from a financial stability perspective.",
+      "These are welcome outcomes from a financial stability perspective.",
+      "Household credit continues to grow strongly, notwithstanding the recent slowing."
+    ],
+    "reasoning": "The Review welcomes the turnaround in the housing market and slower household credit growth as reducing risk, so the trend is easing. Household vulnerability measures are at record highs but problem loans are very low and banks are strong. Risks are two-sided (a sharp household balance-sheet adjustment versus a reignited housing market), so there is no clear rate implication."
+  },
+  {
+    "issue_date": "2005-03",
+    "input_sha256": "de50271d9bccdbfb7b57e28de85e2ad2012002a1105a1544acc5f28195bd6dfe",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "The Reserve Bank's overall assessment is that the Australian financial system is in sound condition.",
+      "Despite these welcome developments, the current environment is not without its vulnerabilities.",
+      "The concern here is that some intermediaries may be responding to this slowdown by taking on more risk, and at lower margins, in an attempt to preserve lending volumes and market shares."
+    ],
+    "reasoning": "The system is sound, with well-capitalised, profitable banks and very low bad debts, and the housing market has steadied. Vulnerabilities centre on household borrowing for housing and on lenders relaxing standards (low-doc lending, brokers, discounting), with global underpricing of risk also flagged. The concerns about excess borrowing and loosening lending practices lean towards tightening, although both housing risks are judged relatively low."
+  },
+  {
+    "issue_date": "2005-09",
+    "input_sha256": "c5c625950ff085bfe2b940cad4ee73d428dbd4045d1bee881fc048b52ac02660",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "global",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "The Australian financial system remains in good shape.",
+      "From a financial stability perspective, the concern is that the combination of elevated asset prices and increased levels of debt in many markets could be sowing the seeds for future problems.",
+      "The probability of this occurring, however, has declined somewhat over the past year."
+    ],
+    "reasoning": "The banking system is performing strongly and the domestic housing adjustment has been smooth, lowering the probability of a large household correction. The most prominent risk is international: elevated asset prices, compressed risk premia and increased leverage that could unwind abruptly. Concern about leverage building at high prices and intensified lending competition leans towards tightening."
+  },
+  {
+    "issue_date": "2006-03",
+    "input_sha256": "c68b0a56478935ac415bb7a73055c2f746563ecef3aeaff40bb0f7b9e97f3e7b",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Recent developments have been largely favourable from a financial stability perspective.",
+      "To date there are few signs that the household sector is struggling with higher levels of debt and interest payments relative to income.",
+      "It would therefore be surprising if there were not at least some element of this type of myopia in financial markets currently."
+    ],
+    "reasoning": "Developments are largely favourable, banks are well capitalised and arrears remain low, with house prices moving sideways. The domestic focus is the high level of household debt and the relaxation of lending standards, alongside global puzzles about underpriced risk. The Review explicitly says current credit growth is not necessarily unsustainable, so the rate implication is unclear."
+  },
+  {
+    "issue_date": "2006-09",
+    "input_sha256": "d7e2e6208fdb8b77a9878ec7ca09c02b615d49e15d896e64600ebd15f2fded14",
+    "risk_level": "moderate",
+    "risk_score": 2,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "global",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "From a financial stability perspective, the past six months have been broadly reassuring.",
+      "While it is entirely possible that these views will prove to be well founded, valuations remain susceptible to disappointing news.",
+      "The challenge for banks and other lenders is to avoid an undue erosion of credit standards following 15 consecutive years of economic expansion."
+    ],
+    "reasoning": "The past six months are described as broadly reassuring, with orderly global markets and highly profitable, well-capitalised banks. The main risks are optimistic global valuations and rising leverage, plus very strong business credit growth and intense lending competition domestically. Mortgage arrears have risen modestly but remain low; concerns about leverage and eroding credit standards point towards tightening."
+  },
+  {
+    "issue_date": "2007-03",
+    "input_sha256": "97db0a3077b11fafc5552ec696b1cf6e53309178cb5a9ad70f6b06e910d9949e",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "loose",
+    "main_risk_source": "global",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "Against this favourable background, the past month has seen an increase in volatility in some markets, and notably, a sharp pick-up in loan arrears in sub-prime residential mortgages in the United States.",
+      "At the same time, since valuations in a number of markets appear to be based on quite optimistic assumptions about future conditions, central banks and regulators charged with safeguarding financial stability need to pay attention to the downside risks attached to the otherwise favourable environment.",
+      "There are, however, some signs that this period of conservative leverage may be starting to draw to a close, with growth in business credit up significantly on rates a few years ago."
+    ],
+    "reasoning": "Conditions remain favourable and household finances are judged quite reassuring, but the Review notes new market volatility, US sub-prime arrears and optimistic global valuations. Business leverage is rising and lending conditions for businesses are easing, so risks are tilting upward. Concern about leverage and underpriced risk implies a tightening bias, hedged by a balanced discussion of competing views."
+  },
+  {
+    "issue_date": "2007-09",
+    "input_sha256": "fca0aef183cb8492ef2c85b2d462026555eef5ff639b9769e05013d1372083e2",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "tight",
+    "main_risk_source": "financial_markets",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The past couple of months have seen a marked tightening in conditions in global credit markets.",
+      "Overall, the Australian banking system remains highly profitable and is well capitalised.",
+      "It is, however, both likely and appropriate that credit spreads on a wide variety of assets will settle at higher levels than those seen over recent years, and that credit will not be available on as generous terms as has been the case recently."
+    ],
+    "reasoning": "Global credit markets have tightened sharply, with liquidity pressures in inter-bank markets and higher funding costs reaching Australia, so risk is elevated and rising. Australian banks remain profitable and well capitalised with limited sub-prime exposure, and household financial difficulty remains low. Concern about tighter credit and market stress, taken alone, implies an easing bias."
+  }
+]

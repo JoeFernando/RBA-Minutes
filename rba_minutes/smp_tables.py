@@ -232,7 +232,7 @@ def _caption(table: Tag) -> tuple[str, str, str, str]:
         text, marks = _cell_text(caption)
         marks = ",".join(m for m in (marks, sub_marks) if m)
     text = re.sub(r"^(Table\s+[A-Z])l\b", r"\g<1>1", text)   # 'Table Bl' (a typo for B1)
-    match = (re.match(r"^Table\s+([A-Z]\.\d+|[A-Z]?\d+(?:\.\d+)?[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
+    match = (re.match(r"^Table\s+([A-Z]\.\d+|[A-Z]?\d+(?:\.\d+)*[A-Za-z]?|[A-Z]\d*)\s*[:.–-]?\s*(.*)$", text)
              or re.match(r"^([A-Z]?\d+(?:\.\d+)?)\s*:\s*(.*)$", text))      # "2.4: Foreign Exchange Reserves"
     number, title = (match.group(1), match.group(2)) if match else ("", re.sub(r"^Table\s*:\s*", "", text))
     return number, title.strip(), subtitle.strip(), marks
@@ -268,10 +268,22 @@ def _footer(table: Tag) -> tuple[list, list]:
                 seen.add(text)
                 _split_note(text, notes, sources)
             el.decompose()
-        rest = _text_of(place)   # notes written as bare text in the footer cell
-        if rest and rest not in seen:
-            seen.add(rest)
-            _split_note(rest, notes, sources)
+        # Notes written as bare text in the footer cell, one per line ('(a) ...<br/>Source: ...').
+        for br in place.find_all("br"):
+            br.replace_with("\n")
+        lines = []
+        for line in place.get_text("").split("\n"):
+            line = normalise_text(line)
+            if not line:
+                continue
+            if lines and not re.match(r"^(\([a-z0-9]{1,2}\)|\*|sources?\s*:|notes?\s*:)", line, re.I):
+                lines[-1] = normalise_text(f"{lines[-1]} {line}")   # a note wrapped onto the next line
+            else:
+                lines.append(line)
+        for rest in lines:
+            if rest not in seen:
+                seen.add(rest)
+                _split_note(rest, notes, sources)
     return notes, sources
 
 
@@ -368,8 +380,10 @@ def parse_table(table: Tag) -> dict:
             return False
         if all(v["is_th"] for v in filled):
             return True
+        # (a row of two-digit numbers is data, not two-digit years: '37 15 16 21')
         return len(filled) == 1 and filled[0]["colspan"] >= max(2, width - label_cols - 1) or \
-            len(filled) >= 2 and all(PERIOD.match(v["text"]) for v in filled)
+            len(filled) >= 2 and all(PERIOD.match(v["text"]) for v in filled) and \
+            not all(re.fullmatch(r"\d{1,2}", v["text"]) for v in filled)
 
     # Columns that never hold a value (spacer columns, or columns created by a
     # colspan wider than the table) are dropped unless they carry a real header.

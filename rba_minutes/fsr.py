@@ -303,7 +303,12 @@ SELECT
     i.issue_date, i.year, i.published_date, i.n_words,
     d.lm_tone, d.lm_net_per_1k, d.lm_uncertainty_per_1k, d.hawk_dove_index,
     o.lm_tone AS overview_lm_tone, o.lm_uncertainty_per_1k AS overview_lm_uncertainty_per_1k,
-    l.risk_level AS llm_risk_level, l.risk_score AS llm_risk_score, l.risk_trend AS llm_risk_trend,
+    l.risk_level AS llm_risk_level,
+    -- the four risk levels as 1-4; use this rather than risk_score, whose 1-5 scale the
+    -- labelling batches mapped onto the levels slightly differently
+    CASE l.risk_level WHEN 'low' THEN 1 WHEN 'moderate' THEN 2 WHEN 'elevated' THEN 3 WHEN 'high' THEN 4 END
+        AS llm_risk_level_ordinal,
+    l.risk_score AS llm_risk_score, l.risk_trend AS llm_risk_trend,
     l.system_resilience AS llm_system_resilience, l.household_stress AS llm_household_stress,
     l.housing_market AS llm_housing_market, l.credit_conditions AS llm_credit_conditions,
     l.main_risk_source AS llm_main_risk_source, l.policy_implication AS llm_policy_implication,

@@ -1,0 +1,162 @@
+[
+  {
+    "issue_date": "2016-04",
+    "input_sha256": "df72a17d2b7f47b78ae1dc98533fecb5f2b2536a87d2cf475a1fcc1ff6336fef",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Developments since the previous Financial Stability Review have increased attention on global risks, with much of the focus on the outlook for emerging market economies.",
+      "Nonetheless, to date, none of these external developments has significantly affected Australia's financial system.",
+      "Bank profitability has also remained high and capital levels have increased substantially in the past year."
+    ],
+    "reasoning": "Global risks (China, emerging markets, weak advanced-economy banks) have increased and are the main focus, while domestic risks have shifted from housing lending towards residential development and commercial property. Housing conditions have moderated after tighter lending standards and household resilience has improved. Banks are well capitalised and profitable, and no domestic risk is seen as enough on its own to seriously degrade the system, so concerns carry no clear rate implication."
+  },
+  {
+    "issue_date": "2016-10",
+    "input_sha256": "89f3d9ce505cdd973b380c9889c8f6f2d3c36f13db6d2612ceec312d0096b5e9",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "A number of risks continue to weigh on the outlook for the global financial system.",
+      "Risks to financial stability from lending to households have lessened a little over the past six months, as serviceability metrics and other lending standards have continued to strengthen and the pace of credit growth has slowed.",
+      "Against these risks, the Australian banking system has continued to perform well and banks remain resilient to possible shocks."
+    ],
+    "reasoning": "Global risks from Chinese debt, emerging markets and weak advanced-economy banks continue, while household-related risks have lessened a little and domestic concerns centre on inner-city apartments and resource-related areas. Housing price growth has slowed, although debt-to-income is still drifting higher and non-performing mortgages remain low. Banks are well capitalised and resilient, so the overall picture is broadly unchanged with no clear rate implication."
+  },
+  {
+    "issue_date": "2017-04",
+    "input_sha256": "7e41e04b958e934fcb1a6d106f253a6fafdd2d138d4943f318311e8af83c1b72",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "In Australia, vulnerabilities related to household debt and the housing market more generally have increased, though the nature of the risks differs across the country.",
+      "Investor activity and housing price growth have picked up strongly in Sydney and Melbourne.",
+      "Australian banks remain well placed to manage these various challenges."
+    ],
+    "reasoning": "The Review says vulnerabilities from household debt and housing have increased, with rising indebtedness, prevalent interest-only lending and strong investor activity and price growth in Sydney and Melbourne, prompting additional APRA measures 'in an environment of heightened risks'. Household stress indicators remain contained and low rates support servicing. Banks are judged well placed, but concern about a housing and leverage build-up implies a tightening bias."
+  },
+  {
+    "issue_date": "2017-10",
+    "input_sha256": "e1e97cea39c9a818e04238e377f9a955d83f45d2134ae5af49f09ec43d6d3995",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "household_housing",
+    "policy_implication": "neutral",
+    "confidence": 4,
+    "key_quotes": [
+      "Global economic conditions strengthened further over the past six months, reducing some near-term risks to financial stability and improving the outlook for bank profitability.",
+      "Turning to Australia, household balance sheets and the housing market remain a core area of interest.",
+      "The financial system is in a strong position and its resilience to adverse shocks has increased over recent years."
+    ],
+    "reasoning": "Stronger global growth has reduced some near-term risks, though search-for-yield and high debt remain concerns. Domestically, household debt is high and edging higher, but regulatory measures have moderated riskier lending and housing conditions show signs of easing. The system is described as strong; with tightening already delivered via lending standards, the concerns imply no clear rate direction."
+  },
+  {
+    "issue_date": "2018-04",
+    "input_sha256": "2bf0ae82b8ea60f913723e9851dc1560fde0afd8183a92e9358e4f34e24c9224",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "financial_markets",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "On the domestic front, concerns about riskier types of new housing borrowing have eased.",
+      "Current asset pricing suggests that investors see little chance of adverse outcomes, and consequently a detrimental shock could lead to a disruptive and lasting correction in a broad range of markets.",
+      "The resilience and overall financial performance of Australian banks has continued to improve."
+    ],
+    "reasoning": "Domestic concerns about riskier housing borrowing have eased as lending standards strengthened and housing conditions moderated, with most stress indicators low despite some interest-only transition arrears. The most prominent risk is elevated global asset valuations and low compensation for risk that could produce a disruptive correction. Bank resilience continues to improve, and the concerns carry no clear rate implication."
+  },
+  {
+    "issue_date": "2018-10",
+    "input_sha256": "ce62f9556d99dc34fae9d156811236789422517199e7ebf483a2c020627df076",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "weakening",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "Australia would be sensitive to a sharp contraction in global growth or dislocation in global financial markets because of the importance of trade and capital inflows.",
+      "It is possible, although not likely, that an excessive tightening in lending standards could exacerbate the current housing slowdown.",
+      "The resilience of Australian banks has increased over the past decade."
+    ],
+    "reasoning": "Global conditions are positive but external exposure, high household debt, the housing slowdown and bank culture are listed as vulnerabilities. Housing has slowed amid stricter lending conditions, though non-performing loans remain very low. The housing slowdown is welcomed as positive for stability while an excessive credit tightening is flagged as possible but not likely, so concerns are balanced with no clear rate implication; resilience is strong."
+  },
+  {
+    "issue_date": "2019-04",
+    "input_sha256": "064312453589b4ccc637fa17b004af493a130c90caf64c51212fdd1ae545a79c",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "weakening",
+    "credit_conditions": "tight",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 3,
+    "key_quotes": [
+      "Vulnerabilities in key trading partners and global financial markets remain elevated and the likelihood of an event adversely impacting those vulnerabilities has seemingly increased.",
+      "Conditions in the housing market remain weak.",
+      "Greatly reduced credit supply would be detrimental to the economy and so financial stability."
+    ],
+    "reasoning": "Global growth has slowed with greater downside risks, and the likelihood of an adverse external event has increased. Domestically, growth has eased, housing prices are falling, credit availability is somewhat tighter and arrears have risen, though household stress measures are generally low. With the system judged much more resilient, the concerns about weakness, falling prices and tighter credit point towards easing."
+  },
+  {
+    "issue_date": "2019-10",
+    "input_sha256": "0235860471c47863f8255460c1c22a4d3d4822e973e9abdd2af30a8fb97d4405",
+    "risk_level": "elevated",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 3,
+    "key_quotes": [
+      "Uncertainty about the outlook for global economic growth has increased since the previous Financial Stability Review, with a greater chance of weak growth.",
+      "But the rise in housing non-performing loans to its highest level in several years is notable.",
+      "However, it is important that banks are not overly cautious in the implementation of current lending policies."
+    ],
+    "reasoning": "The chance of weak global growth has increased while risk premiums stay low, making external shocks the most prominent risk. Housing markets have turned up in Sydney and Melbourne but keep falling in WA and the NT, and housing non-performing loans are at their highest in several years. The Review warns against overly cautious lending and highlights weak income growth and job insecurity, implying easing, though it also notes longer-run risk of a housing price resurgence; resilience is strong."
+  }
+]

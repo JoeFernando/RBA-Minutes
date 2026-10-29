@@ -1,0 +1,162 @@
+[
+  {
+    "issue_date": "2020-04",
+    "input_sha256": "a86b30694ba0569c2ebc9b002310ad3cbede2533f70000fdf58b73427b1b3011",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "The COVID-19 pandemic is causing significant strains in the global financial system",
+      "Australia's financial system faces increased risks, but is well placed to manage them",
+      "The Australian financial system enters this challenging period in a strong starting position."
+    ],
+    "reasoning": "The pandemic has abruptly raised risks, with global market dislocation and sharp falls in asset prices, so risks are rising and elevated. Australian banks enter the downturn with high capital, liquidity and profitability, so resilience is strong. Many households will face income strain, cushioned by deferrals and government support, and the housing outlook is unclear. The concerns centre on financial stress and economic contraction, which point towards easing."
+  },
+  {
+    "issue_date": "2020-10",
+    "input_sha256": "bf751b9a1efa59a0059372f5da024f5146d142ceeca53d02c7872a06009c8e2a",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "weakening",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "Risks to financial systems will therefore remain elevated for some time to come.",
+      "While the Australian financial system is in a strong position, risks are elevated.",
+      "However, with unemployment having increased and many employees working reduced hours, the number of households experiencing financial stress has increased and will increase further."
+    ],
+    "reasoning": "The Review says risks remain elevated as the focus shifts from liquidity to borrower solvency, with an uncertain, uneven global recovery driven by the virus. Banks are well capitalised and stress tests show they stay above minimum capital even in a severe scenario. Household stress is rising and housing prices have fallen a little, with a risk of further falls. Concerns about defaults, business failures and weak demand point towards easing."
+  },
+  {
+    "issue_date": "2021-04",
+    "input_sha256": "ef7cab67cafc909dacd44010ddd5ee28ac78b2755f3886e3326fa53e61466fb9",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "easing",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 3,
+    "key_quotes": [
+      "The Australian banks are in a strong financial position coming out of the pandemic.",
+      "In Australia, housing prices have recorded strong growth in recent months.",
+      "Cyclically low interest rates and rising asset prices create a risk of excessive borrowing"
+    ],
+    "reasoning": "The strong rebound greatly reduces the risk of a deep global recession, and bank non-performing loans rose less than expected, so risks are easing. Financial conditions are very accommodative and housing prices are growing strongly. The main forward-looking concern is excessive borrowing and risk-taking as asset prices rise, though debt growth has not yet picked up much, so the tightening signal is hedged."
+  },
+  {
+    "issue_date": "2021-10",
+    "input_sha256": "ed970931f170ba134a8eaaeca91f066ad194a35b71a6df834f1151719363ff81",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "loose",
+    "main_risk_source": "household_housing",
+    "policy_implication": "tightening",
+    "confidence": 4,
+    "key_quotes": [
+      "However, the Australian financial system is highly resilient – with rapid progress in vaccinations, it is expected that output will rebound as the economy gradually reopens, reducing the risk to the financial system.",
+      "In Australia, there have been large increases in housing prices and an acceleration in borrowing.",
+      "However, there has been a build-up of systemic risks associated with high and rising household indebtedness."
+    ],
+    "reasoning": "Risks from borrower repayment difficulties have eased, but risks from expansionary financial conditions, rising asset prices and household indebtedness are building, so the overall picture is broadly stable. Housing prices and borrowing are rising strongly, and APRA has raised the serviceability buffer in response. The prominent domestic concern is a build-up of household leverage, which points towards tightening."
+  },
+  {
+    "issue_date": "2022-04",
+    "input_sha256": "13bf626c3c1a4b23e975e4ba525f3995ff3964828c7606a101ab331eaa9d009c",
+    "risk_level": "moderate",
+    "risk_score": 3,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "low",
+    "housing_market": "strong",
+    "credit_conditions": "neutral",
+    "main_risk_source": "household_housing",
+    "policy_implication": "neutral",
+    "confidence": 3,
+    "key_quotes": [
+      "In Australia, the financial system has remained highly resilient and supportive of the economic recovery.",
+      "Even so, housing credit growth has for some time exceeded growth in incomes, with the ratio of housing credit to income edging up from an already high level.",
+      "The high level of household debt relative to income in Australia has increased the sensitivity of households and their spending to higher interest rates and a rise in living expenses."
+    ],
+    "reasoning": "New sources of uncertainty (the invasion of Ukraine, higher inflation and rising interest rates) have added to risks, but the Australian system remains highly resilient, with low arrears and large household buffers. The main concern is highly indebted borrowers facing higher rates, after housing credit has outpaced income growth. The concerns point both ways (rising leverage versus borrowers' sensitivity to rate rises), so there is no clear implication for interest rates."
+  },
+  {
+    "issue_date": "2022-10",
+    "input_sha256": "e8b1d406e72bca262f2bab8c8f096f8f906e87c4b0ad12c126bd1268d372c4a7",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "weakening",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "Financial stability risks have increased over recent months.",
+      "Some households are already feeling the strain from higher interest rates and inflation, and this is likely to continue for some time.",
+      "Banks in Australia remain liquid and very well capitalised."
+    ],
+    "reasoning": "Risks have increased as global financial conditions tighten rapidly, growth forecasts are cut and a turn in the credit cycle looks likely. Australian banks remain liquid and very well capitalised, but pressure on household budgets is rising and housing prices are falling. Credit remains available, but housing credit growth is slowing. The concerns are about tightening conditions, borrower stress and disorderly asset price falls, which point towards easing."
+  },
+  {
+    "issue_date": "2023-04",
+    "input_sha256": "b7ce26971c0474e005c349f11b7dccf22c319654e206805622ff27a1b8710b7d",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "rising",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "weakening",
+    "credit_conditions": "neutral",
+    "main_risk_source": "banks_funding",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "Global financial stability risks have increased despite loan arrears remaining very low.",
+      "The Australian financial system remains strong and well placed to support the economy",
+      "Some households and businesses are already experiencing financial stress, and the squeeze on household budgets is likely to continue for some time."
+    ],
+    "reasoning": "Bank failures in the US and the takeover of Credit Suisse, together with fragile confidence and the risk of deposit flight, have raised global risks, making bank funding stress the most prominent source. The Australian system is strongly capitalised and highly liquid. Some households are under financial stress and national housing prices have declined. Concerns about tighter financial conditions, reduced credit supply and borrower cash-flow squeeze point towards easing."
+  },
+  {
+    "issue_date": "2023-10",
+    "input_sha256": "94ebd064995a51e1089b9559f305964dd65918c9fe74699d807f0fa7c7356e38",
+    "risk_level": "elevated",
+    "risk_score": 4,
+    "risk_trend": "stable",
+    "system_resilience": "strong",
+    "household_stress": "moderate",
+    "housing_market": "stable",
+    "credit_conditions": "neutral",
+    "main_risk_source": "global",
+    "policy_implication": "easing",
+    "confidence": 4,
+    "key_quotes": [
+      "Global financial stability risks are elevated, reflecting challenging macroeconomic conditions.",
+      "Risks to financial stability are elevated but the Australian financial system remains strong.",
+      "Incidences of severe financial stress are expected to increase but remain limited to a small share of housing borrowers."
+    ],
+    "reasoning": "Global risks remain elevated, with China property stress, further tightening in global financial conditions and a sharp slowdown named as the key risks, which would reach Australia through funding and trade channels. Australian banks hold capital and liquidity well above requirements. Households have adapted, but some are stretched and severe stress is expected to rise among a small share of borrowers. Concerns about borrower strain and restrictive conditions point towards easing."
+  }
+]
