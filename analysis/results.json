@@ -1,4 +1,122 @@
 {
+  "abs_era": {
+    "start": "1998-11-01",
+    "first_test": "2003-05-06",
+    "last_test": "2026-09-29",
+    "scores": [
+      {
+        "model": "macro",
+        "n": 251,
+        "accuracy": 0.7729083665338645,
+        "log_loss": 0.6100202965968432,
+        "brier": 0.35372149788055296,
+        "moves": 61,
+        "moves_called": 16,
+        "false_alarms": 12,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+gdp",
+        "n": 251,
+        "accuracy": 0.7768924302788844,
+        "log_loss": 0.6239259837550619,
+        "brier": 0.35918706352924107,
+        "moves": 61,
+        "moves_called": 16,
+        "false_alarms": 11,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+wages",
+        "n": 251,
+        "accuracy": 0.7768924302788844,
+        "log_loss": 0.6098148713024141,
+        "brier": 0.3481338223272138,
+        "moves": 61,
+        "moves_called": 16,
+        "false_alarms": 11,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+gdp+wages",
+        "n": 251,
+        "accuracy": 0.7569721115537849,
+        "log_loss": 0.6174199033609163,
+        "brier": 0.35191726155944747,
+        "moves": 61,
+        "moves_called": 16,
+        "false_alarms": 16,
+        "wrong_direction": 1
+      },
+      {
+        "model": "always_hold",
+        "n": 251,
+        "accuracy": 0.7569721115537849,
+        "log_loss": 3.3575543587084486,
+        "brier": 0.4860557768924303,
+        "moves": 61,
+        "moves_called": 0,
+        "false_alarms": 0,
+        "wrong_direction": 0
+      },
+      {
+        "model": "repeat_last_decision",
+        "n": 251,
+        "accuracy": 0.7250996015936255,
+        "log_loss": 0.899924863446015,
+        "brier": 0.48233067729083656,
+        "moves": 61,
+        "moves_called": 26,
+        "false_alarms": 34,
+        "wrong_direction": 0
+      },
+      {
+        "model": "class_frequencies",
+        "n": 251,
+        "accuracy": 0.7569721115537849,
+        "log_loss": 0.7303484262967707,
+        "brier": 0.4010888199529738,
+        "moves": 61,
+        "moves_called": 0,
+        "false_alarms": 0,
+        "wrong_direction": 0
+      }
+    ],
+    "paired": [
+      {
+        "baseline": "macro",
+        "model": "macro+gdp",
+        "mean_improvement": -0.013905687158218775,
+        "ci90_low": -0.027002183861700675,
+        "ci90_high": -0.0002518402698996454,
+        "share_better": 0.3904382470119522
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+wages",
+        "mean_improvement": 0.00020542529442911888,
+        "ci90_low": -0.02273886844993576,
+        "ci90_high": 0.018950529649179152,
+        "share_better": 0.7569721115537849
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+gdp+wages",
+        "mean_improvement": -0.007399606764073157,
+        "ci90_low": -0.040609582260437115,
+        "ci90_high": 0.020296518217783322,
+        "share_better": 0.6932270916334662
+      },
+      {
+        "baseline": "class_frequencies",
+        "model": "macro",
+        "mean_improvement": 0.12032812969992757,
+        "ci90_low": 0.03679400384508362,
+        "ci90_high": 0.23046744201640662,
+        "share_better": 0.749003984063745
+      }
+    ]
+  },
   "smp_era": {
     "start": "1997-03-01",
     "first_test": "2001-05-01",
@@ -450,6 +568,50 @@
         "wrong_direction": 0
       },
       {
+        "model": "macro+gdp",
+        "n": 172,
+        "accuracy": 0.8081395348837209,
+        "log_loss": 0.6296565993385667,
+        "brier": 0.3369020537420008,
+        "moves": 39,
+        "moves_called": 12,
+        "false_alarms": 6,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+wages",
+        "n": 172,
+        "accuracy": 0.7965116279069767,
+        "log_loss": 0.6085568423740022,
+        "brier": 0.3258561908537042,
+        "moves": 39,
+        "moves_called": 12,
+        "false_alarms": 8,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+gdp+wages",
+        "n": 172,
+        "accuracy": 0.7790697674418605,
+        "log_loss": 0.6077543426141412,
+        "brier": 0.3306882233455241,
+        "moves": 39,
+        "moves_called": 11,
+        "false_alarms": 10,
+        "wrong_direction": 0
+      },
+      {
+        "model": "macro+gdp+wages+minutes_text",
+        "n": 172,
+        "accuracy": 0.7674418604651163,
+        "log_loss": 0.5147693993312348,
+        "brier": 0.3183181622869733,
+        "moves": 39,
+        "moves_called": 15,
+        "false_alarms": 16,
+        "wrong_direction": 0
+      },
+      {
         "model": "always_hold",
         "n": 172,
         "accuracy": 0.7732558139534884,
@@ -555,6 +717,38 @@
         "ci90_low": 0.007601259309893123,
         "ci90_high": 0.2006764770563929,
         "share_better": 0.5988372093023255
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+gdp",
+        "mean_improvement": -0.013387866372575762,
+        "ci90_low": -0.03480024963793768,
+        "ci90_high": 0.005177628160274344,
+        "share_better": 0.5755813953488372
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+wages",
+        "mean_improvement": 0.007711890591988706,
+        "ci90_low": -0.011507003862517289,
+        "ci90_high": 0.0385456714000849,
+        "share_better": 0.7848837209302325
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+gdp+wages",
+        "mean_improvement": 0.008514390351849754,
+        "ci90_low": -0.017365167571035716,
+        "ci90_high": 0.046428523744418165,
+        "share_better": 0.7209302325581395
+      },
+      {
+        "baseline": "macro",
+        "model": "macro+gdp+wages+minutes_text",
+        "mean_improvement": 0.10149933363475616,
+        "ci90_low": 0.037932832355346766,
+        "ci90_high": 0.16997588011411502,
+        "share_better": 0.7383720930232558
       },
       {
         "baseline": "class_frequencies",
@@ -701,6 +895,8 @@
       "tm_surprise": 0.25,
       "unemployment": 4.7183487,
       "unemployment_change_6m": 0.42803599999999964,
+      "gdp_growth": 2.137635765206136,
+      "wpi_growth": 3.2,
       "rba_tm_forecast_gap": 0.2999999999999998,
       "smp_llm_stance_score": "1",
       "smp_hawk_dove_index": 0.1647940074906367,
@@ -773,6 +969,34 @@
         "p_cut": 0.0013851096785646795,
         "p_hold": 0.27626150966404606,
         "p_raise": 0.7223533806573892
+      },
+      {
+        "model": "macro+gdp",
+        "trained_on": 402,
+        "p_cut": 0.0618375920959783,
+        "p_hold": 0.8437226584727776,
+        "p_raise": 0.09443974943124404
+      },
+      {
+        "model": "macro+wages",
+        "trained_on": 299,
+        "p_cut": 0.0255705820985347,
+        "p_hold": 0.8082841677926299,
+        "p_raise": 0.16614525010883535
+      },
+      {
+        "model": "macro+gdp+wages",
+        "trained_on": 299,
+        "p_cut": 0.018727947609329602,
+        "p_hold": 0.8189656075446687,
+        "p_raise": 0.16230644484600174
+      },
+      {
+        "model": "macro+gdp+wages+minutes_text",
+        "trained_on": 212,
+        "p_cut": 0.0007301989787774158,
+        "p_hold": 0.3721627683898048,
+        "p_raise": 0.6271070326314178
       },
       {
         "model": "macro+surprise",

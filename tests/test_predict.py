@@ -67,3 +67,18 @@ def test_backtest_uses_only_earlier_meetings():
     assert preds["decision_date"].min() == panel["decision_date"].iloc[40]
     scores = table.set_index("model")
     assert scores.loc["x", "log_loss"] < scores.loc["class_frequencies", "log_loss"]
+
+
+def test_abs_series_and_growth(tmp_path, monkeypatch):
+    gdp = "DATAFLOW,MEASURE,TIME_PERIOD,OBS_VALUE\n" + "\n".join(
+        f"ABS:ANA_AGG,M1,{y}-Q{q},{100 + (y - 2024) * 4 + q}" for y in (2024, 2025) for q in (1, 2, 3, 4))
+    wpi = "DATAFLOW,MEASURE,TIME_PERIOD,OBS_VALUE\nABS:WPI,3,1997-Q3,\nABS:WPI,3,2025-Q4,3.4\n"
+    (tmp_path / "abs_gdp.csv").write_text(gdp)
+    (tmp_path / "abs_wpi.csv").write_text(wpi)
+    monkeypatch.setattr(predict, "MACRO_DIR", tmp_path)
+    growth, wages = predict.load_abs()
+    assert growth.index[0] == dt.date(2025, 3, 31)
+    assert growth.iloc[0] == pytest.approx((105 / 101 - 1) * 100)  # 2025-Q1 level over 2024-Q1 level
+    assert wages.to_dict() == {dt.date(2025, 12, 31): 3.4}  # empty observations dropped
+    assert predict._latest_before(growth, dt.date(2025, 6, 8), predict.GDP_PUBLICATION_LAG)[0] == dt.date(2025, 3, 31)
+    assert predict._latest_before(growth, dt.date(2025, 6, 7), predict.GDP_PUBLICATION_LAG)[0] is None  # released 7 June: not before that day

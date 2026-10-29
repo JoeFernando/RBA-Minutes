@@ -8,7 +8,7 @@ Downloads, cleans, stores and scores three Reserve Bank of Australia publication
 | Statement on Monetary Policy (SMP) | Every issue since February 1997 (published in the RBA Bulletin until 2005) | Cleaned text by chapter and paragraph, every box and "In Depth" special study, **every table as clean data**, **every graph** (image, title, SVG text, and underlying data where published), dictionary sentiment, Claude stance labels |
 | Financial Stability Review (FSR) | Every issue since the first in March 2004 | Cleaned text, every box, Focus Topic, article and special chapter (household mortgage stress, housing, banks), every table and graph, dictionary sentiment, Claude risk assessments |
 | RBA forecasts | Central forecasts since 1990 with outcomes and errors; detailed SMP forecast tables since November 2018 | Tidy forecast tables, cross-checked against the SMP tables |
-| Prediction analysis | Every Board decision since 1990 | Out-of-sample tests of what predicts the next decision: see [`analysis/README.md`](analysis/README.md) |
+| Prediction analysis | Every Board decision since 1990, with ABS inflation, unemployment, GDP and wages | Out-of-sample tests of what predicts the next decision: see [`analysis/README.md`](analysis/README.md) |
 
 Everything is in three SQLite files (each under GitHub's 100 MB limit; all readable from R and Python):
 
@@ -86,10 +86,10 @@ python -m rba_minutes fsr-tables
 python -m rba_minutes fsr-graphs
 ```
 
-Prediction backtests (and probabilities for the next decision):
+Prediction backtests (and probabilities for the next decision; `--refresh-data` first downloads the RBA cash rate history, RBA tables G1 and H5 (ABS CPI and Labour Force), and ABS real GDP and Wage Price Index from the ABS Data API into `data/macro/`):
 
 ```bash
-python -m rba_minutes predict --next 2026-11-03
+python -m rba_minutes predict --refresh-data --next 2026-11-03
 ```
 
 Downloads are cached (`data/raw/`, `data/raw_smp/`, `data/raw_fsr/`), pause one second between requests, and re-runs only fetch new pages. Graph images are saved under `data/smp_graphs/` and `data/fsr_graphs/` (not committed: several hundred MB; `smp-graphs` / `fsr-graphs` re-download them).
@@ -366,8 +366,12 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 | SMP tone (Claude or dictionary) | 2001–2026, 273 meetings | No (gain ≈ 0) | No |
 | RBA's year-ahead inflation forecast | 2004–2026, 233 meetings | Slightly, not significant | No |
 | Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 233 meetings | No | No |
+| ABS real GDP growth | 2003–2026, 251 meetings | No (slightly worse) | No |
+| ABS Wage Price Index growth | 2003–2026, 251 meetings | No (gain ≈ 0) | No |
 | FSR risk assessment | 2008–2026, 193 meetings | No | No |
 | **Minutes** (Claude, or dictionary only) | 2010–2026, 172 meetings | **Yes, significant** (log loss 0.616 → 0.500; dictionary-only 0.550) | No: 15 against 12 of 39 moves caught, but 14 against 6 false alarms |
+
+Macro data are today's revised figures rather than the first estimates available at each meeting, which flatters the macro models slightly (see the caveat in `analysis/README.md`).
 
 For the 3 November 2026 decision the models disagree: on data alone a hold is likely (83–87%); the minutes-based models put a raise at 32–64%; the best-scoring models call it about even (51–54% raise).
 

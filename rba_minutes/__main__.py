@@ -14,8 +14,9 @@
   fsr-scrape / fsr-build / fsr-score / fsr-tables / fsr-graphs / fsr-check /
   fsr-llm-export / fsr-llm-import
            the same steps for the Financial Stability Review (2004 onwards)
-  predict  backtest whether the minutes, SMP, FSR and RBA forecasts help predict decisions
-           (writes analysis/); --next YYYY-MM-DD also gives probabilities for that decision
+  predict  backtest whether the minutes, SMP, FSR, RBA forecasts and ABS data help predict decisions
+           (writes analysis/); --next YYYY-MM-DD also gives probabilities for that decision;
+           --refresh-data downloads the macro inputs (RBA cash rate, G1, H5; ABS GDP, WPI) first
   export   write CSV files of the main tables to data/exports
   all      scrape, build, score and export
   status   print a summary of the database
@@ -270,6 +271,9 @@ def cmd_predict(args) -> None:
 
     from . import predict
 
+    if args.refresh_data:
+        for path in predict.fetch_macro():
+            log.info("Saved %s", path)
     next_decision = dt.date.fromisoformat(args.next) if args.next else None
     results = predict.run(next_decision)
     for name, sample in results.items():
@@ -421,6 +425,8 @@ def main(argv=None) -> None:
     p.add_argument("--dir", type=Path, default=config.DATA_DIR / "llm_batches_fsr")
     p = add("predict", cmd_predict, "backtest decision predictions and write analysis/")
     p.add_argument("--next", help="date of the next decision (YYYY-MM-DD) to give probabilities for")
+    p.add_argument("--refresh-data", action="store_true",
+                   help="download the cash rate history, RBA tables G1 and H5, and ABS GDP and WPI first")
     add("export", cmd_export, "write CSV exports")
     add("status", cmd_status, "summarise the database")
 

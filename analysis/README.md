@@ -9,7 +9,8 @@ fitted only on earlier meetings and then predicts that meeting.
 | Item | Detail |
 |---|---|
 | Outcome | Every Board decision since January 1990 (402 decisions, from the RBA's cash rate page, which lists unchanged decisions too): cut, hold or raise |
-| Macro model | Trimmed mean inflation minus 2.5 (RBA table G1, used from 28 days after the quarter), six-month change in the unemployment rate (H5, from 18 days after the month), direction of the last move |
+| Macro model | Trimmed mean inflation minus 2.5 (ABS CPI, from RBA table G1; used from 28 days after the quarter), six-month change in the unemployment rate (ABS Labour Force, from RBA table H5; from 18 days after the month), direction of the last move |
+| Activity and wages | Real GDP growth over the year (ABS national accounts via the ABS Data API, chain volume, seasonally adjusted; from 68 days after the quarter) and Wage Price Index growth over the year (ABS Data API, total hourly rates excluding bonuses, seasonally adjusted; from 50 days after the quarter, data from September 1998) |
 | RBA forecast | The year-ahead trimmed mean forecast published in the latest SMP (from May 2000; internal forecasts not published at the time are excluded) |
 | Inflation surprise | The latest trimmed mean outcome minus the RBA's forecast for that quarter in the SMP of the same quarter (its nowcast; interpolated between the previous outcome and the next forecast where the archive has only half-yearly targets) |
 | SMP text | Latest SMP overview: Claude stance score (-2 to +2) and hawk/dove dictionary index; or dictionary only (hawk/dove index and Loughran-McDonald tone) |
@@ -24,6 +25,28 @@ fitted only on earlier meetings and then predicts that meeting.
 No model ever predicted a move in the wrong direction; the hard part is timing.
 
 ## Results
+
+### Since 2003 (ABS GDP and wages available; 251 meetings, 61 moves)
+
+| Model | Log loss | Brier | Accuracy | Moves called | False alarms |
+|---|---:|---:|---:|---:|---:|
+| macro + wages | 0.610 | 0.348 | 77.7% | 16 of 61 | 11 |
+| macro | 0.610 | 0.354 | 77.3% | 16 of 61 | 12 |
+| macro + GDP + wages | 0.617 | 0.352 | 75.7% | 16 of 61 | 16 |
+| macro + GDP | 0.624 | 0.359 | 77.7% | 16 of 61 | 11 |
+| past class frequencies | 0.730 | 0.401 | 75.7% | 0 of 61 | 0 |
+| repeat last decision | 0.900 | 0.482 | 72.5% | 26 of 61 | 34 |
+
+| Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
+|---|---:|---:|---:|
+| wages (WPI) | +0.000 | -0.023 to +0.019 | 76% |
+| GDP | -0.014 | -0.027 to -0.000 | 39% |
+| GDP + wages | -0.007 | -0.041 to +0.020 | 69% |
+
+**Neither GDP nor wages growth helps.** Once trimmed mean inflation, the trend in unemployment and
+the last move are known, GDP growth makes the probabilities slightly worse and wages growth changes
+nothing. The same holds since 2010 (below). The RBA's decisions follow inflation and the labour market
+much more closely than output, and wages largely move with unemployment.
 
 ### Since 2001 (SMP era; 273 meetings tested, 66 moves)
 
@@ -95,9 +118,13 @@ for financial-stability risks.
 | macro + minutes dictionary | 0.550 | 0.324 | 79.7% | 13 of 39 | 9 |
 | macro + SMP text (Claude) | 0.596 | 0.339 | 78.5% | 12 of 39 | 10 |
 | macro + FSR | 0.601 | 0.329 | 79.7% | 12 of 39 | 8 |
+| macro + GDP + wages + minutes text | 0.515 | 0.318 | 76.7% | 15 of 39 | 16 |
+| macro + GDP + wages | 0.608 | 0.331 | 77.9% | 11 of 39 | 10 |
+| macro + wages | 0.609 | 0.326 | 79.7% | 12 of 39 | 8 |
 | macro + inflation surprise | 0.611 | 0.336 | 80.8% | 12 of 39 | 6 |
 | macro | 0.616 | 0.335 | 80.8% | 12 of 39 | 6 |
 | macro + RBA forecast | 0.621 | 0.336 | 79.7% | 10 of 39 | 6 |
+| macro + GDP | 0.630 | 0.337 | 80.8% | 12 of 39 | 6 |
 | past class frequencies | 0.726 | 0.395 | 77.3% | 0 of 39 | 0 |
 | repeat last decision | 0.862 | 0.460 | 73.8% | 16 of 39 | 22 |
 
@@ -111,6 +138,10 @@ for financial-stability risks.
 | SMP text (Claude) | +0.021 | -0.014 to +0.055 | 59% |
 | FSR | +0.015 | -0.039 to +0.065 | 69% |
 | inflation surprise | +0.005 | -0.015 to +0.033 | 58% |
+| GDP + wages + minutes text | +0.102 | +0.038 to +0.170 | 74% |
+| GDP + wages | +0.009 | -0.017 to +0.046 | 72% |
+| wages | +0.008 | -0.012 to +0.039 | 78% |
+| GDP | -0.013 | -0.035 to +0.005 | 58% |
 | RBA forecast | -0.004 | -0.047 to +0.040 | 74% |
 
 **The minutes are the one source that adds real predictive information.** Across the actual moves,
@@ -158,6 +189,8 @@ Inputs as of 2 November 2026:
 | Trimmed mean inflation, September quarter (released 28 October) | 3.7% year-ended (June 3.6%, March 3.5%); 1.0% in the quarter, the fastest this year |
 | Headline CPI, September quarter | 3.9% year-ended |
 | Unemployment rate, September | 4.72%, up 0.43 points in six months |
+| Real GDP, June quarter (September quarter due 2 December) | 2.1% over the year |
+| Wage Price Index, June quarter (September quarter due mid-November) | 3.2% over the year |
 | RBA trimmed mean forecasts (August SMP) | 3.3% for December 2026, 3.0% for June 2027, 2.6% for December 2027 |
 | September minutes (Claude stance) | +2, strongly hawkish |
 | August SMP (Claude stance) | +1, mildly hawkish |
@@ -170,6 +203,8 @@ Inputs as of 2 November 2026:
 | macro + minutes dictionary (no LLM) | 1% | 68% | 32% | 0.550 |
 | macro + all text, forecast and FSR | 0% | 36% | 64% | 0.535 |
 | macro + inflation surprise | 5% | 83% | 12% | 0.611 |
+| macro + wages | 3% | 81% | 17% | 0.609 |
+| macro + GDP + wages | 2% | 82% | 16% | 0.608 |
 | macro | 6% | 84% | 10% | 0.616 |
 | macro + RBA forecast + SMP text | 3% | 87% | 10% | 0.616 (2004-26) |
 
@@ -186,6 +221,23 @@ moves the probabilities only slightly (raise 10% → 12% on data alone, 51% → 
 This cannot be called "confidently": in the backtests no specification predicted turning points
 reliably. The models do not see market pricing, the RBA's November SMP (released with the decision),
 or speeches since the minutes. Those are the next things to add.
+
+## Caveat: revised data, not real-time data
+
+The macro inputs are today's revised figures, not the first estimates the Board saw at each meeting.
+The publication lags make sure no figure is used before it was released, but the value used is the
+latest revision. Unemployment is revised as seasonal factors are re-estimated, GDP growth is often
+revised by several tenths of a percentage point, and trimmed mean and wages are revised a little.
+
+| Effect | Direction |
+|---|---|
+| Macro models are tested with slightly cleaner data than existed in real time | Flatters the macro models |
+| Text measures come from documents as published | Unaffected |
+| So the gain from the minutes over macro data | If anything understated |
+| GDP and wages adding nothing | Unlikely to be caused by revisions: first estimates are noisier, so they would help even less |
+
+Real-time data would remove this: GDP and unemployment as first published, rebuilt from past ABS
+releases (the ABS does not publish a vintage database as the US does).
 
 ## Files
 

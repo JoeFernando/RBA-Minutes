@@ -3,14 +3,19 @@
 Every Board decision since 1990 (the RBA's cash rate page lists unchanged
 decisions too) is matched with what was public before it:
 
-- macro data: latest trimmed mean inflation (RBA table G1, available about
-  four weeks after the quarter) and the unemployment rate (H5, about 18 days
-  after the month), and the direction of the last move
+- macro data: latest trimmed mean inflation (ABS, via RBA table G1; available
+  about four weeks after the quarter), the unemployment rate (ABS Labour Force,
+  via RBA table H5; about 18 days after the month), and the direction of the
+  last move; for testing, also real GDP growth (ABS national accounts, about
+  68 days after the quarter) and Wage Price Index growth (ABS, about 50 days)
 - the RBA's year-ahead trimmed mean forecast from the latest SMP
 - the latest SMP's stance (Claude label, -2..+2) and hawk/dove dictionary index
 - the latest minutes' stance and hawk/dove index (minutes are published two
   weeks after each meeting, so the previous meeting's minutes are known)
 - the latest FSR's risk level and what its concerns imply for rates
+
+Macro data are today's revised figures, not the first estimates the Board saw
+at the time (see analysis/README.md).
 
 A document counts only if it was published strictly before the decision date
 (the day before the 'effective date' on the RBA's page), so an SMP released
@@ -42,6 +47,40 @@ TARGET_MIDPOINT = 2.5
 MINUTES_PUBLICATION_LAG = dt.timedelta(days=14)
 CPI_PUBLICATION_LAG = dt.timedelta(days=28)
 LABOUR_PUBLICATION_LAG = dt.timedelta(days=18)
+GDP_PUBLICATION_LAG = dt.timedelta(days=68)   # national accounts: first week of the third month
+WPI_PUBLICATION_LAG = dt.timedelta(days=50)   # Wage Price Index: middle of the second month
+
+ABS_API = "https://data.api.abs.gov.au/rest/data"
+MACRO_SOURCES = {
+    "cash-rate.html": f"{config.BASE_URL}/statistics/cash-rate/",
+    "g01hist.xlsx": f"{config.BASE_URL}/statistics/tables/xls/g01hist.xlsx",   # CPI (ABS)
+    "h05hist.xlsx": f"{config.BASE_URL}/statistics/tables/xls/h05hist.xlsx",   # Labour force (ABS)
+    # ABS Data API: real GDP, chain volume, seasonally adjusted ($m)
+    "abs_gdp.csv": f"{ABS_API}/ABS,ANA_AGG/M1.GPM.20.AUS.Q",
+    # ABS Data API: Wage Price Index, total hourly rates of pay excluding bonuses, private and public,
+    # all industries, seasonally adjusted, % change from a year earlier
+    "abs_wpi.csv": f"{ABS_API}/ABS,WPI/3.THRPEB.7.TOT.20.AUS.Q",
+}
+
+
+def fetch_macro(out_dir: Path = MACRO_DIR) -> list[Path]:
+    """Download the cash rate history, RBA tables G1 and H5, and ABS GDP and WPI."""
+    import time
+
+    from .scrape import make_session
+
+    session = make_session()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    saved = []
+    for name, url in MACRO_SOURCES.items():
+        headers = {"Accept": "application/vnd.sdmx.data+csv"} if url.startswith(ABS_API) else {}
+        response = session.get(url, headers=headers, timeout=60)
+        response.raise_for_status()
+        (out_dir / name).write_bytes(response.content)
+        saved.append(out_dir / name)
+        time.sleep(config.REQUEST_DELAY_SECONDS)
+    (out_dir / "downloaded_at.txt").write_text(dt.datetime.now(dt.timezone.utc).isoformat() + "\n")
+    return saved
 
 
 # --- Data ---------------------------------------------------------------------------
@@ -84,6 +123,21 @@ def load_macro() -> tuple[pd.Series, pd.Series]:
     g1, _ = _rba_table(MACRO_DIR / "g01hist.xlsx")
     h5, _ = _rba_table(MACRO_DIR / "h05hist.xlsx")
     return g1["GCPIOCPMTMYP"].dropna(), h5["GLFSURSA"].dropna()
+
+
+def _abs_series(path: Path) -> pd.Series:
+    """An ABS Data API CSV (one series) as values by quarter-end date."""
+    frame = pd.read_csv(path)
+    frame = frame[frame["OBS_VALUE"].notna()]
+    dates = [(pd.Period(t.replace("-Q", "Q"), freq="Q").end_time.date()) for t in frame["TIME_PERIOD"]]
+    return pd.Series(frame["OBS_VALUE"].astype(float).to_numpy(), index=dates).sort_index()
+
+
+def load_abs() -> tuple[pd.Series, pd.Series]:
+    """(real GDP growth over the year, Wage Price Index growth over the year), by quarter end."""
+    gdp = _abs_series(MACRO_DIR / "abs_gdp.csv")
+    gdp_growth = (gdp / gdp.shift(4) - 1).dropna() * 100
+    return gdp_growth, _abs_series(MACRO_DIR / "abs_wpi.csv")
 
 
 def _latest_before(series: pd.Series, when: dt.date, lag: dt.timedelta):
@@ -174,6 +228,7 @@ def build_panel() -> pd.DataFrame:
     """One row per decision: the outcome and everything public before it."""
     decisions = load_decisions()
     tm, ur = load_macro()
+    gdp, wpi = load_abs()
     forecasts = load_rba_forecasts()
     nowcasts = load_tm_nowcasts()
     smp_dates = load_documents()["smp"].set_index("issue_date")["available"]
@@ -198,6 +253,8 @@ def build_panel() -> pd.DataFrame:
             "tm_surprise": tm_value - nowcasts[tm_date] if tm_date in nowcasts else np.nan,
             "unemployment": ur_value,
             "unemployment_change_6m": ur_value - ur_6m.iloc[-1] if len(ur_6m) else np.nan,
+            "gdp_growth": _latest_before(gdp, when, GDP_PUBLICATION_LAG)[1],
+            "wpi_growth": _latest_before(wpi, when, WPI_PUBLICATION_LAG)[1],
         }
         # the RBA's forecast from the latest SMP published before the decision
         known_smp = [k for k, v in smp_dates.items() if v < when]
@@ -229,6 +286,12 @@ MODELS = {
                        "smp_llm_stance_score", "smp_hawk_dove_index", "minutes_llm_stance_score",
                        "minutes_hawk_dove_index", "fsr_llm_risk_level_ordinal", "fsr_policy"],
     "text_only": ["smp_llm_stance_score", "minutes_llm_stance_score", "minutes_hawk_dove_index"],
+    # ABS activity and wages data
+    "macro+gdp": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth"],
+    "macro+wages": ["tm_gap", "unemployment_change_6m", "last_move", "wpi_growth"],
+    "macro+gdp+wages": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth", "wpi_growth"],
+    "macro+gdp+wages+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "gdp_growth", "wpi_growth",
+                                     "minutes_llm_stance_score", "minutes_hawk_dove_index"],
     "macro+surprise": ["tm_gap", "unemployment_change_6m", "last_move", "tm_surprise"],
     "macro+surprise+minutes_text": ["tm_gap", "unemployment_change_6m", "last_move", "tm_surprise",
                                     "minutes_llm_stance_score", "minutes_hawk_dove_index"],
@@ -353,11 +416,14 @@ def features_as_of(panel: pd.DataFrame, when: dt.date) -> pd.Series:
     ur_date, ur_value = _latest_before(ur, when, LABOUR_PUBLICATION_LAG)
     ur_6m = ur[[x <= ur_date - dt.timedelta(days=170) for x in ur.index]]
     nowcasts = load_tm_nowcasts()
+    gdp, wpi = load_abs()
     row = {"decision_date": when, "previous_direction": past["direction"].iloc[-1],
            "last_move": moves["direction"].iloc[-1], "moves_6m": int(recent["direction"].sum()),
            "tm_yoy": tm_value, "tm_quarter": tm_date, "tm_gap": tm_value - TARGET_MIDPOINT,
            "tm_surprise": tm_value - nowcasts[tm_date] if tm_date in nowcasts else np.nan,
-           "unemployment": ur_value, "unemployment_change_6m": ur_value - ur_6m.iloc[-1]}
+           "unemployment": ur_value, "unemployment_change_6m": ur_value - ur_6m.iloc[-1],
+           "gdp_growth": _latest_before(gdp, when, GDP_PUBLICATION_LAG)[1],
+           "wpi_growth": _latest_before(wpi, when, WPI_PUBLICATION_LAG)[1]}
     smp = _latest_doc(docs["smp"], when)
     row["rba_tm_forecast_gap"] = forecasts.get(smp["issue_date"], np.nan) - TARGET_MIDPOINT
     for name, cols in (("smp", ["llm_stance_score", "hawk_dove_index", "lm_tone"]),
@@ -389,6 +455,8 @@ def run(next_decision: dt.date | None = None) -> dict:
     results = {}
     samples = {
         # inflation targeting, SMP text and RBA forecasts available (first SMP Feb 1997)
+        # ABS GDP and Wage Price Index growth (WPI year-ended growth from September 1998)
+        "abs_era": ("1998-11-01", {k: MODELS[k] for k in ("macro", "macro+gdp", "macro+wages", "macro+gdp+wages")}),
         "smp_era": ("1997-03-01", {k: MODELS[k] for k in ("macro", "macro+smp_text", "macro+smp_dictionary")}),
         # the RBA's year-ahead trimmed mean forecast is published in the SMP from May 2000
         "smp_forecast_era": ("2000-06-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
@@ -399,7 +467,9 @@ def run(next_decision: dt.date | None = None) -> dict:
         "minutes_era": ("2006-11-01", {k: MODELS[k] for k in ("macro", "macro+rba_forecast", "macro+smp_text",
                                                               "macro+minutes_text", "macro+minutes_dictionary",
                                                               "macro+surprise", "macro+surprise+minutes_text",
-                                                              "macro+fsr", "macro+all_text", "text_only")}),
+                                                              "macro+fsr", "macro+all_text", "text_only",
+                                                              "macro+gdp", "macro+wages", "macro+gdp+wages",
+                                                              "macro+gdp+wages+minutes_text")}),
     }
     for name, (start, models) in samples.items():
         min_train = 48 if name != "minutes_era" else 40
