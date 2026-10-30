@@ -1482,7 +1482,7 @@
     "expected_rate": 4.85,
     "reproduced_change": 0.20000000000000018,
     "model_input_change": 0.20555555555555127,
-    "model_input_source": "IBKR close 2026-10-30",
+    "model_input_source": "IBKR close 2026-11-02",
     "history": [
       {
         "settlement_date": "2026-10-09",
@@ -1919,21 +1919,21 @@
       },
       {
         "decision_date": "2026-11-03",
-        "two_weeks_before": "2026-10-16",
-        "priced_2w_before": 0.044444444444445175,
-        "price_date": "2026-10-30",
+        "two_weeks_before": "2026-10-19",
+        "priced_2w_before": 0.055555555555562464,
+        "price_date": "2026-11-02",
         "priced_day_before": 0.20555555555555127,
         "actual_change": NaN
       }
     ],
     "current": {
       "decision_date": "2026-11-03",
-      "price_date": "2026-10-30",
+      "price_date": "2026-11-02",
       "level": 0.20555555555555127,
-      "momentum": 0.1611111111111061,
+      "momentum": 0.1499999999999888,
       "p_move_level_only": 0.8057000896574725,
-      "p_move_level_and_momentum": 0.9347831932069982,
-      "momentum_vs_history_sd": 1.8775037785713125
+      "p_move_level_and_momentum": 0.928269971016697,
+      "momentum_vs_history_sd": 1.7480207593594217
     }
   },
   "futures_check": [
@@ -2070,7 +2070,7 @@
     {
       "decision_date": "2026-11-03",
       "actual_change": NaN,
-      "price_date": "2026-10-30",
+      "price_date": "2026-11-02",
       "current_rate": 4.6,
       "post_meeting_rate": 4.805555555555551,
       "futures_change": 0.20555555555555127,

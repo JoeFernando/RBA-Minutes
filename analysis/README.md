@@ -285,7 +285,7 @@ RMSE 2.0).
 
 ## The next decision: 3 November 2026
 
-Inputs as of 30 October 2026 (the latest futures close; pricing can move before the meeting):
+Inputs as of the morning of Saturday 31 October 2026 (Sydney): the final Friday close and Friday evening's trading; Monday 2 November's close is the last reading before the meeting:
 
 | Input | Value |
 |---|---|
@@ -299,7 +299,8 @@ Inputs as of 30 October 2026 (the latest futures close; pricing can move before 
 | September minutes (Claude stance) | +2, strongly hawkish |
 | August SMP (Claude stance) | +1, mildly hawkish |
 | October FSR | Elevated risk, rising; no clear implication for rates |
-| **ASX 30 Day Interbank Cash Rate Futures (IBKR close, 30 October)** | **82% chance of a 25 bp rise** (November contract 4.785%) |
+| **ASX 30 Day Interbank Cash Rate Futures (IBKR)** | **78% chance of a 25 bp rise at the final Friday 30 October day-session close** (November contract 4.775%); **82% in Friday evening's session** (4.785%; the ASX counts it towards Monday's trading day) |
+| RateProbability (OIS swaps, 4 pm New York 29 October) | 81% (+20.3 bp); path peaks near 4.94% in early 2027 — an independent instrument agreeing within 1 bp |
 | **ASX RBA Rate Tracker (29 October settlement)** | **80% chance of a 25 bp rise to 4.85%** (November futures imply 4.78%: 3 days at 4.60%, then 4.80%); up from 22% on 20 October and about 60% on 21–27 October, 82% on 28 October (CPI day) |
 | 1-month bank bill rate minus the overnight cash rate (28 October) | +0.14 percentage points (it was +0.10 to +0.18 before each 2026 raise and -0.03 before the holds) |
 
@@ -322,13 +323,13 @@ the market priced (1-month OIS the day before each decision, 2001-2022, 238 meet
 When the market priced a raise at 60–100%, as now, the RBA raised 13 times out of 16 (81%). It never
 moved when the market priced less than 20% either way.
 
-| Model with market pricing (fitted on 2001-2022 OIS; input: the futures' priced move at the 30 October close, +0.206) | Cut | Hold | Raise |
+| Model with market pricing (fitted on 2001-2022 OIS; input: the futures' priced move in Friday 30 October's evening session, +0.206; the day-session close, +0.194, gives 1-2 points less) | Cut | Hold | Raise |
 |---|---:|---:|---:|
 | **market + minutes text** (best log loss in the 2011-22 backtest, 0.224) | 0% | 13% | **87%** |
 | macro + market + minutes text | 0% | 13% | 87% |
 | macro + market | 0% | 18% | 82% |
 | market alone (0.216 in the 2005-22 backtest) | 0% | 24% | 76% |
-| Futures as priced, 30 October (IBKR close) | | 18% | 82% |
+| Futures as priced, Friday 30 October (IBKR): day-session close / evening session | | 22% / 18% | 78% / 82% |
 | Regression on the level alone (79 priced meetings, 2001-22) | | 19% | 81% |
 | Regression on the level + two-week momentum (18% on 16 October to 82%) | | 7% | 93% |
 | ASX Rate Tracker as published, 29 October | | 20% | 80% |
