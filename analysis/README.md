@@ -301,6 +301,7 @@ Inputs as of the morning of Saturday 31 October 2026 (Sydney): the final Friday 
 | October FSR | Elevated risk, rising; no clear implication for rates |
 | **ASX 30 Day Interbank Cash Rate Futures (IBKR)** | **78% chance of a 25 bp rise at the final Friday 30 October day-session close** (November contract 4.775%); **82% in Friday evening's session** (4.785%; the ASX counts it towards Monday's trading day) |
 | RateProbability (OIS swaps, 4 pm New York 29 October) | 81% (+20.3 bp); path peaks near 4.94% in early 2027 — an independent instrument agreeing within 1 bp |
+| **ASX RBA Rate Tracker, final settlement before the meeting (Monday 2 November)** | **80% chance of a 25 bp rise to 4.85%** (November futures 4.78%); daily path: 78% on 30 October, 80% on 2 November |
 | **ASX RBA Rate Tracker (29 October settlement)** | **80% chance of a 25 bp rise to 4.85%** (November futures imply 4.78%: 3 days at 4.60%, then 4.80%); up from 22% on 20 October and about 60% on 21–27 October, 82% on 28 October (CPI day) |
 | 1-month bank bill rate minus the overnight cash rate (28 October) | +0.14 percentage points (it was +0.10 to +0.18 before each 2026 raise and -0.03 before the holds) |
 

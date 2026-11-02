@@ -1476,24 +1476,14 @@
     ]
   },
   "asx_rate_tracker": {
-    "settlement_date": "2026-10-29",
+    "settlement_date": "2026-11-02",
     "next_meeting": "2026-11-03",
     "probability_of_move": 0.8,
     "expected_rate": 4.85,
     "reproduced_change": 0.20000000000000018,
-    "model_input_change": 0.20555555555555127,
-    "model_input_source": "IBKR close 2026-11-02",
+    "model_input_change": 0.20000000000000018,
+    "model_input_source": "ASX settlement 2026-11-02",
     "history": [
-      {
-        "settlement_date": "2026-10-09",
-        "Prob_No_Change": 71,
-        "Prob_Change": 29
-      },
-      {
-        "settlement_date": "2026-10-12",
-        "Prob_No_Change": 73,
-        "Prob_Change": 27
-      },
       {
         "settlement_date": "2026-10-13",
         "Prob_No_Change": 73,
@@ -1558,36 +1548,46 @@
         "settlement_date": "2026-10-29",
         "Prob_No_Change": 20,
         "Prob_Change": 80
+      },
+      {
+        "settlement_date": "2026-10-30",
+        "Prob_No_Change": 22,
+        "Prob_Change": 78
+      },
+      {
+        "settlement_date": "2026-11-02",
+        "Prob_No_Change": 20,
+        "Prob_Change": 80
       }
     ],
     "model_probabilities": [
       {
         "model": "market_ois (ASX futures)",
         "trained_on": 238,
-        "p_cut": 4.86681027866661e-05,
-        "p_hold": 0.24299126959716763,
-        "p_raise": 0.7569600623000458
+        "p_cut": 6.072846020097262e-05,
+        "p_hold": 0.26740032233220473,
+        "p_raise": 0.7325389492075943
       },
       {
         "model": "macro+market_ois (ASX futures)",
         "trained_on": 238,
-        "p_cut": 9.754893704775017e-06,
-        "p_hold": 0.18332346336849917,
-        "p_raise": 0.816666781737796
+        "p_cut": 1.2188527537098148e-05,
+        "p_hold": 0.20065788877496182,
+        "p_raise": 0.7993299226975009
       },
       {
         "model": "market_ois+minutes_text (ASX futures)",
         "trained_on": 179,
-        "p_cut": 2.2143123173536293e-05,
-        "p_hold": 0.12743848776114072,
-        "p_raise": 0.8725393691156856
+        "p_cut": 2.6685845763123943e-05,
+        "p_hold": 0.13776624968216014,
+        "p_raise": 0.8622070644720768
       },
       {
         "model": "macro+market_ois+minutes_text (ASX futures)",
         "trained_on": 179,
-        "p_cut": 1.1120171863412604e-05,
-        "p_hold": 0.12559025470187546,
-        "p_raise": 0.874398625126261
+        "p_cut": 1.3383428076479607e-05,
+        "p_hold": 0.13433129866704085,
+        "p_raise": 0.8656553179048827
       }
     ]
   },
