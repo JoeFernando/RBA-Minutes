@@ -2,81 +2,81 @@
   "abs_era": {
     "start": "1998-11-01",
     "first_test": "2003-05-06",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 251,
-        "accuracy": 0.7729083665338645,
-        "log_loss": 0.6100202965968432,
-        "brier": 0.35372149788055296,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.7698412698412699,
+        "log_loss": 0.6159425919959637,
+        "brier": 0.3580572595754167,
+        "moves": 62,
         "moves_called": 16,
         "false_alarms": 12,
         "wrong_direction": 0
       },
       {
         "model": "macro+gdp",
-        "n": 251,
-        "accuracy": 0.7768924302788844,
-        "log_loss": 0.6239259837550619,
-        "brier": 0.35918706352924107,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.7738095238095238,
+        "log_loss": 0.6298514551114176,
+        "brier": 0.3635165234166236,
+        "moves": 62,
         "moves_called": 16,
         "false_alarms": 11,
         "wrong_direction": 0
       },
       {
         "model": "macro+wages",
-        "n": 251,
-        "accuracy": 0.7768924302788844,
-        "log_loss": 0.6098148713024141,
-        "brier": 0.3481338223272138,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.7738095238095238,
+        "log_loss": 0.6145175617835944,
+        "brier": 0.3521066678516659,
+        "moves": 62,
         "moves_called": 16,
         "false_alarms": 11,
         "wrong_direction": 0
       },
       {
         "model": "macro+gdp+wages",
-        "n": 251,
-        "accuracy": 0.7569721115537849,
-        "log_loss": 0.6174199033609163,
-        "brier": 0.35191726155944747,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.753968253968254,
+        "log_loss": 0.6221851779340317,
+        "brier": 0.35596832756401003,
+        "moves": 62,
         "moves_called": 16,
         "false_alarms": 16,
         "wrong_direction": 1
       },
       {
         "model": "always_hold",
-        "n": 251,
-        "accuracy": 0.7569721115537849,
-        "log_loss": 3.3575543587084486,
-        "brier": 0.4860557768924303,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.753968253968254,
+        "log_loss": 3.399054184895972,
+        "brier": 0.49206349206349204,
+        "moves": 62,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 251,
-        "accuracy": 0.7250996015936255,
-        "log_loss": 0.899924863446015,
-        "brier": 0.48233067729083656,
-        "moves": 61,
-        "moves_called": 26,
+        "n": 252,
+        "accuracy": 0.7261904761904762,
+        "log_loss": 0.8967718303198714,
+        "brier": 0.4804761904761904,
+        "moves": 62,
+        "moves_called": 27,
         "false_alarms": 34,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 251,
-        "accuracy": 0.7569721115537849,
-        "log_loss": 0.7303484262967707,
-        "brier": 0.4010888199529738,
-        "moves": 61,
+        "n": 252,
+        "accuracy": 0.753968253968254,
+        "log_loss": 0.7352786206332578,
+        "brier": 0.40469442514716475,
+        "moves": 62,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -86,34 +86,34 @@
       {
         "baseline": "macro",
         "model": "macro+gdp",
-        "mean_improvement": -0.013905687158218775,
-        "ci90_low": -0.027002183861700675,
-        "ci90_high": -0.0002518402698996454,
-        "share_better": 0.3904382470119522
+        "mean_improvement": -0.013908863115453805,
+        "ci90_low": -0.02719608300091105,
+        "ci90_high": -0.000156826225883315,
+        "share_better": 0.3888888888888889
       },
       {
         "baseline": "macro",
         "model": "macro+wages",
-        "mean_improvement": 0.00020542529442911888,
-        "ci90_low": -0.02273886844993576,
-        "ci90_high": 0.018950529649179152,
-        "share_better": 0.7569721115537849
+        "mean_improvement": 0.0014250302123692677,
+        "ci90_low": -0.022748256273404956,
+        "ci90_high": 0.01891775314682045,
+        "share_better": 0.7579365079365079
       },
       {
         "baseline": "macro",
         "model": "macro+gdp+wages",
-        "mean_improvement": -0.007399606764073157,
-        "ci90_low": -0.040609582260437115,
-        "ci90_high": 0.020296518217783322,
-        "share_better": 0.6932270916334662
+        "mean_improvement": -0.006242585938068132,
+        "ci90_low": -0.039851800924380586,
+        "ci90_high": 0.020067959415729725,
+        "share_better": 0.6944444444444444
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.12032812969992757,
-        "ci90_low": 0.03679400384508362,
-        "ci90_high": 0.23046744201640662,
-        "share_better": 0.749003984063745
+        "mean_improvement": 0.11933602863729403,
+        "ci90_low": 0.03640916266589528,
+        "ci90_high": 0.22556999049294688,
+        "share_better": 0.746031746031746
       }
     ]
   },
@@ -407,92 +407,92 @@
   "market_bab_minutes_era": {
     "start": "2006-11-01",
     "first_test": "2011-04-05",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 164,
-        "accuracy": 0.8048780487804879,
-        "log_loss": 0.6200629468279247,
-        "brier": 0.33486250836537085,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.8,
+        "log_loss": 0.6285060932779493,
+        "brier": 0.34127550192760814,
+        "moves": 39,
         "moves_called": 12,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+minutes_text",
-        "n": 164,
-        "accuracy": 0.774390243902439,
-        "log_loss": 0.4993626380955405,
-        "brier": 0.31129683108841155,
-        "moves": 38,
-        "moves_called": 15,
+        "n": 165,
+        "accuracy": 0.7757575757575758,
+        "log_loss": 0.5004526571449461,
+        "brier": 0.3123438066971701,
+        "moves": 39,
+        "moves_called": 16,
         "false_alarms": 14,
         "wrong_direction": 0
       },
       {
         "model": "market_bab",
-        "n": 164,
-        "accuracy": 0.7926829268292683,
-        "log_loss": 0.5868558483152901,
-        "brier": 0.3478483511618106,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.7878787878787878,
+        "log_loss": 0.5956194615331248,
+        "brier": 0.3546141759059,
+        "moves": 39,
         "moves_called": 12,
         "false_alarms": 8,
         "wrong_direction": 0
       },
       {
         "model": "macro+market_bab",
-        "n": 164,
-        "accuracy": 0.8536585365853658,
-        "log_loss": 0.4931794284455713,
-        "brier": 0.26787072769795556,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.8484848484848485,
+        "log_loss": 0.5029671467709199,
+        "brier": 0.27539989810080473,
+        "moves": 39,
         "moves_called": 20,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+market_bab+minutes_text",
-        "n": 164,
-        "accuracy": 0.823170731707317,
-        "log_loss": 0.4476412731389744,
-        "brier": 0.26632219520959755,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.8181818181818182,
+        "log_loss": 0.4503874310546898,
+        "brier": 0.2689662833312834,
+        "moves": 39,
         "moves_called": 22,
         "false_alarms": 13,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 164,
-        "accuracy": 0.7682926829268293,
-        "log_loss": 3.201154885381966,
-        "brier": 0.4634146341463415,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.7636363636363637,
+        "log_loss": 3.2654843137006466,
+        "brier": 0.4727272727272727,
+        "moves": 39,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 164,
-        "accuracy": 0.7378048780487805,
-        "log_loss": 0.8632018912037719,
-        "brier": 0.4607317073170731,
-        "moves": 38,
-        "moves_called": 16,
+        "n": 165,
+        "accuracy": 0.7393939393939394,
+        "log_loss": 0.8586089131701601,
+        "brier": 0.45803030303030295,
+        "moves": 39,
+        "moves_called": 17,
         "false_alarms": 21,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 164,
-        "accuracy": 0.7682926829268293,
-        "log_loss": 0.7294609927969701,
-        "brier": 0.397454312058369,
-        "moves": 38,
+        "n": 165,
+        "accuracy": 0.7636363636363637,
+        "log_loss": 0.736976021001022,
+        "brier": 0.40286731819437727,
+        "moves": 39,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -502,112 +502,112 @@
       {
         "baseline": "macro",
         "model": "macro+minutes_text",
-        "mean_improvement": 0.12070030873238428,
-        "ci90_low": 0.04944414242725803,
-        "ci90_high": 0.1869258710767424,
-        "share_better": 0.7073170731707317
+        "mean_improvement": 0.12805343613300313,
+        "ci90_low": 0.053079502143402124,
+        "ci90_high": 0.1920574570363661,
+        "share_better": 0.7090909090909091
       },
       {
         "baseline": "macro",
         "model": "market_bab",
-        "mean_improvement": 0.03320709851263469,
-        "ci90_low": -0.13152217080538273,
-        "ci90_high": 0.1978567652020741,
-        "share_better": 0.5426829268292683
+        "mean_improvement": 0.032886631744824445,
+        "ci90_low": -0.13280950296549204,
+        "ci90_high": 0.19482367287721072,
+        "share_better": 0.5393939393939394
       },
       {
         "baseline": "macro",
         "model": "macro+market_bab",
-        "mean_improvement": 0.12688351838235343,
-        "ci90_low": 0.05934542660345538,
-        "ci90_high": 0.20632179503675707,
-        "share_better": 0.676829268292683
+        "mean_improvement": 0.1255389465070294,
+        "ci90_low": 0.05721144628351819,
+        "ci90_high": 0.20195782693930214,
+        "share_better": 0.6727272727272727
       },
       {
         "baseline": "macro",
         "model": "macro+market_bab+minutes_text",
-        "mean_improvement": 0.1724216736889504,
-        "ci90_low": 0.09174301781558172,
-        "ci90_high": 0.2553409084984208,
-        "share_better": 0.6951219512195121
+        "mean_improvement": 0.1781186622232595,
+        "ci90_low": 0.09308995570285199,
+        "ci90_high": 0.25445031033535076,
+        "share_better": 0.696969696969697
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.10939804596904543,
-        "ci90_low": -0.0318806304296447,
-        "ci90_high": 0.2725883303197445,
-        "share_better": 0.774390243902439
+        "mean_improvement": 0.10846992772307265,
+        "ci90_low": -0.03220662252359136,
+        "ci90_high": 0.27343033528197963,
+        "share_better": 0.7696969696969697
       }
     ]
   },
   "smp_era": {
     "start": "1997-03-01",
     "first_test": "2001-05-01",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 273,
-        "accuracy": 0.7582417582417582,
-        "log_loss": 0.6231993913754119,
-        "brier": 0.36624637884969896,
-        "moves": 66,
+        "n": 274,
+        "accuracy": 0.7554744525547445,
+        "log_loss": 0.6286520950790432,
+        "brier": 0.3702022906854749,
+        "moves": 67,
         "moves_called": 17,
         "false_alarms": 17,
         "wrong_direction": 0
       },
       {
         "model": "macro+smp_text",
-        "n": 273,
-        "accuracy": 0.7509157509157509,
-        "log_loss": 0.6233263207849246,
-        "brier": 0.36559101967516633,
-        "moves": 66,
+        "n": 274,
+        "accuracy": 0.7481751824817519,
+        "log_loss": 0.628812451601578,
+        "brier": 0.3696511023131003,
+        "moves": 67,
         "moves_called": 17,
         "false_alarms": 19,
         "wrong_direction": 0
       },
       {
         "model": "macro+smp_dictionary",
-        "n": 273,
-        "accuracy": 0.7472527472527473,
-        "log_loss": 0.6189657259520867,
-        "brier": 0.36505577192897215,
-        "moves": 66,
+        "n": 274,
+        "accuracy": 0.7445255474452555,
+        "log_loss": 0.6259843345060458,
+        "brier": 0.3694357315964404,
+        "moves": 67,
         "moves_called": 17,
         "false_alarms": 20,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 273,
-        "accuracy": 0.7582417582417582,
-        "log_loss": 3.3400135414858685,
-        "brier": 0.4835164835164835,
-        "moves": 66,
+        "n": 274,
+        "accuracy": 0.7554744525547445,
+        "log_loss": 3.378245282421921,
+        "brier": 0.48905109489051096,
+        "moves": 67,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 273,
-        "accuracy": 0.7216117216117216,
-        "log_loss": 0.9100061332406414,
-        "brier": 0.4882600732600731,
-        "moves": 66,
-        "moves_called": 28,
+        "n": 274,
+        "accuracy": 0.7226277372262774,
+        "log_loss": 0.9070694704027479,
+        "brier": 0.48653284671532837,
+        "moves": 67,
+        "moves_called": 29,
         "false_alarms": 38,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 273,
-        "accuracy": 0.7582417582417582,
-        "log_loss": 0.7270274508444444,
-        "brier": 0.39836979144679274,
-        "moves": 66,
+        "n": 274,
+        "accuracy": 0.7554744525547445,
+        "log_loss": 0.7318305400658478,
+        "brier": 0.4018150952038517,
+        "moves": 67,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -617,118 +617,118 @@
       {
         "baseline": "macro",
         "model": "macro+smp_text",
-        "mean_improvement": -0.00012692940951262476,
-        "ci90_low": -0.026649156307427275,
-        "ci90_high": 0.02599899593170161,
-        "share_better": 0.5531135531135531
+        "mean_improvement": -0.00016035652253478853,
+        "ci90_low": -0.026410888990945115,
+        "ci90_high": 0.026684778178679133,
+        "share_better": 0.551094890510949
       },
       {
         "baseline": "macro",
         "model": "macro+smp_dictionary",
-        "mean_improvement": 0.004233665423325283,
-        "ci90_low": -0.017472807542473965,
-        "ci90_high": 0.03939097058241462,
-        "share_better": 0.6153846153846154
+        "mean_improvement": 0.0026677605729973734,
+        "ci90_low": -0.018074647252008202,
+        "ci90_high": 0.039321756108961096,
+        "share_better": 0.6131386861313869
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.10382805946903252,
-        "ci90_low": 0.02719622438162846,
-        "ci90_high": 0.21282169996113814,
-        "share_better": 0.7142857142857143
+        "mean_improvement": 0.10317844498680454,
+        "ci90_low": 0.029823159605974425,
+        "ci90_high": 0.21185823867716314,
+        "share_better": 0.7116788321167883
       }
     ]
   },
   "smp_forecast_era": {
     "start": "2000-06-01",
     "first_test": "2004-12-07",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 233,
-        "accuracy": 0.7682403433476395,
-        "log_loss": 0.6506363678219041,
-        "brier": 0.3734775926995752,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7649572649572649,
+        "log_loss": 0.6576957819025917,
+        "brier": 0.3783746187226835,
+        "moves": 60,
         "moves_called": 17,
         "false_alarms": 12,
         "wrong_direction": 0
       },
       {
         "model": "macro+rba_forecast",
-        "n": 233,
-        "accuracy": 0.7725321888412017,
-        "log_loss": 0.6299462983277243,
-        "brier": 0.36739924404613356,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7692307692307693,
+        "log_loss": 0.6369757851196093,
+        "brier": 0.3724085743883643,
+        "moves": 60,
         "moves_called": 19,
         "false_alarms": 13,
         "wrong_direction": 0
       },
       {
         "model": "macro+smp_text",
-        "n": 233,
-        "accuracy": 0.7639484978540773,
-        "log_loss": 0.6465723056166752,
-        "brier": 0.3717672409102941,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7606837606837606,
+        "log_loss": 0.6540450790491521,
+        "brier": 0.3769094144964411,
+        "moves": 60,
         "moves_called": 19,
         "false_alarms": 15,
         "wrong_direction": 0
       },
       {
         "model": "macro+rba_forecast+smp_text",
-        "n": 233,
-        "accuracy": 0.7553648068669528,
-        "log_loss": 0.620019063982518,
-        "brier": 0.36553483177509455,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7521367521367521,
+        "log_loss": 0.6271668116289284,
+        "brier": 0.3706692860116944,
+        "moves": 60,
         "moves_called": 20,
         "false_alarms": 18,
         "wrong_direction": 0
       },
       {
         "model": "macro+surprise",
-        "n": 233,
-        "accuracy": 0.7639484978540773,
-        "log_loss": 0.6637440949332597,
-        "brier": 0.3767254395866865,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7606837606837606,
+        "log_loss": 0.6701009313624129,
+        "brier": 0.3814173014721033,
+        "moves": 60,
         "moves_called": 17,
         "false_alarms": 13,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 233,
-        "accuracy": 0.7467811158798283,
-        "log_loss": 3.4983481670381638,
-        "brier": 0.5064377682403434,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7435897435897436,
+        "log_loss": 3.542438604606224,
+        "brier": 0.5128205128205128,
+        "moves": 60,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 233,
-        "accuracy": 0.7124463519313304,
-        "log_loss": 0.9364974589155217,
-        "brier": 0.5038412017167381,
-        "moves": 59,
-        "moves_called": 25,
+        "n": 234,
+        "accuracy": 0.7136752136752137,
+        "log_loss": 0.9329455916366426,
+        "brier": 0.5017521367521367,
+        "moves": 60,
+        "moves_called": 26,
         "false_alarms": 33,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 233,
-        "accuracy": 0.7467811158798283,
-        "log_loss": 0.7485004667667304,
-        "brier": 0.41315084935183394,
-        "moves": 59,
+        "n": 234,
+        "accuracy": 0.7435897435897436,
+        "log_loss": 0.7538974223721496,
+        "brier": 0.4170342249610837,
+        "moves": 60,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -738,112 +738,112 @@
       {
         "baseline": "macro",
         "model": "macro+rba_forecast",
-        "mean_improvement": 0.02069006949417965,
-        "ci90_low": -0.01495914198382369,
-        "ci90_high": 0.06148358634354121,
-        "share_better": 0.6652360515021459
+        "mean_improvement": 0.020719996782982364,
+        "ci90_low": -0.015348940956383483,
+        "ci90_high": 0.06121308867485333,
+        "share_better": 0.6666666666666666
       },
       {
         "baseline": "macro",
         "model": "macro+smp_text",
-        "mean_improvement": 0.004064062205228897,
-        "ci90_low": -0.021479083497678696,
-        "ci90_high": 0.02693287439793654,
-        "share_better": 0.5965665236051502
+        "mean_improvement": 0.0036507028534395643,
+        "ci90_low": -0.020565353875100043,
+        "ci90_high": 0.027562149617846934,
+        "share_better": 0.594017094017094
       },
       {
         "baseline": "macro",
         "model": "macro+rba_forecast+smp_text",
-        "mean_improvement": 0.030617303839386153,
-        "ci90_low": -0.0023866716493834224,
-        "ci90_high": 0.06304865677807688,
-        "share_better": 0.6738197424892703
+        "mean_improvement": 0.030528970273663296,
+        "ci90_low": -0.0017005748634961665,
+        "ci90_high": 0.0636269885960487,
+        "share_better": 0.6752136752136753
       },
       {
         "baseline": "macro",
         "model": "macro+surprise",
-        "mean_improvement": -0.013107727111355721,
-        "ci90_low": -0.025193491570472883,
-        "ci90_high": 0.0003122043002759444,
-        "share_better": 0.41630901287553645
+        "mean_improvement": -0.012405149459821184,
+        "ci90_low": -0.025401195080045406,
+        "ci90_high": 0.00031878433844010625,
+        "share_better": 0.4188034188034188
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.09786409894482627,
-        "ci90_low": -0.005089762717341714,
-        "ci90_high": 0.229233942829372,
-        "share_better": 0.6995708154506438
+        "mean_improvement": 0.09620164046955786,
+        "ci90_low": -0.008010505684786819,
+        "ci90_high": 0.22806125442476516,
+        "share_better": 0.6965811965811965
       }
     ]
   },
   "fsr_era": {
     "start": "2004-04-01",
     "first_test": "2008-08-05",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 193,
-        "accuracy": 0.7772020725388601,
-        "log_loss": 0.7349023796092498,
-        "brier": 0.37187498794767854,
-        "moves": 51,
+        "n": 194,
+        "accuracy": 0.7731958762886598,
+        "log_loss": 0.74246386132741,
+        "brier": 0.3776594675000552,
+        "moves": 52,
         "moves_called": 15,
         "false_alarms": 7,
         "wrong_direction": 0
       },
       {
         "model": "macro+rba_forecast+smp_text",
-        "n": 193,
-        "accuracy": 0.7668393782383419,
-        "log_loss": 0.70705907901147,
-        "brier": 0.36457496030516545,
-        "moves": 51,
+        "n": 194,
+        "accuracy": 0.7628865979381443,
+        "log_loss": 0.715274018675717,
+        "brier": 0.3708430015903304,
+        "moves": 52,
         "moves_called": 15,
         "false_alarms": 9,
         "wrong_direction": 0
       },
       {
         "model": "macro+fsr",
-        "n": 193,
-        "accuracy": 0.7564766839378239,
-        "log_loss": 0.7328309515923682,
-        "brier": 0.3749495270967992,
-        "moves": 51,
+        "n": 194,
+        "accuracy": 0.7525773195876289,
+        "log_loss": 0.7396282523039949,
+        "brier": 0.3804967077772871,
+        "moves": 52,
         "moves_called": 15,
         "false_alarms": 11,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 193,
-        "accuracy": 0.7357512953367875,
-        "log_loss": 3.650730769202995,
-        "brier": 0.5284974093264249,
-        "moves": 51,
+        "n": 194,
+        "accuracy": 0.7319587628865979,
+        "log_loss": 3.7031265413100116,
+        "brier": 0.5360824742268041,
+        "moves": 52,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 193,
-        "accuracy": 0.7253886010362695,
-        "log_loss": 0.8990895476189492,
-        "brier": 0.48183937823834183,
-        "moves": 51,
-        "moves_called": 24,
+        "n": 194,
+        "accuracy": 0.7268041237113402,
+        "log_loss": 0.8949981608562629,
+        "brier": 0.4794329896907215,
+        "moves": 52,
+        "moves_called": 25,
         "false_alarms": 26,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 193,
-        "accuracy": 0.7357512953367875,
-        "log_loss": 0.793580848211679,
-        "brier": 0.4319584117379311,
-        "moves": 51,
+        "n": 194,
+        "accuracy": 0.7319587628865979,
+        "log_loss": 0.799802909116911,
+        "brier": 0.4365538227790866,
+        "moves": 52,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -853,217 +853,217 @@
       {
         "baseline": "macro",
         "model": "macro+rba_forecast+smp_text",
-        "mean_improvement": 0.027843300597779733,
-        "ci90_low": -0.030076390622174258,
-        "ci90_high": 0.07199728938508897,
-        "share_better": 0.7305699481865285
+        "mean_improvement": 0.027189842651692872,
+        "ci90_low": -0.02923034475417951,
+        "ci90_high": 0.07120716839665704,
+        "share_better": 0.7268041237113402
       },
       {
         "baseline": "macro",
         "model": "macro+fsr",
-        "mean_improvement": 0.0020714280168816247,
-        "ci90_low": -0.04889391439909471,
-        "ci90_high": 0.053957331409056376,
-        "share_better": 0.5854922279792746
+        "mean_improvement": 0.002835609023415111,
+        "ci90_low": -0.04891253396365391,
+        "ci90_high": 0.05435852967291684,
+        "share_better": 0.5876288659793815
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.0586784686024293,
-        "ci90_low": -0.0478268235690508,
-        "ci90_high": 0.23712135008168114,
-        "share_better": 0.7202072538860104
+        "mean_improvement": 0.05733904778950129,
+        "ci90_low": -0.04873530155072825,
+        "ci90_high": 0.23566100193480705,
+        "share_better": 0.7164948453608248
       }
     ]
   },
   "minutes_era": {
     "start": "2006-11-01",
     "first_test": "2010-07-06",
-    "last_test": "2026-09-29",
+    "last_test": "2026-11-03",
     "scores": [
       {
         "model": "macro",
-        "n": 172,
-        "accuracy": 0.8081395348837209,
-        "log_loss": 0.6162687329659908,
-        "brier": 0.33540549019681104,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.8034682080924855,
+        "log_loss": 0.6243433767701294,
+        "brier": 0.3415187905201504,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+rba_forecast",
-        "n": 172,
-        "accuracy": 0.7965116279069767,
-        "log_loss": 0.6207429590400318,
-        "brier": 0.33627968452585655,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.791907514450867,
+        "log_loss": 0.6287107926133559,
+        "brier": 0.34252378793008753,
+        "moves": 40,
         "moves_called": 10,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+smp_text",
-        "n": 172,
-        "accuracy": 0.7848837209302325,
-        "log_loss": 0.5956067459779547,
-        "brier": 0.33920634047463233,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.7803468208092486,
+        "log_loss": 0.6042519006733537,
+        "brier": 0.3456886082996127,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 10,
         "wrong_direction": 0
       },
       {
         "model": "macro+minutes_text",
-        "n": 172,
-        "accuracy": 0.7790697674418605,
-        "log_loss": 0.5003208373225798,
-        "brier": 0.3117516970850767,
-        "moves": 39,
-        "moves_called": 15,
+        "n": 173,
+        "accuracy": 0.7803468208092486,
+        "log_loss": 0.501354912142955,
+        "brier": 0.3127476283535651,
+        "moves": 40,
+        "moves_called": 16,
         "false_alarms": 14,
         "wrong_direction": 0
       },
       {
         "model": "macro+minutes_dictionary",
-        "n": 172,
-        "accuracy": 0.7965116279069767,
-        "log_loss": 0.5501498377323343,
-        "brier": 0.3237662448569354,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.791907514450867,
+        "log_loss": 0.5536300996198114,
+        "brier": 0.32724728444193885,
+        "moves": 40,
         "moves_called": 13,
         "false_alarms": 9,
         "wrong_direction": 0
       },
       {
         "model": "macro+surprise",
-        "n": 172,
-        "accuracy": 0.8081395348837209,
-        "log_loss": 0.6110713570905332,
-        "brier": 0.33563297056025615,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.8034682080924855,
+        "log_loss": 0.6164943259715799,
+        "brier": 0.34050791884935616,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+surprise+minutes_text",
-        "n": 172,
-        "accuracy": 0.8081395348837209,
-        "log_loss": 0.5017760052744709,
-        "brier": 0.3107846413734585,
-        "moves": 39,
-        "moves_called": 16,
+        "n": 173,
+        "accuracy": 0.8092485549132948,
+        "log_loss": 0.5024392485743238,
+        "brier": 0.311431143822303,
+        "moves": 40,
+        "moves_called": 17,
         "false_alarms": 10,
         "wrong_direction": 0
       },
       {
         "model": "macro+fsr",
-        "n": 172,
-        "accuracy": 0.7965116279069767,
-        "log_loss": 0.6011239122186287,
-        "brier": 0.32913293168458074,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.791907514450867,
+        "log_loss": 0.6077751772143672,
+        "brier": 0.33471496997386846,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 8,
         "wrong_direction": 0
       },
       {
         "model": "macro+all_text",
-        "n": 172,
-        "accuracy": 0.7848837209302325,
-        "log_loss": 0.5346580522736143,
-        "brier": 0.31900490233862194,
-        "moves": 39,
-        "moves_called": 15,
+        "n": 173,
+        "accuracy": 0.7861271676300579,
+        "log_loss": 0.5341825973925942,
+        "brier": 0.3186871627716531,
+        "moves": 40,
+        "moves_called": 16,
         "false_alarms": 13,
         "wrong_direction": 0
       },
       {
         "model": "text_only",
-        "n": 172,
-        "accuracy": 0.7441860465116279,
-        "log_loss": 0.5095255366135402,
-        "brier": 0.3255608435177332,
-        "moves": 39,
-        "moves_called": 9,
+        "n": 173,
+        "accuracy": 0.7456647398843931,
+        "log_loss": 0.508460306996904,
+        "brier": 0.32456575185279285,
+        "moves": 40,
+        "moves_called": 10,
         "false_alarms": 14,
         "wrong_direction": 0
       },
       {
         "model": "macro+gdp",
-        "n": 172,
-        "accuracy": 0.8081395348837209,
-        "log_loss": 0.6296565993385667,
-        "brier": 0.3369020537420008,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.8034682080924855,
+        "log_loss": 0.6375563806100761,
+        "brier": 0.3429683424285736,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 6,
         "wrong_direction": 0
       },
       {
         "model": "macro+wages",
-        "n": 172,
-        "accuracy": 0.7965116279069767,
-        "log_loss": 0.6085568423740022,
-        "brier": 0.3258561908537042,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.791907514450867,
+        "log_loss": 0.6142723611574669,
+        "brier": 0.3310883295282025,
+        "moves": 40,
         "moves_called": 12,
         "false_alarms": 8,
         "wrong_direction": 0
       },
       {
         "model": "macro+gdp+wages",
-        "n": 172,
-        "accuracy": 0.7790697674418605,
-        "log_loss": 0.6077543426141412,
-        "brier": 0.3306882233455241,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.7745664739884393,
+        "log_loss": 0.6131753680037648,
+        "brier": 0.3357545957747937,
+        "moves": 40,
         "moves_called": 11,
         "false_alarms": 10,
         "wrong_direction": 0
       },
       {
         "model": "macro+gdp+wages+minutes_text",
-        "n": 172,
-        "accuracy": 0.7674418604651163,
-        "log_loss": 0.5147693993312348,
-        "brier": 0.3183181622869733,
-        "moves": 39,
-        "moves_called": 15,
+        "n": 173,
+        "accuracy": 0.7687861271676301,
+        "log_loss": 0.5144911834216125,
+        "brier": 0.3180825360568697,
+        "moves": 40,
+        "moves_called": 16,
         "false_alarms": 16,
         "wrong_direction": 0
       },
       {
         "model": "always_hold",
-        "n": 172,
-        "accuracy": 0.7732558139534884,
-        "log_loss": 3.1325866962825972,
-        "brier": 0.45348837209302323,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.7687861271676301,
+        "log_loss": 3.1943377012634158,
+        "brier": 0.4624277456647399,
+        "moves": 40,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
       },
       {
         "model": "repeat_last_decision",
-        "n": 172,
-        "accuracy": 0.7383720930232558,
-        "log_loss": 0.8615624290608926,
-        "brier": 0.4597674418604651,
-        "moves": 39,
-        "moves_called": 16,
+        "n": 173,
+        "accuracy": 0.7398843930635838,
+        "log_loss": 0.8571913197348634,
+        "brier": 0.4571965317919075,
+        "moves": 40,
+        "moves_called": 17,
         "false_alarms": 22,
         "wrong_direction": 0
       },
       {
         "model": "class_frequencies",
-        "n": 172,
-        "accuracy": 0.7732558139534884,
-        "log_loss": 0.7255873310457981,
-        "brier": 0.3953961965595961,
-        "moves": 39,
+        "n": 173,
+        "accuracy": 0.7687861271676301,
+        "log_loss": 0.7327772346031375,
+        "brier": 0.4005707868945102,
+        "moves": 40,
         "moves_called": 0,
         "false_alarms": 0,
         "wrong_direction": 0
@@ -1073,114 +1073,114 @@
       {
         "baseline": "macro",
         "model": "macro+rba_forecast",
-        "mean_improvement": -0.004474226074040944,
-        "ci90_low": -0.04650994739069459,
-        "ci90_high": 0.03956137562941958,
-        "share_better": 0.7441860465116279
+        "mean_improvement": -0.004367415843226444,
+        "ci90_low": -0.04666800054769664,
+        "ci90_high": 0.03960396658787098,
+        "share_better": 0.7456647398843931
       },
       {
         "baseline": "macro",
         "model": "macro+smp_text",
-        "mean_improvement": 0.020661986988036243,
-        "ci90_low": -0.014279212267679938,
-        "ci90_high": 0.05484323631482195,
-        "share_better": 0.5930232558139535
+        "mean_improvement": 0.020091476096775904,
+        "ci90_low": -0.013194582251210965,
+        "ci90_high": 0.054811276764990036,
+        "share_better": 0.5895953757225434
       },
       {
         "baseline": "macro",
         "model": "macro+minutes_text",
-        "mean_improvement": 0.11594789564341097,
-        "ci90_low": 0.05022236721460788,
-        "ci90_high": 0.17744028477309645,
-        "share_better": 0.7093023255813954
+        "mean_improvement": 0.12298846462717448,
+        "ci90_low": 0.05127349388872416,
+        "ci90_high": 0.1825432430437385,
+        "share_better": 0.7109826589595376
       },
       {
         "baseline": "macro",
         "model": "macro+minutes_dictionary",
-        "mean_improvement": 0.06611889523365677,
-        "ci90_low": 0.029029759885226047,
-        "ci90_high": 0.10110432562534954,
-        "share_better": 0.7093023255813954
+        "mean_improvement": 0.07071327715031821,
+        "ci90_low": 0.030877408704558417,
+        "ci90_high": 0.10286538284482478,
+        "share_better": 0.7109826589595376
       },
       {
         "baseline": "macro",
         "model": "macro+surprise",
-        "mean_improvement": 0.005197375875457753,
-        "ci90_low": -0.014645185423731106,
-        "ci90_high": 0.03285288999877704,
-        "share_better": 0.5755813953488372
+        "mean_improvement": 0.007849050798549532,
+        "ci90_low": -0.01486878978086288,
+        "ci90_high": 0.03254576321720704,
+        "share_better": 0.5780346820809249
       },
       {
         "baseline": "macro",
         "model": "macro+surprise+minutes_text",
-        "mean_improvement": 0.11449272769151997,
-        "ci90_low": 0.04470784155985422,
-        "ci90_high": 0.1849324044212615,
-        "share_better": 0.7325581395348837
+        "mean_improvement": 0.12190412819580576,
+        "ci90_low": 0.04537429702352162,
+        "ci90_high": 0.1875375251844191,
+        "share_better": 0.7341040462427746
       },
       {
         "baseline": "macro",
         "model": "macro+fsr",
-        "mean_improvement": 0.015144820747362153,
-        "ci90_low": -0.03875321640928865,
-        "ci90_high": 0.06501301159555825,
-        "share_better": 0.6918604651162791
+        "mean_improvement": 0.01656819955576234,
+        "ci90_low": -0.037518609224946,
+        "ci90_high": 0.06535463544416284,
+        "share_better": 0.6936416184971098
       },
       {
         "baseline": "macro",
         "model": "macro+all_text",
-        "mean_improvement": 0.08161068069237666,
-        "ci90_low": 0.009487928490350296,
-        "ci90_high": 0.148591403309012,
-        "share_better": 0.7325581395348837
+        "mean_improvement": 0.09016077937753535,
+        "ci90_low": 0.0125496827504279,
+        "ci90_high": 0.1535617454483468,
+        "share_better": 0.7341040462427746
       },
       {
         "baseline": "macro",
         "model": "text_only",
-        "mean_improvement": 0.10674319635245068,
-        "ci90_low": 0.007601259309893123,
-        "ci90_high": 0.2006764770563929,
-        "share_better": 0.5988372093023255
+        "mean_improvement": 0.11588306977322547,
+        "ci90_low": 0.012765223095521618,
+        "ci90_high": 0.20538416837768342,
+        "share_better": 0.6011560693641619
       },
       {
         "baseline": "macro",
         "model": "macro+gdp",
-        "mean_improvement": -0.013387866372575762,
-        "ci90_low": -0.03480024963793768,
-        "ci90_high": 0.005177628160274344,
-        "share_better": 0.5755813953488372
+        "mean_improvement": -0.013213003839946577,
+        "ci90_low": -0.03461720647291546,
+        "ci90_high": 0.0048698579041185535,
+        "share_better": 0.5780346820809249
       },
       {
         "baseline": "macro",
         "model": "macro+wages",
-        "mean_improvement": 0.007711890591988706,
-        "ci90_low": -0.011507003862517289,
-        "ci90_high": 0.0385456714000849,
-        "share_better": 0.7848837209302325
+        "mean_improvement": 0.010071015612662776,
+        "ci90_low": -0.010803057895475324,
+        "ci90_high": 0.03830766857022707,
+        "share_better": 0.7861271676300579
       },
       {
         "baseline": "macro",
         "model": "macro+gdp+wages",
-        "mean_improvement": 0.008514390351849754,
-        "ci90_low": -0.017365167571035716,
-        "ci90_high": 0.046428523744418165,
-        "share_better": 0.7209302325581395
+        "mean_improvement": 0.011168008766364685,
+        "ci90_low": -0.017671646475057066,
+        "ci90_high": 0.045137408656124894,
+        "share_better": 0.7225433526011561
       },
       {
         "baseline": "macro",
         "model": "macro+gdp+wages+minutes_text",
-        "mean_improvement": 0.10149933363475616,
-        "ci90_low": 0.037932832355346766,
-        "ci90_high": 0.16997588011411502,
-        "share_better": 0.7383720930232558
+        "mean_improvement": 0.10985219334851697,
+        "ci90_low": 0.03994630887676516,
+        "ci90_high": 0.17291528640146947,
+        "share_better": 0.7398843930635838
       },
       {
         "baseline": "class_frequencies",
         "model": "macro",
-        "mean_improvement": 0.1093185980798073,
-        "ci90_low": -0.01844717479267399,
-        "ci90_high": 0.27803203214933964,
-        "share_better": 0.7848837209302325
+        "mean_improvement": 0.10843385783300806,
+        "ci90_low": -0.01890428411949975,
+        "ci90_high": 0.2734381865324195,
+        "share_better": 0.7803468208092486
       }
     ]
   },
@@ -1189,408 +1189,123 @@
       "C": 0.1,
       "baseline": "macro",
       "model": "macro+minutes_text",
-      "mean_improvement": 0.09117594653351789,
-      "ci90_low": 0.056479102743736166,
-      "ci90_high": 0.12296512999571092,
-      "share_better": 0.6918604651162791,
-      "accuracy_accuracy": 0.8197674418604651
+      "mean_improvement": 0.09535458142225632,
+      "ci90_low": 0.057690460378253525,
+      "ci90_high": 0.1260294869349433,
+      "share_better": 0.6936416184971098,
+      "accuracy_accuracy": 0.815028901734104
     },
     {
       "C": 0.1,
       "baseline": "macro",
       "model": "macro+minutes_dictionary",
-      "mean_improvement": 0.058836879540888815,
-      "ci90_low": 0.036872529932809234,
-      "ci90_high": 0.07891130668758187,
-      "share_better": 0.7093023255813954,
-      "accuracy_accuracy": 0.7965116279069767
+      "mean_improvement": 0.06125669740236854,
+      "ci90_low": 0.03803415313262217,
+      "ci90_high": 0.08062826910022568,
+      "share_better": 0.7109826589595376,
+      "accuracy_accuracy": 0.791907514450867
     },
     {
       "C": 0.1,
       "baseline": "macro",
       "model": "macro+all_text",
-      "mean_improvement": 0.09056103696681289,
-      "ci90_low": 0.053739859625129484,
-      "ci90_high": 0.1243091076592193,
-      "share_better": 0.7558139534883721,
-      "accuracy_accuracy": 0.8081395348837209
+      "mean_improvement": 0.09496664013991755,
+      "ci90_low": 0.05346095493634331,
+      "ci90_high": 0.12719371782615077,
+      "share_better": 0.7572254335260116,
+      "accuracy_accuracy": 0.8034682080924855
     },
     {
       "C": 0.3,
       "baseline": "macro",
       "model": "macro+minutes_text",
-      "mean_improvement": 0.10742180679837919,
-      "ci90_low": 0.058993418758350236,
-      "ci90_high": 0.15176187846091044,
-      "share_better": 0.7209302325581395,
-      "accuracy_accuracy": 0.8081395348837209
+      "mean_improvement": 0.11315163924543592,
+      "ci90_low": 0.05941712921770314,
+      "ci90_high": 0.1563420200116956,
+      "share_better": 0.7225433526011561,
+      "accuracy_accuracy": 0.8034682080924855
     },
     {
       "C": 0.3,
       "baseline": "macro",
       "model": "macro+minutes_dictionary",
-      "mean_improvement": 0.06474910776801457,
-      "ci90_low": 0.036719138112641284,
-      "ci90_high": 0.09045894058059757,
-      "share_better": 0.7325581395348837,
-      "accuracy_accuracy": 0.7965116279069767
+      "mean_improvement": 0.06827235547617705,
+      "ci90_low": 0.03826987267509589,
+      "ci90_high": 0.09235006707635965,
+      "share_better": 0.7341040462427746,
+      "accuracy_accuracy": 0.791907514450867
     },
     {
       "C": 0.3,
       "baseline": "macro",
       "model": "macro+all_text",
-      "mean_improvement": 0.09589977015567648,
-      "ci90_low": 0.04432517632369972,
-      "ci90_high": 0.14372794492581062,
-      "share_better": 0.7732558139534884,
-      "accuracy_accuracy": 0.7906976744186046
+      "mean_improvement": 0.10252768386675506,
+      "ci90_low": 0.045746320287923206,
+      "ci90_high": 0.14670544952483067,
+      "share_better": 0.7745664739884393,
+      "accuracy_accuracy": 0.791907514450867
     },
     {
       "C": 3.0,
       "baseline": "macro",
       "model": "macro+minutes_text",
-      "mean_improvement": 0.11807869918278924,
-      "ci90_low": 0.03809074379423926,
-      "ci90_high": 0.193889469770636,
-      "share_better": 0.7034883720930233,
-      "accuracy_accuracy": 0.7674418604651163
+      "mean_improvement": 0.1257430465847341,
+      "ci90_low": 0.03983227229764961,
+      "ci90_high": 0.19834490323937962,
+      "share_better": 0.7052023121387283,
+      "accuracy_accuracy": 0.7687861271676301
     },
     {
       "C": 3.0,
       "baseline": "macro",
       "model": "macro+minutes_dictionary",
-      "mean_improvement": 0.062445560415590046,
-      "ci90_low": 0.01618953107259506,
-      "ci90_high": 0.10655481718046919,
-      "share_better": 0.6918604651162791,
-      "accuracy_accuracy": 0.7965116279069767
+      "mean_improvement": 0.06760960235902302,
+      "ci90_low": 0.017258983101344896,
+      "ci90_high": 0.10788833960697106,
+      "share_better": 0.6936416184971098,
+      "accuracy_accuracy": 0.791907514450867
     },
     {
       "C": 3.0,
       "baseline": "macro",
       "model": "macro+all_text",
-      "mean_improvement": 0.042407749556324446,
-      "ci90_low": -0.052805822988923695,
-      "ci90_high": 0.1319047944047151,
-      "share_better": 0.7383720930232558,
-      "accuracy_accuracy": 0.7848837209302325
+      "mean_improvement": 0.05207430257205993,
+      "ci90_low": -0.050669756353953224,
+      "ci90_high": 0.13804797103067185,
+      "share_better": 0.7398843930635838,
+      "accuracy_accuracy": 0.7861271676300579
     },
     {
       "C": 10.0,
       "baseline": "macro",
       "model": "macro+minutes_text",
-      "mean_improvement": 0.11667605440206127,
-      "ci90_low": 0.02821713797522546,
-      "ci90_high": 0.19977314614892583,
-      "share_better": 0.7034883720930233,
-      "accuracy_accuracy": 0.7674418604651163
+      "mean_improvement": 0.1246349972130118,
+      "ci90_low": 0.02981759134644455,
+      "ci90_high": 0.20586079627082438,
+      "share_better": 0.7052023121387283,
+      "accuracy_accuracy": 0.7687861271676301
     },
     {
       "C": 10.0,
       "baseline": "macro",
       "model": "macro+minutes_dictionary",
-      "mean_improvement": 0.05659838466548625,
-      "ci90_low": 0.0017880054571767707,
-      "ci90_high": 0.10734202646593949,
-      "share_better": 0.6976744186046512,
-      "accuracy_accuracy": 0.7965116279069767
+      "mean_improvement": 0.06205476617843534,
+      "ci90_low": 0.002601110420463036,
+      "ci90_high": 0.10853615336007555,
+      "share_better": 0.6994219653179191,
+      "accuracy_accuracy": 0.791907514450867
     },
     {
       "C": 10.0,
       "baseline": "macro",
       "model": "macro+all_text",
-      "mean_improvement": -0.018337505773668338,
-      "ci90_low": -0.1431377863052562,
-      "ci90_high": 0.10217857582841648,
-      "share_better": 0.7616279069767442,
-      "accuracy_accuracy": 0.7790697674418605
+      "mean_improvement": -0.007885406703666508,
+      "ci90_low": -0.14085933167672537,
+      "ci90_high": 0.10680131282693077,
+      "share_better": 0.7630057803468208,
+      "accuracy_accuracy": 0.7803468208092486
     }
   ],
-  "next_decision": {
-    "date": "2026-11-03",
-    "features": {
-      "decision_date": "2026-11-03",
-      "previous_direction": "1",
-      "last_move": "1",
-      "moves_6m": 2,
-      "tm_yoy": 3.7,
-      "tm_quarter": "2026-09-30",
-      "tm_gap": 1.2000000000000002,
-      "tm_surprise": 0.25,
-      "unemployment": 4.7183487,
-      "unemployment_change_6m": 0.42803599999999964,
-      "gdp_growth": 2.137635765206136,
-      "wpi_growth": 3.2,
-      "mkt_ois_change": NaN,
-      "mkt_bab_change": 0.1372,
-      "rba_tm_forecast_gap": 0.2999999999999998,
-      "smp_llm_stance_score": "1",
-      "smp_hawk_dove_index": 0.1647940074906367,
-      "smp_lm_tone": -0.4594594594594595,
-      "smp_source": "2026-08",
-      "minutes_llm_stance_score": "2",
-      "minutes_hawk_dove_index": 0.3707865168539326,
-      "minutes_policy_hawk_dove_index": 0.42857142857142855,
-      "minutes_lm_tone": -0.2235294117647059,
-      "minutes_source": "2026-09-29",
-      "fsr_llm_risk_level_ordinal": "3",
-      "fsr_policy": "0",
-      "fsr_trend": "1",
-      "fsr_lm_tone": -0.36706349206349204,
-      "fsr_source": "2026-10"
-    },
-    "probabilities": [
-      {
-        "model": "macro",
-        "trained_on": 402,
-        "p_cut": 0.061785203268788794,
-        "p_hold": 0.8434547346528266,
-        "p_raise": 0.09476006207838474
-      },
-      {
-        "model": "macro+rba_forecast",
-        "trained_on": 283,
-        "p_cut": 0.04027265022056616,
-        "p_hold": 0.8578894006504642,
-        "p_raise": 0.1018379491289697
-      },
-      {
-        "model": "macro+smp_text",
-        "trained_on": 321,
-        "p_cut": 0.04384273140472853,
-        "p_hold": 0.8369064356709773,
-        "p_raise": 0.1192508329242941
-      },
-      {
-        "model": "macro+rba_forecast+smp_text",
-        "trained_on": 283,
-        "p_cut": 0.027868156185078735,
-        "p_hold": 0.8738792021617633,
-        "p_raise": 0.09825264165315793
-      },
-      {
-        "model": "macro+minutes_text",
-        "trained_on": 212,
-        "p_cut": 0.002059070952756234,
-        "p_hold": 0.49092648231067576,
-        "p_raise": 0.507014446736568
-      },
-      {
-        "model": "macro+fsr",
-        "trained_on": 241,
-        "p_cut": 0.040798223315113055,
-        "p_hold": 0.8306607677202015,
-        "p_raise": 0.12854100896468548
-      },
-      {
-        "model": "macro+all_text",
-        "trained_on": 212,
-        "p_cut": 0.0011232225106917561,
-        "p_hold": 0.3627798705560537,
-        "p_raise": 0.6360969069332545
-      },
-      {
-        "model": "text_only",
-        "trained_on": 212,
-        "p_cut": 0.0013851096785646795,
-        "p_hold": 0.27626150966404606,
-        "p_raise": 0.7223533806573892
-      },
-      {
-        "model": "macro+gdp",
-        "trained_on": 402,
-        "p_cut": 0.0618375920959783,
-        "p_hold": 0.8437226584727776,
-        "p_raise": 0.09443974943124404
-      },
-      {
-        "model": "macro+wages",
-        "trained_on": 299,
-        "p_cut": 0.0255705820985347,
-        "p_hold": 0.8082841677926299,
-        "p_raise": 0.16614525010883535
-      },
-      {
-        "model": "macro+gdp+wages",
-        "trained_on": 299,
-        "p_cut": 0.018727947609329602,
-        "p_hold": 0.8189656075446687,
-        "p_raise": 0.16230644484600174
-      },
-      {
-        "model": "market_bab",
-        "trained_on": 344,
-        "p_cut": 0.01963280636484346,
-        "p_hold": 0.8780421912427511,
-        "p_raise": 0.10232500239240531
-      },
-      {
-        "model": "macro+market_bab",
-        "trained_on": 344,
-        "p_cut": 0.015969365423481808,
-        "p_hold": 0.8737521027013861,
-        "p_raise": 0.11027853187513205
-      },
-      {
-        "model": "macro+market_bab+minutes_text",
-        "trained_on": 212,
-        "p_cut": 0.0020731331196278385,
-        "p_hold": 0.5916649976638554,
-        "p_raise": 0.40626186921651686
-      },
-      {
-        "model": "macro+gdp+wages+minutes_text",
-        "trained_on": 212,
-        "p_cut": 0.0007301989787774158,
-        "p_hold": 0.3721627683898048,
-        "p_raise": 0.6271070326314178
-      },
-      {
-        "model": "macro+surprise",
-        "trained_on": 281,
-        "p_cut": 0.05238395678961121,
-        "p_hold": 0.8312766806186975,
-        "p_raise": 0.11633936259169132
-      },
-      {
-        "model": "macro+surprise+minutes_text",
-        "trained_on": 212,
-        "p_cut": 0.0009791855436312089,
-        "p_hold": 0.45919950151749944,
-        "p_raise": 0.5398213129388694
-      },
-      {
-        "model": "macro+smp_dictionary",
-        "trained_on": 321,
-        "p_cut": 0.078558768965526,
-        "p_hold": 0.8427374805893327,
-        "p_raise": 0.07870375044514126
-      },
-      {
-        "model": "macro+minutes_dictionary",
-        "trained_on": 212,
-        "p_cut": 0.007327676058198385,
-        "p_hold": 0.6767424930731019,
-        "p_raise": 0.3159298308686997
-      }
-    ]
-  },
-  "asx_rate_tracker": {
-    "settlement_date": "2026-11-02",
-    "next_meeting": "2026-11-03",
-    "probability_of_move": 0.8,
-    "expected_rate": 4.85,
-    "reproduced_change": 0.20000000000000018,
-    "model_input_change": 0.20000000000000018,
-    "model_input_source": "ASX settlement 2026-11-02",
-    "history": [
-      {
-        "settlement_date": "2026-10-13",
-        "Prob_No_Change": 73,
-        "Prob_Change": 27
-      },
-      {
-        "settlement_date": "2026-10-14",
-        "Prob_No_Change": 73,
-        "Prob_Change": 27
-      },
-      {
-        "settlement_date": "2026-10-15",
-        "Prob_No_Change": 84,
-        "Prob_Change": 16
-      },
-      {
-        "settlement_date": "2026-10-16",
-        "Prob_No_Change": 82,
-        "Prob_Change": 18
-      },
-      {
-        "settlement_date": "2026-10-19",
-        "Prob_No_Change": 78,
-        "Prob_Change": 22
-      },
-      {
-        "settlement_date": "2026-10-20",
-        "Prob_No_Change": 78,
-        "Prob_Change": 22
-      },
-      {
-        "settlement_date": "2026-10-21",
-        "Prob_No_Change": 49,
-        "Prob_Change": 51
-      },
-      {
-        "settlement_date": "2026-10-22",
-        "Prob_No_Change": 38,
-        "Prob_Change": 62
-      },
-      {
-        "settlement_date": "2026-10-23",
-        "Prob_No_Change": 44,
-        "Prob_Change": 56
-      },
-      {
-        "settlement_date": "2026-10-26",
-        "Prob_No_Change": 38,
-        "Prob_Change": 62
-      },
-      {
-        "settlement_date": "2026-10-27",
-        "Prob_No_Change": 40,
-        "Prob_Change": 60
-      },
-      {
-        "settlement_date": "2026-10-28",
-        "Prob_No_Change": 18,
-        "Prob_Change": 82
-      },
-      {
-        "settlement_date": "2026-10-29",
-        "Prob_No_Change": 20,
-        "Prob_Change": 80
-      },
-      {
-        "settlement_date": "2026-10-30",
-        "Prob_No_Change": 22,
-        "Prob_Change": 78
-      },
-      {
-        "settlement_date": "2026-11-02",
-        "Prob_No_Change": 20,
-        "Prob_Change": 80
-      }
-    ],
-    "model_probabilities": [
-      {
-        "model": "market_ois (ASX futures)",
-        "trained_on": 238,
-        "p_cut": 6.072846020097262e-05,
-        "p_hold": 0.26740032233220473,
-        "p_raise": 0.7325389492075943
-      },
-      {
-        "model": "macro+market_ois (ASX futures)",
-        "trained_on": 238,
-        "p_cut": 1.2188527537098148e-05,
-        "p_hold": 0.20065788877496182,
-        "p_raise": 0.7993299226975009
-      },
-      {
-        "model": "market_ois+minutes_text (ASX futures)",
-        "trained_on": 179,
-        "p_cut": 2.6685845763123943e-05,
-        "p_hold": 0.13776624968216014,
-        "p_raise": 0.8622070644720768
-      },
-      {
-        "model": "macro+market_ois+minutes_text (ASX futures)",
-        "trained_on": 179,
-        "p_cut": 1.3383428076479607e-05,
-        "p_hold": 0.13433129866704085,
-        "p_raise": 0.8656553179048827
-      }
-    ]
-  },
   "momentum": {
     "scores": [
       {
@@ -1923,18 +1638,10 @@
         "priced_2w_before": 0.055555555555562464,
         "price_date": "2026-11-02",
         "priced_day_before": 0.20555555555555127,
-        "actual_change": NaN
+        "actual_change": 0.25
       }
     ],
-    "current": {
-      "decision_date": "2026-11-03",
-      "price_date": "2026-11-02",
-      "level": 0.20555555555555127,
-      "momentum": 0.1499999999999888,
-      "p_move_level_only": 0.8057000896574725,
-      "p_move_level_and_momentum": 0.928269971016697,
-      "momentum_vs_history_sd": 1.7480207593594217
-    }
+    "current": null
   },
   "futures_check": [
     {
@@ -2069,7 +1776,7 @@
     },
     {
       "decision_date": "2026-11-03",
-      "actual_change": NaN,
+      "actual_change": 0.25,
       "price_date": "2026-11-02",
       "current_rate": 4.6,
       "post_meeting_rate": 4.805555555555551,

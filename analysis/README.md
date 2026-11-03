@@ -283,7 +283,25 @@ Year-ahead trimmed mean errors by period: about -0.4 to -0.6 in the 1990s and 20
 lower than forecast); +1.3 for forecasts made in 2020-24 (the post-COVID surge was under-predicted,
 RMSE 2.0).
 
-## The next decision: 3 November 2026
+## Outcome: 3 November 2026
+
+**The Board raised the cash rate target by 25 basis points to 4.85%** (media release 2026-30, saved in
+`data/macro/rba_statements/`), by majority: **six members voted to raise, three to hold**.
+
+| What was expected | Outcome |
+|---|---|
+| ASX Rate Tracker, final settlement 2 November: 80% chance of a 25 bp rise | Rise of 25 bp |
+| Backtested market-pricing models: 73–87% rise | Rise |
+| Models without market pricing: 10–64% rise (most leaning to a hold) | Rise: the market was right to weigh more |
+| Remaining chance of a hold, about 20%, resting on rising unemployment, falling housing prices and the four rises already made | A third of the Board voted to hold, citing the same considerations the statement lists ("the economy is slowing, housing prices have fallen significantly and the unemployment rate has risen") |
+
+The RBA's reasons: underlying inflation broadly based, capacity pressures a little tighter than thought,
+fuel prices passing through to other prices, inflation now forecast to stay above 3% for the coming year
+and not to reach the top of the target range until late 2027 (about three quarters later than in August),
+and a rising risk that higher inflation expectations become embedded. With this decision the ASX futures
+have priced the right direction at 11 of 11 decisions since August 2025.
+
+## The next decision: 3 November 2026 (as forecast before the meeting)
 
 Inputs as of the morning of Saturday 31 October 2026 (Sydney): the final Friday close and Friday evening's trading; Monday 2 November's close is the last reading before the meeting:
 

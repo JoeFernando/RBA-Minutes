@@ -378,7 +378,7 @@ Macro data are today's revised figures rather than the first estimates available
 
 Once market pricing is known, inflation, unemployment and the last move add nothing. The RBA stopped publishing OIS in December 2022; the 1-month bank bill rate stands in to 2026 but is a noisier signal.
 
-For the 3 November 2026 decision, the ASX futures price a 78–82% chance of a 25 bp rise to 4.85% (ASX Rate Tracker 80% on 29 October, saved in `data/macro/asx/`; IBKR: 78% at Friday 30 October's close, 82% in Friday evening's session; RateProbability's OIS-based reading 81%); the backtested models that include market pricing give 76–87% (87% with the September minutes). On 2001–2022 history a raise priced this strongly happened about four times in five, and over the last 10 decisions (August 2025 to September 2026, IBKR futures data) the futures priced the right direction every time.
+**3 November 2026:** the ASX futures priced a 78–82% chance of a 25 bp rise (ASX Rate Tracker 80% at the final settlement on 2 November). **The RBA raised the cash rate by 25 bp to 4.85%**, by a 6–3 vote (three members preferred to hold, in line with the roughly one-in-five chance of a hold that remained). The futures have now priced the right direction at 11 of 11 decisions since August 2025.
 
 ## Method notes and caveats
 

@@ -23,3 +23,5 @@ data/smp_graphs/
 data/fsr_graphs/
 data/llm_batches_fsr/**/*.md
 data/raw_fsr/
+!data/macro/*.html
+!data/macro/**/*.html
