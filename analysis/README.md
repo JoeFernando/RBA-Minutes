@@ -27,140 +27,154 @@ No model ever predicted a move in the wrong direction; the hard part is timing.
 
 ## Results
 
-### Since 2003 (ABS GDP and wages available; 251 meetings, 61 moves)
+<!-- tables:abs_era -->
+### 2003-2026 (ABS GDP and wages available; 252 meetings, 62 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + wages | 0.610 | 0.348 | 77.7% | 16 of 61 | 11 |
-| macro | 0.610 | 0.354 | 77.3% | 16 of 61 | 12 |
-| macro + GDP + wages | 0.617 | 0.352 | 75.7% | 16 of 61 | 16 |
-| macro + GDP | 0.624 | 0.359 | 77.7% | 16 of 61 | 11 |
-| past class frequencies | 0.730 | 0.401 | 75.7% | 0 of 61 | 0 |
-| repeat last decision | 0.900 | 0.482 | 72.5% | 26 of 61 | 34 |
+| macro + wages | 0.615 | 0.352 | 77.4% | 16 of 62 | 11 |
+| macro | 0.616 | 0.358 | 77.0% | 16 of 62 | 12 |
+| macro + GDP + wages | 0.622 | 0.356 | 75.4% | 16 of 62 | 16 |
+| macro + GDP | 0.630 | 0.364 | 77.4% | 16 of 62 | 11 |
+| past class frequencies | 0.735 | 0.405 | 75.4% | 0 of 62 | 0 |
+| repeat last decision | 0.897 | 0.480 | 72.6% | 27 of 62 | 34 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| wages (WPI) | +0.000 | -0.023 to +0.019 | 76% |
 | GDP | -0.014 | -0.027 to -0.000 | 39% |
-| GDP + wages | -0.007 | -0.041 to +0.020 | 69% |
+| wages | +0.001 | -0.023 to +0.019 | 76% |
+| GDP + wages | -0.006 | -0.040 to +0.020 | 69% |
+<!-- /tables:abs_era -->
 
 **Neither GDP nor wages growth helps.** Once trimmed mean inflation, the trend in unemployment and
 the last move are known, GDP growth makes the probabilities slightly worse and wages growth changes
 nothing. The same holds since 2010 (below). The RBA's decisions follow inflation and the labour market
 much more closely than output, and wages largely move with unemployment.
 
-### Since 2001 (SMP era; 273 meetings tested, 66 moves)
+<!-- tables:smp_era -->
+### 2001-2026 (SMP era; 274 meetings, 67 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + SMP dictionary | 0.619 | 0.365 | 74.7% | 17 of 66 | 20 |
-| macro | 0.623 | 0.366 | 75.8% | 17 of 66 | 17 |
-| macro + SMP text (Claude) | 0.623 | 0.366 | 75.1% | 17 of 66 | 19 |
-| past class frequencies | 0.727 | 0.398 | 75.8% | 0 of 66 | 0 |
-| repeat last decision | 0.910 | 0.488 | 72.2% | 28 of 66 | 38 |
+| macro + SMP dictionary | 0.626 | 0.369 | 74.5% | 17 of 67 | 20 |
+| macro | 0.629 | 0.370 | 75.5% | 17 of 67 | 17 |
+| macro + SMP text (Claude) | 0.629 | 0.370 | 74.8% | 17 of 67 | 19 |
+| past class frequencies | 0.732 | 0.402 | 75.5% | 0 of 67 | 0 |
+| repeat last decision | 0.907 | 0.487 | 72.3% | 29 of 67 | 38 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| SMP text (Claude) | -0.000 | -0.027 to +0.026 | 55% |
-| SMP dictionary | +0.004 | -0.017 to +0.039 | 62% |
+| SMP text (Claude) | -0.000 | -0.026 to +0.027 | 55% |
+| SMP dictionary | +0.003 | -0.018 to +0.039 | 61% |
+<!-- /tables:smp_era -->
 
-The macro model is clearly better than the naive baselines (gain over class frequencies +0.104,
-90% interval +0.027 to +0.213). **The SMP's tone adds nothing once inflation, unemployment and the
+The macro model is clearly better than the naive baselines (gain over class frequencies +0.103,
+90% interval +0.030 to +0.212). **The SMP's tone adds nothing once inflation, unemployment and the
 last move are known.** The SMP stance is correlated with the next move (0.51, as reported earlier),
 but that information is already in the data.
 
-### Since 2004 (RBA forecasts published; 233 meetings, 59 moves)
+<!-- tables:smp_forecast_era -->
+### 2004-2026 (RBA forecasts published; 234 meetings, 60 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + RBA forecast + SMP text | 0.620 | 0.366 | 75.5% | 20 of 59 | 18 |
-| macro + RBA forecast | 0.630 | 0.367 | 77.3% | 19 of 59 | 13 |
-| macro + SMP text (Claude) | 0.647 | 0.372 | 76.4% | 19 of 59 | 15 |
-| macro | 0.651 | 0.373 | 76.8% | 17 of 59 | 12 |
-| macro + inflation surprise | 0.664 | 0.377 | 76.4% | 17 of 59 | 13 |
-| past class frequencies | 0.749 | 0.413 | 74.7% | 0 of 59 | 0 |
+| macro + RBA forecast + SMP text | 0.627 | 0.371 | 75.2% | 20 of 60 | 18 |
+| macro + RBA forecast | 0.637 | 0.372 | 76.9% | 19 of 60 | 13 |
+| macro + SMP text (Claude) | 0.654 | 0.377 | 76.1% | 19 of 60 | 15 |
+| macro | 0.658 | 0.378 | 76.5% | 17 of 60 | 12 |
+| macro + inflation surprise | 0.670 | 0.381 | 76.1% | 17 of 60 | 13 |
+| past class frequencies | 0.754 | 0.417 | 74.4% | 0 of 60 | 0 |
+| repeat last decision | 0.933 | 0.502 | 71.4% | 26 of 60 | 33 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
 | RBA forecast | +0.021 | -0.015 to +0.061 | 67% |
-| SMP text (Claude) | +0.004 | -0.021 to +0.027 | 60% |
-| RBA forecast + SMP text | +0.031 | -0.002 to +0.063 | 67% |
-| inflation surprise | -0.013 | -0.025 to +0.000 | 42% |
+| SMP text (Claude) | +0.004 | -0.021 to +0.028 | 59% |
+| RBA forecast + SMP text | +0.031 | -0.002 to +0.064 | 68% |
+| inflation surprise | -0.012 | -0.025 to +0.000 | 42% |
+<!-- /tables:smp_forecast_era -->
 
 The RBA's own inflation forecast helps a little, but the gain is not statistically reliable. The
 inflation surprise (outcome against the RBA's nowcast) adds nothing: once the level of inflation is
 known, whether it beat the RBA's forecast has not helped predict the decision.
 
-### Since 2008 (FSR era; 193 meetings, 51 moves)
+<!-- tables:fsr_era -->
+### 2008-2026 (FSR era; 194 meetings, 52 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + RBA forecast + SMP text | 0.707 | 0.365 | 76.7% | 15 of 51 | 9 |
-| macro + FSR | 0.733 | 0.375 | 75.6% | 15 of 51 | 11 |
-| macro | 0.735 | 0.372 | 77.7% | 15 of 51 | 7 |
+| macro + RBA forecast + SMP text | 0.715 | 0.371 | 76.3% | 15 of 52 | 9 |
+| macro + FSR | 0.740 | 0.380 | 75.3% | 15 of 52 | 11 |
+| macro | 0.742 | 0.378 | 77.3% | 15 of 52 | 7 |
+| past class frequencies | 0.800 | 0.437 | 73.2% | 0 of 52 | 0 |
+| repeat last decision | 0.895 | 0.479 | 72.7% | 25 of 52 | 26 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| RBA forecast + SMP text | +0.028 | -0.030 to +0.072 | 73% |
-| FSR | +0.002 | -0.049 to +0.054 | 59% |
+| RBA forecast + SMP text | +0.027 | -0.029 to +0.071 | 73% |
+| FSR | +0.003 | -0.049 to +0.054 | 59% |
+<!-- /tables:fsr_era -->
 
 **The FSR does not help predict rate decisions.** That fits its purpose: it assesses financial
 stability, and the RBA sets the cash rate for inflation and employment, using macroprudential tools
 for financial-stability risks.
 
-### Since 2010 (minutes era, every source available; 172 meetings, 39 moves)
+<!-- tables:minutes_era -->
+### 2010-2026 (minutes era, every source available; 173 meetings, 40 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + minutes text (Claude) | **0.500** | 0.312 | 77.9% | 15 of 39 | 14 |
-| macro + inflation surprise + minutes text | 0.502 | **0.311** | **80.8%** | **16 of 39** | 10 |
-| text only (SMP + minutes) | 0.510 | 0.326 | 74.4% | 9 of 39 | 14 |
-| macro + all text, forecast and FSR | 0.535 | 0.319 | 78.5% | 15 of 39 | 13 |
-| macro + minutes dictionary | 0.550 | 0.324 | 79.7% | 13 of 39 | 9 |
-| macro + SMP text (Claude) | 0.596 | 0.339 | 78.5% | 12 of 39 | 10 |
-| macro + FSR | 0.601 | 0.329 | 79.7% | 12 of 39 | 8 |
-| macro + GDP + wages + minutes text | 0.515 | 0.318 | 76.7% | 15 of 39 | 16 |
-| macro + GDP + wages | 0.608 | 0.331 | 77.9% | 11 of 39 | 10 |
-| macro + wages | 0.609 | 0.326 | 79.7% | 12 of 39 | 8 |
-| macro + inflation surprise | 0.611 | 0.336 | 80.8% | 12 of 39 | 6 |
-| macro | 0.616 | 0.335 | 80.8% | 12 of 39 | 6 |
-| macro + RBA forecast | 0.621 | 0.336 | 79.7% | 10 of 39 | 6 |
-| macro + GDP | 0.630 | 0.337 | 80.8% | 12 of 39 | 6 |
-| past class frequencies | 0.726 | 0.395 | 77.3% | 0 of 39 | 0 |
-| repeat last decision | 0.862 | 0.460 | 73.8% | 16 of 39 | 22 |
+| macro + minutes text (Claude) | 0.501 | 0.313 | 78.0% | 16 of 40 | 14 |
+| macro + inflation surprise + minutes text | 0.502 | 0.311 | 80.9% | 17 of 40 | 10 |
+| text only (SMP + minutes) | 0.508 | 0.325 | 74.6% | 10 of 40 | 14 |
+| macro + GDP + wages + minutes text | 0.514 | 0.318 | 76.9% | 16 of 40 | 16 |
+| macro + all text, forecast and FSR | 0.534 | 0.319 | 78.6% | 16 of 40 | 13 |
+| macro + minutes dictionary | 0.554 | 0.327 | 79.2% | 13 of 40 | 9 |
+| macro + SMP text (Claude) | 0.604 | 0.346 | 78.0% | 12 of 40 | 10 |
+| macro + FSR | 0.608 | 0.335 | 79.2% | 12 of 40 | 8 |
+| macro + GDP + wages | 0.613 | 0.336 | 77.5% | 11 of 40 | 10 |
+| macro + wages | 0.614 | 0.331 | 79.2% | 12 of 40 | 8 |
+| macro + inflation surprise | 0.616 | 0.341 | 80.3% | 12 of 40 | 6 |
+| macro | 0.624 | 0.342 | 80.3% | 12 of 40 | 6 |
+| macro + RBA forecast | 0.629 | 0.343 | 79.2% | 10 of 40 | 6 |
+| macro + GDP | 0.638 | 0.343 | 80.3% | 12 of 40 | 6 |
+| past class frequencies | 0.733 | 0.401 | 76.9% | 0 of 40 | 0 |
+| repeat last decision | 0.857 | 0.457 | 74.0% | 17 of 40 | 22 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| minutes text (Claude) | **+0.116** | **+0.050 to +0.177** | 71% |
-| inflation surprise + minutes text | **+0.114** | **+0.045 to +0.185** | 73% |
-| minutes dictionary | **+0.066** | **+0.029 to +0.101** | 71% |
-| all text, forecast and FSR | +0.082 | +0.009 to +0.149 | 73% |
-| text only (SMP + minutes) | +0.107 | +0.008 to +0.201 | 60% |
-| SMP text (Claude) | +0.021 | -0.014 to +0.055 | 59% |
-| FSR | +0.015 | -0.039 to +0.065 | 69% |
-| inflation surprise | +0.005 | -0.015 to +0.033 | 58% |
-| GDP + wages + minutes text | +0.102 | +0.038 to +0.170 | 74% |
-| GDP + wages | +0.009 | -0.017 to +0.046 | 72% |
-| wages | +0.008 | -0.012 to +0.039 | 78% |
+| RBA forecast | -0.004 | -0.047 to +0.040 | 75% |
+| SMP text (Claude) | +0.020 | -0.013 to +0.055 | 59% |
+| minutes text (Claude) | +0.123 | +0.051 to +0.183 | 71% |
+| minutes dictionary | +0.071 | +0.031 to +0.103 | 71% |
+| inflation surprise | +0.008 | -0.015 to +0.033 | 58% |
+| inflation surprise + minutes text | +0.122 | +0.045 to +0.188 | 73% |
+| FSR | +0.017 | -0.038 to +0.065 | 69% |
+| all text, forecast and FSR | +0.090 | +0.013 to +0.154 | 73% |
+| text only (SMP + minutes) | +0.116 | +0.013 to +0.205 | 60% |
 | GDP | -0.013 | -0.035 to +0.005 | 58% |
-| RBA forecast | -0.004 | -0.047 to +0.040 | 74% |
+| wages | +0.010 | -0.011 to +0.038 | 79% |
+| GDP + wages | +0.011 | -0.018 to +0.045 | 72% |
+| GDP + wages + minutes text | +0.110 | +0.040 to +0.173 | 74% |
+<!-- /tables:minutes_era -->
 
 **The minutes are the one source that adds real predictive information.** Across the actual moves,
-the macro model gave the move that happened an average probability of 36%; macro + minutes gave
+the macro model gave the move that happened an average probability of 35%; macro + minutes gave
 47%. At meetings that held, it was also slightly less likely to expect a move (22% against 24%).
 
 Two checks that the minutes result is genuine:
 
 | Check | Result |
 |---|---|
-| Hindsight in the LLM labels (Claude knows what the RBA did next) | The dictionary-only minutes measures, which cannot know the future, still improve log loss significantly (+0.066, interval +0.029 to +0.101) |
-| Sensitivity to the penalty C (0.1, 0.3, 1, 3, 10) | Minutes text gain +0.091 to +0.118, dictionary gain +0.057 to +0.065, all intervals above zero (`sensitivity_minutes_era.csv`) |
+| Hindsight in the LLM labels (Claude knows what the RBA did next) | The dictionary-only minutes measures, which cannot know the future, still improve log loss significantly (+0.071, interval +0.031 to +0.103) |
+| Sensitivity to the penalty C (0.1, 0.3, 1, 3, 10) | Minutes text gain +0.095 to +0.126, dictionary gain +0.061 to +0.068, all intervals above zero (`sensitivity_minutes_era.csv`) |
 
-**Better probabilities are mostly not better calls.** The macro model's accuracy (80.8%) is matched
-but not beaten. The minutes model catches a few more moves (15 against 12 of 39) at the cost of more
-false alarms (14 against 6); adding the inflation surprise to it gives the best balance (16 moves
-caught, 10 false alarms, 80.8%). Turning points stay hard. For example, the 29 September 2026 raise followed two
-holds, and every model gave it 13-17%.
+**Better probabilities are mostly not better calls.** The macro model's accuracy (80.3%) is matched
+but barely beaten. The minutes model catches more moves (16 against 12 of 40) at the cost of more
+false alarms (14 against 6); adding the inflation surprise to it gives the best balance (17 moves
+caught, 10 false alarms, 80.9%). Turning points stay hard. For example, the 29 September 2026 raise followed two
+holds, and every model gave it 13-17%. The 3 November 2026 raise was called by the minutes models and missed by
+the macro-only models.
 
 ## Market pricing (the ASX Rate Tracker's information)
 
@@ -198,21 +212,26 @@ known: the market already prices them. **The minutes still add a small, statisti
 edge on top of the market** (+0.020 per meeting): the market does not fully absorb what the minutes
 say.
 
-### Bank bills, 2011-2026 (164 meetings, 38 moves)
+<!-- tables:market_bab_minutes_era -->
+### 2011-2026 (bank bills; 165 meetings, 39 moves)
 
 | Model | Log loss | Brier | Accuracy | Moves called | False alarms |
 |---|---:|---:|---:|---:|---:|
-| macro + bank bills + minutes text | **0.448** | **0.266** | 82.3% | 22 of 38 | 13 |
-| macro + bank bills | 0.493 | 0.268 | **85.4%** | 20 of 38 | 6 |
-| macro + minutes text | 0.499 | 0.311 | 77.4% | 15 of 38 | 14 |
-| bank bills | 0.587 | 0.348 | 79.3% | 12 of 38 | 8 |
-| macro | 0.620 | 0.335 | 80.5% | 12 of 38 | 6 |
+| macro + bank bills + minutes text | 0.450 | 0.269 | 81.8% | 22 of 39 | 13 |
+| macro + minutes text (Claude) | 0.500 | 0.312 | 77.6% | 16 of 39 | 14 |
+| macro + bank bills | 0.503 | 0.275 | 84.8% | 20 of 39 | 6 |
+| bank bills | 0.596 | 0.355 | 78.8% | 12 of 39 | 8 |
+| macro | 0.629 | 0.341 | 80.0% | 12 of 39 | 6 |
+| past class frequencies | 0.737 | 0.403 | 76.4% | 0 of 39 | 0 |
+| repeat last decision | 0.859 | 0.458 | 73.9% | 17 of 39 | 21 |
 
 | Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |
 |---|---:|---:|---:|
-| bank bills | +0.127 | +0.059 to +0.206 | 68% |
-| bank bills + minutes text | +0.172 | +0.092 to +0.255 | 70% |
-| minutes text | +0.121 | +0.049 to +0.187 | 71% |
+| minutes text (Claude) | +0.128 | +0.053 to +0.192 | 71% |
+| bank bills | +0.033 | -0.133 to +0.195 | 54% |
+| bank bills | +0.126 | +0.057 to +0.202 | 67% |
+| bank bills + minutes text | +0.178 | +0.093 to +0.254 | 70% |
+<!-- /tables:market_bab_minutes_era -->
 
 The 1-month bank bill rate is a much weaker signal than OIS (correlation with the decision 0.64
 against 0.92), because its credit premium moves around. Still, it and the minutes each add

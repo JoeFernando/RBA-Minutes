@@ -751,6 +751,58 @@ def forecast_next(panel: pd.DataFrame, when: dt.date, models: dict = MODELS, C: 
     return pd.DataFrame(out), row
 
 
+# --- Report tables -------------------------------------------------------------------------
+
+MODEL_NAMES = {
+    "macro": "macro", "macro+rba_forecast": "macro + RBA forecast", "macro+smp_text": "macro + SMP text (Claude)",
+    "macro+smp_dictionary": "macro + SMP dictionary", "macro+rba_forecast+smp_text": "macro + RBA forecast + SMP text",
+    "macro+surprise": "macro + inflation surprise", "macro+minutes_text": "macro + minutes text (Claude)",
+    "macro+minutes_dictionary": "macro + minutes dictionary", "macro+surprise+minutes_text": "macro + inflation surprise + minutes text",
+    "macro+fsr": "macro + FSR", "macro+all_text": "macro + all text, forecast and FSR", "text_only": "text only (SMP + minutes)",
+    "macro+gdp": "macro + GDP", "macro+wages": "macro + wages", "macro+gdp+wages": "macro + GDP + wages",
+    "macro+gdp+wages+minutes_text": "macro + GDP + wages + minutes text", "market_bab": "bank bills",
+    "macro+market_bab": "macro + bank bills", "macro+market_bab+minutes_text": "macro + bank bills + minutes text",
+    "market_ois": "market (OIS)", "macro+market_ois": "macro + market", "market_ois+minutes_text": "market + minutes text",
+    "macro+market_ois+minutes_text": "macro + market + minutes text",
+    "class_frequencies": "past class frequencies", "repeat_last_decision": "repeat last decision",
+}
+REPORT_SAMPLES = {  # report section -> (sample, heading)
+    "abs_era": "ABS GDP and wages available", "smp_era": "SMP era", "smp_forecast_era": "RBA forecasts published",
+    "fsr_era": "FSR era", "minutes_era": "minutes era, every source available", "market_bab_minutes_era": "bank bills",
+}
+
+
+def report_tables(sample: dict, title: str) -> str:
+    """The heading, score table and comparison table for one sample, as Markdown."""
+    scores = sorted((r for r in sample["scores"] if r["model"] != "always_hold"), key=lambda r: r["log_loss"])
+    first, last = sample["first_test"][:4], sample["last_test"][:4]
+    n, moves = scores[0]["n"], scores[0]["moves"]
+    lines = [f"### {first}-{last} ({title}; {n} meetings, {moves} moves)", "",
+             "| Model | Log loss | Brier | Accuracy | Moves called | False alarms |", "|---|---:|---:|---:|---:|---:|"]
+    lines += [f"| {MODEL_NAMES.get(r['model'], r['model'])} | {r['log_loss']:.3f} | {r['brier']:.3f} | {r['accuracy']:.1%} | "
+              f"{r['moves_called']} of {r['moves']} | {r['false_alarms']} |" for r in scores]
+    lines += ["", "| Added to macro | Log-loss gain per meeting | 90% interval | Meetings better |", "|---|---:|---:|---:|"]
+    lines += [f"| {MODEL_NAMES.get(r['model'], r['model']).replace('macro + ', '')} | {r['mean_improvement']:+.3f} | "
+              f"{r['ci90_low']:+.3f} to {r['ci90_high']:+.3f} | {r['share_better']:.0%} |"
+              for r in sample["paired"] if r["baseline"] == "macro"]
+    return "\n".join(lines)
+
+
+def refresh_report(results: dict, path: Path = OUT_DIR / "README.md") -> int:
+    """Replace the generated blocks (between <!-- tables:NAME --> markers) in the report. Returns blocks updated."""
+    if not path.exists():
+        return 0
+    text, updated = path.read_text(), 0
+    for name, title in REPORT_SAMPLES.items():
+        start, end = f"<!-- tables:{name} -->", f"<!-- /tables:{name} -->"
+        if name in results and start in text and end in text:
+            before, rest = text.split(start, 1)
+            text = f"{before}{start}\n{report_tables(results[name], title)}\n{end}{rest.split(end, 1)[1]}"
+            updated += 1
+    path.write_text(text)
+    return updated
+
+
 def run(next_decision: dt.date | None = None) -> dict:
     """Build the panel, run the backtests for each sample period and write the outputs to analysis/."""
     OUT_DIR.mkdir(exist_ok=True)
@@ -853,4 +905,5 @@ def run(next_decision: dt.date | None = None) -> dict:
         check.to_csv(OUT_DIR / "futures_check.csv", index=False)
         results["futures_check"] = check.to_dict("records")
     (OUT_DIR / "results.json").write_text(json.dumps(results, indent=2, default=str))
+    refresh_report(results)
     return results

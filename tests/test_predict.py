@@ -168,3 +168,21 @@ def test_market_path_scales_early_readings_for_the_days_before_the_decision():
     assert out["w2"] == pytest.approx(0.05 * 30 / (30 - two_weeks_days))
     assert out["chg_w2"] == pytest.approx(out["d1"] - out["w2"])
     assert predict.market_path(market.iloc[:5], dt.date(2026, 9, 29)) == {}  # too little history
+
+
+def test_refresh_report_rewrites_only_marked_blocks(tmp_path):
+    sample = {"first_test": "2010-07-06", "last_test": "2026-11-03",
+              "scores": [{"model": "macro", "n": 173, "accuracy": 0.803, "log_loss": 0.624, "brier": 0.342, "moves": 40,
+                          "moves_called": 12, "false_alarms": 6},
+                         {"model": "macro+minutes_text", "n": 173, "accuracy": 0.78, "log_loss": 0.501, "brier": 0.313,
+                          "moves": 40, "moves_called": 16, "false_alarms": 14}],
+              "paired": [{"baseline": "macro", "model": "macro+minutes_text", "mean_improvement": 0.123,
+                          "ci90_low": 0.051, "ci90_high": 0.183, "share_better": 0.71}]}
+    report = tmp_path / "README.md"
+    report.write_text("intro\n<!-- tables:minutes_era -->\nold table\n<!-- /tables:minutes_era -->\nnarrative\n")
+    assert predict.refresh_report({"minutes_era": sample}, report) == 1
+    text = report.read_text()
+    assert text.startswith("intro\n") and text.endswith("narrative\n") and "old table" not in text
+    assert "### 2010-2026 (minutes era, every source available; 173 meetings, 40 moves)" in text
+    assert text.index("macro + minutes text (Claude) | 0.501") < text.index("| macro | 0.624")  # best first
+    assert "| minutes text (Claude) | +0.123 | +0.051 to +0.183 | 71% |" in text

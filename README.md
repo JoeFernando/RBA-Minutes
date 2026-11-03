@@ -363,16 +363,16 @@ Summary of [`analysis/README.md`](analysis/README.md) (every decision since 1990
 
 | Added to inflation, unemployment and the last move | Sample | Better probabilities? | Better calls? |
 |---|---|---|---|
-| SMP tone (Claude or dictionary) | 2001–2026, 273 meetings | No (gain ≈ 0) | No |
-| RBA's year-ahead inflation forecast | 2004–2026, 233 meetings | Slightly, not significant | No |
-| Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 233 meetings | No | No |
+| SMP tone (Claude or dictionary) | 2001–2026, 274 meetings | No (gain ≈ 0) | No |
+| RBA's year-ahead inflation forecast | 2004–2026, 234 meetings | Slightly, not significant | No |
+| Inflation surprise (outcome minus the RBA's nowcast) | 2004–2026, 234 meetings | No | No |
 | **Market pricing** (1-month OIS minus the cash rate: the ASX Rate Tracker's information) | 2005–2022, 189 meetings | **Yes, by far the strongest** (log loss 0.629 → 0.216; 29 of 46 moves called, 2 false alarms) | **Yes** (accuracy 78.8% → 89.9%) |
 | Change in market pricing over the last two weeks, on top of its final level | 2005–2022, 189 meetings | Slightly (+0.010, not reliable out of sample; significant in a regression, p = 0.035) | No. But when pricing was fading, the move happened only 4 times in 17 despite 45% priced |
 | Minutes, on top of market pricing | 2011–2022, 131 meetings | Yes, small but significant (+0.020 per meeting) | Slightly (14 against 13 of 26 moves, no false alarms) |
-| ABS real GDP growth | 2003–2026, 251 meetings | No (slightly worse) | No |
-| ABS Wage Price Index growth | 2003–2026, 251 meetings | No (gain ≈ 0) | No |
-| FSR risk assessment | 2008–2026, 193 meetings | No | No |
-| **Minutes** (Claude, or dictionary only) | 2010–2026, 172 meetings | **Yes, significant** (log loss 0.616 → 0.500; dictionary-only 0.550) | No: 15 against 12 of 39 moves caught, but 14 against 6 false alarms |
+| ABS real GDP growth | 2003–2026, 252 meetings | No (slightly worse) | No |
+| ABS Wage Price Index growth | 2003–2026, 252 meetings | No (gain ≈ 0) | No |
+| FSR risk assessment | 2008–2026, 194 meetings | No | No |
+| **Minutes** (Claude, or dictionary only) | 2010–2026, 173 meetings | **Yes, significant** (log loss 0.624 → 0.501; dictionary-only 0.554) | Not on accuracy: 16 against 12 of 40 moves caught, but 14 against 6 false alarms |
 
 Macro data are today's revised figures rather than the first estimates available at each meeting, which flatters the macro models slightly (see the caveat in `analysis/README.md`).
 
