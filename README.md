@@ -302,8 +302,8 @@ Built on 29 October 2026.
 
 | Item | Value |
 |---|---|
-| Minutes | 213 meetings, 3 Oct 2006 to 28–29 Sep 2026 (latest published); 1,825 sections, 8,574 paragraphs, ~680,000 words |
-| Cash rate decisions | Read for all 213 meetings: 157 holds, 29 raises, 27 cuts; every rate chains from the previous meeting, and spot checks match the RBA record |
+| Minutes | 214 meetings, 3 Oct 2006 to 2–3 Nov 2026 (latest published); 1,832 sections, 8,617 paragraphs, ~684,000 words |
+| Cash rate decisions | Read for all 214 meetings: 157 holds, 30 raises, 27 cuts; every rate chains from the previous meeting, and spot checks match the RBA record |
 | SMP issues | 119, Feb 1997 to Aug 2026 (latest published); ~2.1 million words of narrative, 1,166 chapters, 29,262 paragraphs |
 | SMP special studies | 332: 327 boxes and 5 In Depth chapters. All 326 boxes on the RBA's yearly box lists are captured, plus one the lists omit (Aug 1998, "The Australian Dollar and the Yen") |
 | SMP tables | 1,485 tables (422 distinct titles), 48,363 cells, 44,775 numeric |
@@ -311,7 +311,7 @@ Built on 29 October 2026.
 | FSR special studies | 139 (~203,000 words); all 128 boxes/Focus Topics and 9 articles on the RBA's own lists captured |
 | FSR tables | 242 tables (162 distinct titles), 7,201 cells, 5,634 numeric |
 | Forecasts | 4,718 historical forecasts with outcomes (1990–2025); 3,459 detailed SMP forecast values (Nov 2018 – Aug 2026) |
-| Claude labels | All 213 meetings, all 119 SMP Overviews and all 46 FSR Overviews, each on the final cleaned text; every supporting quote verified word for word |
+| Claude labels | All 214 meetings, all 119 SMP Overviews and all 46 FSR Overviews, each on the final cleaned text; every supporting quote verified word for word |
 
 ### Verification
 
@@ -321,8 +321,8 @@ Built on 29 October 2026.
 | RBA forecast archive workbook vs tables extracted from the SMP HTML (independent publications of the same numbers) | 3,459 of 3,459 values match exactly |
 | Independent agent audits, cell by cell against the published HTML, on random samples (each round on tables not audited before) | See below |
 | Every box on the RBA's own lists captured | SMP 326 of 326; FSR 137 of 137 (boxes, Focus Topics, articles) |
-| Cash rate decisions chain consistently | 213 of 213 |
-| Claude quotes found verbatim in the source text | 213 of 213 minutes, 119 of 119 SMPs, 46 of 46 FSRs |
+| Cash rate decisions chain consistently | 214 of 214 |
+| Claude quotes found verbatim in the source text | 214 of 214 minutes, 119 of 119 SMPs, 46 of 46 FSRs |
 | Every graph found in the pages has its image | SMP 10,773 of 10,773; FSR 3,015 of 3,015 |
 
 Table audits (each by agents working only from the published HTML with their own code; every fault found was fixed, checked against the whole collection for side effects, and pinned by a regression test on the real table in `tests/fixtures/rba_tables/`):

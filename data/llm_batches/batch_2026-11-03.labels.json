@@ -1,0 +1,18 @@
+[
+ {
+  "meeting_date": "2026-11-03",
+  "input_sha256": "a925688bbda10088ad90f510978f6715e0a0c78fee37e9add074d1215f47948f",
+  "stance": "hawkish",
+  "stance_score": 1,
+  "confidence": 3,
+  "policy_bias": "tightening",
+  "decision": "raise",
+  "dominant_concern": "inflation",
+  "key_quotes": [
+   "Having considered these various arguments, most members determined that the case to increase the cash rate target at this meeting was the stronger one.",
+   "These members judged that forward-looking inflationary pressures had risen and that the risks to the inflation outlook were still on the upside.",
+   "These members expressed their concern that the economy might be near the point of entering a materially sharper downturn and pointed to the costs in terms of unemployment."
+  ],
+  "reasoning": "The Board raised the cash rate to 4.85 per cent because the inflation outlook had deteriorated, risks remained to the upside and policy might not be restrictive enough given a higher neutral rate. The decision was split 6-3, and the minutes set out a substantial case for holding (lagged effects of 100 basis points of tightening, a larger than expected rise in unemployment, the housing downturn), so the stance is mildly rather than strongly hawkish. The forecasts assume further tightening, so the bias remains towards tightening."
+ }
+]
